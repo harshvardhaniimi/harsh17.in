@@ -1,5 +1,5 @@
 [build]
-command = 'hugo --gc --minify'
+command = 'hugo --gc '
 publish = 'public'
 
 [build.environment]
@@ -9,7 +9,7 @@ HUGO_VERSION = '0.160.1'
 HUGO_ENV = 'production'
 
 [context.deploy-preview]
-command = 'hugo -F -b $DEPLOY_PRIME_URL --gc --minify'
+command = 'hugo -F -b $DEPLOY_PRIME_URL --gc '
 
 [context.branch-deploy]
-command = 'hugo -F -b $DEPLOY_PRIME_URL --gc --minify'
+command = 'hugo -F -b $DEPLOY_PRIME_URL --gc '
