@@ -68,14 +68,16 @@ params:
   disableSpecial1stPost: true
   displayFullLangName: false
   ShowToc: false
+  comments: true
 
   homeInfoParams:
     Title: "Harshvardhan"
     Content: >
-      Assistant Professor of Information Systems & Analytics at
+      Assistant Professor of Information Systems & Business Analytics at
       [American University of Sharjah](https://www.aus.edu/).
       I study machine learning for demand forecasting and enterprise analytics.
-      Previously PhD at University of Tennessee, research at HP Inc.
+      Previously PhD in Business Analytics at the University of Tennessee, 
+      research internships at HP Inc for supply chain planning.
       I write about data science, philosophy, travel, and life.
 
   socialIcons:
@@ -93,10 +95,10 @@ params:
       url: "/writing/index.xml"
 
   giscus:
-    repo: ""
-    repoId: ""
+    repo: "harshvardhaniimi/harsh17.in"
+    repoId: "R_kgDOR_EfYg"
     category: "General"
-    categoryId: ""
+    categoryId: "DIC_kwDOR_EfYs4C6iFn"
     mapping: "pathname"
     theme: "preferred_color_scheme"
 
