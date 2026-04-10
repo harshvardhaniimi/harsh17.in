@@ -1,0 +1,402 @@
+---
+title: Stackoverflow Answers
+subtitle: A collection of my answers on Stackoverflow
+summary: A collection of my answers on Stackoverflow
+author: Harshvardhan
+date: '2022-01-14'
+slug: stackoverflow-answers
+categories:
+  - R
+tags: []
+links:
+- icon: stack-overflow
+  icon_pack: fab
+  name: Stack Overflow
+  url: https://stackoverflow.com/users/8057777/harshvardhan
+---
+
+
+
+<p>Most of the time when I answer questions on Stack Overflow, I end up learning a thing or two about R myself. Answering questions gets me warmed up on unrelated topics. These questions are one of their kind. This blog post documents all my answers so that I can find the answers readily.</p>
+<p>The headlines explain the basic logic of what I am trying to achieve through that question.</p>
+<div id="visualisation" class="section level2">
+<h2>Visualisation</h2>
+<div id="this-question-was-on-combining-time-series-plots-using-par." class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70226646/is-there-an-r-function-for-combining-graph-for-decomposition-of-time-series-grap/70226978#70226978">This question</a> was on combining time series plots using <code>par()</code>.</h3>
+<p><code>par()</code> won’t work because <code>plot.decomposed.ts()</code> (which we implicitly call when calling <code>plot()</code>) isn’t designed to work that way. The most straightforward alternative is to use <code>autoplot()</code> from the <code>forecast</code> package to generate decomposition plots and combine them using patchwork.</p>
+<p>Here is an example.</p>
+<pre class="r"><code># Loading forecast and patchwork
+library(forecast)</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;quantmod&#39;:
+##   method            from
+##   as.zoo.data.frame zoo</code></pre>
+<pre class="r"><code>library(patchwork)
+
+m1 = decompose(co2)
+m2 = decompose(AirPassengers)
+m3 = decompose(UKgas)
+p1 = autoplot(m1)
+p2 = autoplot(m2)
+p3 = autoplot(m3)
+p1 / p2 / p3</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>The last line, <code>p1 / p2 / p3</code>, tells R to stack them vertically. If you want to stack them horizontally, use <code>p1 + p2 + p3</code>. If you’re being feisty, you can also try <code>(p1 + p2)/p3</code> to stack the first two horizontally and the last one beneath it.</p>
+</div>
+<div id="using-gghighlight-to-highlight-a-line-plot-in-ggplot2" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70226155/how-can-i-change-the-plot-order-and-width-of-just-one-line-in-geom-line/70227639#70227639">Using</a> <code>gghighlight</code> to highlight a line plot in <code>ggplot2</code></h3>
+<p><a href="https://cran.r-project.org/web/packages/gghighlight/vignettes/gghighlight.html">gghighlight</a> provides <code>gghighlight()</code> which can be used to selectively highlight some lines, points or other <code>geom_</code>. I couldn’t get the dataset in question working, so I generated a random dataset. The code should work for their case as well.</p>
+<pre class="r"><code>library(gghighlight)</code></pre>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<pre class="r"><code>year = 1970:2020
+value = rnorm(length(year), 2000, 5)
+x = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;)
+variable = sample(x, length(year), replace = T)
+df = data.frame(year = year,
+                value = value,
+                variable = variable)</code></pre>
+<p>Now is the cool part.</p>
+<pre class="r"><code>df %&gt;%
+  ggplot(aes(x = year, y = value, colour = variable)) +
+  geom_line() + 
+  gghighlight(variable == &quot;A&quot;) +
+  theme_minimal()</code></pre>
+<pre><code>## Warning: Tried to calculate with group_by(), but the calculation failed.
+## Falling back to ungrouped filter operation...</code></pre>
+<pre><code>## label_key: variable</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Voila!</p>
+</div>
+<div id="histogram-with-ggplot2" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70705401/r-geom-histogram-bar-positions-for-log-plots/70705780#70705780">Histogram</a> with <code>ggplot2</code></h3>
+<p>I had to clarify several things. First, what made them choose <code>bins = 43</code>? Second, is providing the scale manually necessary? If the data is in the right format, they should not need it. If it isn’t, they should first transform the data and then do it.</p>
+<p>Third, gray background (which they wanted to change) is from the default theme. There are <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">several options</a> but I like <code>minimal</code>. <code>minimal</code>, <code>linedraw</code> and <code>bw</code> have white grids.</p>
+<p>(I’m generating 1000 random numbers for this example.)</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.2     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ lubridate 1.9.2     ✔ tibble    3.2.1
+## ✔ purrr     1.0.2     ✔ tidyr     1.3.0
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>v = tibble(var = rnorm(1000))
+ggplot(v, aes(x = var)) +
+   geom_histogram(bins = 20) +
+   theme_minimal()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="barplots-grouped-by-two-factor-variables-and-plotting-mean-values-as-points-on-them" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70705514/adding-mean-points-to-geom-boxplot-with-fun-mean-or-geom-point/70705695#70705695">Barplots</a> grouped by two (factor) variables and plotting mean values as points on them</h3>
+<p>The data they posted didn’t work so I’ve used (modified) <code>iris</code> dataset.</p>
+<pre class="r"><code># loading tidyverse
+library(tidyverse)
+
+# adding another factor variable to replicate this example
+iris$Variable = rep(LETTERS[1:5], times = 30)</code></pre>
+<p>Here’s the meat.</p>
+<pre class="r"><code>iris %&gt;%
+  ggplot(aes(x = Species, y = Sepal.Length, fill = Variable)) +
+  geom_boxplot() +
+  stat_summary(
+    fun = mean,
+    color = &quot;steelblue&quot;,
+    position = position_dodge(0.75),
+    geom = &quot;point&quot;,
+    shape = 20,
+    size = 5,
+    show.legend = FALSE
+  ) +
+  theme_minimal()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+</div>
+<div id="string-manipulations" class="section level2">
+<h2>String Manipulations</h2>
+<div id="selecting-rows-where-a-string-match-occurs" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70572395/selecting-rows-where-a-word-occurs-in-the-sentence/70572727#70572727">Selecting</a> rows where a string match occurs</h3>
+<p>We can use <code>grepl()</code> from base R for this. <code>grepl()</code> returns <code>True</code> if the word is present and <code>False</code> otherwise.</p>
+<pre class="r"><code>text = &quot;The Little Vanities of Mrs. Whittaker: A Novel&quot;
+word = &quot;Novel&quot;
+
+grepl(word, text)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>The <code>original_books</code> file (in question) will require large downloads so I’m showing an example of searching “Plays” in <code>title.x</code> of their <code>novels</code> data frame.</p>
+<pre class="r"><code>library(gutenbergr)
+library(tidyverse)
+
+gutenberg_full_data &lt;-
+  left_join(gutenberg_works(language == &quot;en&quot;), gutenberg_metadata, by = &quot;gutenberg_id&quot;)
+
+gutenberg_full_data &lt;-
+  left_join(gutenberg_full_data, gutenberg_subjects)</code></pre>
+<pre><code>## Joining with `by = join_by(gutenberg_id)`</code></pre>
+<pre class="r"><code>gutenberg_full_data &lt;-
+  subset(
+    gutenberg_full_data,
+    select = -c(
+      rights.x,
+      has_text.x,
+      language.y,
+      gutenberg_bookshelf.x,
+      gutenberg_bookshelf.y,
+      rights.y,
+      has_text.y,
+      gutenberg_bookshelf.y,
+      gutenberg_author_id.y,
+      title.y,
+      author.y
+    )
+  )
+
+gutenberg_full_data &lt;-
+  gutenberg_full_data[-which(is.na(gutenberg_full_data$author.x)), ]
+novels &lt;- gutenberg_full_data %&gt;% filter(subject == &quot;Drama&quot;)</code></pre>
+<p>Here comes the cool part.</p>
+<pre class="r"><code>novels %&gt;% 
+  mutate(contains_play = grepl(&quot;Plays&quot;, title.x)) %&gt;%
+  as.data.frame() %&gt;% 
+  head()</code></pre>
+<pre><code>##   gutenberg_id                                        title.x
+## 1         1308     A Florentine Tragedy; La Sainte Courtisane
+## 2         2270                      Shakespeare&#39;s First Folio
+## 3         2587                                Life Is a Dream
+## 4         4970                    There Are Crimes and Crimes
+## 5         5053 Plays by August Strindberg: Creditors. Pariah.
+## 6         5618                                      Six Plays
+##                                  author.x gutenberg_author_id.x language.x
+## 1                            Wilde, Oscar                   111         en
+## 2                    Shakespeare, William                    65         en
+## 3             Calderón de la Barca, Pedro                   970         en
+## 4                      Strindberg, August                  1609         en
+## 5                      Strindberg, August                  1609         en
+## 6 Darwin, Florence Henrietta Fisher, Lady                  1814         en
+##   subject_type subject contains_play
+## 1         lcsh   Drama         FALSE
+## 2         lcsh   Drama         FALSE
+## 3         lcsh   Drama         FALSE
+## 4         lcsh   Drama         FALSE
+## 5         lcsh   Drama          TRUE
+## 6         lcsh   Drama          TRUE</code></pre>
+<p>Note that <code>grepl()</code> allows the second argument to be a vector. Thus, using <code>rowwise()</code> is not necessary. If it allowed searching only within a string, we would have to use <code>rowwise()</code>.</p>
+</div>
+</div>
+<div id="data-wrangling-and-manipulation" class="section level2">
+<h2>Data Wrangling and Manipulation</h2>
+<div id="typecasting-to-numeric" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70705357/attempting-to-calculate-someones-age-using-the-year-they-were-born-and-the-pres/70705721#70705721">Typecasting</a> to Numeric</h3>
+<p>The variable <code>born</code> is registered as a character variable. Convert it to numeric and one should be good to go.</p>
+<pre><code>dat1$born = as.numeric(dat1$born)</code></pre>
+<p>Now compute the age difference.</p>
+</div>
+<div id="grabbing-columns-from-one-data-frame-with-variable-names-from-another-data-frame" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70712227/grabbing-data-from-columns-with-same-name-in-r/70712519#70712519">Grabbing</a> columns from one data frame with variable names from another data frame</h3>
+<p>One can do it using <a href="https://tidyselect.r-lib.org/reference/all_of.html">any_of()</a> function from dplyr. It selects the variables which match the names and ignores those which do not. I will use a list to store matrices from the loop. They can be accessed using <code>df_modified[[i]]</code>.</p>
+<pre class="r"><code>df1=data.frame(q1 = c(1:3),
+               q2 = c(&quot;One&quot; , &quot;Two&quot; , &quot;Three&quot;) , 
+               q3 = c(100,231,523),
+               q4 = c(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;),
+               q1.2 = c(20:22),
+               q2.2 = c(&quot;Six&quot; , &quot;Ten&quot; , &quot;Twenty&quot;) , 
+               q3.2 = c(5,900,121),
+               q4.2 = c(&quot;purple&quot;, &quot;yellow&quot;, &quot;white&quot;))
+df2=data.frame(x1 = c(&quot;q1&quot; , &quot;q2.1&quot; , &quot;q3.2&quot; , &quot;q4.2&quot;) ,
+               x2 = c(&quot;q2&quot; , &quot;q3&quot; , &quot;q3.3&quot; , &quot;q4.4&quot;) ,
+               x3 = c(&quot;q3&quot; , &quot;q2.4&quot; , &quot;q3.3&quot; , &quot;q4.6&quot;), 
+               x4 = c(&quot;q4&quot; , &quot;q3.6&quot; , &quot;q3.3&quot; , &quot;q4.2&quot;))</code></pre>
+<pre class="r"><code># Loading libraries
+library(tidyverse)
+
+df_modified = list()
+for(i in 1:nrow(df2))
+{
+   vars = as.character(df2[i,])
+   df_modified[[i]] = df1 %&gt;% 
+      select(any_of(vars))
+}</code></pre>
+<p><strong>Output</strong></p>
+<pre class="r"><code>df_modified</code></pre>
+<pre><code>## [[1]]
+##   q1    q2  q3    q4
+## 1  1   One 100   red
+## 2  2   Two 231 green
+## 3  3 Three 523  blue
+## 
+## [[2]]
+##    q3
+## 1 100
+## 2 231
+## 3 523
+## 
+## [[3]]
+##   q3.2
+## 1    5
+## 2  900
+## 3  121
+## 
+## [[4]]
+##     q4.2
+## 1 purple
+## 2 yellow
+## 3  white</code></pre>
+<p>Done!</p>
+</div>
+<div id="selecting-observations-by-filtering-other-variables" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70571991/reading-data-from-excel-in-r-using-variable-identifiers/70572613#70572613">Selecting</a> Observations by Filtering Other Variables</h3>
+<p>One approach is to write a function that does that for you. It matches the first three variables with what you input and returns the index(or indexes) of elements that match.</p>
+<p><code>which()</code> returns the index of items that satisfy the condition. When I say <code>which(df[,1] == a)</code>, it will return me the index of observations in <code>df</code> where the first column matches <code>a</code>. And so on. Then, you can use <code>intersect()</code> to find the common indexes in <code>x1</code>, <code>x2</code> and <code>x3</code>. I’m using <a href="https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">magrittr pipes %&gt;%</a> to simplify the coding.</p>
+<pre class="r"><code>check_this = function(df, a, b, c) 
+{
+  x1 = which(df[,1] == a)
+  x2 = which(df[,2] == b)
+  x3 = which(df[,3] == c)
+  
+  v = intersect(x1, x2) %&gt;% 
+    intersect(x3)
+  return(v)
+}</code></pre>
+<p><strong>Minimum Working Example</strong> First, I’ll create a dummy data frame. Then, I’ll find the index using the function I just created.</p>
+<pre class="r"><code>df = tibble(var1 = 1:10, 
+            var2 = 11:20, 
+            var3 = letters[1:10],
+            var4 = LETTERS[1:10])
+
+df</code></pre>
+<pre><code>## # A tibble: 10 × 4
+##     var1  var2 var3  var4 
+##    &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+##  1     1    11 a     A    
+##  2     2    12 b     B    
+##  3     3    13 c     C    
+##  4     4    14 d     D    
+##  5     5    15 e     E    
+##  6     6    16 f     F    
+##  7     7    17 g     G    
+##  8     8    18 h     H    
+##  9     9    19 i     I    
+## 10    10    20 j     J</code></pre>
+<p>Now, let us see it in action. First, I’ll pass the data frame and variables I want to match as arguments. The function will return the indices which I’ll store in <code>l</code>. Then, I’ll ask R to show me the rows which have indices numbers in <code>l</code>.</p>
+<pre class="r"><code># checking and storing the index of matched
+l = check_this(df, 2, 12, &quot;b&quot;)
+
+df[l,]</code></pre>
+<pre><code>## # A tibble: 1 × 4
+##    var1  var2 var3  var4 
+##   &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     2    12 b     B</code></pre>
+<p>Note: You could have skipped the step of storing indices in <code>l</code> by returning the selected rows of the data frame itself. The function would change to the following.</p>
+<pre class="r"><code># the function
+check_this = function(df, a, b, c) 
+{
+  x1 = which(df[,1] == a)
+  x2 = which(df[,2] == b)
+  x3 = which(df[,3] == c)
+  
+  v = intersect(x1, x2) %&gt;% 
+    intersect(x3)
+  return(df[v,])
+}</code></pre>
+</div>
+<div id="convert-a-vector-of-strings-in-multiple-formats-into-dates-in-r" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70705061/how-to-convert-a-vector-of-strings-in-multiple-formats-into-dates-in-r/70705346#70705346">Convert</a> a vector of strings in multiple formats into dates in R</h3>
+<div id="my-solution" class="section level4">
+<h4>My Solution</h4>
+<pre class="r"><code># sample date
+dates &lt;- c(&quot;2015-02-23&quot;,&quot;2015-02-12&quot;,&quot;2015-18-02&quot;,&quot;2015-25-02&quot;)
+
+# libraries
+library(testit) #for has_warning
+library(lubridate) #for date functions</code></pre>
+<p>This function will correct the dates.</p>
+<pre class="r"><code>correct_dates = function(dates)
+{
+  dates_new = character()
+  for(i in 1:length(dates))
+  {
+    #print(i)
+    if(has_warning(day(ydm(dates[i]))&gt;12))
+      {dates_new = append(dates_new, ymd(dates[i]))}
+    else
+      {dates_new = append(dates_new, ydm(dates[i]))}
+  }
+  return(dates_new)
+}</code></pre>
+<p>Let’s see it in action.</p>
+<pre class="r"><code>dates</code></pre>
+<pre><code>## [1] &quot;2015-02-23&quot; &quot;2015-02-12&quot; &quot;2015-18-02&quot; &quot;2015-25-02&quot;</code></pre>
+<pre class="r"><code>correct_dates(dates)</code></pre>
+<pre><code>## [1] &quot;2015-02-23&quot; &quot;2015-12-02&quot; &quot;2015-02-18&quot; &quot;2015-02-25&quot;</code></pre>
+</div>
+<div id="much-better-solution" class="section level4">
+<h4>Much Better Solution</h4>
+<pre class="r"><code>dates &lt;- c(&quot;2017-12-31&quot;,&quot;2017-12-30&quot;,&quot;2017-29-12&quot;,&quot;2017-28-12&quot;)
+as.Date(lubridate::parse_date_time(dates, c(&#39;ymd&#39;, &#39;ydm&#39;)))</code></pre>
+<pre><code>## [1] &quot;2017-12-31&quot; &quot;2017-12-30&quot; &quot;2017-12-29&quot; &quot;2017-12-28&quot;</code></pre>
+</div>
+</div>
+</div>
+<div id="table-formatting-in-kableextra" class="section level2">
+<h2>Table Formatting in kableExtra</h2>
+<div id="how-to-append-two-tables-with-same-number-of-columns-in-kableextra" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70226380/how-to-append-two-tables-with-same-number-of-columns-in-kableextra/70226700#70226700">How to append</a> two tables with same number of columns in kableExtra?</h3>
+<p>I don’t know how to combine the tables directly without first joining the data frames. However, using <code>pack_rows</code> to specify rows for grouping together should work for this purpose.</p>
+<pre class="r"><code>library(kableExtra)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
+<pre class="r"><code>df1 = data.frame(x = c(&quot;a&quot;,&quot;b&quot;), y=1:2)
+df2 = data.frame(x = c(&quot;c&quot;,&quot;d&quot;), y=3:4)
+
+rbind(df1, df2) %&gt;%
+kbl(format = &quot;latex&quot;, caption = &quot;Combined Tables&quot;) %&gt;%
+  kable_paper(&quot;striped&quot;, full_width = F) %&gt;%
+  pack_rows(&quot;Header 1&quot;, 1, 2) %&gt;%
+  pack_rows(&quot;Header 2&quot;, 3, 4)</code></pre>
+<p>Check the documentation of <code>?pack_rows</code> from <code>kableExtra</code> to modify the group labels, add <code>\hline</code>s, or other such cosmetic changes.</p>
+<p><img src="images/image.png" /></p>
+</div>
+</div>
+<div id="simulation" class="section level2">
+<h2>Simulation</h2>
+<div id="how-many-people-are-needed-such-that-there-is-at-least-a-70-chance-that-one-of-them-is-born-on-the-last-day-of-december" class="section level3">
+<h3><a href="https://stackoverflow.com/questions/70226260/having-trouble-solving-simulation/70227486#70227486">How many people are needed such that there is at least a 70% chance that one of them is born on the last day of December?</a></h3>
+<p>The question is, “How many people are needed such that there is at least a 70% chance that one of them is born on the last day of December?”. What they were finding now is “How many people are needed such that 70% have their birthdays on the last day of December?”. The answer to the second question is close to zero. But the first one is much simpler.</p>
+<p>Replacing <code>prob &lt;- length(which(birthday == 365)) / people</code> with <code>check = any(birthday == 365)</code> in their logic because at least one of them has to be born on Dec 31 will work. Then, they will be able to find if <em>that</em> number of people will have at least one person born on Dec 31.</p>
+<p>After that, they will have to rerun the simulation multiple times to generate empirical probability distribution (kind of Monte Carlo). Only then they can check for probability.</p>
+<div id="simulation-code" class="section level4">
+<h4>Simulation Code</h4>
+<pre class="r"><code>people_count = function(i)
+{
+  set.seed(i)
+  for (people in 1:10000)
+  {
+    birthday = sample(365, size = people, replace = TRUE)
+    check = any(birthday == 365)
+    if(check == TRUE)
+    {
+      pf = people
+      break
+    }
+  }
+  return(pf)
+}</code></pre>
+<p><code>people_count()</code> function returns the number of people required to have so that at least one of them was born on Dec 31. Then I rerun the simulation 10,000 times.</p>
+<pre class="r"><code># Number of simulations
+nsim = 10000
+l = lapply(1:nsim, people_count) %&gt;%
+  unlist()</code></pre>
+<p>Let’s see the distribution of the number of people required.</p>
+<pre class="r"><code>hist(l, main = &quot;Histogram of # People&quot;,
+     xlab = &quot;# People&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>To find actual probability, I’ll use <code>cumsum()</code>.</p>
+<pre class="r"><code>cdf = cumsum(l/nsim)
+which(cdf&gt;0.7)[1]</code></pre>
+<pre><code>## [1] 292</code></pre>
+<p>So, on average, you would need 292 people to have more than a 70% chance.</p>
+</div>
+</div>
+</div>

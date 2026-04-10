@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Talks on Harshvardhan</title>
+    <link>//localhost:1313/talks/</link>
+    <description>Recent content in Talks on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 16 Nov 2023 03:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Academia?</title>
+      <link>//localhost:1313/why-academia/</link>
+      <pubDate>Thu, 16 Nov 2023 03:00:00 +0000</pubDate>
+      <guid>//localhost:1313/why-academia/</guid>
+      <description>Panel discussion on academic research as a career choice at my alma mater, IIM Indore</description>
+    </item>
+    <item>
+      <title>Artificial Intelligence and Data Sciences in Real-world Business</title>
+      <link>//localhost:1313/data-sciences-in-real-world/</link>
+      <pubDate>Thu, 07 Sep 2023 13:00:00 +0000</pubDate>
+      <guid>//localhost:1313/data-sciences-in-real-world/</guid>
+      <description>A quick rundown of my doctoral research presented at the BA Forum 2023</description>
+    </item>
+    <item>
+      <title>End-to-End Inventory Prediction and Contract Allocation for Guaranteed Delivery Advertising</title>
+      <link>//localhost:1313/kdd2023talk/</link>
+      <pubDate>Mon, 07 Aug 2023 16:00:00 +0000</pubDate>
+      <guid>//localhost:1313/kdd2023talk/</guid>
+      <description>We proposed a novel end-to-end approach, the Neural Lagrangian Selling (NLS) model, to improve Guaranteed Delivery (GD) advertising by concurrently predicting ad impression inventory and optimizing contract allocation</description>
+    </item>
+    <item>
+      <title>CK Cafe: Using Association Rules to Find Basket of Goods</title>
+      <link>//localhost:1313/ck-cafe/</link>
+      <pubDate>Mon, 21 Nov 2022 11:30:00 +0000</pubDate>
+      <guid>//localhost:1313/ck-cafe/</guid>
+      <description>In this lab session, I share how to use apriori algorithm for association mining. The goal is to find useful causal and association rules which can help in designing  promotions for the company. Plus, you get to see what&amp;rsquo;s served at an Indian cafe.</description>
+    </item>
+    <item>
+      <title>A Gentle Introduction to using Support Vector Machines for Classification</title>
+      <link>//localhost:1313/svm/</link>
+      <pubDate>Sun, 02 Oct 2022 11:30:00 +0000</pubDate>
+      <guid>//localhost:1313/svm/</guid>
+      <description>Support vector machines (SVM) are remarkable for the unification of geometric theory, elegant mathematics, theoretical guarantees with strong practical use cases. In this blog post, I demonstrate certain properties of SVM and how to use them with caret package in R.</description>
+    </item>
+    <item>
+      <title>Up and Running with R Markdown</title>
+      <link>//localhost:1313/up-and-running-with-r-markdown/</link>
+      <pubDate>Wed, 24 Aug 2022 11:30:00 +0000</pubDate>
+      <guid>//localhost:1313/up-and-running-with-r-markdown/</guid>
+      <description>Introduction to R Markdown for MS (Business Analytics) Class of Fall 2022</description>
+    </item>
+    <item>
+      <title>Using GitHub with RStudio</title>
+      <link>//localhost:1313/using-github-with-rstudio/</link>
+      <pubDate>Wed, 24 Aug 2022 11:30:00 +0000</pubDate>
+      <guid>//localhost:1313/using-github-with-rstudio/</guid>
+      <description>Introduction to using Git &amp;amp; GitHub with RStudio for MS (Business Analytics) Class of Fall 2022</description>
+    </item>
+    <item>
+      <title>Personal Websites for Academics</title>
+      <link>//localhost:1313/personal-websites-for-academics/</link>
+      <pubDate>Thu, 31 Mar 2022 13:00:00 +0000</pubDate>
+      <guid>//localhost:1313/personal-websites-for-academics/</guid>
+      <description>Kick-off Workshop for University of Tennessee&amp;rsquo;s INFORMS Chapter</description>
+    </item>
+    <item>
+      <title>I Web, Therefore I Exist</title>
+      <link>//localhost:1313/iweb/</link>
+      <pubDate>Fri, 14 Jan 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/iweb/</guid>
+      <description>Slides, recorded lecture and additional resources around my talk on how to create and control your digital identity.</description>
+    </item>
+    <item>
+      <title>Demonstrating Shiny Apps</title>
+      <link>//localhost:1313/demonstrating-shiny-apps/</link>
+      <pubDate>Sat, 13 Feb 2021 10:00:00 +0000</pubDate>
+      <guid>//localhost:1313/demonstrating-shiny-apps/</guid>
+      <description>Guest lecture for PhD students on R Shiny (2020 and 2021)</description>
+    </item>
+    <item>
+      <title>Using LaTeX for Resume and Assignments</title>
+      <link>//localhost:1313/using-latex-for-resume-and-assignments/</link>
+      <pubDate>Wed, 14 Feb 2018 19:00:00 +0000</pubDate>
+      <guid>//localhost:1313/using-latex-for-resume-and-assignments/</guid>
+      <description>Hands-on workshop on using LaTeX for Resumes</description>
+    </item>
+    <item>
+      <title>Introduction to LaTeX</title>
+      <link>//localhost:1313/introduction-to-latex/</link>
+      <pubDate>Thu, 23 Nov 2017 10:00:00 +0000</pubDate>
+      <guid>//localhost:1313/introduction-to-latex/</guid>
+      <description>LaTeX workshop for first-time users</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,123 @@
+baseURL: /
+title: Harshvardhan
+theme: PaperMod
+paginate: 20
+enableRobotsTXT: true
+
+taxonomies:
+  tag: tags
+
+permalinks:
+  research: /:slug/
+  writing: /:slug/
+  talks: /:slug/
+  projects: /:slug/
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      math: true
+    parser:
+      attribute:
+        block: false
+        title: false
+  highlight:
+    style: github
+    noClasses: false
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+  section:
+    - HTML
+    - RSS
+
+menu:
+  main:
+    - name: About
+      url: /about/
+      weight: 1
+    - name: Research
+      url: /research/
+      weight: 2
+    - name: Writing
+      url: /writing/
+      weight: 3
+    - name: Talks
+      url: /talks/
+      weight: 4
+    - name: CV
+      url: /docs/cv.pdf
+      weight: 5
+
+params:
+  env: production
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowBreadCrumbs: false
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: false
+  ShowRssButtonInSectionTermList: true
+  DateFormat: "January 2, 2006"
+  disableSpecial1stPost: true
+  displayFullLangName: false
+  ShowToc: false
+
+  homeInfoParams:
+    Title: "Harshvardhan"
+    Content: >
+      Assistant Professor of Information Systems & Analytics at
+      [American University of Sharjah](https://www.aus.edu/).
+      I study machine learning for demand forecasting and enterprise analytics.
+      Previously PhD at University of Tennessee, research at HP Inc.
+      I write about data science, philosophy, travel, and life.
+
+  socialIcons:
+    - name: googlescholar
+      url: "https://scholar.google.com/citations?user=Q-dbCggAAAAJ"
+    - name: github
+      url: "https://github.com/harshvardhaniimi"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/harshvardhaniimi/"
+    - name: orcid
+      url: "https://orcid.org/0000-0001-8086-544X"
+    - name: threads
+      url: "https://www.threads.net/@harsh17.in"
+    - name: rss
+      url: "/writing/index.xml"
+
+  giscus:
+    repo: ""
+    repoId: ""
+    category: "General"
+    categoryId: ""
+    mapping: "pathname"
+    theme: "preferred_color_scheme"
+
+  mailerlite:
+    accountId: ""
+    formId: ""
+
+  label:
+    text: "Harshvardhan"
+    icon: ""
+    iconHeight: 35
+
+  assets:
+    favicon: "/img/favicon.ico"
+    disableHLJS: true
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]

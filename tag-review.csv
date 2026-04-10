@@ -1,0 +1,163 @@
+file,section,title,date,slug,old_categories,old_tags,proposed_tags,needs_review
+writing/01-dharamkshetra-gandhari/index.md,writing,धर्मक्षेत्र: माता गांधारी का आरोप,2022-05-30,,"life, thoughts",,personal,YES
+writing/02-song-of-lord/index.md,writing,The Song of The Lord,2022-06-12,,"life, thoughts",,personal,YES
+writing/2018-11-24-presentation-on-latex/index.md,writing,Presentation on LaTeX,2018-11-24,presentation-on-latex,"iim, workshop",statistics,"academia, statistics",
+writing/2019-04-13-how-to-decide-to-do-or-not-to-do/index.md,writing,"How to decide: to do, or not to do?",2019-04-13,[],"life, thoughts",confusing,confusing,YES
+writing/2019-06-02-iphones-in-india/index.md,writing,iPhones in India,2019-06-02,[],thoughts,,personal,YES
+writing/2019-11-25-gartner-hype-cycle/index.md,writing,Gartner Hype Cycle,2019-11-25,[],"iim, thoughts",,academia,YES
+writing/2020-06-03-exploring-my-spotify-listening/index.md,writing,Exploring My Spotify Listening,2020-06-03,[],"R, life, music","life, music","music, personal, r",YES
+writing/2020-06-10-twitter-sentiments/index.md,writing,Sentiment Analysis of Tweets,2020-06-10,twitter-sentiments,"R, statistics",india,"data-science, india, r",
+writing/2020-09-11-ipm-what-you-need-to-know/index.md,writing,IPM: What You Need To Know,2020-09-11,[],"life, iim",iim indore,"academia, iim indore",YES
+writing/2020-12-24-forecasting-malaria-vaccine-demand/index.md,writing,Forecasting Malaria Vaccine Demand,2020-12-24,[],"statistics, R",government,"data-science, government, r",
+writing/2021-02-15-is-covid-19-data-tampered/index.md,writing,Is COVID-19 Data tampered?,2021-02-15,[],"R, statistics",covid-19,"covid-19, data-science, r",
+writing/2021-03-01-bliss-lifesciences/index.md,writing,Bliss Lifesciences,2021-03-01,[],business,,economics,
+writing/2021-05-30-how-is-government-s-employment-system-broken/index.md,writing,How is Government's Employment System Broken?,2021-05-30,[],thoughts,"india, government","government, india",YES
+writing/2021-06-11-a-better-way-to-fund-college-education/index.md,writing,A (better) Way to Fund College Education,2020-08-11,[],"iim, life, thoughts","iim indore, life","academia, iim indore",YES
+writing/2021-06-19-inspiring-quotes/index.md,writing,Inspiring Quotes,2021-06-19,quotes,life,,personal,YES
+writing/2021-06-19-invento-robotics/index.md,writing,Invento Robotics,2021-06-19,[],"publication, business",,"academia, economics",
+writing/2021-06-19-museums-and-experience-tourism/index.md,writing,Museums and Experience Tourism,2019-05-05,[],"life, thoughts","life, india",india,YES
+writing/2021-06-19-notes-on-latex/index.md,writing,Notes on LaTeX,2021-06-19,latex,package,,tools,
+writing/2021-06-19-smart-villages-indore/index.md,writing,Smart Villages Indore,2016-11-01,[],"life, social",,personal,YES
+writing/2021-06-19-understanding-profits-of-non-profits/index.md,writing,Understanding Profits of Non-profits,2020-03-07,[],"iim, thoughts","government, iim indore, india","academia, government, iim indore, india",YES
+writing/2021-06-19-what-i-find-interesting/index.md,writing,What I Find Interesting,2021-06-19,[],"life, social, thoughts",,personal,YES
+writing/2021-07-05-yihui-on-blogging-and-writing-books/index.md,writing,Yihui on Blogging and Writing Books,2021-07-05,yihui-on-blogging-and-writing-books,"R, statistics, workshop","statistics, R","academia, data-science, r, statistics",
+writing/2021-07-06-irctc-s-captcha-is-smart/index.md,writing,IRCTC's Captcha is Smart,2021-07-06,irctc-captcha-is-smart,thoughts,,personal,YES
+writing/2021-07-11-ellsberg-s-paradox/index.md,writing,Ellsberg's Paradox,2021-07-11,ellsberg-paradox,"R, statistics, life, economics","blog, probability, R","data-science, economics, probability, r",YES
+writing/2021-07-15-aspect-ratio-merck/index.md,writing,Aspect Ratio (Merck Inc.),2021-07-15,aspect-ratio,"business, life","blog, india","economics, india",YES
+writing/2021-07-27-technical-and-casual-writing/index.md,writing,Technical and Casual Writing,2021-07-27,technical-and-casual-writing,"blog, publications, thoughts","blog, blogdown, life","academia, blogdown",YES
+writing/2021-08-01-ten-days-in-the-united-states/index.md,writing,Ten days in the United States,2021-08-01,ten-days-in-the-united-states,"blog, life, social, thoughts","blog, government, india, life","government, india",YES
+writing/2021-09-07-supervised-learning-using-baysian-decision-rule/index.md,writing,Supervised Learning Using Baysian Decision Rule,2021-09-07,supervised-learning-using-baysian-decision-rule,"R, Python, statistics, ML",,"data-science, machine-learning, python, r",
+writing/2021-10-06-next-today-i-learnt-about-r/index.md,writing,Next — Today I Learnt About R,2021-10-06,next-today-i-learnt-about-r,"R, social",R,r,YES
+writing/2021-11-08-how-fast-is-m1/index.md,writing,How fast is M1?,2021-11-08,how-fast-is-m1,"blog, R",R,r,YES
+writing/2021-11-29-replicating-tennessee-star-project/index.md,writing,Replicating Tennessee STAR Project,2021-11-29,replicating-tennessee-star-project,"economics, STATA, statistics, social",,"data-science, economics",YES
+writing/2021-12-08-my-name/index.md,writing,My Name,2021-12-08,my-name,"thoughts, publications, social, life",,academia,YES
+writing/2021-12-09-ai-improvements/index.md,writing,Improvements in Artificial Intelligence,2021-12-09,ai,"life, statistics",,data-science,YES
+writing/2021-12-10-optimizing-order-frequency-to-minimize-partial-pallet-orders/index.md,writing,Optimizing Order Frequency to Minimize Partial Pallet Orders,2021-12-10,optimizing-order-frequency-to-minimize-partial-pallet-orders,"business, economics",,economics,
+writing/2021-12-30-shiny-urca/index.md,writing,Urban-Rural Population in 200+ Countries,2021-12-30,shiny-urca,,,personal,YES
+writing/2022-01-14-stackoverflow-answers/index.md,writing,Stackoverflow Answers,2022-01-14,stackoverflow-answers,R,,r,
+writing/2022-01-24-notes-on-github/index.md,writing,Notes on Github,2022-01-24,notes-on-github,R,R,r,
+writing/2022-01-27-basics-of-text-mining-in-r/index.md,writing,Basics of Text Mining in R,2022-01-27,basics-of-text-mining-in-r,"R, ML","R, ML","machine-learning, ml, r",
+writing/2022-02-02-my-mac-workflow/index.md,writing,My Mac Workflow,2022-02-02,my-mac-workflow,"Mac, Apple","Apple, Mac, Productivity","apple, mac, personal, productivity, tools",
+writing/2022-02-03-how-much-do-we-know-about-our-ancestors/index.md,writing,How much do we know about our ancestors?,2022-02-03,ancestors,"blog, life, thoughts","blog, life",personal,YES
+writing/2022-02-03-notes-on-R/index.md,writing,Notes on R,2022-02-03,notes-on-r,"R, live",,r,YES
+writing/2022-02-08-notes-on-python/index.md,writing,Cheatsheet on Python,2022-02-08,notes-on-python,Python,,python,
+writing/2022-02-09-improbable-doesn-t-mean-impossible/index.md,writing,Improbable Doesn't Mean Impossible,2022-02-09,improbable-doesn-t-mean-impossible,"life, thoughts",,personal,YES
+writing/2022-02-11-classification-logistic-regression-and-random-forest/index.md,writing,Classification: Logistic Regression and Random Forest,2022-02-11,classification-logistic-regression-and-random-forest,R,,r,
+writing/2022-02-11-using-linear-regression-to-find-optimal-value/index.md,writing,Linear Regression and Optimisation,2022-02-11,using-linear-regression-to-find-optimal-value,"R, statistics",,"data-science, r",
+writing/2022-02-13-public-transport-and-lack-thereof/index.md,writing,Public Transport & Lack Thereof,2022-02-13,public-transport-and-lack-thereof,"life, thoughts",,personal,YES
+writing/2022-02-13-score-and-fisher-s-information/index.md,writing,Score and Fisher's Information,2022-02-13,score-and-fisher-s-information,statistics,,data-science,
+writing/2022-02-16-notes-on-stata/index.md,writing,Notes on STATA,2022-02-16,notes-on-stata,"STATA, economics",,"data-science, economics",
+writing/2022-02-18-rules/index.md,writing,Rules for Life,2022-02-18,rules,"thoughts, life, live",,personal,YES
+writing/2022-02-20-number-of-phds/index.md,writing,Number of PhDs by Field,2022-02-20,number-of-phds,"R, statistics, economics, thoughts",,"data-science, economics, r",YES
+writing/2022-02-22-titanic-who-survived-the-tragedy/index.md,writing,Titanic: Who Survived The Tragedy?,2022-02-22,titanic-who-survived-the-tragegy,"R, statistics",,"data-science, r",
+writing/2022-02-26-notes-on-linux/index.md,writing,Notes on Linux,2019-02-26,notes-on-linux,linux,,tools,
+writing/2022-03-05-garlic-some-r-functions-i-use-rather-frequently/index.md,writing,garlic: Some R Functions I Use Rather Frequently,2022-03-05,garlic-some-r-functions-i-use-rather-frequently,"R, package, publication",,"academia, r, tools",
+writing/2022-03-09-how-to-decide-what-to-research/index.md,writing,How to Decide What to Research?,2022-03-09,how-to-decide-what-to-research,"life, thoughts, statistics, publications",,"academia, data-science",YES
+writing/2022-03-09-interesting-problems-and-where-to-find-them/index.md,writing,Interesting Problems and Where to Find Them?,2022-03-09,interesting-problems-and-where-to-find-them,"life, thoughts, statistics, publications",,"academia, data-science",YES
+writing/2022-03-10-let-s-say-you-re-copying-a-folder-to-a-folder/index.md,writing,Let’s say you’re copying a folder to a folder,2022-03-10,lets-say-you-re-copying-a-folder-to-a-folder,"life, thoughts, R, statistics",,"data-science, r",YES
+writing/2022-03-11-imaginary-reality/index.md,writing,Imaginary Reality,2022-03-11,imaginary-reality,"thoughts, life",,personal,YES
+writing/2022-03-24-creating-your-own-short-urls-with-blogdown/index.md,writing,Creating your own short URLs with blogdown,2022-03-24,creating-your-own-short-urls-with-blogdown,"R, package, blog",,"r, tools",YES
+writing/2022-04-10-50-statistics-terms-indeed-got-wrong/index.md,writing,50 Statistics Terms Indeed Got Wrong,2022-04-10,50-statistics-terms-indeed-got-wrong,statistics,,data-science,
+writing/2022-04-10-arguments/index.md,writing,Arguments,2022-04-10,arguments,"life, thoughts",,personal,YES
+writing/2022-04-14-billionaires-and-taxes/index.md,writing,Billionaires and Taxes,2022-04-14,billionaires-and-taxes,"business, economics, R, life, thoughts",,"economics, r",YES
+writing/2022-04-20-adr-activities/index.md,writing,Adrenaline Activities,2022-04-20,adr,"life, thoughts",,personal,YES
+writing/2022-04-22-making-nails/index.md,writing,Making Nails,2022-04-22,making-nails,"life, thoughts",,personal,YES
+writing/2022-05-03-understanding-principal-components-analysis-pca/index.md,writing,Understanding Principal Components Analysis (PCA),2022-05-03,understanding-principal-components-analysis-pca,statistics,,data-science,
+writing/2022-05-08-elon-gets-twitter/index.md,writing,Elon Gets Twitter,2022-05-08,elon-gets-twitter,"life, thoughts",,personal,YES
+writing/2022-05-10-joint-probability-based-dissimilarity-measure-for-discrete-variables/index.md,writing,Joint Probability-based Dissimilarity Measure for Discrete Variables,2022-05-10,joint-probability-based-dissimilarity-measure-for-discrete-variables,"statistics, R, ML",,"data-science, machine-learning, r",
+writing/2022-05-11-harvard-s-website/index.md,writing,Harvard's Website,2022-05-11,harvard-website,"life, thoughts",,personal,YES
+writing/2022-05-13-trying-new-things/index.md,writing,Trying New Things,2022-05-13,trying-new-things,"life, thoughts",,personal,YES
+writing/2022-05-15-hum-panchhi-unmukt-gagan-ke/index.md,writing,हम पंछी उन्मुक्त गगन के,2022-05-15,hum-panchhi-unmukt-gagan-ke,"life, thoughts",,personal,YES
+writing/2022-05-23-some-website-stats/index.md,writing,Some Website Stats,2022-05-23,some-website-stats,"blog, life, thoughts",,personal,YES
+writing/2022-05-26-biggest-advertisers-on-facebook/index.md,writing,Biggest Social Advertisers on Facebook,2022-05-26,biggest-political-advertisers-on-facebook,"business, economics, life, thoughts, R",,"economics, r",YES
+writing/2022-05-28-street-maps/index.md,writing,Street Maps (of Some Cities),2022-05-28,city-maps,R,,r,
+writing/2022-06-05-food-choices-in-america/index.md,writing,Food Choices in America,2022-06-05,food-choices-in-america,"life, thoughts",,personal,YES
+writing/2022-06-18-next-today-i-learnt-about-r/index.md,writing,Next — Today I learnt About R,2022-06-18,newsletter,"R, publications, statistics",,"academia, data-science, r",
+writing/2022-07-03-the-best-stats-you-ve-ever-seen/index.md,writing,The best stats you've ever seen,2022-07-03,the-best-stats-you-ve-ever-seen,"life, thoughts, statistics, economics",,"data-science, economics",YES
+writing/2022-07-09-the-ascribed-advantage/index.md,writing,The Ascribed Advantage,2022-07-09,the-ascribed-advantage,"R, social, economics, business",,"economics, r",YES
+writing/2022-08-01-script-monkey/index.md,writing,Script monkey! 🐒,2022-08-01,script-monkey,"R, coding, Python",,"python, r, tools",
+writing/2022-08-10-stoned-to-death-at-the-public-square/index.md,writing,Stoned to Death at the Public Square,2022-08-10,public-square,"life, thoughts",,personal,YES
+writing/2022-08-12-being-optimistic/index.md,writing,Being Optimistic,2022-08-12,optimistic,"life, thoughts",,personal,YES
+writing/2022-09-09-rediscovering-coffee/index.md,writing,Rediscovering Coffee: A Newfound Hobby,2022-09-09,rediscovering-coffee,"coffee, life, thoughts",,coffee,YES
+writing/2022-09-20-small-improvements/index.md,writing,How the government of Bihar is changing lives one girl at a time?,2022-09-20,bihar,"life, thoughts, economics, statistics",,"data-science, economics",YES
+writing/2022-09-28-hp/index.md,writing,Supply Chain Analytics at HP Inc.,2022-10-31,hp22,"business, HP, life, thoughts, Python",,"economics, forecasting, python",YES
+writing/2022-10-07-bullets-of-inspiration/index.md,writing,Bullets of Wisdom,2022-10-07,wise,"life, thoughts, live",,personal,YES
+writing/2022-11-10-population-collapse/index.md,writing,Is the world population going to collapse?,2022-11-10,population-collapse,"statistics, thoughts, social, life",,data-science,YES
+writing/2022-11-22-coffee/index.md,writing,Notes on Coffee,2022-11-22,coffee,"life, thoughts",,personal,YES
+writing/2022-11-24-infallible-memory/index.md,writing,"Infallible Memory: The Truth of Fact, the Truth of Feeling",2022-11-24,infallible-memory,"life, thoughts",,personal,YES
+writing/2022-12-01-dltgh/index.md,writing,DLTGH: Days Left to Go Home,2022-12-01,dltgh,"life, thoughts",,personal,YES
+writing/2022-12-30-substack/index.md,writing,Moving Next from Revue to Substack,2022-12-30,substack,"life, thoughts, business, statistics, R",,"data-science, economics, r",YES
+writing/2023-02-01-meditation/index.md,writing,What happens when you meditate ten hours a day?,2023-02-01,meditation,"life, thoughts",,personal,YES
+writing/2023-02-05-why-religion-doesnt-make-sense/index.md,writing,Why Religion Doesn't Make Sense?,2023-02-05,religion,"life, thoughts",,personal,YES
+writing/2023-02-08-languages/index.md,writing,From Bits to Words: A Tale Computing and Communication Languages,2023-02-08,languages,"life, thoughts, R, Python, coding",,"python, r, tools",YES
+writing/2023-02-25-experiments/index.md,writing,How to Hack Your Own Mind?,2023-02-25,experiments,"life, thoughts, blog",,personal,YES
+writing/2023-03-03-ai2/index.md,writing,I wonder how this AI thing is going to shape up,2023-03-03,ai2,"life, thoughts, blog",,personal,YES
+writing/2023-03-09-exploring-the-depths-of-consciousness/index.md,writing,Chitta-vritis: Exploring the Depths of Consciousness,2023-03-09,yoga,"life, thoughts",,personal,YES
+writing/2023-03-16-cities/index.md,writing,Planning Cities with People,2023-03-16,cities,"life, thoughts, economics, social",,economics,YES
+writing/2023-04-01-twitter-blue/index.md,writing,Who are Twitter Blue Users?,2023-04-01,twitter-blue,"life, thoughts, twitter, R",,"personal, r",YES
+writing/2023-04-09-gpt-chatbot/index.md,writing,Crafting Conversations with GPT Personalities in Python,2023-04-09,gpt-chatbot,"coding, life, thoughts, Python, ai",,"ai, python, tools",YES
+writing/2023-04-26-gpt/index.md,writing,How does GPT work? Understanding Generative AI Models,2023-04-26,gpt,"life, thoughts, publications",,academia,YES
+writing/2023-05-06-pandas-compare-df/index.md,writing,Comparing two BIG data frames in Pandas,2023-05-06,pandas-compare-df,"life, thoughts, ai, coding",,"ai, tools",YES
+writing/2023-05-20-moab/index.md,writing,My 10-Day Escape into Nature's Embrace: A Camping Journey to Moab,2023-05-21,moab,"life, thoughts, travel",,travel,YES
+writing/2023-05-20-pushkar/index.md,writing,From Mythology to Modernity: The Dual Faces of Pushkar,2023-01-20,pushkar,"life, thoughts, travel",,travel,YES
+writing/2023-05-20-three-enhancements-to-hugo-apero/index.md,writing,Up Your Blogging Game: Three Enhancements to Hugo Apero,2023-05-20,hugo,"R, blog",,r,YES
+writing/2023-06-03-predicting-race-age-and-gender-from-face-a-small-sample-example-with-encoding/index.md,writing,"Predicting Race, Age and Gender from Face: A Small-sample Example with Encoding",2023-06-03,predicting-race-age-and-gender-from-face-a-small-sample-example-with-encoding,"ai, coding, Python",,"ai, python, tools",
+writing/2023-06-05-seattle/index.md,writing,Seattle: Echoes of Home in the Emerald City,2023-06-05,seattle,"life, thoughts, travel",,travel,YES
+writing/2023-07-01-history-of-coffee/index.md,writing,History of Coffee,2022-11-22,history-of-coffee,"coffee, life, thoughts",,coffee,YES
+writing/2023-07-01-what-makes-a-good-coffee/index.md,writing,What makes a good coffee?,2023-07-01,what-makes-a-good-coffee,"coffee, life, thoughts",,coffee,YES
+writing/2023-08-14-reflections-from-kdd-2023/index.md,writing,Reflections from KDD 2023,2023-08-14,reflections-from-kdd-2023,"life, thoughts, coding, Python, ML, ai",,"ai, machine-learning, python, tools",YES
+writing/2023-08-21-hp2023/index.md,writing,HP Internship: A Year and a Half in the Fast Lane,2023-08-21,hp-blog-2023,"life, thoughts, business, Python, HP",,"economics, forecasting, python",YES
+writing/2023-08-21-hp23/index.md,writing,ML Forecasting at HP Inc.,2023-08-21,hp23,"HP, coding, Python",,"forecasting, python, tools",
+writing/2023-09-30-what-are-you-optimizing-for/index.md,writing,What are you optimizing for?,2023-09-30,what-are-you-optimizing-for,"life, thoughts",,personal,YES
+writing/2023-11-09-battle-of-palassey/index.md,writing,Battle of Palassey and Clive of India,2023-11-09,battle-of-palassey,"life, thoughts, history, india",,"history, india",YES
+writing/2023-11-11-warren-hastings-the-first-governor-general-of-india/index.md,writing,"Warren Hastings, The First Governor General of India",2023-11-11,warren-hastings,"life, thoughts, history, india",,"history, india",YES
+writing/2023-11-23-apple-walled-garden/index.md,writing,Trapped in Beautiful Garden,2023-11-23,apple-walled-garden,"life, thoughts, Apple",,personal,YES
+writing/2023-12-06-four-ai-tools-other-than-chatgpt/index.md,writing,Four AI Chatbots other than ChatGPT,2023-11-27,four-ai-chatbots-other-than-chatgpt,"life, thoughts, ai",,ai,YES
+writing/2024-01-11-egypt/index.md,writing,Egypt: An Odyssey Through Time,2024-01-11,egypt,"life, thoughts, blog, travel",,travel,YES
+writing/2024-01-20-theory-of-mind/index.md,writing,Theory of Mind,2024-01-20,theory-of-mind,"life, thoughts",,personal,YES
+writing/2024-02-08-openai-gpts/index.md,writing,OpenAI's GPT is a terrific idea,2024-02-08,openai-gpts,"ai, blog, business, life, thoughts",,"ai, economics",YES
+writing/2024-02-26-against-capitalism/index.md,writing,Against Capitalism,2024-02-26,against-capitalism,"life, thoughts, economics",,economics,YES
+writing/2024-03-15-who-s-funding-the-politics-in-india/index.md,writing,Who's funding the politics in India?,2024-03-15,who-s-funding-the-politics-in-india,"life, thoughts, india",,india,YES
+writing/2024-04-02-range-book-notes/index.md,writing,Book Notes | Range: Why Generalists Triumph in a Specialized World,2024-04-02,range,book,,personal,
+writing/2024-05-03-terminal/index.md,writing,Have fun with Terminal on Mac/Linux,2024-05-03,terminal,"coding, terminal, Mac, linux",,tools,
+writing/2024-05-15-web-surfing-isn-t-fun-anymore/index.html,writing,Web surfing isn't fun anymore 🏄,2024-05-15,web-surfing-isn-t-fun-anymore,"life, thoughts",,personal,YES
+writing/2024-06-03-my-second-vipassana-experience/index.html,writing,Thoughts about Vipassana Meditation (and My Second Experience),2024-06-03,vipassana2,"life, thoughts, god",,personal,YES
+writing/2024-06-20-the-ongoing-sixth-mass-extinction/index.html,writing,The Ongoing Sixth Mass Extinction,2024-07-19,the-ongoing-sixth-mass-extinction,"blog, history",,history,YES
+writing/2024-07-04-recommendations-list-of-lists/index.html,writing,"Recommendations: List of Things to Read, Listen and Watch",2024-07-04,read-listen-watch,"blog, life, thoughts",,personal,YES
+writing/2024-08-07-best-cafes-in-knoxville/index.html,writing,Best Cafes in Knoxville,2024-08-07,best-cafes-in-knoxville,"coffee, knoxville",,coffee,YES
+writing/2024-12-11-happiness/index.html,writing,Happiness: What makes us happy?,2024-12-11,happiness,"life, thoughts, blog",,personal,YES
+writing/2025-01-25-making-an-indian-curry/index.html,writing,Recipe: Making a Homestyle Indian Curry,2025-01-25,making-an-indian-curry,"india, cooking",,india,YES
+writing/2025-02-18-ai/index.html,writing,AI Manifesto,2025-02-18,ai-manifesto,ai,,ai,
+writing/2025-04-11-language-models-and-multiverse/index.html,writing,Language Models and Multiverse,2025-09-01,language-models-and-multiverse,"blog, thoughts",,personal,YES
+writing/2025-04-22-phd/index.html,writing,From Data to Decisions: The Story Behind My PhD,2025-04-22,phd,"blog, HP, knoxville, life, research",,forecasting,YES
+writing/2025-06-24-passports/index.html,writing,Power of Your Passport,2025-06-24,passports,"blog, travel",,travel,YES
+writing/2025-07-15-albania/index.html,writing,"A Week in Tirana, Albania",2025-07-15,albania,"travel, blog",,travel,YES
+writing/2026-04-04-sainik-school-tilaiya/index.md,writing,Sainik School Tilaiya Made Me Who I Am,2026-04-04,sainik-school-tilaiya,"life, thoughts",,personal,YES
+projects/2022-01-11-indiapin-r-data-package/index.md,projects,IndiaPIN: R Data Package,2022-01-11,IndiaPIN,"R, package",,"r, tools",
+projects/2023-08-26-spotify-randomizer/index.md,projects,Spotify Randomizer,2023-08-26,spotify-randomizer,"coding, blog, life, thoughts",,tools,YES
+projects/2024-07-08-talk-to-harshvardhan/index.md,projects,Talk to Harshvardhan,2024-07-08,talk-to-harshvardhan,"ai, blog, social",,ai,YES
+projects/2024-07-30-turning-my-kindle-to-a-juggernaut/index.md,projects,Jailbreaking: Turning My Kindle to A Juggernaut E-Reader,2024-07-30,kindle,"book, coding",,"personal, tools",
+projects/2025-02-16-textsage/index.md,projects,TextSage,2025-02-16,textsage,"coding, ai, tools","browser-extension, chrome, fact-checking","ai, browser-extension, chrome, fact-checking, tools",YES
+projects/2026-02-20-kalam/index.md,projects,Kalam,2026-02-20,kalam,"coding, tools","macos, swift, speech-to-text, whisper","macos, speech-to-text, swift, tools, whisper",YES
+projects/2026-03-20-good-sign-offs/index.md,projects,Good Sign-Offs / अच्छी विदाइयाँ,2026-03-20,good-sign-offs,"coding, life","hindi, email","email, hindi, tools",YES
+projects/2026-03-24-webpage-to-md/index.md,projects,Page to Markdown,2026-03-24,webpage-to-md,"coding, tools","browser-extension, typescript, markdown","browser-extension, markdown, tools, typescript",YES
+projects/2026-03-31-macchi-trash/index.md,projects,Macchi Trash,2026-03-31,macchi-trash,"coding, life","macos, swift, fun","fun, macos, swift, tools",YES
+research/2019-01-31-statistical-modelling-and-analysis-of-the-computer-simulated-datasets/index.md,research,Statistical Modelling and Analysis of the Computer-Simulated Datasets,2019-01-31,statistical-modelling-and-analysis-of-the-computer-simulated-datasets,"publications, R, statistics",,"academia, data-science, r",
+research/2020-12-20-dynamic-gp-application-to-malaria-vaccine-coverage-prediction/index.md,research,Dynamic GP: Application to Malaria Vaccine Coverage Prediction,2020-12-20,dynamic-gp-application-to-malaria-vaccine-coverage-prediction,"economics, publications, R",,"academia, economics, r",
+research/2021-06-30-invento-robotics-launching-humanoid-robots/index.md,research,Invento Robotics: Launching Humanoid Robots,2021-06-30,invento-robotics-launching-humanoid-robots,"business, publications",,"academia, economics",
+research/2023-06-07-kdd2023/index.md,research,End-to-End Inventory Prediction and Contract Allocation for Guaranteed Delivery Advertising,2023-06-07,kdd2023,"publication, publications, ML, Python",,"academia, machine-learning, python",
+research/2025-06-04-print-demand-forecasting-with-machine-learning-at-hp-inc/index.md,research,Print Demand Forecasting with Machine Learning at HP Inc.,2025-06-04,print-demand-forecasting-with-machine-learning-at-hp-inc,"business, HP, publication, publications",,"academia, economics, forecasting",
+research/2025-10-18-dissertation/index.md,research,From Data to Decisions: Enterprise Demand Forecasting with Machine Learning,2025-05-31,dissertation,"coding, HP, publication, publications, ML",,"academia, forecasting, machine-learning, tools",
+research/2025-10-18-foresight-article/index.md,research,Enterprise-Scale Machine Learning for Demand Forecasting,2025-10-18,foresight-paper,"HP, forecasting, publication, ML",,"academia, forecasting, machine-learning",
+talks/2017-11-23-introduction-to-latex/index.md,talks,Introduction to LaTeX,2017-11-23T10:00:00Z,introduction-to-latex,"latex, iim, workshop",,"academia, tools",
+talks/2018-02-14-using-latex-for-resume-and-assignments/index.md,talks,Using LaTeX for Resume and Assignments,2018-02-14T19:00:00Z,using-latex-for-resume-and-assignments,"latex, business, workshop",,"academia, economics, tools",
+talks/2020-05-31-demonstrating-shiny-apps/index.md,talks,Demonstrating Shiny Apps,2021-02-13T10:00:00Z,demonstrating-shiny-apps,R,,r,
+talks/2022-01-14-iweb/index.md,talks,"I Web, Therefore I Exist",2022-01-14T12:00:00Z,iweb,"life, R, social, thoughts, workshop",,"academia, r",YES
+talks/2022-03-22-personal-website-for-academics/index.md,talks,Personal Websites for Academics,2022-03-31T13:00:00Z,personal-websites-for-academics,"blog, workshop",,academia,YES
+talks/2022-08-29-up-and-running-with-r-markdown/index.md,talks,Up and Running with R Markdown,2022-08-24T11:30:00Z,up-and-running-with-r-markdown,"R, coding",,"r, tools",
+talks/2022-08-30-using-github-with-rstudio/index.md,talks,Using GitHub with RStudio,2022-08-24T11:30:00Z,using-github-with-rstudio,"R, coding",,"r, tools",
+talks/2022-10-02-a-gentle-introduction-to-using-support-vector-machines-for-classification/index.md,talks,A Gentle Introduction to using Support Vector Machines for Classification,2022-10-02T11:30:00Z,svm,"coding, R, statistics",,"data-science, r, tools",
+talks/2022-11-27-ck-cafe/index.md,talks,CK Cafe: Using Association Rules to Find Basket of Goods,2022-11-21T11:30:00Z,ck-cafe,"package, R, statistics, workshop",,"academia, data-science, r, tools",
+talks/2023-08-05-kdd2023talk/index.md,talks,End-to-End Inventory Prediction and Contract Allocation for Guaranteed Delivery Advertising,2023-08-07T16:00:00Z,kdd2023talk,"ai, coding, Python, ML, publication",,"academia, ai, machine-learning, python, tools",
+talks/2023-11-24-data-sciences-in-real-world/index.md,talks,Artificial Intelligence and Data Sciences in Real-world Business,2023-09-07T13:00:00Z,data-sciences-in-real-world,"ai, coding, HP, ML, statistics",,"ai, data-science, forecasting, machine-learning, tools",
+talks/2023-11-24-why-academia/index.md,talks,Why Academia?,2023-11-16T03:00:00Z,why-academia,"india, publications, social, thoughts, life",,"academia, india",YES

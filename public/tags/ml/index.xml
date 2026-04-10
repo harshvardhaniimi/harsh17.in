@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ml on Harshvardhan</title>
+    <link>/tags/ml/</link>
+    <description>Recent content in Ml on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 27 Jan 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basics of Text Mining in R</title>
+      <link>/basics-of-text-mining-in-r/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>/basics-of-text-mining-in-r/</guid>
+      <description>Thinking of Text as List of Words</description>
+    </item>
+  </channel>
+</rss>

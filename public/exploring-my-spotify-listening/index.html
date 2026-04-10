@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Exploring My Spotify Listening | Harshvardhan</title>
+<meta name="keywords" content="music, personal, r">
+<meta name="description" content="I analyse my listening stats and patterns using R.">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/exploring-my-spotify-listening/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/exploring-my-spotify-listening/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/exploring-my-spotify-listening/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Exploring My Spotify Listening">
+  <meta property="og:description" content="I analyse my listening stats and patterns using R.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2020-06-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2020-06-03T00:00:00+00:00">
+    <meta property="article:tag" content="Music">
+    <meta property="article:tag" content="Personal">
+    <meta property="article:tag" content="R">
+      <meta property="og:image" content="/exploring-my-spotify-listening/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/exploring-my-spotify-listening/featured.png">
+  <meta name="twitter:title" content="Exploring My Spotify Listening">
+  <meta name="twitter:description" content="I analyse my listening stats and patterns using R.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Exploring My Spotify Listening",
+      "item": "/exploring-my-spotify-listening/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Exploring My Spotify Listening",
+  "name": "Exploring My Spotify Listening",
+  "description": "I analyse my listening stats and patterns using R.",
+  "keywords": [
+    "music", "personal", "r"
+  ],
+  "articleBody": "I have been using Spotify for two years now. I was always curious to know my listening trends, which is why I started using last.fm and other tools like that. However, they didn’t give me exact information as to what I listened – the insights Spotify gave me were limited to what Spotify thought! I couldn’t know more about which artists I listened to, what were the top songs from that artist and so on.\nTherefore, I looked up for my listening data on Spotify (thank you, GDPR!) and then made some nice plots for inferences.\nGetting Streaming History Spotify allows you to download all your data through its accounts webpage. First, you need to request for all your data. This step will take something between a day or a fortnight depending how much you listen. For me, it took two working days and I got two files on streaming. Again, for heavy listeners, there will be more files.\nLet’s Play Some Music! First, we will load the streaming history files in R. If there are multiple files, read them all one by one like I’ve done here. Finally, combine all of them together. Don’t forget to remove the ones you don’t need – it takes a lot of run-time memory.\nhistory1 = fromJSON(\"StreamingHistory0.json\", flatten = TRUE) history2 = fromJSON(\"StreamingHistory1.json\", flatten = TRUE) st = rbind(history1,history2) rm(history1,history2) # what does the dataframe contain. head(st) endTime artistName trackName msPlayed 1 2019-07-26 03:23 A.R. Rahman Ok Jaanu Title Track 206250 2 2019-07-26 03:26 A.R. Rahman Enna Sona 213632 3 2019-07-26 03:27 A.R. Rahman Jee Lein 42292 4 2019-07-26 03:39 Vishal Dadlani Adhoore 104396 5 2019-07-26 09:25 Karthik Behene De 11719 6 2019-07-26 13:03 Vishal Dadlani Swag Se Swagat 235944 Artists To find out which artists I listen to most, let me make a visualisation for the same.\nst %\u003e% count(artistName, sort = TRUE) %\u003e% top_n(15) %\u003e% mutate(artistName = reorder(artistName, n)) %\u003e% ggplot(aes(x = artistName, y = n)) + geom_bar(aes(fill=n), stat=\"identity\") + scale_fill_distiller(palette=\"Spectral\") + xlab(NULL) + coord_flip() + labs(x = \"Artist\", title = \"Artists I listened most to\", fill = \"Count\") + theme_minimal() count(artistName, sort = TRUE) is going to count all the artists as their total count is going to tell me how many I listen to. top_n(15) is going to give me top 15 entries. mutate(artistName = reorder(artistName, n)) will reorder the tibble, sorted by their counts. geom_bar() is used for barplots, scale_fill_distiller() is used for colourful and continuous scale. Rest functions are for cosmetic reasons. As you can observe, I listened most to Arijit Singh, Pritam and AR Rahman. The top non-Indian artist here is Post Malone and Billie Ellish – and only two in top 15. This is not surprising as I mostly like Bollywood artists as they mix classical and pop really well.\nTracks Again, I will make a visualisation and use it for inference. The functions and explanations are the same as in artists.\nst %\u003e% count(trackName, sort = TRUE) %\u003e% top_n(15) %\u003e% mutate(trackName = reorder(trackName, n)) %\u003e% ggplot(aes(x = trackName, y = n)) + geom_bar(aes(fill=n), stat=\"identity\") + scale_fill_distiller(palette=\"Spectral\") + xlab(NULL) + coord_flip() + labs(y = \"Count\", title = \"Tracks I listened most to\", fill = \"Count\") + theme_minimal() In contrast to my top artists, far more non-bollywood songs feature in my top tracks. In fact, three out of top-five tracks are non-Indian.\nIt is probably because I mostly listen to bollywood and a select few from other genres; but when I do listen other genres, I quickly grow to love them.\nTracks by Artists Considering my listening history of artists and tracks give two different pictures, let me see which songs do I really listen to by my top artists.\nOne line needs to be added for selecting the artists: filter(artistName == \"KK\") before count() and after st.\n# by KK st %\u003e% filter(artistName == \"KK\") %\u003e% count(trackName, sort = TRUE) %\u003e% top_n(15) %\u003e% mutate(trackName = reorder(trackName, n)) %\u003e% ggplot(aes(x = trackName, y = n)) + geom_bar(aes(fill=n), stat=\"identity\") + scale_fill_distiller(palette=\"Spectral\") + xlab(NULL) + coord_flip() + labs(y = \"Count\", title = \"Top tracks by KK\", fill = \"Count\") + theme_minimal() Time of Listening Finally, I want to what time of the day I listen to most. Now, I could’ve made a barplot but then I remembered of a neat “clock plot” I saw once on Reddit (r/dataisbeautiful). I wanted to replicate it with my own Spotify history.\nFirst, I will take end times in a separate data frame for further use. I’ll reformat it in date-time format using as.POSIXct(), and change the time zone to India’s Asia/Kolkata.\ndf = as.data.frame(st$endTime) colnames(df) = \"endTime\" df$endTime = as.POSIXct(df$endTime,format=\"%Y-%m-%d %H:%M\",tz=\"GMT\") attributes(df$endTime)$tzone = \"Asia/Kolkata\" Then, I’ll add additional columns in the dataframe for hour, minute and seconds of time when I finished listening.\ndf$period = format(df$endTime, \"%p\") df$hour = format(df$endTime, \"%I\") df$month = format(df$endTime, \"%b\") Then, I’ll modify the data frame and make it into a count-table by hours.\ndf_at = df %\u003e% add_count(period,hour) %\u003e% distinct(period, hour, n) Finally, I’ll make the clock plot. I use coord_polar() to convert into polar coordinates. The theme() is used for cosmetic reasons.\nggplot(df_at, aes(x = as.factor(hour), y = n, fill = period)) + geom_bar(stat = \"identity\", position = \"dodge\") + coord_polar(theta = \"x\", start = 0.26) + xlab(\"\") + ylab(\"\") + theme(axis.ticks = element_blank(), axis.text.y = element_blank(), panel.background = element_blank(), panel.grid.major.x = element_line(colour=\"grey\"), axis.text.x = element_text(size = 25), legend.title=element_blank()) + labs(title = \"When do I listen to music?\") I listen most in the morning between 8 AM and 12 PM. As the day proceeds, my listening also falls, virtually stopping in the afternoon. It picks up again in the evening and stays at a relatively constant level till around 10 PM.\nDid you like this small exploration? Why don’t you try your own and see what you find for your own music! Please feel free to contact me if you encounter any errors. My email: hello@harsh17.in.\n",
+  "wordCount" : "982",
+  "inLanguage": "en",
+  "image": "/exploring-my-spotify-listening/featured.png","datePublished": "2020-06-03T00:00:00Z",
+  "dateModified": "2020-06-03T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/exploring-my-spotify-listening/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Exploring My Spotify Listening
+    </h1>
+    <div class="post-meta"><span title='2020-06-03 00:00:00 +0000 UTC'>June 3, 2020</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>I have been using Spotify for two years now. I was always curious to know my listening trends, which is why I started using last.fm and other tools like that. However, they didn&rsquo;t give me exact information as to what I listened &ndash; the insights Spotify gave me were limited to what Spotify thought! I couldn&rsquo;t know more about which artists I listened to, what were the top songs from that artist and so on.</p>
+<p>Therefore, I looked up for my listening data on Spotify (thank you, GDPR!) and then made some nice plots for inferences.</p>
+<h2 id="getting-streaming-history">Getting Streaming History<a hidden class="anchor" aria-hidden="true" href="#getting-streaming-history">#</a></h2>
+<p>Spotify allows you to download all your data through its <a href="https://www.spotify.com/us/account/privacy/">accounts webpage</a>. First, you need to request for all your data. This step will take something between a day or a fortnight depending how much you listen. For me, it took two working days and I got two files on streaming. Again, for heavy listeners, there will be more files.</p>
+<p><img alt="Spotify Data Download" loading="lazy" src="https://www.harsh17.in/exploring-my-spotify-listening/images/Screenshot%202021-06-18%20at%2012.10.41%20AM.png"></p>
+<h1 id="lets-play-some-music">Let&rsquo;s Play Some Music!<a hidden class="anchor" aria-hidden="true" href="#lets-play-some-music">#</a></h1>
+<p>First, we will load the streaming history files in R. If there are multiple files, read them all one by one like I&rsquo;ve done here. Finally, combine all of them together. Don&rsquo;t forget to remove the ones you don&rsquo;t need &ndash; it takes a lot of run-time memory.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">history1</span> <span class="o">=</span> <span class="nf">fromJSON</span><span class="p">(</span><span class="s">&#34;StreamingHistory0.json&#34;</span><span class="p">,</span> <span class="n">flatten</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">history2</span> <span class="o">=</span> <span class="nf">fromJSON</span><span class="p">(</span><span class="s">&#34;StreamingHistory1.json&#34;</span><span class="p">,</span> <span class="n">flatten</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="n">st</span> <span class="o">=</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">history1</span><span class="p">,</span><span class="n">history2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">rm</span><span class="p">(</span><span class="n">history1</span><span class="p">,</span><span class="n">history2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># what does the dataframe contain.</span>
+</span></span><span class="line"><span class="cl"><span class="nf">head</span><span class="p">(</span><span class="n">st</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">           <span class="n">endTime</span>     <span class="n">artistName</span>            <span class="n">trackName</span> <span class="n">msPlayed</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span> <span class="m">2019-07-26</span> <span class="m">03</span><span class="o">:</span><span class="m">23</span>    <span class="n">A.R.</span> <span class="n">Rahman</span> <span class="n">Ok</span> <span class="n">Jaanu</span> <span class="n">Title</span> <span class="n">Track</span>   <span class="m">206250</span>
+</span></span><span class="line"><span class="cl"><span class="m">2</span> <span class="m">2019-07-26</span> <span class="m">03</span><span class="o">:</span><span class="m">26</span>    <span class="n">A.R.</span> <span class="n">Rahman</span>            <span class="n">Enna</span> <span class="n">Sona</span>   <span class="m">213632</span>
+</span></span><span class="line"><span class="cl"><span class="m">3</span> <span class="m">2019-07-26</span> <span class="m">03</span><span class="o">:</span><span class="m">27</span>    <span class="n">A.R.</span> <span class="n">Rahman</span>             <span class="n">Jee</span> <span class="n">Lein</span>    <span class="m">42292</span>
+</span></span><span class="line"><span class="cl"><span class="m">4</span> <span class="m">2019-07-26</span> <span class="m">03</span><span class="o">:</span><span class="m">39</span> <span class="n">Vishal</span> <span class="n">Dadlani</span>              <span class="n">Adhoore</span>   <span class="m">104396</span>
+</span></span><span class="line"><span class="cl"><span class="m">5</span> <span class="m">2019-07-26</span> <span class="m">09</span><span class="o">:</span><span class="m">25</span>        <span class="n">Karthik</span>            <span class="n">Behene</span> <span class="n">De</span>    <span class="m">11719</span>
+</span></span><span class="line"><span class="cl"><span class="m">6</span> <span class="m">2019-07-26</span> <span class="m">13</span><span class="o">:</span><span class="m">03</span> <span class="n">Vishal</span> <span class="n">Dadlani</span>       <span class="n">Swag</span> <span class="n">Se</span> <span class="n">Swagat</span>   <span class="m">235944</span>
+</span></span></code></pre></div><h2 id="artists">Artists<a hidden class="anchor" aria-hidden="true" href="#artists">#</a></h2>
+<p>To find out which artists I listen to most, let me make a visualisation for the same.</p>
+<p><img alt="My Top Artists" loading="lazy" src="https://www.harsh17.in/exploring-my-spotify-listening/images/artists.png"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">st</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">count</span><span class="p">(</span><span class="n">artistName</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">top_n</span><span class="p">(</span><span class="m">15</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mutate</span><span class="p">(</span><span class="n">artistName</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">artistName</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">artistName</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">n</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_bar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">n</span><span class="p">),</span>   
+</span></span><span class="line"><span class="cl">         <span class="n">stat</span><span class="o">=</span><span class="s">&#34;identity&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">scale_fill_distiller</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s">&#34;Spectral&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">xlab</span><span class="p">(</span><span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Artist&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Artists I listened most to&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Count&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_minimal</span><span class="p">()</span>
+</span></span></code></pre></div><ul>
+<li>count(artistName, sort = TRUE) is going to count all the artists as their total count is going to tell me how many I listen to.</li>
+<li>top_n(15) is going to give me top 15 entries.</li>
+<li>mutate(artistName = reorder(artistName, n)) will reorder the tibble, sorted by their counts.</li>
+<li>geom_bar() is used for barplots, scale_fill_distiller() is used for colourful and continuous scale. Rest functions are for cosmetic reasons.</li>
+</ul>
+<p>As you can observe, I listened most to Arijit Singh, Pritam and AR Rahman. The top non-Indian artist here is Post Malone and Billie Ellish &ndash; and only two in top 15. This is not surprising as I mostly like Bollywood artists as they mix classical and pop really well.</p>
+<h2 id="tracks">Tracks<a hidden class="anchor" aria-hidden="true" href="#tracks">#</a></h2>
+<p>Again, I will make a visualisation and use it for inference. The functions and explanations are the same as in artists.</p>
+<p><img alt="My Top Tracks" loading="lazy" src="https://www.harsh17.in/exploring-my-spotify-listening/images/tracks.png"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">st</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">count</span><span class="p">(</span><span class="n">trackName</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">top_n</span><span class="p">(</span><span class="m">15</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mutate</span><span class="p">(</span><span class="n">trackName</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">trackName</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">trackName</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">n</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_bar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">n</span><span class="p">),</span>   
+</span></span><span class="line"><span class="cl">         <span class="n">stat</span><span class="o">=</span><span class="s">&#34;identity&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">scale_fill_distiller</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s">&#34;Spectral&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">xlab</span><span class="p">(</span><span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Count&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Tracks I listened most to&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Count&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_minimal</span><span class="p">()</span>
+</span></span></code></pre></div><p>In contrast to my top artists, far more non-bollywood songs feature in my top tracks. In fact, three out of top-five tracks are non-Indian.</p>
+<p>It is probably because I mostly listen to bollywood and a select few from other genres; but when I do listen other genres, I quickly grow to love them.</p>
+<h2 id="tracks-by-artists">Tracks by Artists<a hidden class="anchor" aria-hidden="true" href="#tracks-by-artists">#</a></h2>
+<p>Considering my listening history of artists and tracks give two different pictures, let me see which songs do I really listen to by my top artists.</p>
+<p>One line needs to be added for selecting the artists: <code>filter(artistName == &quot;KK&quot;)</code> before <code>count()</code> and after <code>st</code>.</p>
+<p><img alt="KK&rsquo;s Songs" loading="lazy" src="https://www.harsh17.in/exploring-my-spotify-listening/images/kk.png"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># by KK</span>
+</span></span><span class="line"><span class="cl"><span class="n">st</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">artistName</span> <span class="o">==</span> <span class="s">&#34;KK&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">count</span><span class="p">(</span><span class="n">trackName</span><span class="p">,</span> <span class="n">sort</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">top_n</span><span class="p">(</span><span class="m">15</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mutate</span><span class="p">(</span><span class="n">trackName</span> <span class="o">=</span> <span class="nf">reorder</span><span class="p">(</span><span class="n">trackName</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">trackName</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">n</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_bar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">n</span><span class="p">),</span>   
+</span></span><span class="line"><span class="cl">         <span class="n">stat</span><span class="o">=</span><span class="s">&#34;identity&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">scale_fill_distiller</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s">&#34;Spectral&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">xlab</span><span class="p">(</span><span class="kc">NULL</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Count&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Top tracks by KK&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Count&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_minimal</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="time-of-listening">Time of Listening<a hidden class="anchor" aria-hidden="true" href="#time-of-listening">#</a></h2>
+<p>Finally, I want to what time of the day I listen to most. Now, I could’ve made a barplot but then I remembered of a neat “clock plot” I saw once on <a href="https://www.reddit.com/r/dataisbeautiful/">Reddit (r/dataisbeautiful)</a>. I wanted to replicate it with my own Spotify history.</p>
+<p>First, I will take end times in a separate data frame for further use. I’ll reformat it in date-time format using <code>as.POSIXct()</code>, and change the time zone to India’s Asia/Kolkata.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">st</span><span class="o">$</span><span class="n">endTime</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">colnames</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">=</span> <span class="s">&#34;endTime&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">$</span><span class="n">endTime</span> <span class="o">=</span> <span class="nf">as.POSIXct</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">endTime</span><span class="p">,</span><span class="n">format</span><span class="o">=</span><span class="s">&#34;%Y-%m-%d %H:%M&#34;</span><span class="p">,</span><span class="n">tz</span><span class="o">=</span><span class="s">&#34;GMT&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">attributes</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">endTime</span><span class="p">)</span><span class="o">$</span><span class="n">tzone</span> <span class="o">=</span> <span class="s">&#34;Asia/Kolkata&#34;</span>
+</span></span></code></pre></div><p>Then, I’ll add additional columns in the dataframe for hour, minute and seconds of time when I finished listening.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">df</span><span class="o">$</span><span class="n">period</span> <span class="o">=</span> <span class="nf">format</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">endTime</span><span class="p">,</span> <span class="s">&#34;%p&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">$</span><span class="n">hour</span> <span class="o">=</span> <span class="nf">format</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">endTime</span><span class="p">,</span> <span class="s">&#34;%I&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">$</span><span class="n">month</span> <span class="o">=</span> <span class="nf">format</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">endTime</span><span class="p">,</span> <span class="s">&#34;%b&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Then, I’ll modify the data frame and make it into a count-table by hours.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">df_at</span> <span class="o">=</span> <span class="n">df</span> <span class="o">%&gt;%</span> <span class="nf">add_count</span><span class="p">(</span><span class="n">period</span><span class="p">,</span><span class="n">hour</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">distinct</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</span></span></code></pre></div><p>Finally, I’ll make the clock plot. I use <code>coord_polar()</code> to convert into polar coordinates. The <code>theme()</code> is used for cosmetic reasons.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">df_at</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">hour</span><span class="p">),</span> <span class="n">y</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">period</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;dodge&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_polar</span><span class="p">(</span><span class="n">theta</span> <span class="o">=</span> <span class="s">&#34;x&#34;</span><span class="p">,</span> <span class="n">start</span> <span class="o">=</span> <span class="m">0.26</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme</span><span class="p">(</span><span class="n">axis.ticks</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span> <span class="n">axis.text.y</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">panel.background</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span> <span class="n">panel.grid.major.x</span> <span class="o">=</span> <span class="nf">element_line</span><span class="p">(</span><span class="n">colour</span><span class="o">=</span><span class="s">&#34;grey&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">25</span><span class="p">),</span> <span class="n">legend.title</span><span class="o">=</span><span class="nf">element_blank</span><span class="p">())</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;When do I listen to music?&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p><img alt="When do I listen to Music?" loading="lazy" src="https://www.harsh17.in/exploring-my-spotify-listening/images/listen_clock.png"></p>
+<p>I listen most in the morning between 8 AM and 12 PM. As the day proceeds, my listening also falls, virtually stopping in the afternoon. It picks up again in the evening and stays at a relatively constant level till around 10 PM.</p>
+<h4 id="did-you-like-this-small-exploration-why-dont-you-try-your-own-and-see-what-you-find-for-your-own-music">Did you like this small exploration? Why don&rsquo;t you try your own and see what you find for your own music!<a hidden class="anchor" aria-hidden="true" href="#did-you-like-this-small-exploration-why-dont-you-try-your-own-and-see-what-you-find-for-your-own-music">#</a></h4>
+<p>Please feel free to contact me if you encounter any errors. My email: <a href="mailto:hello@harsh17.in">hello@harsh17.in</a>.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/music/">Music</a></li>
+      <li><a href="/tags/personal/">Personal</a></li>
+      <li><a href="/tags/r/">R</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/twitter-sentiments/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Sentiment Analysis of Tweets</span>
+  </a>
+  <a class="next" href="/understanding-profits-of-non-profits/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Understanding Profits of Non-profits</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

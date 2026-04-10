@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>A Gentle Introduction to using Support Vector Machines for Classification | Harshvardhan</title>
+<meta name="keywords" content="data-science, r, tools">
+<meta name="description" content="Support vector machines (SVM) are remarkable for the unification of geometric theory, elegant mathematics, theoretical guarantees with strong practical use cases. In this blog post, I demonstrate certain properties of SVM and how to use them with caret package in R.">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/svm/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/svm/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/svm/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="A Gentle Introduction to using Support Vector Machines for Classification">
+  <meta property="og:description" content="Support vector machines (SVM) are remarkable for the unification of geometric theory, elegant mathematics, theoretical guarantees with strong practical use cases. In this blog post, I demonstrate certain properties of SVM and how to use them with caret package in R.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="talks">
+    <meta property="article:published_time" content="2022-10-02T11:30:00+00:00">
+    <meta property="article:modified_time" content="2022-10-02T11:30:00+00:00">
+    <meta property="article:tag" content="Data-Science">
+    <meta property="article:tag" content="R">
+    <meta property="article:tag" content="Tools">
+      <meta property="og:image" content="/svm/featured.jpeg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/svm/featured.jpeg">
+  <meta name="twitter:title" content="A Gentle Introduction to using Support Vector Machines for Classification">
+  <meta name="twitter:description" content="Support vector machines (SVM) are remarkable for the unification of geometric theory, elegant mathematics, theoretical guarantees with strong practical use cases. In this blog post, I demonstrate certain properties of SVM and how to use them with caret package in R.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Talks",
+      "item": "/talks/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "A Gentle Introduction to using Support Vector Machines for Classification",
+      "item": "/svm/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A Gentle Introduction to using Support Vector Machines for Classification",
+  "name": "A Gentle Introduction to using Support Vector Machines for Classification",
+  "description": "Support vector machines (SVM) are remarkable for the unification of geometric theory, elegant mathematics, theoretical guarantees with strong practical use cases. In this blog post, I demonstrate certain properties of SVM and how to use them with caret package in R.",
+  "keywords": [
+    "data-science", "r", "tools"
+  ],
+  "articleBody": " What are Support Vector Machines (SVM)? Support vector machines are supervised learning models that analyse data to find patterns useful in classification and regression. They are versatile: they can identify non-linear relationships, work with discrete and continuous data, and are used for two-class classification, multi-class classification as well as regression. They are remarkable for unifying geometric theory, elegant mathematics, and theoretical guarantees with practical solid use cases.\nThey provide several specific benefits.\nWith the use of Kernel functions, they are highly effective in higher dimensional spaces.\nWhen the number of dimensions is larger than the number of samples, SVM can still be used. However, one has to be careful with the chosen regularisation parameter ($C$ in this article) and the Kernel function.\nOnly a subset of training data (called support vector) is used for prediction. Therefore, retaining all the training information in the memory is unnecessary, so the prediction process doesn’t slow.\nHistory Vladimir Vapnik and colleagues developed the theory for SVM at AT\u0026T Bell Laboratories1 in 1963. They are one of the most robust prediction methods based on a statistical learning framework called VC Theory developed by Vapnik and Chervonenkis.\nProperties of SVM with soft-margin are examples of empirical risk minimization (ERM) algorithm with hinge loss function. SVMs belong to a natural class of algorithms for statistical inference, which also happens to produce really good predictions.\nInference + Prediction = Data Science. What more can you ask?\nVapnik showing off his ERM framework, taking a jibe on superiority to Bayesian statistics. (ERM formula at top.)\nHow do they work? Geometrically, SVM tries to find a linear hyperplane that separates the data into two classes.\nConsider the following example where I’m selecting two species of Iris flowers and plotting their sepal width and sepal length. The colour represents the species.\nlibrary(tidyverse) theme_set(ggthemes::theme_clean()) p = iris |\u003e filter(Species != \"versicolor\") |\u003e ggplot(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) + geom_point() p There seems to be a clear separation between the two species. Can we draw a (straight) line that separates them?\np = p + geom_segment(aes(x = 4, y = 2, xend = 7, yend = 4.5), colour = 4, lty = 2, alpha = 0.7) p Except for one setosa which is misclassified, we got them all right.\nHowever, there are infinitely many other lines possible.\np = p + geom_segment(aes(x = 4.4, y = 2, xend = 6.5, yend = 4.5), colour = 5, lty = 2, alpha = 0.7) + geom_segment(aes(x = 5, y = 2, xend = 6.5, yend = 4), colour = 6, lty = 2, alpha = 0.7) p Any many many more.\nParadox of Choices Since there are so many choices in deciding the best model, we need to define the problem more rigorously.\nWhat would be the “best” hyperplane separating the two classes? One way to visualize this problem is to think about how we could maximize the distance between two classes. Therefore, the best partitioning hyperplane would maximize the distance between the two classes.\nThink again of the classification problem we have.2\niris |\u003e filter(Species != \"versicolor\") |\u003e filter(Sepal.Length \u003e 5) |\u003e ggplot(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) + geom_point() What is a good “margin”? By visual examination, choose between the three options: which one is the best separating hyperplane?\nOption A Option B Option C Mathematically… The middle line of the margin is \\(w'x + b = 0\\) while the top and bottom lines are \\(w'x + b = -1\\) and \\(w'x + b = 1\\).\nFor any unseen point,\n$$ f(x) = \\begin{cases} 1 \u0026 \\text{if} \u0026 w’x+b \\geq 1 \\ -1 \u0026 \\text{if} \u0026w’x + b \\leq -1 \\end{cases} $$\nThe margin width is \\(\\frac{2}{||w||^2}\\), which has to maximized. This is equivalent to minimizing \\(\\frac{||w||^2}{2}\\), subject to the constraints:\n$$ f(x) = \\begin{cases} 1 \u0026 \\text{if} \u0026 w’x+b \\geq 1 \\ -1 \u0026 \\text{if} \u0026w’x + b \\leq -1 \\end{cases} $$\nThis is a constrained optimization problem that can be solved via many methods (numerical, quadratic optimization, etc.).\nWhat if they’re not separable? In our dummy example, I removed two points. But that is usually not a good idea. Can you exclude points from your data because they’re hard to classify?3\nThat’s a blunder for two reasons.\nFirst, we want to build a model that works for all data points — including extreme data points. We will not know if a test point is an extreme point. Second, how will you decide which points to remove? If you remove all tough cases, why even use SVM? A simple linear regression can do a reasonably good work forecasting some points. Let’s take a look at a problem when the classes are not perfectly separable.\nThis one “blue” point is being misclassified. Can we do something about it?\nHere come slack variables to rescue… Slack variables ($\\xi$) add a “padding” around the margin, which varies by observation. For data on the wrong side of the margin, the modified objective function’s value is proportional to its distance from the margin.\nThis is called “soft” margin.\nOptimisation Problem $$ \\min L(w) = \\frac{||w||^2}{2} + C\\left( \\sum_{i = 1}^N \\xi_i^k \\right) $$\nsubject to constraints\n$$ f(x_i) = \\begin{cases} 1 \u0026 \\text{if} \u0026 w’x+b \\geq 1 - \\xi_i \\ -1 \u0026 \\text{if} \u0026w’x + b \\leq -1 + \\xi_i \\end{cases}. $$\nAnother alternative: Non-linear SVM What if the data has a non-linear trend, like the example below? A linear hyperplane does not make sense at all in that case.\nWe can map our features to a new feature space where they are linearly separable. Recall that we usually take the natural logarithm of wealth before using them in linear regression. The concept is similar, except that it is very expansive and works for many cases.\nKernel Functions We can also create non-linear classifiers by applying “kernel trick”. It is a commonly known technique in statistics which converts lower-dimensional functions to higher-dimensional functions. Generally, it is easier to spot clear decision boundaries in higher dimensions.\nThe resulting algorithm is similar, except that a non-linear kernel function replaces every dot product. Then, the algorithm can fit the maximum-margin hyperplane in a transformed feature space.\nNote that the transformation might be non-linear, and the new space can be high dimensional. The classifier will be a linear hyperplane in the new space but might be non-linear in the original input space.\nSome Common Kernels Polynomial Kernel $$ k(x_i, x_j) = (x_i’ x_j + 1)^d, $$\nwhen \\(d = 1\\), this is linear kernel; \\(d = 2\\), this is quadratic kernel.\nRadial Basis Kernel / Gaussian Kernel $$ k(x_i, x_j) = \\exp(-\\gamma ||x_i - x_j||^2), $$\nfor all \\(\\gamma \u003e 0\\). When \\(\\gamma = 1/2\\sigma^2\\), this is known to have a width \\(\\sigma\\). It is also known as Radial Basis Function (RBF).\nNotes on SVM’s Practical Usage SVM performs best on average and can outperform most other techniques across many important applications. The effectiveness of SVM in practice depends on (a) the choice of kernel, (b) kernel’s parameters, and (c) soft-margin parameter \\(C\\). Gaussian Kernel (or RBF) is a common choice for kernel function. Its \\(\\gamma\\) has to be tuned. Being a statistically-oriented method, the results are stable, reproducible and largely independent of the specific optimisation algorithm. Being a convex optimisation problem, this leads to the global optimum. Computational challenge: solving the optimisation problem has quadratic complexity. While this is not too bad, using Kernel spaces increases the number of features exaggerating the problem multifold. SVM classifier doesn’t provide posterior class probabilities like Logistic regression. It simply classifies the point into a region. Many packages estimate posterior probabilities with cross validation though. Case Study: Classifying Type of Animals at a Zoo In this example, we will try to predict the type of animal given it’s other characteristics using linear SVM, aka vanilla SVM. This is the zoo data from mlbench package.\nLet’s see the data.\ndata(Zoo, package = \"mlbench\") Zoo = as_tibble(Zoo) Zoo |\u003e DT::datatable() Correlation Let’s do some descriptive statistics and explore how the data looks. How do different types of animals vary? Can we see a quick correlation?\nlibrary(ggcorrplot) model.matrix(~0+., data = Zoo) |\u003e cor(use=\"pairwise.complete.obs\") |\u003e ggcorrplot(show.diag = F, type=\"lower\", lab=TRUE, lab_size=2) This can tell us a lot of interesting insights!\nModelling Fitting Model But our time is limited, so jumping to SVM. Recall that train() takes formula as the first input, data as the second input, method as the third input and other training controls.\nlibrary(caret) svmFit = train( type ~., data = Zoo, method = \"svmLinear\", trControl = trainControl(method = \"cv\", number = 10) ) svmFit ## Support Vector Machines with Linear Kernel ## ## 101 samples ## 16 predictor ## 7 classes: 'mammal', 'bird', 'reptile', 'fish', 'amphibian', 'insect', 'mollusc.et.al' ## ## No pre-processing ## Resampling: Cross-Validated (10 fold) ## Summary of sample sizes: 91, 90, 92, 89, 91, 92, ... ## Resampling results: ## ## Accuracy Kappa ## 0.97 0.9608681 ## ## Tuning parameter 'C' was held constant at a value of 1 Let’s see details about the final model.\n# storing final model svmFinal = svmFit$finalModel svmFinal ## Support Vector Machine object of class \"ksvm\" ## ## SV type: C-svc (classification) ## parameter : cost C = 1 ## ## Linear (vanilla) kernel function. ## ## Number of Support Vectors : 47 ## ## Objective Function Value : -0.1448 -0.218 -0.1484 -0.1754 -0.0936 -0.1033 -0.297 -0.0819 -0.1556 -0.0907 -0.1135 -0.182 -0.5763 -0.13 -0.1833 -0.118 -0.0474 -0.0823 -0.1236 -0.1481 -0.5666 ## Training error : 0 Predictions I will use predict() to calculate the predictions. I’m predicting on training data, which is not advisable. But it shows how the SVM function works.\n# creating predictions pred = predict(svmFit, newdata = Zoo) pred ## [1] mammal mammal fish mammal mammal ## [6] mammal mammal fish fish mammal ## [11] mammal bird fish mollusc.et.al mollusc.et.al ## [16] mollusc.et.al bird mammal fish mammal ## [21] bird bird mammal bird insect ## [26] amphibian amphibian mammal mammal mammal ## [31] insect mammal mammal bird fish ## [36] mammal mammal bird fish insect ## [41] insect bird insect bird mammal ## [46] mammal mollusc.et.al mammal mammal mammal ## [51] mammal insect amphibian mollusc.et.al mammal ## [56] mammal bird bird bird bird ## [61] fish fish reptile mammal mammal ## [66] mammal mammal mammal mammal mammal ## [71] mammal bird mollusc.et.al fish mammal ## [76] mammal reptile mollusc.et.al bird bird ## [81] reptile mollusc.et.al fish bird mammal ## [86] mollusc.et.al fish bird insect amphibian ## [91] reptile reptile fish mammal mammal ## [96] bird mammal insect mammal mollusc.et.al ## [101] bird ## Levels: mammal bird reptile fish amphibian insect mollusc.et.al Confusion Matrix # confusion matrix table(Zoo$type, pred) ## pred ## mammal bird reptile fish amphibian insect mollusc.et.al ## mammal 41 0 0 0 0 0 0 ## bird 0 20 0 0 0 0 0 ## reptile 0 0 5 0 0 0 0 ## fish 0 0 0 13 0 0 0 ## amphibian 0 0 0 0 4 0 0 ## insect 0 0 0 0 0 8 0 ## mollusc.et.al 0 0 0 0 0 0 10 Accuracy The model has a 100% accuracy on the training data.\n# prediction accuracy sum(Zoo$type==pred)/nrow(Zoo) ## [1] 1 Post-notes This article was originally created for my guest lecture in Prof Charles Liu’s BZAN 542: Data Mining Methods for Business Applications class. The lecture received positive response and interesting questions, which improved this document.\nI would’ve preferred using Tidymodels’ SVM instead of caret. But since the entire class was designed with caret, I’ve followed the convention.\nNow called Nokia Labs. ↩︎\nYou would notice that I’ve removed two points, just for simplicity. ↩︎\nTry saying “these points are hard to classify so I’ll ignore them” to your client. Don’t — unless you want to lose your job. ↩︎\n",
+  "wordCount" : "1968",
+  "inLanguage": "en",
+  "image": "/svm/featured.jpeg","datePublished": "2022-10-02T11:30:00Z",
+  "dateModified": "2022-10-02T11:30:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/svm/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      A Gentle Introduction to using Support Vector Machines for Classification
+    </h1>
+    <div class="post-meta"><span title='2022-10-02 11:30:00 +0000 UTC'>October 2, 2022</span>&nbsp;·&nbsp;<span>10 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><script src="/svm/index_files/htmlwidgets/htmlwidgets.js"></script>
+<link href="/svm/index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="/svm/index_files/datatables-binding/datatables.js"></script>
+<script src="/svm/index_files/jquery/jquery-3.6.0.min.js"></script>
+<link href="/svm/index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="/svm/index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="/svm/index_files/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="/svm/index_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
+<script src="/svm/index_files/crosstalk/js/crosstalk.min.js"></script>
+<h1 id="what-are-support-vector-machines-svm">What are Support Vector Machines (SVM)?<a hidden class="anchor" aria-hidden="true" href="#what-are-support-vector-machines-svm">#</a></h1>
+<p>Support vector machines are supervised learning models that analyse data to find patterns useful in classification and regression. They are versatile: they can identify non-linear relationships, work with discrete and continuous data, and are used for two-class classification, multi-class classification as well as regression. They are remarkable for unifying geometric theory, elegant mathematics, and theoretical guarantees with practical solid use cases.</p>
+<p>They provide several specific benefits.</p>
+<ol>
+<li>
+<p>With the use of Kernel functions, they are highly effective in higher dimensional spaces.</p>
+</li>
+<li>
+<p>When the number of dimensions is larger than the number of samples, SVM can still be used. However, one has to be careful with the chosen regularisation parameter ($C$ in this article) and the Kernel function.</p>
+</li>
+<li>
+<p>Only a subset of training data (called support vector) is used for prediction. Therefore, retaining all the training information in the memory is unnecessary, so the prediction process doesn’t slow.</p>
+</li>
+</ol>
+<h2 id="history">History<a hidden class="anchor" aria-hidden="true" href="#history">#</a></h2>
+<p>Vladimir Vapnik and colleagues developed the theory for SVM at AT&amp;T Bell Laboratories<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> in 1963. They are one of the most robust prediction methods based on a statistical learning framework called <strong>VC Theory</strong> developed by Vapnik and Chervonenkis.</p>
+<p>Properties of SVM with soft-margin are examples of <strong>empirical risk minimization (ERM) algorithm</strong> with <strong>hinge loss function</strong>. SVMs belong to a natural class of algorithms for statistical inference, which also happens to produce really good predictions.</p>
+<p><strong>Inference + Prediction = Data Science. What more can you ask?</strong></p>
+<p><img loading="lazy" src="/svm/images/vapnik-showing-off.jpeg"></p>
+<blockquote>
+<p>Vapnik showing off his ERM framework, taking a jibe on superiority to Bayesian statistics. (ERM formula at top.)</p>
+</blockquote>
+<h1 id="how-do-they-work">How do they work?<a hidden class="anchor" aria-hidden="true" href="#how-do-they-work">#</a></h1>
+<p>Geometrically, <strong>SVM tries to find a linear hyperplane that separates the data into two classes</strong>.</p>
+<p>Consider the following example where I’m selecting two species of Iris flowers and plotting their sepal width and sepal length. The colour represents the species.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="n">ggthemes</span><span class="o">::</span><span class="nf">theme_clean</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">iris</span> <span class="o">|&gt;</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">filter</span><span class="p">(</span><span class="n">Species</span> <span class="o">!=</span> <span class="s">&#34;versicolor&#34;</span><span class="p">)</span> <span class="o">|&gt;</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">Species</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">geom_point</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span>
+</span></span></code></pre></div><img src="/svm/index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+<p>There seems to be a clear separation between the two species. <strong>Can we draw a (straight) line that separates them?</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">geom_segment</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="m">4.5</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">colour</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span> <span class="n">lty</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span>
+</span></span></code></pre></div><img src="/svm/index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<p>Except for one <code>setosa</code> which is misclassified, we got them all right.</p>
+<p>However, there are infinitely many other lines possible.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">geom_segment</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">4.4</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="m">6.5</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="m">4.5</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">colour</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">lty</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">geom_segment</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">xend</span> <span class="o">=</span> <span class="m">6.5</span><span class="p">,</span> <span class="n">yend</span> <span class="o">=</span> <span class="m">4</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">colour</span> <span class="o">=</span> <span class="m">6</span><span class="p">,</span> <span class="n">lty</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span>
+</span></span></code></pre></div><img src="/svm/index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<p>Any many many more.</p>
+<h2 id="paradox-of-choices">Paradox of Choices<a hidden class="anchor" aria-hidden="true" href="#paradox-of-choices">#</a></h2>
+<p>Since there are so many choices in deciding the best model, we need to define the problem more rigorously.</p>
+<h3 id="what-would-be-the-best-hyperplane-separating-the-two-classes"><strong>What would be the “best” hyperplane separating the two classes?</strong><a hidden class="anchor" aria-hidden="true" href="#what-would-be-the-best-hyperplane-separating-the-two-classes">#</a></h3>
+<p>One way to visualize this problem is to think about how we could maximize the distance between two classes. Therefore, <strong>the</strong> <strong>best partitioning hyperplane would maximize the distance between the two classes</strong>.</p>
+<p>Think again of the classification problem we have.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">iris</span> <span class="o">|&gt;</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">filter</span><span class="p">(</span><span class="n">Species</span> <span class="o">!=</span> <span class="s">&#34;versicolor&#34;</span><span class="p">)</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">filter</span><span class="p">(</span><span class="n">Sepal.Length</span> <span class="o">&gt;</span> <span class="m">5</span><span class="p">)</span> <span class="o">|&gt;</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">Species</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">geom_point</span><span class="p">()</span>
+</span></span></code></pre></div><img src="/svm/index_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<h2 id="what-is-a-good-margin">What is a good “margin”?<a hidden class="anchor" aria-hidden="true" href="#what-is-a-good-margin">#</a></h2>
+<p>By visual examination, choose between the three options: <strong>which one is the best separating hyperplane?</strong></p>
+<h3 id="option-a">Option A<a hidden class="anchor" aria-hidden="true" href="#option-a">#</a></h3>
+<p><img loading="lazy" src="/svm/images/Screen%20Shot%202022-09-27%20at%203.28.23%20PM.png"></p>
+<h3 id="option-b">Option B<a hidden class="anchor" aria-hidden="true" href="#option-b">#</a></h3>
+<p><img loading="lazy" src="/svm/images/Screen%20Shot%202022-09-27%20at%203.28.40%20PM.png"></p>
+<h3 id="option-c">Option C<a hidden class="anchor" aria-hidden="true" href="#option-c">#</a></h3>
+<p><img loading="lazy" src="/svm/images/Screen%20Shot%202022-09-27%20at%203.26.28%20PM.png"></p>
+<h2 id="mathematically">Mathematically…<a hidden class="anchor" aria-hidden="true" href="#mathematically">#</a></h2>
+<p>The middle line of the margin is <code>\(w'x + b = 0\)</code> while the top and bottom lines are <code>\(w'x + b = -1\)</code> and <code>\(w'x + b = 1\)</code>.</p>
+<p>For any unseen point,</p>
+<p>$$
+f(x) = \begin{cases}
+1 &amp; \text{if} &amp; w&rsquo;x+b \geq 1 \
+-1 &amp; \text{if} &amp;w&rsquo;x + b \leq -1
+\end{cases}
+$$</p>
+<p>The margin width is <code>\(\frac{2}{||w||^2}\)</code>, which has to maximized. This is equivalent to <strong>minimizing</strong> <code>\(\frac{||w||^2}{2}\)</code>, subject to the constraints:</p>
+<p>$$
+f(x) = \begin{cases}
+1 &amp; \text{if} &amp; w&rsquo;x+b \geq 1 \
+-1 &amp; \text{if} &amp;w&rsquo;x + b \leq -1
+\end{cases}
+$$</p>
+<p>This is a <strong>constrained optimization problem</strong> that can be solved via many methods (numerical, quadratic optimization, etc.).</p>
+<h1 id="what-if-theyre-not-separable">What if they’re not separable?<a hidden class="anchor" aria-hidden="true" href="#what-if-theyre-not-separable">#</a></h1>
+<p>In our dummy example, I removed two points. But that is usually not a good idea. Can you exclude points from your data because they’re hard to classify?<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>That’s a blunder for two reasons.</p>
+<ol>
+<li>First, <strong>we want to build a model that works for all data points</strong> — including extreme data points. We will not know if a test point is an extreme point.</li>
+<li>Second, <strong>how will you decide which points to remove</strong>? If you remove all tough cases, why even use SVM? A simple linear regression can do a reasonably good work forecasting some points.</li>
+</ol>
+<p>Let’s take a look at a problem when the classes are not perfectly separable.</p>
+<p><img loading="lazy" src="/svm/images/Screen%20Shot%202022-09-27%20at%203.47.20%20PM.png"></p>
+<p>This one “blue” point is being misclassified. Can we do something about it?</p>
+<h2 id="here-come-slack-variables-to-rescue">Here come slack variables to rescue…<a hidden class="anchor" aria-hidden="true" href="#here-come-slack-variables-to-rescue">#</a></h2>
+<p>Slack variables ($\xi$) add a <strong>“padding” around the margin, which varies by observation</strong>. For data on the wrong side of the margin, the modified objective function’s value is proportional to its distance from the margin.</p>
+<p><strong>This is called “soft” margin.</strong></p>
+<h3 id="optimisation-problem">Optimisation Problem<a hidden class="anchor" aria-hidden="true" href="#optimisation-problem">#</a></h3>
+<p>$$
+\min L(w) = \frac{||w||^2}{2} + C\left( \sum_{i = 1}^N \xi_i^k \right)
+$$</p>
+<p>subject to constraints</p>
+<p>$$
+f(x_i) = \begin{cases}
+1 &amp; \text{if} &amp; w&rsquo;x+b \geq 1 - \xi_i \
+-1 &amp; \text{if} &amp;w&rsquo;x + b \leq -1 + \xi_i
+\end{cases}.
+$$</p>
+<h2 id="another-alternative-non-linear-svm">Another alternative: Non-linear SVM<a hidden class="anchor" aria-hidden="true" href="#another-alternative-non-linear-svm">#</a></h2>
+<p>What if the data has a non-linear trend, like the example below? A linear hyperplane does not make sense at all in that case.</p>
+<p><img loading="lazy" src="/svm/images/Screen%20Shot%202022-09-27%20at%203.58.58%20PM.png"></p>
+<p><strong>We can map our features to a new feature space where they are linearly separable.</strong> Recall that we usually take the natural logarithm of wealth before using them in linear regression. The concept is similar, except that it is very expansive and works for many cases.</p>
+<h2 id="kernel-functions">Kernel Functions<a hidden class="anchor" aria-hidden="true" href="#kernel-functions">#</a></h2>
+<p><img loading="lazy" src="/svm/images/640px-Kernel_Machine.svg.png"></p>
+<p>We can also create non-linear classifiers by applying “<strong>kernel trick</strong>”. It is a commonly known technique in statistics which <strong>converts lower-dimensional functions to higher-dimensional functions</strong>. Generally, it is easier to spot clear decision boundaries in higher dimensions.</p>
+<p>The resulting algorithm is similar, except that a non-linear kernel function replaces every dot product. Then, the algorithm can fit the <strong>maximum-margin hyperplane in a transformed feature space</strong>.</p>
+<p>Note that the transformation might be non-linear, and the new space can be high dimensional. The classifier will be a linear hyperplane in the new space but might be non-linear in the original input space.</p>
+<h2 id="some-common-kernels">Some Common Kernels<a hidden class="anchor" aria-hidden="true" href="#some-common-kernels">#</a></h2>
+<h3 id="polynomial-kernel">Polynomial Kernel<a hidden class="anchor" aria-hidden="true" href="#polynomial-kernel">#</a></h3>
+<p>$$
+k(x_i, x_j) = (x_i&rsquo; x_j + 1)^d,
+$$</p>
+<p>when <code>\(d = 1\)</code>, this is linear kernel; <code>\(d = 2\)</code>, this is quadratic kernel.</p>
+<h3 id="radial-basis-kernel--gaussian-kernel">Radial Basis Kernel / Gaussian Kernel<a hidden class="anchor" aria-hidden="true" href="#radial-basis-kernel--gaussian-kernel">#</a></h3>
+<p>$$
+k(x_i, x_j) = \exp(-\gamma ||x_i - x_j||^2),
+$$</p>
+<p>for all <code>\(\gamma &gt; 0\)</code>. When <code>\(\gamma = 1/2\sigma^2\)</code>, this is known to have a width <code>\(\sigma\)</code>. It is also known as Radial Basis Function (RBF).</p>
+<h1 id="notes-on-svms-practical-usage">Notes on SVM’s Practical Usage<a hidden class="anchor" aria-hidden="true" href="#notes-on-svms-practical-usage">#</a></h1>
+<ol>
+<li>SVM performs best on average and can outperform most other techniques across many important applications.</li>
+<li>The effectiveness of SVM in practice depends on (a) the choice of kernel, (b) kernel’s parameters, and (c) soft-margin parameter <code>\(C\)</code>.</li>
+<li>Gaussian Kernel (or RBF) is a common choice for kernel function. Its <code>\(\gamma\)</code> has to be tuned.</li>
+<li>Being a statistically-oriented method, the results are stable, reproducible and largely independent of the specific optimisation algorithm.</li>
+<li>Being a convex optimisation problem, this leads to the global optimum.</li>
+<li>Computational challenge: solving the optimisation problem has quadratic complexity. While this is not too bad, using Kernel spaces increases the number of features exaggerating the problem multifold.</li>
+<li>SVM classifier doesn’t provide posterior class probabilities like Logistic regression. It simply classifies the point into a region. Many packages estimate posterior probabilities with cross validation though.</li>
+</ol>
+<h1 id="case-study-classifying-type-of-animals-at-a-zoo">Case Study: Classifying Type of Animals at a Zoo<a hidden class="anchor" aria-hidden="true" href="#case-study-classifying-type-of-animals-at-a-zoo">#</a></h1>
+<p>In this example, we will try to predict the type of animal given it’s other characteristics using linear SVM, aka vanilla SVM. This is the <code>zoo</code> data from <code>mlbench</code> package.</p>
+<p>Let’s see the data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">Zoo</span><span class="p">,</span> <span class="n">package</span> <span class="o">=</span> <span class="s">&#34;mlbench&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Zoo</span> <span class="o">=</span> <span class="nf">as_tibble</span><span class="p">(</span><span class="n">Zoo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Zoo</span> <span class="o">|&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="n">DT</span><span class="o">::</span><span class="nf">datatable</span><span class="p">()</span>
+</span></span></code></pre></div><div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101"],[true,true,false,true,true,true,true,false,false,true,true,false,false,false,false,false,false,true,false,false,false,false,true,false,false,false,false,true,true,true,false,true,true,false,false,true,true,false,false,true,true,false,false,false,true,true,false,true,true,true,true,true,false,false,true,true,false,false,false,false,false,false,false,true,true,true,false,true,true,true,true,false,false,false,true,true,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,true,true,false,true,true,true,false,false],[false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,true,false,false,false,true,true,false,true,false,false,false,false,false,false,false,false,false,true,false,false,false,true,false,false,false,true,false,true,false,false,false,false,false,false,false,false,false,false,false,false,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,true,true,false,false,false,true,false,false,false,true,false,false,false,false,false,false,false,true,false,false,false,false,true],[false,false,true,false,false,false,false,true,true,false,false,true,true,true,true,true,true,false,true,false,true,true,false,true,true,true,true,false,false,false,true,false,false,true,true,false,false,true,true,true,true,true,true,true,false,false,true,false,false,false,false,true,true,true,false,false,true,true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,false,true,false,false,false,true,true,true,true,true,true,true,false,true,true,true,true,true,true,true,true,false,false,true,false,true,false,true,true],[true,true,false,true,true,true,true,false,false,true,true,false,false,false,false,false,false,true,false,true,false,false,true,false,false,false,false,true,true,true,false,true,true,false,false,true,true,false,false,false,false,false,false,false,true,true,false,true,true,true,true,false,false,false,true,true,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true,false,false,false,true,true,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,true,true,false,true,false,true,false,false],[false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,true,false,false,false,true,true,false,true,false,false,false,true,false,false,true,false,false,true,false,false,false,true,false,true,true,false,true,true,false,false,false,false,false,false,false,true,false,false,false,false,false,true,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,false,false,false,true,false,false,false,true,false,false,false,false,false,true,false,true,false,true,false,false,true],[false,false,true,false,false,false,false,true,true,false,false,false,true,false,true,true,false,false,true,true,false,true,false,false,false,true,true,false,false,false,false,false,false,true,true,false,false,false,true,false,false,false,false,false,false,false,true,false,true,false,false,false,true,true,false,false,false,false,true,false,true,true,false,true,false,false,true,false,false,false,false,false,false,true,true,true,true,true,true,true,false,false,true,false,false,true,true,true,false,true,false,false,true,false,false,false,false,false,false,false,false],[true,false,true,true,true,false,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false,false,false,false,true,true,false,false,true,false,false,false,true,false,false,false,true,true,false,false,true,true,false,true,true,true,true,true,true,true,false,true,true,true,false,false,false,true,false,true,true,true,true,true,false,true,true,true,true,false,true,true,false,true,true,true,true,true,true,true,false,false,false,false,true,true,false,false,false,false,true,true,false,false,true,false,false,true,false,false],[true,true,true,true,true,true,true,true,true,true,true,false,true,false,false,false,false,true,true,true,false,false,true,false,false,true,true,true,true,true,false,true,true,false,true,true,true,false,true,false,false,false,false,false,true,true,false,true,true,true,true,false,true,false,true,true,false,false,false,false,true,true,true,false,true,true,true,true,true,true,true,false,false,true,true,true,true,false,false,false,true,false,true,false,true,false,true,false,false,true,false,true,true,true,true,false,true,false,true,false,false],[true,true,true,true,true,true,true,true,true,true,true,true,true,false,false,false,true,true,true,true,true,true,true,true,false,true,true,true,true,true,false,true,true,true,true,true,true,true,true,false,false,true,false,true,true,true,false,true,true,true,true,false,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,false,true,true,true,false,true,true,true,false,true,true,false,true,true,true,true,true,true,true,true,false,true,false,true],[true,true,false,true,true,true,true,false,false,true,true,true,false,false,false,false,true,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,false,true,true,true,true,true,true,true,false,true,true,true,true,true,true,false,true,true,true,true,true,true,false,false,true,true,true,true,true,true,true,true,true,true,true,false,true,true,false,false,true,true,true,true,false,true,true,false,false,true,true,true,true,true,false,true,true,true,true,true,true,true,true],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,true,false,false,false,true,true,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,true,false,false,false],[false,false,true,false,false,false,false,true,true,false,false,false,true,false,false,false,false,false,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,true,false,false,false,false,true,false,false,false,false,false,false,true,true,true,false,false,false,false,false,false,true,false,false,false,true,false,false,false,false,false,true,false,false,false,false,false,false,false,false],[4,4,0,4,4,4,4,0,0,4,4,2,0,0,4,6,2,4,0,0,2,2,4,2,6,4,4,2,4,2,6,4,2,2,0,4,4,2,0,6,6,2,6,2,4,4,6,4,4,4,4,6,4,8,4,4,2,2,2,2,0,0,0,4,4,4,0,4,4,4,4,2,8,0,0,2,0,0,2,2,0,0,0,2,2,5,0,2,6,4,4,4,0,2,4,2,2,6,4,0,2],[false,true,true,false,true,true,true,true,true,false,true,true,true,false,false,false,true,true,true,true,true,true,true,true,false,false,false,true,true,false,false,true,false,true,true,true,true,true,true,false,false,true,false,true,true,true,false,true,true,true,true,false,true,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,false,true,true,true,false,true,true,true,false,true,true,false,false,true,true,true,true,true,true,true,false,true,false,true],[false,false,false,false,false,false,true,true,false,true,false,true,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,true,false,true,false,false,false,true,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,true,false,false,true,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],[true,true,false,true,true,true,true,false,false,false,true,false,false,false,false,false,false,true,true,true,false,false,true,true,false,false,false,false,true,true,false,true,true,false,false,false,false,false,false,false,false,false,false,false,true,true,false,true,true,false,true,false,false,true,false,true,true,false,true,false,true,false,false,true,true,true,true,true,true,true,true,true,false,false,true,true,false,false,false,false,false,false,false,false,false,false,true,true,false,false,true,false,true,false,false,true,true,false,true,false,false],["mammal","mammal","fish","mammal","mammal","mammal","mammal","fish","fish","mammal","mammal","bird","fish","mollusc.et.al","mollusc.et.al","mollusc.et.al","bird","mammal","fish","mammal","bird","bird","mammal","bird","insect","amphibian","amphibian","mammal","mammal","mammal","insect","mammal","mammal","bird","fish","mammal","mammal","bird","fish","insect","insect","bird","insect","bird","mammal","mammal","mollusc.et.al","mammal","mammal","mammal","mammal","insect","amphibian","mollusc.et.al","mammal","mammal","bird","bird","bird","bird","fish","fish","reptile","mammal","mammal","mammal","mammal","mammal","mammal","mammal","mammal","bird","mollusc.et.al","fish","mammal","mammal","reptile","mollusc.et.al","bird","bird","reptile","mollusc.et.al","fish","bird","mammal","mollusc.et.al","fish","bird","insect","amphibian","reptile","reptile","fish","mammal","mammal","bird","mammal","insect","mammal","mollusc.et.al","bird"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>hair<\/th>\n      <th>feathers<\/th>\n      <th>eggs<\/th>\n      <th>milk<\/th>\n      <th>airborne<\/th>\n      <th>aquatic<\/th>\n      <th>predator<\/th>\n      <th>toothed<\/th>\n      <th>backbone<\/th>\n      <th>breathes<\/th>\n      <th>venomous<\/th>\n      <th>fins<\/th>\n      <th>legs<\/th>\n      <th>tail<\/th>\n      <th>domestic<\/th>\n      <th>catsize<\/th>\n      <th>type<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":13},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<h2 id="correlation">Correlation<a hidden class="anchor" aria-hidden="true" href="#correlation">#</a></h2>
+<p>Let’s do some descriptive statistics and explore how the data looks. How do different types of animals vary? Can we see a quick <a href="https://stackoverflow.com/a/61482149/8057777">correlation</a>?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggcorrplot</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">model.matrix</span><span class="p">(</span><span class="o">~</span><span class="m">0+.</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Zoo</span><span class="p">)</span> <span class="o">|&gt;</span>  
+</span></span><span class="line"><span class="cl">  <span class="nf">cor</span><span class="p">(</span><span class="n">use</span><span class="o">=</span><span class="s">&#34;pairwise.complete.obs&#34;</span><span class="p">)</span> <span class="o">|&gt;</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggcorrplot</span><span class="p">(</span><span class="n">show.diag</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;lower&#34;</span><span class="p">,</span> <span class="n">lab</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">lab_size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/svm/index_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<p>This can tell us a lot of interesting insights!</p>
+<h2 id="modelling">Modelling<a hidden class="anchor" aria-hidden="true" href="#modelling">#</a></h2>
+<h3 id="fitting-model">Fitting Model<a hidden class="anchor" aria-hidden="true" href="#fitting-model">#</a></h3>
+<p>But our time is limited, so jumping to SVM. Recall that <code>train()</code> takes formula as the first input, data as the second input, method as the third input and other training controls.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">svmFit</span> <span class="o">=</span> <span class="nf">train</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">   <span class="n">type</span> <span class="o">~</span><span class="n">.,</span> 
+</span></span><span class="line"><span class="cl">   <span class="n">data</span> <span class="o">=</span> <span class="n">Zoo</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">   <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;svmLinear&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="n">trControl</span> <span class="o">=</span> <span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;cv&#34;</span><span class="p">,</span> <span class="n">number</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">svmFit</span>
+</span></span></code></pre></div><pre><code>## Support Vector Machines with Linear Kernel 
+## 
+## 101 samples
+##  16 predictor
+##   7 classes: 'mammal', 'bird', 'reptile', 'fish', 'amphibian', 'insect', 'mollusc.et.al' 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 91, 90, 92, 89, 91, 92, ... 
+## Resampling results:
+## 
+##   Accuracy  Kappa    
+##   0.97      0.9608681
+## 
+## Tuning parameter 'C' was held constant at a value of 1
+</code></pre>
+<p>Let’s see details about the final model.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># storing final model</span>
+</span></span><span class="line"><span class="cl"><span class="n">svmFinal</span> <span class="o">=</span> <span class="n">svmFit</span><span class="o">$</span><span class="n">finalModel</span>
+</span></span><span class="line"><span class="cl"><span class="n">svmFinal</span>
+</span></span></code></pre></div><pre><code>## Support Vector Machine object of class &quot;ksvm&quot; 
+## 
+## SV type: C-svc  (classification) 
+##  parameter : cost C = 1 
+## 
+## Linear (vanilla) kernel function. 
+## 
+## Number of Support Vectors : 47 
+## 
+## Objective Function Value : -0.1448 -0.218 -0.1484 -0.1754 -0.0936 -0.1033 -0.297 -0.0819 -0.1556 -0.0907 -0.1135 -0.182 -0.5763 -0.13 -0.1833 -0.118 -0.0474 -0.0823 -0.1236 -0.1481 -0.5666 
+## Training error : 0
+</code></pre>
+<h2 id="predictions">Predictions<a hidden class="anchor" aria-hidden="true" href="#predictions">#</a></h2>
+<p>I will use <code>predict()</code> to calculate the predictions. I’m predicting on training data, which is not advisable. But it shows how the SVM function works.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># creating predictions</span>
+</span></span><span class="line"><span class="cl"><span class="n">pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">svmFit</span><span class="p">,</span> <span class="n">newdata</span> <span class="o">=</span> <span class="n">Zoo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pred</span>
+</span></span></code></pre></div><pre><code>##   [1] mammal        mammal        fish          mammal        mammal       
+##   [6] mammal        mammal        fish          fish          mammal       
+##  [11] mammal        bird          fish          mollusc.et.al mollusc.et.al
+##  [16] mollusc.et.al bird          mammal        fish          mammal       
+##  [21] bird          bird          mammal        bird          insect       
+##  [26] amphibian     amphibian     mammal        mammal        mammal       
+##  [31] insect        mammal        mammal        bird          fish         
+##  [36] mammal        mammal        bird          fish          insect       
+##  [41] insect        bird          insect        bird          mammal       
+##  [46] mammal        mollusc.et.al mammal        mammal        mammal       
+##  [51] mammal        insect        amphibian     mollusc.et.al mammal       
+##  [56] mammal        bird          bird          bird          bird         
+##  [61] fish          fish          reptile       mammal        mammal       
+##  [66] mammal        mammal        mammal        mammal        mammal       
+##  [71] mammal        bird          mollusc.et.al fish          mammal       
+##  [76] mammal        reptile       mollusc.et.al bird          bird         
+##  [81] reptile       mollusc.et.al fish          bird          mammal       
+##  [86] mollusc.et.al fish          bird          insect        amphibian    
+##  [91] reptile       reptile       fish          mammal        mammal       
+##  [96] bird          mammal        insect        mammal        mollusc.et.al
+## [101] bird         
+## Levels: mammal bird reptile fish amphibian insect mollusc.et.al
+</code></pre>
+<h3 id="confusion-matrix">Confusion Matrix<a hidden class="anchor" aria-hidden="true" href="#confusion-matrix">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># confusion matrix</span>
+</span></span><span class="line"><span class="cl"><span class="nf">table</span><span class="p">(</span><span class="n">Zoo</span><span class="o">$</span><span class="n">type</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>##                pred
+##                 mammal bird reptile fish amphibian insect mollusc.et.al
+##   mammal            41    0       0    0         0      0             0
+##   bird               0   20       0    0         0      0             0
+##   reptile            0    0       5    0         0      0             0
+##   fish               0    0       0   13         0      0             0
+##   amphibian          0    0       0    0         4      0             0
+##   insect             0    0       0    0         0      8             0
+##   mollusc.et.al      0    0       0    0         0      0            10
+</code></pre>
+<h3 id="accuracy">Accuracy<a hidden class="anchor" aria-hidden="true" href="#accuracy">#</a></h3>
+<p>The model has a 100% accuracy on the training data.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># prediction accuracy</span>
+</span></span><span class="line"><span class="cl"><span class="nf">sum</span><span class="p">(</span><span class="n">Zoo</span><span class="o">$</span><span class="n">type</span><span class="o">==</span><span class="n">pred</span><span class="p">)</span><span class="o">/</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Zoo</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>## [1] 1
+</code></pre>
+<hr>
+<h4 id="post-notes">Post-notes<a hidden class="anchor" aria-hidden="true" href="#post-notes">#</a></h4>
+<p>This article was originally created for my guest lecture in Prof Charles Liu’s <a href="https://github.com/harshvardhaniimi/bzan-542"><em>BZAN 542: Data Mining Methods for Business Applications</em></a> class. The lecture received positive response and interesting questions, which improved this document.</p>
+<p>I would’ve preferred using <a href="https://www.tidymodels.org/learn/work/tune-svm/">Tidymodels’ SVM</a> instead of caret. But since the entire class was designed with caret, I’ve followed the convention.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Now called Nokia Labs.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>You would notice that I’ve removed two points, just for simplicity.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Try saying “these points are hard to classify so I’ll ignore them” to your client. <strong>Don’t</strong> — unless you want to lose your job.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/data-science/">Data-Science</a></li>
+      <li><a href="/tags/r/">R</a></li>
+      <li><a href="/tags/tools/">Tools</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

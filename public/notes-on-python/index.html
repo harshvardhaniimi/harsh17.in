@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Cheatsheet on Python | Harshvardhan</title>
+<meta name="keywords" content="python">
+<meta name="description" content="Some things that I&rsquo;ll likely forget">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/notes-on-python/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/notes-on-python/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/notes-on-python/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Cheatsheet on Python">
+  <meta property="og:description" content="Some things that I’ll likely forget">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2022-02-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-02-08T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+      <meta property="og:image" content="/notes-on-python/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/notes-on-python/featured.png">
+  <meta name="twitter:title" content="Cheatsheet on Python">
+  <meta name="twitter:description" content="Some things that I’ll likely forget">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Cheatsheet on Python",
+      "item": "/notes-on-python/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cheatsheet on Python",
+  "name": "Cheatsheet on Python",
+  "description": "Some things that I\u0026rsquo;ll likely forget",
+  "keywords": [
+    "python"
+  ],
+  "articleBody": "Installing Packages The process to install package depends on the Python environment you are using.\nThere are two possibilities: pip, conda and within Jupyter Hub. If you are using Anaconda (Navigator), use conda. pip will install for all environments; conda will install for (activated) conda environment only. See 7 for details on Python environments.\nGenerally, always use conda for handling environments and pip to install packages.\npip install \u003cpackage\u003e For a specific version, you can use pip install pandas==2.0.1.\nHere are some common pip commands that’ll come in handy. You can get the full list with pip help.\npip freeze or pip list will give a list of all packages that are installed along with their version numbers pip check will list all packages that have conflicted or broken requirements pip show numpy will show all details of that package, including package version and location where it is installed. (numpy is an example, replace accordingly). To uninstall a package, use pip uninstall .\nTerminal in Jupyter Terminal commands can be passed within the Jupyter notebook. Any command starting with ! would be run like a terminal command within the Jupyter notebook.\n# list all files in current directory !ls # delete all files in the current folder !rm -r * Debugging in the Current State Many a time our code crashes and we would like to investigate the environment at that moment. Running %debug in Jupyter Notebook immediately after the code crashes would open a debugging environment where you can see variables’ values, etc.\n# some code that crashed x = some_function(y) # in the next Jupyter cell, run this command %debug Printing There are two methods: print() and pprint(). They both serve the save cause but pprint() is better at displaying complex data structures such as list of lists or JSON files.\nIt is worthwhile to mention f-strings. They are usually more compact than writing full print statements. Furthermore, if you want to print value of a variable, they’re really short.\n# enclose the variable in curly braces print(f\"Value of x is {x}\") # if you want to just print the value of, use {x=} print(f\"{x=}\") Adding Rows It is more efficient to create a list of rows first and then convert it to a pandas data frame. As qmeeus said on SO,\nPandas dataframes do not work as a list, they are much more complex data structures and appending is not really considered the best approach.\ndata = [] for row in some_function_that_yields_data(): data.append(row) # either this df = pd.DataFrame(data) # or this df = pd.concat([results, df], axis=0).reset_index(drop=True) Function Getting Help To see details of a function in a Jupyter notebook, use ?? operator. It will show you the body and the associated documentation (if available).\n??my_function() Modify Inplace When you modify a value passed to a function, it modifies that object inplace. For example, the following function would change the value.\nPython Environments See Managing environments for details. Use conda for managing environments and packages.\nGenerally, avoid messing up with base environment. Create a new one and use that.\nOnce you create a new environment, remember to refresh Visual Studio Code’s list of Python interpreters.\nList all environments conda env list Here is how it looks for me.\n(base) harshvardhan@harshmac17 ~ % conda env list # conda environments: # base * /Users/harshvardhan/opt/anaconda3 env_oct22 /Users/harshvardhan/opt/anaconda3/envs/env_oct22 Create an environment This will create an environment called new_env.\nconda create --name new_env Conda will ask you for permission proceed ([y]/n)?. Type y.\nActivate an environment This will activate the environment called new_env. Remember that you can list all environment with conda env list.\nconda activate new_env VS Code Note: By default, the Python extension looks for and uses the first Python interpreter it finds in the system path. To select a specific environment, use the Python: Select Interpreter command from the Command Palette (⇧⌘P).\nClone an environment This will create a new environment new_env with the exact same packages as old_env.\nconda create --clone old_env --name new_env Remove an environment This will remove a Python environment called old_env.\nconda env remove --name old_env List all packages This will list all packages in the current environment.\nconda list Update all packages This will update all packages in the activated Python environment. See above to list environments and select an environment. Once you are in the activated environment, execute the following.\nconda update --all Using pip in Conda This is not recommended. If you are feeling adventurous, give it a try! See Using pip in an environment. Also see a note on dependency conflicts.\n",
+  "wordCount" : "761",
+  "inLanguage": "en",
+  "image": "/notes-on-python/featured.png","datePublished": "2022-02-08T00:00:00Z",
+  "dateModified": "2022-02-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/notes-on-python/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Cheatsheet on Python
+    </h1>
+    <div class="post-meta"><span title='2022-02-08 00:00:00 +0000 UTC'>February 8, 2022</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="installing-packages">Installing Packages<a hidden class="anchor" aria-hidden="true" href="#installing-packages">#</a></h1>
+<p>The process to install package depends on the Python environment you are using.</p>
+<p>There are two possibilities: <code>pip</code>, <code>conda</code> and within Jupyter Hub.
+If you are using Anaconda (Navigator), use <code>conda</code>.
+<code>pip</code> will install for all environments; <code>conda</code> will install for (activated) conda environment only.
+See <a href="#python-environments">7</a> for details on Python environments.</p>
+<p><strong>Generally, always use <code>conda</code> for handling environments and <code>pip</code> to install packages</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pip</span> <span class="n">install</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+</span></span></code></pre></div><p>For a specific version, you can use <code>pip install pandas==2.0.1</code>.</p>
+<p>Here are some common pip commands that&rsquo;ll come in handy.
+You can get the full list with <code>pip help</code>.</p>
+<ol>
+<li><strong>pip freeze</strong> or <strong>pip list</strong> will give a list of all packages that are installed along with their version numbers</li>
+<li><strong>pip check</strong> will list all packages that have conflicted or broken requirements</li>
+<li><strong>pip show numpy</strong> will show all details of that package, including package version and location where it is installed. (<strong>numpy</strong> is an example, replace accordingly).</li>
+</ol>
+<p>To uninstall a package, use <code>pip uninstall &lt;package&gt;</code>.</p>
+<h1 id="terminal-in-jupyter">Terminal in Jupyter<a hidden class="anchor" aria-hidden="true" href="#terminal-in-jupyter">#</a></h1>
+<p>Terminal commands can be passed within the Jupyter notebook.
+Any command starting with <code>!</code> would be run like a terminal command within the Jupyter notebook.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># list all files in current directory</span>
+</span></span><span class="line"><span class="cl"><span class="err">!</span><span class="n">ls</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># delete all files in the current folder</span>
+</span></span><span class="line"><span class="cl"><span class="err">!</span><span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="o">*</span>
+</span></span></code></pre></div><h1 id="debugging-in-the-current-state">Debugging in the Current State<a hidden class="anchor" aria-hidden="true" href="#debugging-in-the-current-state">#</a></h1>
+<p>Many a time our code crashes and we would like to investigate the environment at that moment.
+Running <code>%debug</code> in Jupyter Notebook immediately after the code crashes would open a debugging environment where you can see variables&rsquo; values, etc.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># some code that crashed</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">some_function</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># in the next Jupyter cell, run this command</span>
+</span></span><span class="line"><span class="cl"><span class="o">%</span><span class="n">debug</span>
+</span></span></code></pre></div><h1 id="printing">Printing<a hidden class="anchor" aria-hidden="true" href="#printing">#</a></h1>
+<p>There are two methods: <code>print()</code> and <code>pprint()</code>.
+They both serve the save cause but <code>pprint()</code> is better at displaying complex data structures such as list of lists or JSON files.</p>
+<p>It is worthwhile to mention <code>f</code>-strings.
+They are usually more compact than writing full print statements.
+Furthermore, if you want to print value of a variable, they&rsquo;re really short.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># enclose the variable in curly braces</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Value of x is </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># if you want to just print the value of, use {x=}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">x</span><span class="si">=}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h1 id="adding-rows">Adding Rows<a hidden class="anchor" aria-hidden="true" href="#adding-rows">#</a></h1>
+<p>It is more efficient to create a list of rows first and then convert it to a pandas data frame.
+As qmeeus <a href="https://stackoverflow.com/questions/55967976/python-panda-append-dataframe-in-loop?noredirect=1&amp;lq=1">said</a> on SO,</p>
+<blockquote>
+<p>Pandas dataframes do not work as a list, they are much more complex data structures and appending is not really considered the best approach.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">some_function_that_yields_data</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># either this</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># or this</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">results</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span></code></pre></div><h1 id="function">Function<a hidden class="anchor" aria-hidden="true" href="#function">#</a></h1>
+<h2 id="getting-help">Getting Help<a hidden class="anchor" aria-hidden="true" href="#getting-help">#</a></h2>
+<p>To see details of a function in a Jupyter notebook, use <code>??</code> operator.
+It will show you the body and the associated documentation (if available).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="err">??</span><span class="n">my_function</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="modify-inplace">Modify Inplace<a hidden class="anchor" aria-hidden="true" href="#modify-inplace">#</a></h2>
+<p>When you modify a value passed to a function, it modifies that object inplace.
+For example, the following function would change the value.</p>
+<h1 id="python-environments">Python Environments<a hidden class="anchor" aria-hidden="true" href="#python-environments">#</a></h1>
+<ul>
+<li>
+<p>See <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands">Managing environments</a> for details.
+Use <code>conda</code> for managing environments and packages.</p>
+</li>
+<li>
+<p>Generally, avoid messing up with <code>base</code> environment.
+Create a new one and use that.</p>
+</li>
+<li>
+<p>Once you create a new environment, remember to <a href="https://code.visualstudio.com/docs/python/environments#:~:text=If%20you%20create%20a%20new%20conda%20environment%20while%20VS%20Code%20is%20running%2C%20use%20the%20refresh%20icon%20on%20the%20top%20right%20of%20the%20Python%3A%20Select%20Interpreter%20window%3B%20otherwise%20you%20may%20not%20see%20the%20environment%20there.">refresh</a> Visual Studio Code&rsquo;s list of Python interpreters.</p>
+</li>
+</ul>
+<h2 id="list-all-environments">List all environments<a hidden class="anchor" aria-hidden="true" href="#list-all-environments">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zsh" data-lang="zsh"><span class="line"><span class="cl">conda env list
+</span></span></code></pre></div><p>Here is how it looks for me.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="n">harshvardhan</span><span class="nd">@harshmac17</span> <span class="o">~</span> <span class="o">%</span> <span class="n">conda</span> <span class="n">env</span> <span class="nb">list</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># conda environments:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="n">base</span>                  <span class="o">*</span>  <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">harshvardhan</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span>
+</span></span><span class="line"><span class="cl"><span class="n">env_oct22</span>                <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">harshvardhan</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">env_oct22</span>
+</span></span></code></pre></div><h2 id="create-an-environment">Create an environment<a hidden class="anchor" aria-hidden="true" href="#create-an-environment">#</a></h2>
+<p>This will create an environment called <code>new_env</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">new_env</span>
+</span></span></code></pre></div><p>Conda will ask you for permission <code>proceed ([y]/n)?</code>.
+Type <code>y</code>.</p>
+<h2 id="activate-an-environment">Activate an environment<a hidden class="anchor" aria-hidden="true" href="#activate-an-environment">#</a></h2>
+<p>This will activate the environment called <code>new_env</code>.
+Remember that you can list all environment with <code>conda env list</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">activate</span> <span class="n">new_env</span>
+</span></span></code></pre></div><blockquote>
+<p><strong>VS Code Note:</strong> By default, the Python extension looks for and uses the first Python interpreter it finds in the system path.
+To select a specific environment, use the <strong>Python: Select Interpreter</strong> command from the <strong>Command Palette</strong> (⇧⌘P).</p>
+</blockquote>
+<h2 id="clone-an-environment">Clone an environment<a hidden class="anchor" aria-hidden="true" href="#clone-an-environment">#</a></h2>
+<p>This will create a new environment <code>new_env</code> with the exact same packages as <code>old_env</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">clone</span> <span class="n">old_env</span> <span class="o">--</span><span class="n">name</span> <span class="n">new_env</span>
+</span></span></code></pre></div><h2 id="remove-an-environment">Remove an environment<a hidden class="anchor" aria-hidden="true" href="#remove-an-environment">#</a></h2>
+<p>This will remove a Python environment called <code>old_env</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">env</span> <span class="n">remove</span> <span class="o">--</span><span class="n">name</span> <span class="n">old_env</span>
+</span></span></code></pre></div><h2 id="list-all-packages">List all packages<a hidden class="anchor" aria-hidden="true" href="#list-all-packages">#</a></h2>
+<p>This will list all packages in the current environment.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="nb">list</span>
+</span></span></code></pre></div><h2 id="update-all-packages">Update all packages<a hidden class="anchor" aria-hidden="true" href="#update-all-packages">#</a></h2>
+<p>This will update all packages in the <strong>activated</strong> Python environment.
+See above to list environments and select an environment.
+Once you are in the activated environment, execute the following.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">conda</span> <span class="n">update</span> <span class="o">--</span><span class="nb">all</span>
+</span></span></code></pre></div><h2 id="using-pip-in-conda">Using <code>pip</code> in Conda<a hidden class="anchor" aria-hidden="true" href="#using-pip-in-conda">#</a></h2>
+<p><strong>This is not recommended.</strong> If you are feeling adventurous, give it a try!
+See <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment">Using pip in an environment</a>.
+Also see a note on <a href="https://stackoverflow.com/a/44072944/8057777">dependency conflicts</a>.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/python/">Python</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/improbable-doesn-t-mean-impossible/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Improbable Doesn&#39;t Mean Impossible</span>
+  </a>
+  <a class="next" href="/ancestors/">
+    <span class="title">Next »</span>
+    <br>
+    <span>How much do we know about our ancestors?</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

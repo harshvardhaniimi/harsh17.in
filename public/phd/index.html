@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>From Data to Decisions: The Story Behind My PhD | Harshvardhan</title>
+<meta name="keywords" content="forecasting">
+<meta name="description" content="On March 31, 2025, I successfully defended my dissertation: “From Data to Decisions: Enterprise Demand Forecasting with Machine Learning.” My work is rooted in generalizable research at the intersection of machine learning, operations research, and organizational decision-making, grounded through a real-world implementation at HP Inc.
+Final accepted draft of my dissertation is available here.
+
+What is my dissertation about?
+Demand forecasting has a rich intellectual and practical history.
+Ancient texts like the Indian Arthashastra (350 BCE) and Chinese Han Dynasty archives both emphasized blending qualitative judgment with quantitative grain records to estimate demand.
+Fast forward to the industrial age, companies like Ford and Chrysler pioneered judgmental forecasting to support assembly lines.
+In the 1960s, statisticians like Box, Jenkins, Holt, and Winters developed foundational time-series methods like ARIMA and exponential smoothing, which still serve as industry baselines.">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/phd/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/phd/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/phd/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="From Data to Decisions: The Story Behind My PhD">
+  <meta property="og:description" content="On March 31, 2025, I successfully defended my dissertation: “From Data to Decisions: Enterprise Demand Forecasting with Machine Learning.” My work is rooted in generalizable research at the intersection of machine learning, operations research, and organizational decision-making, grounded through a real-world implementation at HP Inc.
+Final accepted draft of my dissertation is available here.
+What is my dissertation about? Demand forecasting has a rich intellectual and practical history. Ancient texts like the Indian Arthashastra (350 BCE) and Chinese Han Dynasty archives both emphasized blending qualitative judgment with quantitative grain records to estimate demand. Fast forward to the industrial age, companies like Ford and Chrysler pioneered judgmental forecasting to support assembly lines. In the 1960s, statisticians like Box, Jenkins, Holt, and Winters developed foundational time-series methods like ARIMA and exponential smoothing, which still serve as industry baselines.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2025-04-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-22T00:00:00+00:00">
+    <meta property="article:tag" content="Forecasting">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="From Data to Decisions: The Story Behind My PhD">
+  <meta name="twitter:description" content="On March 31, 2025, I successfully defended my dissertation: “From Data to Decisions: Enterprise Demand Forecasting with Machine Learning.” My work is rooted in generalizable research at the intersection of machine learning, operations research, and organizational decision-making, grounded through a real-world implementation at HP Inc.
+Final accepted draft of my dissertation is available here.
+What is my dissertation about? Demand forecasting has a rich intellectual and practical history. Ancient texts like the Indian Arthashastra (350 BCE) and Chinese Han Dynasty archives both emphasized blending qualitative judgment with quantitative grain records to estimate demand. Fast forward to the industrial age, companies like Ford and Chrysler pioneered judgmental forecasting to support assembly lines. In the 1960s, statisticians like Box, Jenkins, Holt, and Winters developed foundational time-series methods like ARIMA and exponential smoothing, which still serve as industry baselines.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "From Data to Decisions: The Story Behind My PhD",
+      "item": "/phd/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "From Data to Decisions: The Story Behind My PhD",
+  "name": "From Data to Decisions: The Story Behind My PhD",
+  "description": "On March 31, 2025, I successfully defended my dissertation: “From Data to Decisions: Enterprise Demand Forecasting with Machine Learning.” My work is rooted in generalizable research at the intersection of machine learning, operations research, and organizational decision-making, grounded through a real-world implementation at HP Inc.\nFinal accepted draft of my dissertation is available here.\nWhat is my dissertation about? Demand forecasting has a rich intellectual and practical history. Ancient texts like the Indian Arthashastra (350 BCE) and Chinese Han Dynasty archives both emphasized blending qualitative judgment with quantitative grain records to estimate demand. Fast forward to the industrial age, companies like Ford and Chrysler pioneered judgmental forecasting to support assembly lines. In the 1960s, statisticians like Box, Jenkins, Holt, and Winters developed foundational time-series methods like ARIMA and exponential smoothing, which still serve as industry baselines.\n",
+  "keywords": [
+    "forecasting"
+  ],
+  "articleBody": "On March 31, 2025, I successfully defended my dissertation: “From Data to Decisions: Enterprise Demand Forecasting with Machine Learning.” My work is rooted in generalizable research at the intersection of machine learning, operations research, and organizational decision-making, grounded through a real-world implementation at HP Inc.\nFinal accepted draft of my dissertation is available here.\nWhat is my dissertation about? Demand forecasting has a rich intellectual and practical history. Ancient texts like the Indian Arthashastra (350 BCE) and Chinese Han Dynasty archives both emphasized blending qualitative judgment with quantitative grain records to estimate demand. Fast forward to the industrial age, companies like Ford and Chrysler pioneered judgmental forecasting to support assembly lines. In the 1960s, statisticians like Box, Jenkins, Holt, and Winters developed foundational time-series methods like ARIMA and exponential smoothing, which still serve as industry baselines.\nYet these classical models have inherent limitations: they treat each time series in isolation, rely solely on historical demand, and often assume simplistic linear patterns. As demand environments became more volatile and complex—spanning thousands of SKUs across global markets—the need arose for scalable, data-driven approaches.\nMachine learning (ML) entered as a powerful alternative. ML models can incorporate high-dimensional data, learn nonlinear patterns, and integrate external signals like marketing promotions or macroeconomic conditions. Most importantly, they enable a shift from siloed, local models to global forecasting systems that learn across products and markets.\nFrom Concept to Practice: Generalizing the Framework My dissertation develops and validates a comprehensive ML-based forecasting framework, centered on scalability, interpretability, and organizational integration. Theoretically, it proposes a hybrid forecasting system combining tree-based models (LightGBM), rich feature engineering, and human-in-the-loop design. Empirically, it demonstrates how this architecture improves forecast accuracy and operational responsiveness in enterprise settings.\nRather than treating the HP implementation as the core, it serves as a rigorous testbed for generalizable insights. For example, the use of LightGBM wasn’t simply because it worked well at HP—it was chosen based on comparative performance in the M5 forecasting competition and its effectiveness on tabular, structured enterprise data. The use of global modeling across SKUs and countries reflects broader trends in ML demand forecasting research and is designed to be transferable to other firms.\nCase Application at HP Inc. HP sells over 18,000 print SKUs in 170+ countries. Forecasting demand across this matrix is essential for production scheduling, R\u0026D budgeting, and supply chain planning. Historically, HP used two methods: statistical models like ARIMA for baseline estimates, and consensus forecasts refined by domain experts. In 2019, the Strategic Planning and Modelling (SPaM) team initiated a transition toward ML-based forecasting, which I helped design and implement during a 16-month internship.\nWe built an end-to-end pipeline using LightGBM models trained on historical sales, inventory levels, product life cycle indicators, and regional factors. The system was built to generalize across product hierarchies and geographies, while remaining interpretable to planners. Forecasts were served through interactive dashboards, enabling human planners to review, adjust, or override them based on local knowledge—thus creating a robust human-in-the-loop architecture.\nMLOps for Forecasting at Scale A key research contribution lies in operationalizing ML systems. Our MLOps framework emphasized reproducibility, automation, and governance. We used parameterized notebooks, MLFlow tracking, and structured version control to ensure that model training, evaluation, and deployment were seamless and auditable. Model retraining pipelines ensured continuous learning from new data while monitoring systems flagged drifts in prediction quality.\nThis MLOps architecture isn’t unique to HP; rather, it offers a replicable playbook for any enterprise seeking to productionize ML-based forecasting.\nHuman + Machine: A Symbiotic System One of the most important lessons from this work is that automation does not eliminate the need for human expertise. On the contrary, machine learning is most effective when paired with human intuition and domain knowledge. The implemented forecasting system allows planners to adjust forecasts using soft signals—like expected promotions or supply chain disruptions—and provided transparent explanations to encourage trust.\nOver a three year period, this hybrid approach improved forecast accuracy by 34% and reduced inventory holdings by 28%, all while maintaining service levels. These numbers are impressive, but more importantly, they validate the core research insight: ML and human forecasting are not mutually exclusive—they are complementary.\nTo Conclude My research bridges the gap between algorithm design and real-world decision-making. While the implementation at HP Inc. serves as a case study, the core ideas—scalable ML systems, human-in-the-loop forecasting, and robust MLOps infrastructure—are meant to inform a broader audience of researchers and practitioners. The lessons extend beyond any one company, pointing toward a future where intelligent systems amplify human decision-making at scale.\nRelated Publications This research has been accepted for publication in the INFORMS Journal of Applied Analytics, where we present a detailed account of the modeling framework and enterprise deployment. A preprint is available here.\nWe also presented this work at the Foresight Practitioners Conference 2025, where it was recognized as a Top-5 finalist globally for the IIF Forecasting Practice Competition. An executive summary tailored for industry audiences is forthcoming in Foresight: The International Journal of Applied Forecasting.\nBehind the Research: People Who Made It Possible This dissertation—and everything it represents—would not have been possible without the kindness, intellect, and support of people across continents and stages of life.\nFirst and foremost, my advisor, Dr. Chuanren (Charles) Liu, has been the intellectual anchor of this journey. His rare combination of sharp research instincts, generous time, and thoughtful critique shaped not only this dissertation but my growth as an independent researcher. He gave me remarkable freedom in defining my research path—a freedom I now recognize, in hindsight, as a true gift. I once discussed with Prof. Bobby how some advisors assign their own topics, making things easier in the short term but stifling long-term independence. That conversation only deepened my appreciation for Dr. Liu’s mentorship. I owe him more than I can ever express.\nMy internship and continued collaboration with HP have been central to this work. It wasn’t just a corporate stint—it became a living laboratory for my ideas. I’m grateful to Cara Curtland, Adam Ghozeil, and Jerry Hwang for their generous support in translating research into real-world impact. What made it special was HP’s willingness to treat this not as a mere “intern project,” but as a serious global initiative worthy of scale and rigor. That trust means a lot.\nDr. Sean Willems’ early mentorship gave me the mental scaffolding I still build on. His research remains a North Star, especially when I’ve felt adrift. His advice—often tucked inside thoughtful, incisive emails—has shaped my thinking in more ways than I can count. I’ve saved many of those emails, and I revisit them often.\nI’ve been fortunate to build meaningful relationships with many professors at UT. Dr. Michael Galbreth, our department head, has a rare “yes-first” leadership style. His answer was always, “Let’s see how,” even when we asked for something as rare as a grad student pay raise. Dr. Wenjun Zhou has been a consistent source of encouragement—I hope we can collaborate on research in the future. Dr. Robert Mee offered guidance at critical junctures. Dr. Emre Demirkaya made “Statistical Learning” one of the most difficult—and rewarding—courses of my PhD, and also became a great friend. Terry Higgins and Charlie Cweik helped shape me into a better teacher, for which I’m truly thankful.\nThis path into research wouldn’t have begun without Dr. Pritam Ranjan, who nudged me early on at IIM Indore through summer internships and research papers. His belief in me during those formative years set everything else in motion.\nLife in Knoxville would’ve felt a lot lonelier without the people who brought warmth and light. Nikhil Narayane has been a constant companion through shared road trips and memories. Yu Jiang has been a close and trusted friend, introducing me to Chinese culture (and hot pot!)—and I look forward to visiting China with her one day. Greeshma Geetha has a wonderful way of bursting my thought bubbles and grounding me in nature and environmental consciousness. Thanks to her, I notice the world more.\nPablo and I have had countless late-night debates on technology, programming languages, and the very fabric of the internet. To paraphrase Godwin’s Law—if most online conversations eventually devolve into references to Hitler, ours always loop back to the philosophy of tech. Samudra Dasgupta (and his dog Henley) brought color and chaos in the best way. Despite his quirks, Samudra is a kindred spirit, driven by the same idealistic goal—to make the world better than we found it.\nA surprise gift of my time at HP was meeting Dea Bardhoshi. Her curiosity and presence have sparked many thoughtful conversations. Our weekly serendipity calls have helped keep my own curiosity alive.\nAnd then there’s Meenal. My favorite person. Food for both my mind and heart. Her presence is an anchor, a mirror, and a source of joy. I find myself yearning for every next meeting with her.\nFinally, to my parents—Rajendra Prasad and Chandra Lata Barnwal—my brother Shashank, and my sister Shalini: your unwavering love and patience have sustained me in more ways than you know. Everything I do is built upon your sacrifices and support. I carry you with me, always.\nPhD in Pictures Assorted pictures from the last four years.\n",
+  "wordCount" : "1529",
+  "inLanguage": "en",
+  "datePublished": "2025-04-22T00:00:00Z",
+  "dateModified": "2025-04-22T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/phd/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      From Data to Decisions: The Story Behind My PhD
+    </h1>
+    <div class="post-meta"><span title='2025-04-22 00:00:00 +0000 UTC'>April 22, 2025</span>&nbsp;·&nbsp;<span>8 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>On March 31, 2025, I successfully defended my dissertation: “From Data to Decisions: Enterprise Demand Forecasting with Machine Learning.” My work is rooted in generalizable research at the intersection of machine learning, operations research, and organizational decision-making, grounded through a real-world implementation at HP Inc.</p>
+<p>Final accepted draft of my dissertation is available <a href="https://www.harsh17.in/docs/2025_04_10_Doctoral_Dissertation.pdf">here</a>.</p>
+<div id="what-is-my-dissertation-about" class="section level1">
+<h1>What is my dissertation about?</h1>
+<p>Demand forecasting has a rich intellectual and practical history.
+Ancient texts like the Indian <em>Arthashastra</em> (350 BCE) and Chinese Han Dynasty archives both emphasized blending qualitative judgment with quantitative grain records to estimate demand.
+Fast forward to the industrial age, companies like Ford and Chrysler pioneered judgmental forecasting to support assembly lines.
+In the 1960s, statisticians like Box, Jenkins, Holt, and Winters developed foundational time-series methods like ARIMA and exponential smoothing, which still serve as industry baselines.</p>
+<p>Yet these classical models have inherent limitations: they treat each time series in isolation, rely solely on historical demand, and often assume simplistic linear patterns.
+As demand environments became more volatile and complex—spanning thousands of SKUs across global markets—the need arose for scalable, data-driven approaches.</p>
+<p>Machine learning (ML) entered as a powerful alternative.
+ML models can incorporate high-dimensional data, learn nonlinear patterns, and integrate external signals like marketing promotions or macroeconomic conditions.
+Most importantly, they enable a shift from siloed, local models to global forecasting systems that learn across products and markets.</p>
+<div id="from-concept-to-practice-generalizing-the-framework" class="section level2">
+<h2>From Concept to Practice: Generalizing the Framework</h2>
+<p>My dissertation develops and validates a comprehensive ML-based forecasting framework, centered on scalability, interpretability, and organizational integration.
+Theoretically, it proposes a hybrid forecasting system combining tree-based models (LightGBM), rich feature engineering, and human-in-the-loop design.
+Empirically, it demonstrates how this architecture improves forecast accuracy and operational responsiveness in enterprise settings.</p>
+<p>Rather than treating the HP implementation as the core, it serves as a rigorous testbed for generalizable insights.
+For example, the use of LightGBM wasn’t simply because it worked well at HP—it was chosen based on comparative performance in the M5 forecasting competition and its effectiveness on tabular, structured enterprise data.
+The use of global modeling across SKUs and countries reflects broader trends in ML demand forecasting research and is designed to be transferable to other firms.</p>
+</div>
+<div id="case-application-at-hp-inc." class="section level2">
+<h2>Case Application at HP Inc.</h2>
+<p>HP sells over 18,000 print SKUs in 170+ countries.
+Forecasting demand across this matrix is essential for production scheduling, R&amp;D budgeting, and supply chain planning.
+Historically, HP used two methods: statistical models like ARIMA for baseline estimates, and consensus forecasts refined by domain experts.
+In 2019, the Strategic Planning and Modelling (SPaM) team initiated a transition toward ML-based forecasting, which I helped design and implement during a 16-month internship.</p>
+<p>We built an end-to-end pipeline using LightGBM models trained on historical sales, inventory levels, product life cycle indicators, and regional factors.
+The system was built to generalize across product hierarchies and geographies, while remaining interpretable to planners.
+Forecasts were served through interactive dashboards, enabling human planners to review, adjust, or override them based on local knowledge—thus creating a robust human-in-the-loop architecture.</p>
+</div>
+<div id="mlops-for-forecasting-at-scale" class="section level2">
+<h2>MLOps for Forecasting at Scale</h2>
+<p>A key research contribution lies in operationalizing ML systems.
+Our MLOps framework emphasized reproducibility, automation, and governance.
+We used parameterized notebooks, MLFlow tracking, and structured version control to ensure that model training, evaluation, and deployment were seamless and auditable.
+Model retraining pipelines ensured continuous learning from new data while monitoring systems flagged drifts in prediction quality.</p>
+<p>This MLOps architecture isn’t unique to HP; rather, it offers a replicable playbook for any enterprise seeking to productionize ML-based forecasting.</p>
+</div>
+<div id="human-machine-a-symbiotic-system" class="section level2">
+<h2>Human + Machine: A Symbiotic System</h2>
+<p>One of the most important lessons from this work is that automation does not eliminate the need for human expertise.
+On the contrary, machine learning is most effective when paired with human intuition and domain knowledge.
+The implemented forecasting system allows planners to adjust forecasts using soft signals—like expected promotions or supply chain disruptions—and provided transparent explanations to encourage trust.</p>
+<p>Over a three year period, this hybrid approach improved forecast accuracy by 34% and reduced inventory holdings by 28%, all while maintaining service levels.
+These numbers are impressive, but more importantly, they validate the core research insight: ML and human forecasting are not mutually exclusive—they are complementary.</p>
+</div>
+<div id="to-conclude" class="section level2">
+<h2>To Conclude</h2>
+<p>My research bridges the gap between algorithm design and real-world decision-making.
+While the implementation at HP Inc. serves as a case study, the core ideas—scalable ML systems, human-in-the-loop forecasting, and robust MLOps infrastructure—are meant to inform a broader audience of researchers and practitioners.
+The lessons extend beyond any one company, pointing toward a future where intelligent systems amplify human decision-making at scale.</p>
+</div>
+<div id="related-publications" class="section level2">
+<h2>Related Publications</h2>
+<p>This research has been accepted for publication in the <a href="https://pubsonline.informs.org/journal/ijaa"><em>INFORMS Journal of Applied Analytics</em></a>, where we present a detailed account of the modeling framework and enterprise deployment.
+A preprint is available <a href="https://www.harsh17.in/docs/Print_Demand_Forecasting.pdf">here</a>.</p>
+<p>We also presented this work at the <a href="https://forecasters.org/events/foresight-practitioner-conference/"><em>Foresight Practitioners Conference 2025</em></a>, where it was recognized as a Top-5 finalist globally for the <a href="https://forecasters.org/2025-iif-practice-competition/">IIF Forecasting Practice Competition</a>.
+An executive summary tailored for industry audiences is forthcoming in <a href="https://forecasters.org/foresight/"><em>Foresight: The International Journal of Applied Forecasting</em></a>.</p>
+</div>
+</div>
+<div id="behind-the-research-people-who-made-it-possible" class="section level1">
+<h1>Behind the Research: People Who Made It Possible</h1>
+<p>This dissertation—and everything it represents—would not have been possible without the kindness, intellect, and support of people across continents and stages of life.</p>
+<p>First and foremost, my advisor, Dr. Chuanren (Charles) Liu, has been the intellectual anchor of this journey.
+His rare combination of sharp research instincts, generous time, and thoughtful critique shaped not only this dissertation but my growth as an independent researcher.
+He gave me remarkable freedom in defining my research path—a freedom I now recognize, in hindsight, as a true gift.
+I once discussed with Prof. Bobby how some advisors assign their own topics, making things easier in the short term but stifling long-term independence.
+That conversation only deepened my appreciation for Dr. Liu’s mentorship.
+I owe him more than I can ever express.</p>
+<p>My internship and continued collaboration with HP have been central to this work.
+It wasn’t just a corporate stint—it became a living laboratory for my ideas.
+I’m grateful to Cara Curtland, Adam Ghozeil, and Jerry Hwang for their generous support in translating research into real-world impact.
+What made it special was HP’s willingness to treat this not as a mere “intern project,” but as a serious global initiative worthy of scale and rigor.
+That trust means a lot.</p>
+<p>Dr. Sean Willems’ early mentorship gave me the mental scaffolding I still build on.
+His research remains a North Star, especially when I’ve felt adrift.
+His advice—often tucked inside thoughtful, incisive emails—has shaped my thinking in more ways than I can count.
+I’ve saved many of those emails, and I revisit them often.</p>
+<p>I’ve been fortunate to build meaningful relationships with many professors at UT.
+Dr. Michael Galbreth, our department head, has a rare “yes-first” leadership style.
+His answer was always, “Let’s see how,” even when we asked for something as rare as a grad student pay raise.
+Dr. Wenjun Zhou has been a consistent source of encouragement—I hope we can collaborate on research in the future.
+Dr. Robert Mee offered guidance at critical junctures.
+Dr. Emre Demirkaya made “Statistical Learning” one of the most difficult—and rewarding—courses of my PhD, and also became a great friend.
+Terry Higgins and Charlie Cweik helped shape me into a better teacher, for which I’m truly thankful.</p>
+<p>This path into research wouldn’t have begun without Dr. Pritam Ranjan, who nudged me early on at IIM Indore through summer internships and research papers.
+His belief in me during those formative years set everything else in motion.</p>
+<p>Life in Knoxville would’ve felt a lot lonelier without the people who brought warmth and light.
+Nikhil Narayane has been a constant companion through shared road trips and memories.
+Yu Jiang has been a close and trusted friend, introducing me to Chinese culture (and hot pot!)—and I look forward to visiting China with her one day.
+Greeshma Geetha has a wonderful way of bursting my thought bubbles and grounding me in nature and environmental consciousness.
+Thanks to her, I notice the world more.</p>
+<p>Pablo and I have had countless late-night debates on technology, programming languages, and the very fabric of the internet.
+To paraphrase Godwin’s Law—if most online conversations eventually devolve into references to Hitler, ours always loop back to the philosophy of tech.
+Samudra Dasgupta (and his dog Henley) brought color and chaos in the best way.
+Despite his quirks, Samudra is a kindred spirit, driven by the same idealistic goal—to make the world better than we found it.</p>
+<p>A surprise gift of my time at HP was meeting Dea Bardhoshi.
+Her curiosity and presence have sparked many thoughtful conversations.
+Our weekly serendipity calls have helped keep my own curiosity alive.</p>
+<p>And then there’s Meenal.
+My favorite person.
+Food for both my mind and heart.
+Her presence is an anchor, a mirror, and a source of joy.
+I find myself yearning for every next meeting with her.</p>
+<p>Finally, to my parents—Rajendra Prasad and Chandra Lata Barnwal—my brother Shashank, and my sister Shalini: your unwavering love and patience have sustained me in more ways than you know.
+Everything I do is built upon your sacrifices and support.
+I carry you with me, always.</p>
+</div>
+<div id="phd-in-pictures" class="section level1">
+<h1>PhD in Pictures</h1>
+<p>Assorted pictures from the last four years.</p>
+<p><img src="images/DSCF2038.png" /><img src="images/DSCF1989.png" /><img src="images/DSCF1974.png" /><img src="images/DSCF1861.png" /><img src="images/DSCF1776.png" /><img src="images/50407780_01401_0130_XLarge.png" /><img src="images/50407780_00201_0134_XLarge.png" /></p>
+<p><img src="images/IMG_7979.webp" /></p>
+<p><img src="images/IMG_8005.webp" /></p>
+<p><img src="images/5819165760540440849.webp" /></p>
+<p><img src="images/5038a1b4-17fe-4a24-a2b5-49e847522f69.webp" /></p>
+<p><img src="images/982AA092-CDC9-4871-B3AB-25E337BCA7AC.webp" /></p>
+<p><img src="images/IMG_9462.webp" /></p>
+<p><img src="images/IMG_9581.webp" /></p>
+<p><img src="images/IMG_9599.webp" /></p>
+<p><img src="images/IMG_9791.webp" /></p>
+<p><img src="images/IMG_5636.webp" /></p>
+<p><img src="images/IMG_4083.webp" /></p>
+<p><img src="images/IMG_3772.webp" /></p>
+<p><img src="images/IMG_3710.webp" /></p>
+<p><img src="images/IMG_3616.webp" /></p>
+<p><img src="images/IMG_3600.webp" /></p>
+<p><img src="images/IMG_3512.webp" /></p>
+<p><img src="images/IMG_3506.webp" /></p>
+<p><img src="images/IMG_1094.webp" /></p>
+<p><img src="images/IMG_0980.webp" /></p>
+<p><img src="images/IMG_0881.webp" /></p>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/forecasting/">Forecasting</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/passports/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Power of Your Passport</span>
+  </a>
+  <a class="next" href="/ai-manifesto/">
+    <span class="title">Next »</span>
+    <br>
+    <span>AI Manifesto</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

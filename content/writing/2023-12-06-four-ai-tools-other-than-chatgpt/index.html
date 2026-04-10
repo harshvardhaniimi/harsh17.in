@@ -1,0 +1,130 @@
+---
+title: Four AI Chatbots other than ChatGPT 
+subtitle: "Google's Bard is not eligible"
+summary: "General purpose AI Chatbots have taken over the world in recent years. Here I take a look at four chatbots that I use quite often in my daily life."
+author: Harshvardhan
+date: '2023-11-27'
+slug: four-ai-chatbots-other-than-chatgpt
+categories:
+  - life
+  - thoughts
+  - ai
+tags: []
+---
+
+
+
+<p>Since its launch, ChatGPT has taken over the world by a storm.
+While many are afraid of losing their jobs (which likely <a href="https://www.harsh17.in/ai2/">will happen</a>), many of us are thinking of using these tools to upgrade our existing work quality.
+In the last several months, I have discovered numerous tools like that; let’s take a look at some interesting ones that I frequently visit.</p>
+<div id="perplexity" class="section level3">
+<h3>Perplexity</h3>
+<p><a href="https://www.perplexity.ai/">Perplexity.ai</a> is a search tool like Google but with added GPT’s knowledge base.
+Things that I have found it best for:</p>
+<ul>
+<li><p>Deep search when I don’t remember the keywords to search on Google,</p></li>
+<li><p>I want to have specific knowledge about a subject that is beyond the knowledge cut-off of ChatGPT such as recent news and developments,</p></li>
+<li><p><strong>Copilot mode:</strong> when I’m not sure what are the limitations of my thought process and want AI to act collaboratively — discuss options with me and choose based on my preferences.</p></li>
+</ul>
+<p><img src="images/perplexity-1.png" /></p>
+<p>Their “<a href="https://www.perplexity.ai/discover">Discover</a>” tab is also a good place to find interesting news from around the internet.
+Perplexity also has many other LLMs that you can try in their <a href="https://labs.perplexity.ai/">Playground</a>.
+Mistral-7b-instruct in particular was famous for having a very low safety check in prompts and responses.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</div>
+<div id="phind" class="section level3">
+<h3>Phind</h3>
+<p>I first heard about Phind from Paul Graham on Twitter/X who shared how <a href="https://www.phind.com/blog/phind-model-beats-gpt4-fast">Phind beat GPT-4</a> at programming, and was 5x faster!
+Furthermore, it supported 16,000 tokens while GPT-4 only supported 4096 tokens.
+That’s not all — it could even search the internet, which means it was <em>amazing</em> at answering documentation questions from just launched software.</p>
+<p><img src="images/phind-paul-graham.png" /></p>
+<p>Situations when I find Phind most useful:</p>
+<ul>
+<li><p>Coding.
+It is generally better than GPT-4 and can even search the internet!
+This is necessary when working with packages that got a recent update.</p></li>
+<li><p>Since it has 4 times the context window of GPT-4<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>, I can put in the entire app or function for its perusal to poke out holes in my project.
+When you’re debugging, sometimes it’s not clear what’s the source of error — putting the complete project there with pair programmer helps.</p></li>
+<li><p><strong>Pair programmer:</strong> When you choose this, the chatbot is conversational and much better to use for debugging.</p></li>
+</ul>
+<p><img src="images/phind-1.png" /></p>
+<p>In my experience, Phind generally gives multiple methods to complete a given task unlike GPT-4.
+It not only helps me learn the alternatives to achieve the objective, I know the limitations of each of them.</p>
+<p>The responses also have search results with them in case you’re interested in learning more.</p>
+</div>
+<div id="claude" class="section level3">
+<h3>Claude</h3>
+<p>When <a href="https://claude.ai/chats">Claude.ai</a> (with Claude 2) was launched this summer, I immediately realised how prone to hallucinations it was.
+Like other LLMs, it made up stuff confidently.
+But the rate at which it made up stuff was similar only to Google’s Bard.</p>
+<p>Nevertheless, Claude’s strength is in its ability to handle <em>really long</em> contexts, up to 200,000 tokens.
+That is almost 12x other models.
+Furthermore, it can process PDF, TXT, CSV and DOCX.</p>
+<p>I use Claude mostly for:</p>
+<ul>
+<li>Summarize information from PDFs. This is great for finding out information from really long documents that I don’t have the will to read.</li>
+</ul>
+<p>Its performance in programming is abysmal and I wouldn’t trust its factual responses.
+Do verify.</p>
+<p><strong>Side-note on hallucinations:</strong> GPT-4 makes least amount of hallucinations, only around 3%.
+That’s better than most humans, in my opinion.
+Claude makes around 8.5% hallucinations.
+Google’s Palm 2 has a 27% hallucination rate.
+See the <a href="https://github.com/vectara/hallucination-leaderboard">leaderboard</a>.</p>
+</div>
+<div id="typeset-scispace" class="section level3">
+<h3>Typeset / Scispace</h3>
+<p>ChatPDF and its cousins took over the internet around February.
+Many indie developers created their versions to chat with PDF files but the quality for all of them weren’t as good as we had hoped.
+For my research area — machine learning — it had shallow knowledge, no depth.
+If I asked it a question around the paper, it would pick up the key words and generate a meaningful response with those words.
+Did it answer my question?
+Largely, no.</p>
+<p><a href="https://typeset.io/">Typeset.io</a> is a big improvement.</p>
+<ul>
+<li><p><strong>Literature review:</strong> You can ask research questions directly and it will give a response with research papers as citations.</p></li>
+<li><p><strong>Read with AI:</strong> It can explain math!
+You can upload any PDF paper and it will start a chat on the paper.
+You can highlight any piece of text or math, and it will explain it to you.
+Granted it’s not the same as reading the paper itself, but much better than ChatPDF.</p></li>
+<li><p>It comes with a Chrome extension that provides Read with AI options on most journal’s website.</p></li>
+<li><p>It doubles as a paper management tool.
+You can collect papers together in a collection, create Bibtex citations, and more.
+Google Scholar++</p></li>
+</ul>
+<p><img src="images/scispace-1.png" /></p>
+<p><img src="images/scispace-2.png" /></p>
+</div>
+<div id="why-not-bard" class="section level3">
+<h3>Why not Bard?</h3>
+<p>Because it simply doesn’t make the cut.
+Bard (with Google’s Palm 2 Chat) has the <a href="https://github.com/vectara/hallucination-leaderboard">highest hallucination rate</a> (27%), cannot do math at all<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>, and even with access to all my data, keeps giving summaries of things not in my emails, details about events that don’t exist, and travel advice to places in Knoxville, Iowa instead of Tennessee.
+Its image recognition is funky.</p>
+<p>A <a href="https://www.reddit.com/r/ChatGPT/comments/123nwy2/bard_sucks_so_much/">Redditor</a> summarised it well:</p>
+<blockquote>
+<p>Bard acts as a tired old employee who´s about to retire sometime soon and doesn´t give a fudge about its work.
+Just wants to end its shift and go back home to have dinner-and-a-movie alone on its couch like every night, and will continue doing that after retirement.…
+like it was born tired...
+applying the law of minimum effort to all its answers...</p>
+</blockquote>
+<p>With Gemini released today morning, Google says it has been able to catch up to GPT-3.5.
+Let’s see.
+Haven’t tested it yet.</p>
+</div>
+<div id="chatgpt-is-still-the-king" class="section level3">
+<h3>ChatGPT is still the King</h3>
+<p>ChatGPT is still the best AI chatbot for general purpose use.
+I find myself using the Voice Chat functionality a lot — to brainstorm ideas and listen to ideas.
+Its speech to text (Whisper) and text to speech are much better than ANYTHING I’ve seen in any tool.
+It has an amazing ability to understand images, better than everything I know.</p>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>When it was launched, it gave explicit instructions on how to commit suicide for example.
+Now, it denies answering the question.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>OpenAI released GPT-4-turbo which has 16k context memory, so this point isn’t that big anymore.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>It gives a list of 13 players when <a href="https://g.co/bard/share/1da260c4e7ad">asked</a> for best 11 cricket players.
+I also give it serious penalty for not including MS Dhoni or Sachin Tendulkar — two best players.
+<a href="https://chat.openai.com/share/43c87630-3af1-4517-8165-0a68136571dc">ChatGPT</a> gives me 11 players and includes both of them.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

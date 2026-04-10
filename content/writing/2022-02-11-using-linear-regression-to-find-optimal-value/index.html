@@ -1,0 +1,167 @@
+---
+title: Linear Regression and Optimisation
+subtitle: Using linear regression to find the optimal value of an input
+summary: Using linear regression to find the optimal value of an input
+author: Harshvardhan
+date: '2022-02-11'
+slug: using-linear-regression-to-find-optimal-value
+categories:
+  - R
+  - statistics
+tags: []
+---
+
+
+
+<p>When I first learnt linear regression six years ago, I was surprised by its power. I could know the effect of one phenomenon on another and the extent of the relationship. As years passed by, I revisited its different parts in pieces. Stability. Consistency. Precision. R Squared. The list goes on.</p>
+<p>Sometime in the past, I decided to compile all I had learnt about linear regression. However, such massive projects never see fruition. <a href="https://mays.tamu.edu/directory/as19/">In my MBA, Prof Amlesh Sharma</a> from Texas A&amp;M taught this in his Advanced Marketing Analytics class; I didn’t find this technique elsewhere. Using this simple trick, you can decide the optimal value for input to produce the maximum output.</p>
+<div id="formulation" class="section level1">
+<h1>Formulation</h1>
+<p>At its heart, linear regression is fitting a straight line in the existing data so that the line is closest to the points. We solve the optimisation problem to minimise the distance between the regression line and the actual observation. This approach is called “loss minimisation”. Another popular method is to “maximise likelihood”. Explanation of these methods is beyond the scope of this article.</p>
+</div>
+<div id="variables" class="section level1">
+<h1>Variables</h1>
+<p><strong>Independent variables (X):</strong> Independent variables are assumed to be independent of each other and the cause of an effect.</p>
+<p><strong>Dependent variable (Y):</strong> Dependent variable is the final effect we try to estimate or predict.</p>
+</div>
+<div id="case-study-number-of-golf-courses" class="section level1">
+<h1>Case Study: Number of Golf Courses</h1>
+<p>There is a strong theoretical reason to believe that the number of golf courses in a state would depend on climate, population, per capita income and popularity. Consider a simple case where you know only the people of the state and the number of golf courses in that state.</p>
+<p>The linear model to find the number of gold courses can be written as the following.</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1X \varepsilon
+\]</span></p>
+<p><span class="math inline">\(Y\)</span> is the number of golf courses in the state and <span class="math inline">\(X\)</span> is population.</p>
+<div id="is-the-relationship-linear" class="section level2">
+<h2>Is the relationship linear?</h2>
+<p>Let’s check it.</p>
+<div id="data" class="section level3">
+<h3>Data</h3>
+<p>Data on golf courses by US state is available at this <a href="https://www.bls.gov/opub/ted/2018/golf-anyone-a-look-at-golf-courses-and-country-clubs-by-state.htm">website</a>. I scrapped it into a <code>.CSV</code> file available <a href="https://www.harsh17.in/using-linear-regression-to-find-optimal-value/data/golf.csv">here</a>.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.2     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>theme_set(theme_h())
+
+golf = read.csv(&quot;https://www.harsh17.in/using-linear-regression-to-find-optimal-value/data/golf.csv&quot;) %&gt;% as_tibble()
+golf</code></pre>
+<pre><code>## # A tibble: 52 × 4
+##    State          Location.quotient Establishments Employment
+##    &lt;chr&gt;                      &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;     
+##  1 U.S. Total                  1    11,088         306,782   
+##  2 Florida                     2.66 884            48,670    
+##  3 Hawaii                      2.5  57             3,491     
+##  4 South Carolina              2.1  256            9,094     
+##  5 Arizona                     1.58 168            9,417     
+##  6 Nevada                      1.39 83             3,959     
+##  7 North Carolina              1.35 402            12,496    
+##  8 Alabama                     1.14 150            4,670     
+##  9 Pennsylvania                1.13 551            13,975    
+## 10 Georgia                     1.1  279            10,279    
+## # ℹ 42 more rows</code></pre>
+<p>Population of each US state is available on this <a href="https://worldpopulationreview.com/states">website</a>. I downloaded the <code>.CSV</code> file available from there (<a href="https://www.harsh17.in/using-linear-regression-to-find-optimal-value/data/state_population.csv">click here</a> to download).</p>
+<pre class="r"><code>population = read.csv(&quot;https://www.harsh17.in/using-linear-regression-to-find-optimal-value/data/state_population.csv&quot;) %&gt;% as_tibble()
+population</code></pre>
+<pre><code>## # A tibble: 52 × 9
+##     rank State       Pop  Growth Pop2021 Pop2010 growthSince2010 Percent density
+##    &lt;int&gt; &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1     1 Califor… 3.97e7  0.0013  3.96e7  3.73e7          0.0628  0.118     255.
+##  2     2 Texas    3.01e7  0.0124  2.97e7  2.52e7          0.192   0.0896    115.
+##  3     3 Florida  2.22e7  0.0106  2.19e7  1.88e7          0.177   0.066     414.
+##  4     4 New York 1.92e7 -0.004   1.93e7  1.94e7         -0.0091  0.0572    408.
+##  5     5 Pennsyl… 1.28e7  0.0001  1.28e7  1.27e7          0.0074  0.0381    286.
+##  6     6 Illinois 1.25e7 -0.0041  1.26e7  1.28e7         -0.0251  0.0372    225.
+##  7     7 Ohio     1.17e7  0.0011  1.17e7  1.15e7          0.0163  0.0349    287.
+##  8     8 Georgia  1.09e7  0.0098  1.08e7  9.71e6          0.126   0.0325    190.
+##  9     9 North C… 1.08e7  0.0099  1.07e7  9.57e6          0.129   0.0322    222.
+## 10    10 Michigan 1.00e7  0.0003  9.99e6  9.88e6          0.0119  0.0297    177.
+## # ℹ 42 more rows</code></pre>
+<p>Note that there is a timeline mismatch. Golf course data is from 2017, and population data is from 2021. However, since the purpose of this article is to show linear regression-based optimisation and not an actual world application — it’s acceptable.</p>
+</div>
+<div id="wrangling-data" class="section level3">
+<h3>Wrangling Data</h3>
+<p>Let’s merge the two datasets and retain only the columns that we need.</p>
+<pre class="r"><code># inner join
+df = inner_join(golf, population)</code></pre>
+<pre><code>## Joining with `by = join_by(State)`</code></pre>
+<pre class="r"><code># retain only number of golf courses and population in 2021
+df = df %&gt;% 
+  select(State, Establishments, Pop2021)
+
+# Establishments is in characters, so convert it to numeric
+df$Establishments = as.numeric(df$Establishments)</code></pre>
+</div>
+</div>
+</div>
+<div id="visualisation" class="section level1">
+<h1>Visualisation</h1>
+<p>Just out of curiosity, let’s see how number of golf courses are with respect to state population.</p>
+<pre class="r"><code>df %&gt;% 
+  ggplot(aes(x = Pop2021, y = Establishments, colour = State, size = Pop2021)) +
+  geom_point(alpha = 0.5, show.legend = FALSE)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>So there is a straightforward pattern that as the population increases, the number of golf courses increases. However, the variance also increases with population. When the population is around 20 million, golf courses can be about 600 or 800. There will likely be heteroskedasticity problems because of dependent variance if we directly apply a linear model.</p>
+</div>
+<div id="optimisation" class="section level1">
+<h1>Optimisation</h1>
+<p>Imagine if I rewrite the linear model differently.</p>
+<p><span class="math display">\[
+Y = a + bX + cX^2
+\]</span></p>
+<p><span class="math inline">\(Y\)</span> is the number of golf courses and <span class="math inline">\(X\)</span> is the population.</p>
+<p>Then, I can calculate <span class="math inline">\(\frac{dY}{dX}\)</span> as the following.</p>
+<p><span class="math display">\[
+\frac{dY}{dX} = b + 2cX
+\]</span></p>
+<p>For the optimal value — minimum or maximum — we will set the first order condition to zero. Thus,</p>
+<p><span class="math display">\[
+X = \frac{-b}{2c}.
+\]</span></p>
+<p>Whether it will give us minima or maxima will depend on sign of <span class="math inline">\(\frac{d^2Y}{dX^2} = 2c\)</span>, i.e. sign of <span class="math inline">\(c\)</span>. So, let’s first estimate the model and see what we get.</p>
+<pre class="r"><code>fit = lm(Establishments ~ Pop2021 + I(Pop2021^2), data = df)
+summary(fit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Establishments ~ Pop2021 + I(Pop2021^2), data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -154.203  -48.364    2.627   41.706  244.067 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -1.070e+01  2.219e+01  -0.482    0.632    
+## Pop2021       4.648e-05  4.580e-06  10.149 1.55e-13 ***
+## I(Pop2021^2) -7.671e-13  1.328e-13  -5.778 5.46e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 87.98 on 48 degrees of freedom
+## Multiple R-squared:  0.8092,	Adjusted R-squared:  0.8013 
+## F-statistic: 101.8 on 2 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>We see that <span class="math inline">\(c = -7.6 \times 10^{-13}\)</span>, which is negative. Thus, the value we get from <span class="math inline">\(X = \frac{-b}{2c}\)</span> will be maximiser. At that population, we would have the maximum number of golf courses.</p>
+<p>Let’s calculate that critical value.</p>
+<pre class="r"><code>cc = coef(fit)
+print(unname(-cc[2]/(2*cc[3])))</code></pre>
+<pre><code>## [1] 30296969</code></pre>
+<pre class="r"><code>X = -cc[2]/(2*cc[3])</code></pre>
+<p>Thus, the population that maximises the number of golf courses is 30,296,969 — around thirty million.</p>
+<p>How many golf courses we will have in that case?</p>
+<pre class="r"><code>(Y = cc %*% c(1, X, X^2))</code></pre>
+<pre><code>##          [,1]
+## [1,] 693.4493</code></pre>
+<p>It will have around 694 golf courses. This looks like a correct answer from the plot as well.</p>
+<pre class="r"><code>df %&gt;% 
+  ggplot(aes(x = Pop2021, y = Establishments)) +
+  geom_point(alpha = 0.5) +
+  geom_point(aes(X, Y), colour = &quot;red&quot;, size = 2)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>

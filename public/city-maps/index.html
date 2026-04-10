@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Street Maps (of Some Cities) | Harshvardhan</title>
+<meta name="keywords" content="r">
+<meta name="description" content="Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I&rsquo;ve visited. Today, I thought to make street maps of some of them (and other cool cities).">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/city-maps/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/city-maps/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/city-maps/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Street Maps (of Some Cities)">
+  <meta property="og:description" content="Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I’ve visited. Today, I thought to make street maps of some of them (and other cool cities).">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2022-05-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-05-28T00:00:00+00:00">
+    <meta property="article:tag" content="R">
+      <meta property="og:image" content="/city-maps/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/city-maps/featured.png">
+  <meta name="twitter:title" content="Street Maps (of Some Cities)">
+  <meta name="twitter:description" content="Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I’ve visited. Today, I thought to make street maps of some of them (and other cool cities).">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Street Maps (of Some Cities)",
+      "item": "/city-maps/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Street Maps (of Some Cities)",
+  "name": "Street Maps (of Some Cities)",
+  "description": "Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I\u0026rsquo;ve visited. Today, I thought to make street maps of some of them (and other cool cities).",
+  "keywords": [
+    "r"
+  ],
+  "articleBody": "Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I’ve visited. Today, I thought to make street maps of some of them (and other cool cities).\nThe dark grey lines are highways and roadways, light grey lines are other streets and blue is water.\nJhumri Tilaiya, India Indore, India Riga, Latvia Knoxville, United States New Delhi, India Sydney, Australia New York, United States Boston, United States London, United Kingdom The function to generate these is not complicated. For a detailed tutorial, see this tutorial. Here’s the function that I used.\nlibrary(tidyverse) library(osmdata) city_mapper = function(city) { lts = getbb(city) streets = getbb(city)%\u003e% opq()%\u003e% add_osm_feature(key = \"highway\", value = c(\"motorway\", \"primary\", \"secondary\", \"tertiary\")) %\u003e% osmdata_sf() small_streets = getbb(city)%\u003e% opq()%\u003e% add_osm_feature(key = \"highway\", value = c(\"residential\", \"living_street\", \"unclassified\", \"service\", \"footway\")) %\u003e% osmdata_sf() river = getbb(city)%\u003e% opq()%\u003e% add_osm_feature(key = \"waterway\", value = \"river\") %\u003e% osmdata_sf() p = ggplot() + geom_sf(data = streets$osm_lines, inherit.aes = FALSE, color = \"#282828\", #3C280D size = .5, alpha = .7) + geom_sf(data = small_streets$osm_lines, inherit.aes = FALSE, color = \"#909090\", #795C34 size = .4, alpha = .4) + geom_sf(data = river$osm_lines, inherit.aes = FALSE, color = \"#03026F\", size = .7, alpha = .8) + coord_sf(xlim = c(lts[1], lts[3]), ylim = c(lts[2], lts[4]), expand = FALSE) + theme_void() + labs(caption = \"Learn more: harsh17.in/city-maps\") return(p) } ",
+  "wordCount" : "230",
+  "inLanguage": "en",
+  "image": "/city-maps/featured.png","datePublished": "2022-05-28T00:00:00Z",
+  "dateModified": "2022-05-28T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/city-maps/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Street Maps (of Some Cities)
+    </h1>
+    <div class="post-meta"><span title='2022-05-28 00:00:00 +0000 UTC'>May 28, 2022</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I&rsquo;ve visited. Today, I thought to make street maps of some of them (and other cool cities).</p>
+<p>The dark grey lines are highways and roadways, light grey lines are other streets and blue is water.</p>
+<h1 id="jhumri-tilaiya-india">Jhumri Tilaiya, India<a hidden class="anchor" aria-hidden="true" href="#jhumri-tilaiya-india">#</a></h1>
+<img src="/city-maps/index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<h1 id="indore-india">Indore, India<a hidden class="anchor" aria-hidden="true" href="#indore-india">#</a></h1>
+<img src="/city-maps/index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<h1 id="riga-latvia">Riga, Latvia<a hidden class="anchor" aria-hidden="true" href="#riga-latvia">#</a></h1>
+<img src="/city-maps/index_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<h1 id="knoxville-united-states">Knoxville, United States<a hidden class="anchor" aria-hidden="true" href="#knoxville-united-states">#</a></h1>
+<img src="/city-maps/index_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<h1 id="new-delhi-india">New Delhi, India<a hidden class="anchor" aria-hidden="true" href="#new-delhi-india">#</a></h1>
+<img src="/city-maps/index_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<h1 id="sydney-australia">Sydney, Australia<a hidden class="anchor" aria-hidden="true" href="#sydney-australia">#</a></h1>
+<img src="/city-maps/index_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<h1 id="new-york-united-states">New York, United States<a hidden class="anchor" aria-hidden="true" href="#new-york-united-states">#</a></h1>
+<img src="/city-maps/index_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<h1 id="boston-united-states">Boston, United States<a hidden class="anchor" aria-hidden="true" href="#boston-united-states">#</a></h1>
+<img src="/city-maps/index_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<h1 id="london-united-kingdom">London, United Kingdom<a hidden class="anchor" aria-hidden="true" href="#london-united-kingdom">#</a></h1>
+<img src="/city-maps/index_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<hr>
+<p>The function to generate these is not complicated. For a detailed tutorial, <a href="https://ggplot2tutor.com/tutorials/streetmaps?utm_source=pocket_mylist">see this tutorial</a>. Here&rsquo;s the function that I used.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">osmdata</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">city_mapper</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="n">lts</span> <span class="o">=</span> <span class="nf">getbb</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="n">streets</span> <span class="o">=</span> <span class="nf">getbb</span><span class="p">(</span><span class="n">city</span><span class="p">)</span><span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">opq</span><span class="p">()</span><span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">add_osm_feature</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="s">&#34;highway&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                      <span class="n">value</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;motorway&#34;</span><span class="p">,</span> <span class="s">&#34;primary&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                                <span class="s">&#34;secondary&#34;</span><span class="p">,</span> <span class="s">&#34;tertiary&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">osmdata_sf</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="n">small_streets</span> <span class="o">=</span> <span class="nf">getbb</span><span class="p">(</span><span class="n">city</span><span class="p">)</span><span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">opq</span><span class="p">()</span><span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">add_osm_feature</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="s">&#34;highway&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                      <span class="n">value</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;residential&#34;</span><span class="p">,</span> <span class="s">&#34;living_street&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="s">&#34;unclassified&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="s">&#34;service&#34;</span><span class="p">,</span> <span class="s">&#34;footway&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">osmdata_sf</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="n">river</span> <span class="o">=</span> <span class="nf">getbb</span><span class="p">(</span><span class="n">city</span><span class="p">)</span><span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">opq</span><span class="p">()</span><span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">add_osm_feature</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="s">&#34;waterway&#34;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#34;river&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">osmdata_sf</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="n">p</span> <span class="o">=</span> <span class="nf">ggplot</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">streets</span><span class="o">$</span><span class="n">osm_lines</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">inherit.aes</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;#282828&#34;</span><span class="p">,</span> <span class="c1">#3C280D</span>
+</span></span><span class="line"><span class="cl">              <span class="n">size</span> <span class="o">=</span> <span class="m">.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">alpha</span> <span class="o">=</span> <span class="m">.7</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">small_streets</span><span class="o">$</span><span class="n">osm_lines</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">inherit.aes</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;#909090&#34;</span><span class="p">,</span> <span class="c1">#795C34</span>
+</span></span><span class="line"><span class="cl">              <span class="n">size</span> <span class="o">=</span> <span class="m">.4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">alpha</span> <span class="o">=</span> <span class="m">.4</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">geom_sf</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">river</span><span class="o">$</span><span class="n">osm_lines</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">inherit.aes</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;#03026F&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">size</span> <span class="o">=</span> <span class="m">.7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="n">alpha</span> <span class="o">=</span> <span class="m">.8</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">coord_sf</span><span class="p">(</span><span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">lts[1]</span><span class="p">,</span> <span class="n">lts[3]</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">               <span class="n">ylim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">lts[2]</span><span class="p">,</span> <span class="n">lts[4]</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">               <span class="n">expand</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">theme_void</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">labs</span><span class="p">(</span><span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;Learn more: harsh17.in/city-maps&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">   <span class="kr">return</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/r/">R</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0-%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A4%BE-%E0%A4%97%E0%A4%BE%E0%A4%82%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A5%80-%E0%A4%95%E0%A4%BE-%E0%A4%86%E0%A4%B0%E0%A5%8B%E0%A4%AA/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>धर्मक्षेत्र: माता गांधारी का आरोप</span>
+  </a>
+  <a class="next" href="/some-website-stats/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Some Website Stats</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

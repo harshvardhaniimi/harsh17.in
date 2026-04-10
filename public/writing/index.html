@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Writing | Harshvardhan</title>
+<meta name="keywords" content="">
+<meta name="description" content="Essays, tutorials, notes, and reflections on data science, philosophy, travel, and life.">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/writing/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="//localhost:1313/writing/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="//localhost:1313/writing/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="//localhost:1313/writing/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Writing">
+  <meta property="og:description" content="Essays, tutorials, notes, and reflections on data science, philosophy, travel, and life.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Writing">
+  <meta name="twitter:description" content="Essays, tutorials, notes, and reflections on data science, philosophy, travel, and life.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "//localhost:1313/writing/"
+    }
+  ]
+}
+</script>
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/writing/" title="Writing">
+                    <span class="active">Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<header class="page-header">
+  <h1>Writing</h1>
+  <p style="color:var(--secondary);font-style:italic;">Essays, tutorials, notes, and reflections on data science, philosophy, travel, and life.</p>
+</header>
+<div class="tag-filter" id="tagFilter">
+  <a href="#" class="active" data-tag="all">all</a>
+  <a href="#" data-tag="academia">academia</a>
+  <a href="#" data-tag="ai">ai</a>
+  <a href="#" data-tag="apple">apple</a>
+  <a href="#" data-tag="blogdown">blogdown</a>
+  <a href="#" data-tag="coffee">coffee</a>
+  <a href="#" data-tag="confusing">confusing</a>
+  <a href="#" data-tag="covid-19">covid-19</a>
+  <a href="#" data-tag="data-science">data-science</a>
+  <a href="#" data-tag="economics">economics</a>
+  <a href="#" data-tag="forecasting">forecasting</a>
+  <a href="#" data-tag="government">government</a>
+  <a href="#" data-tag="history">history</a>
+  <a href="#" data-tag="iim-indore">iim indore</a>
+  <a href="#" data-tag="india">india</a>
+  <a href="#" data-tag="mac">mac</a>
+  <a href="#" data-tag="machine-learning">machine-learning</a>
+  <a href="#" data-tag="ml">ml</a>
+  <a href="#" data-tag="music">music</a>
+  <a href="#" data-tag="personal">personal</a>
+  <a href="#" data-tag="philosophy">philosophy</a>
+  <a href="#" data-tag="probability">probability</a>
+  <a href="#" data-tag="productivity">productivity</a>
+  <a href="#" data-tag="python">python</a>
+  <a href="#" data-tag="r">r</a>
+  <a href="#" data-tag="statistics">statistics</a>
+  <a href="#" data-tag="tools">tools</a>
+  <a href="#" data-tag="travel">travel</a>
+  <a href="#" data-tag="vipassana">vipassana</a>
+</div>
+<div class="year-group">
+  <h3>2025</h3>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/language-models-and-multiverse/">Language Models and Multiverse</a>
+    <span class="date">Sep 1</span>
+  </div>
+  <div class="writing-list-item" data-tags="travel">
+    <a href="/albania/">A Week in Tirana, Albania</a>
+    <span class="date">Jul 15</span>
+  </div>
+  <div class="writing-list-item" data-tags="travel">
+    <a href="/passports/">Power of Your Passport</a>
+    <span class="date">Jun 24</span>
+  </div>
+  <div class="writing-list-item" data-tags="forecasting">
+    <a href="/phd/">From Data to Decisions: The Story Behind My PhD</a>
+    <span class="date">Apr 22</span>
+  </div>
+  <div class="writing-list-item" data-tags="ai">
+    <a href="/ai-manifesto/">AI Manifesto</a>
+    <span class="date">Feb 18</span>
+  </div>
+  <div class="writing-list-item" data-tags="india">
+    <a href="/making-an-indian-curry/">Recipe: Making a Homestyle Indian Curry</a>
+    <span class="date">Jan 25</span>
+  </div></div>
+<div class="year-group">
+  <h3>2024</h3>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/happiness/">Happiness: What makes us happy?</a>
+    <span class="date">Dec 11</span>
+  </div>
+  <div class="writing-list-item" data-tags="coffee">
+    <a href="/best-cafes-in-knoxville/">Best Cafes in Knoxville</a>
+    <span class="date">Aug 7</span>
+  </div>
+  <div class="writing-list-item" data-tags="history">
+    <a href="/the-ongoing-sixth-mass-extinction/">The Ongoing Sixth Mass Extinction</a>
+    <span class="date">Jul 19</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/read-listen-watch/">Recommendations: List of Things to Read, Listen and Watch</a>
+    <span class="date">Jul 4</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophyvipassana">
+    <a href="/vipassana2/">Thoughts about Vipassana Meditation (and My Second Experience)</a>
+    <span class="date">Jun 3</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/web-surfing-isn-t-fun-anymore/">Web surfing isn&#39;t fun anymore 🏄</a>
+    <span class="date">May 15</span>
+  </div>
+  <div class="writing-list-item" data-tags="tools">
+    <a href="/terminal/">Have fun with Terminal on Mac/Linux</a>
+    <span class="date">May 3</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/range/">Book Notes | Range: Why Generalists Triumph in a Specialized World</a>
+    <span class="date">Apr 2</span>
+  </div>
+  <div class="writing-list-item" data-tags="india">
+    <a href="/who-s-funding-the-politics-in-india/">Who&#39;s funding the politics in India?</a>
+    <span class="date">Mar 15</span>
+  </div>
+  <div class="writing-list-item" data-tags="economics">
+    <a href="/against-capitalism/">Against Capitalism</a>
+    <span class="date">Feb 26</span>
+  </div>
+  <div class="writing-list-item" data-tags="aieconomics">
+    <a href="/openai-gpts/">OpenAI&#39;s GPT is a terrific idea</a>
+    <span class="date">Feb 8</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/theory-of-mind/">Theory of Mind</a>
+    <span class="date">Jan 20</span>
+  </div>
+  <div class="writing-list-item" data-tags="travel">
+    <a href="/egypt/">Egypt: An Odyssey Through Time</a>
+    <span class="date">Jan 11</span>
+  </div></div>
+<div class="year-group">
+  <h3>2023</h3>
+  <div class="writing-list-item" data-tags="ai">
+    <a href="/four-ai-chatbots-other-than-chatgpt/">Four AI Chatbots other than ChatGPT</a>
+    <span class="date">Nov 27</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/apple-walled-garden/">Trapped in Beautiful Garden</a>
+    <span class="date">Nov 23</span>
+  </div>
+  <div class="writing-list-item" data-tags="historyindia">
+    <a href="/warren-hastings/">Warren Hastings, The First Governor General of India</a>
+    <span class="date">Nov 11</span>
+  </div>
+  <div class="writing-list-item" data-tags="historyindia">
+    <a href="/battle-of-palassey/">Battle of Palassey and Clive of India</a>
+    <span class="date">Nov 9</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/what-are-you-optimizing-for/">What are you optimizing for?</a>
+    <span class="date">Sep 30</span>
+  </div>
+  <div class="writing-list-item" data-tags="forecastingpythontools">
+    <a href="/hp23/">ML Forecasting at HP Inc.</a>
+    <span class="date">Aug 21</span>
+  </div>
+  <div class="writing-list-item" data-tags="economicsforecastingpython">
+    <a href="/hp-blog-2023/">HP Internship: A Year and a Half in the Fast Lane</a>
+    <span class="date">Aug 21</span>
+  </div>
+  <div class="writing-list-item" data-tags="aimachine-learningpythontools">
+    <a href="/reflections-from-kdd-2023/">Reflections from KDD 2023</a>
+    <span class="date">Aug 14</span>
+  </div>
+  <div class="writing-list-item" data-tags="coffee">
+    <a href="/what-makes-a-good-coffee/">What makes a good coffee?</a>
+    <span class="date">Jul 1</span>
+  </div>
+  <div class="writing-list-item" data-tags="travel">
+    <a href="/seattle/">Seattle: Echoes of Home in the Emerald City</a>
+    <span class="date">Jun 5</span>
+  </div>
+  <div class="writing-list-item" data-tags="aipythontools">
+    <a href="/predicting-race-age-and-gender-from-face-a-small-sample-example-with-encoding/">Predicting Race, Age and Gender from Face: A Small-sample Example with Encoding</a>
+    <span class="date">Jun 3</span>
+  </div>
+  <div class="writing-list-item" data-tags="travel">
+    <a href="/moab/">My 10-Day Escape into Nature&#39;s Embrace: A Camping Journey to Moab</a>
+    <span class="date">May 21</span>
+  </div>
+  <div class="writing-list-item" data-tags="r">
+    <a href="/hugo/">Up Your Blogging Game: Three Enhancements to Hugo Apero</a>
+    <span class="date">May 20</span>
+  </div>
+  <div class="writing-list-item" data-tags="aitools">
+    <a href="/pandas-compare-df/">Comparing two BIG data frames in Pandas</a>
+    <span class="date">May 6</span>
+  </div>
+  <div class="writing-list-item" data-tags="academia">
+    <a href="/gpt/">How does GPT work? Understanding Generative AI Models</a>
+    <span class="date">Apr 26</span>
+  </div>
+  <div class="writing-list-item" data-tags="aipythontools">
+    <a href="/gpt-chatbot/">Crafting Conversations with GPT Personalities in Python</a>
+    <span class="date">Apr 9</span>
+  </div>
+  <div class="writing-list-item" data-tags="personalr">
+    <a href="/twitter-blue/">Who are Twitter Blue Users?</a>
+    <span class="date">Apr 1</span>
+  </div>
+  <div class="writing-list-item" data-tags="economics">
+    <a href="/cities/">Planning Cities with People</a>
+    <span class="date">Mar 16</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/yoga/">Chitta-vritis: Exploring the Depths of Consciousness</a>
+    <span class="date">Mar 9</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/ai2/">I wonder how this AI thing is going to shape up</a>
+    <span class="date">Mar 3</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/experiments/">How to Hack Your Own Mind?</a>
+    <span class="date">Feb 25</span>
+  </div>
+  <div class="writing-list-item" data-tags="pythonrtools">
+    <a href="/languages/">From Bits to Words: A Tale Computing and Communication Languages</a>
+    <span class="date">Feb 8</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophyvipassana">
+    <a href="/meditation/">What happens when you meditate ten hours a day?</a>
+    <span class="date">Feb 1</span>
+  </div>
+  <div class="writing-list-item" data-tags="travel">
+    <a href="/pushkar/">From Mythology to Modernity: The Dual Faces of Pushkar</a>
+    <span class="date">Jan 20</span>
+  </div></div>
+<div class="year-group">
+  <h3>2022</h3>
+  <div class="writing-list-item" data-tags="data-scienceeconomicsr">
+    <a href="/substack/">Moving Next from Revue to Substack</a>
+    <span class="date">Dec 30</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/dltgh/">DLTGH: Days Left to Go Home</a>
+    <span class="date">Dec 1</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/infallible-memory/">Infallible Memory: The Truth of Fact, the Truth of Feeling</a>
+    <span class="date">Nov 24</span>
+  </div>
+  <div class="writing-list-item" data-tags="coffee">
+    <a href="/history-of-coffee/">History of Coffee</a>
+    <span class="date">Nov 22</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-science">
+    <a href="/population-collapse/">Is the world population going to collapse?</a>
+    <span class="date">Nov 10</span>
+  </div>
+  <div class="writing-list-item" data-tags="economicsforecastingpython">
+    <a href="/hp22/">Supply Chain Analytics at HP Inc.</a>
+    <span class="date">Oct 31</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/wise/">Bullets of Wisdom</a>
+    <span class="date">Oct 7</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-scienceeconomics">
+    <a href="/bihar/">How the government of Bihar is changing lives one girl at a time?</a>
+    <span class="date">Sep 20</span>
+  </div>
+  <div class="writing-list-item" data-tags="coffee">
+    <a href="/rediscovering-coffee/">Rediscovering Coffee: A Newfound Hobby</a>
+    <span class="date">Sep 9</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/optimistic/">Being Optimistic</a>
+    <span class="date">Aug 12</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/public-square/">Stoned to Death at the Public Square</a>
+    <span class="date">Aug 10</span>
+  </div>
+  <div class="writing-list-item" data-tags="pythonrtools">
+    <a href="/script-monkey/">Script monkey! 🐒</a>
+    <span class="date">Aug 1</span>
+  </div>
+  <div class="writing-list-item" data-tags="economicsr">
+    <a href="/the-ascribed-advantage/">The Ascribed Advantage</a>
+    <span class="date">Jul 9</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-scienceeconomics">
+    <a href="/the-best-stats-you-ve-ever-seen/">The best stats you&#39;ve ever seen</a>
+    <span class="date">Jul 3</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiadata-sciencer">
+    <a href="/newsletter/">Next — Today I learnt About R</a>
+    <span class="date">Jun 18</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/the-song-of-the-lord/">The Song of The Lord</a>
+    <span class="date">Jun 12</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/food-choices-in-america/">Food Choices in America</a>
+    <span class="date">Jun 5</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0-%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A4%BE-%E0%A4%97%E0%A4%BE%E0%A4%82%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A5%80-%E0%A4%95%E0%A4%BE-%E0%A4%86%E0%A4%B0%E0%A5%8B%E0%A4%AA/">धर्मक्षेत्र: माता गांधारी का आरोप</a>
+    <span class="date">May 30</span>
+  </div>
+  <div class="writing-list-item" data-tags="r">
+    <a href="/city-maps/">Street Maps (of Some Cities)</a>
+    <span class="date">May 28</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/some-website-stats/">Some Website Stats</a>
+    <span class="date">May 23</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/hum-panchhi-unmukt-gagan-ke/">हम पंछी उन्मुक्त गगन के</a>
+    <span class="date">May 15</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/trying-new-things/">Trying New Things</a>
+    <span class="date">May 13</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/harvard-website/">Harvard&#39;s Website</a>
+    <span class="date">May 11</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-sciencemachine-learningr">
+    <a href="/joint-probability-based-dissimilarity-measure-for-discrete-variables/">Joint Probability-based Dissimilarity Measure for Discrete Variables</a>
+    <span class="date">May 10</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/making-nails/">Making Nails</a>
+    <span class="date">Apr 22</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/adr/">Adrenaline Activities</a>
+    <span class="date">Apr 20</span>
+  </div>
+  <div class="writing-list-item" data-tags="economicsr">
+    <a href="/billionaires-and-taxes/">Billionaires and Taxes</a>
+    <span class="date">Apr 14</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/arguments/">Arguments</a>
+    <span class="date">Apr 10</span>
+  </div>
+  <div class="writing-list-item" data-tags="rtools">
+    <a href="/creating-your-own-short-urls-with-blogdown/">Creating your own short URLs with blogdown</a>
+    <span class="date">Mar 24</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/imaginary-reality/">Imaginary Reality</a>
+    <span class="date">Mar 11</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-sciencer">
+    <a href="/lets-say-you-re-copying-a-folder-to-a-folder/">Let’s say you’re copying a folder to a folder</a>
+    <span class="date">Mar 10</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiadata-science">
+    <a href="/interesting-problems-and-where-to-find-them/">Interesting Problems and Where to Find Them?</a>
+    <span class="date">Mar 9</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiadata-science">
+    <a href="/how-to-decide-what-to-research/">How to Decide What to Research?</a>
+    <span class="date">Mar 9</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiartools">
+    <a href="/garlic-some-r-functions-i-use-rather-frequently/">garlic: Some R Functions I Use Rather Frequently</a>
+    <span class="date">Mar 5</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-sciencer">
+    <a href="/titanic-who-survived-the-tragegy/">Titanic: Who Survived The Tragedy?</a>
+    <span class="date">Feb 22</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-scienceeconomicsr">
+    <a href="/number-of-phds/">Number of PhDs by Field</a>
+    <span class="date">Feb 20</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/rules/">Rules for Life</a>
+    <span class="date">Feb 18</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-scienceeconomics">
+    <a href="/notes-on-stata/">Notes on STATA</a>
+    <span class="date">Feb 16</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-science">
+    <a href="/score-and-fisher-s-information/">Score and Fisher&#39;s Information</a>
+    <span class="date">Feb 13</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/public-transport-and-lack-thereof/">Public Transport &amp; Lack Thereof</a>
+    <span class="date">Feb 13</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-sciencer">
+    <a href="/using-linear-regression-to-find-optimal-value/">Linear Regression and Optimisation</a>
+    <span class="date">Feb 11</span>
+  </div>
+  <div class="writing-list-item" data-tags="r">
+    <a href="/classification-logistic-regression-and-random-forest/">Classification: Logistic Regression and Random Forest</a>
+    <span class="date">Feb 11</span>
+  </div>
+  <div class="writing-list-item" data-tags="philosophy">
+    <a href="/improbable-doesn-t-mean-impossible/">Improbable Doesn&#39;t Mean Impossible</a>
+    <span class="date">Feb 9</span>
+  </div>
+  <div class="writing-list-item" data-tags="python">
+    <a href="/notes-on-python/">Cheatsheet on Python</a>
+    <span class="date">Feb 8</span>
+  </div>
+  <div class="writing-list-item" data-tags="r">
+    <a href="/notes-on-r/">Notes on R</a>
+    <span class="date">Feb 3</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/ancestors/">How much do we know about our ancestors?</a>
+    <span class="date">Feb 3</span>
+  </div>
+  <div class="writing-list-item" data-tags="applemacpersonalproductivitytools">
+    <a href="/my-mac-workflow/">My Mac Workflow</a>
+    <span class="date">Feb 2</span>
+  </div>
+  <div class="writing-list-item" data-tags="machine-learningmlr">
+    <a href="/basics-of-text-mining-in-r/">Basics of Text Mining in R</a>
+    <span class="date">Jan 27</span>
+  </div>
+  <div class="writing-list-item" data-tags="r">
+    <a href="/notes-on-github/">Notes on Github</a>
+    <span class="date">Jan 24</span>
+  </div>
+  <div class="writing-list-item" data-tags="r">
+    <a href="/stackoverflow-answers/">Stackoverflow Answers</a>
+    <span class="date">Jan 14</span>
+  </div></div>
+<div class="year-group">
+  <h3>2021</h3>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/shiny-urca/">Urban-Rural Population in 200&#43; Countries</a>
+    <span class="date">Dec 30</span>
+  </div>
+  <div class="writing-list-item" data-tags="economics">
+    <a href="/optimizing-order-frequency-to-minimize-partial-pallet-orders/">Optimizing Order Frequency to Minimize Partial Pallet Orders</a>
+    <span class="date">Dec 10</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-science">
+    <a href="/ai/">Improvements in Artificial Intelligence</a>
+    <span class="date">Dec 9</span>
+  </div>
+  <div class="writing-list-item" data-tags="academia">
+    <a href="/my-name/">My Name</a>
+    <span class="date">Dec 8</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-scienceeconomics">
+    <a href="/replicating-tennessee-star-project/">Replicating Tennessee STAR Project</a>
+    <span class="date">Nov 29</span>
+  </div>
+  <div class="writing-list-item" data-tags="r">
+    <a href="/how-fast-is-m1/">How fast is M1?</a>
+    <span class="date">Nov 8</span>
+  </div>
+  <div class="writing-list-item" data-tags="r">
+    <a href="/next-today-i-learnt-about-r/">Next — Today I Learnt About R</a>
+    <span class="date">Oct 6</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-sciencemachine-learningpythonr">
+    <a href="/supervised-learning-using-baysian-decision-rule/">Supervised Learning Using Baysian Decision Rule</a>
+    <span class="date">Sep 7</span>
+  </div>
+  <div class="writing-list-item" data-tags="governmentindia">
+    <a href="/ten-days-in-the-united-states/">Ten days in the United States</a>
+    <span class="date">Aug 1</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiablogdown">
+    <a href="/technical-and-casual-writing/">Technical and Casual Writing</a>
+    <span class="date">Jul 27</span>
+  </div>
+  <div class="writing-list-item" data-tags="economicsindia">
+    <a href="/aspect-ratio/">Aspect Ratio (Merck Inc.)</a>
+    <span class="date">Jul 15</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-scienceeconomicsphilosophyprobabilityr">
+    <a href="/ellsberg-paradox/">Ellsberg&#39;s Paradox</a>
+    <span class="date">Jul 11</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/irctc-captcha-is-smart/">IRCTC&#39;s Captcha is Smart</a>
+    <span class="date">Jul 6</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiadata-sciencerstatistics">
+    <a href="/yihui-on-blogging-and-writing-books/">Yihui on Blogging and Writing Books</a>
+    <span class="date">Jul 5</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/what-i-find-interesting/">What I Find Interesting</a>
+    <span class="date">Jun 19</span>
+  </div>
+  <div class="writing-list-item" data-tags="tools">
+    <a href="/latex/">Notes on LaTeX</a>
+    <span class="date">Jun 19</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiaeconomics">
+    <a href="/invento-robotics/">Invento Robotics</a>
+    <span class="date">Jun 19</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/quotes/">Inspiring Quotes</a>
+    <span class="date">Jun 19</span>
+  </div>
+  <div class="writing-list-item" data-tags="governmentindia">
+    <a href="/how-is-governments-employment-system-broken/">How is Government&#39;s Employment System Broken?</a>
+    <span class="date">May 30</span>
+  </div>
+  <div class="writing-list-item" data-tags="economics">
+    <a href="/bliss-lifesciences/">Bliss Lifesciences</a>
+    <span class="date">Mar 1</span>
+  </div>
+  <div class="writing-list-item" data-tags="covid-19data-sciencer">
+    <a href="/is-covid-19-data-tampered/">Is COVID-19 Data tampered?</a>
+    <span class="date">Feb 15</span>
+  </div></div>
+<div class="year-group">
+  <h3>2020</h3>
+  <div class="writing-list-item" data-tags="data-sciencegovernmentr">
+    <a href="/forecasting-malaria-vaccine-demand/">Forecasting Malaria Vaccine Demand</a>
+    <span class="date">Dec 24</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiaiim-indore">
+    <a href="/ipm-what-you-need-to-know/">IPM: What You Need To Know</a>
+    <span class="date">Sep 11</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiaiim-indore">
+    <a href="/a-better-way-to-fund-college-education/">A (better) Way to Fund College Education</a>
+    <span class="date">Aug 11</span>
+  </div>
+  <div class="writing-list-item" data-tags="data-scienceindiar">
+    <a href="/twitter-sentiments/">Sentiment Analysis of Tweets</a>
+    <span class="date">Jun 10</span>
+  </div>
+  <div class="writing-list-item" data-tags="musicpersonalr">
+    <a href="/exploring-my-spotify-listening/">Exploring My Spotify Listening</a>
+    <span class="date">Jun 3</span>
+  </div>
+  <div class="writing-list-item" data-tags="academiagovernmentiim-indoreindia">
+    <a href="/understanding-profits-of-non-profits/">Understanding Profits of Non-profits</a>
+    <span class="date">Mar 7</span>
+  </div></div>
+<div class="year-group">
+  <h3>2019</h3>
+  <div class="writing-list-item" data-tags="academia">
+    <a href="/gartner-hype-cycle/">Gartner Hype Cycle</a>
+    <span class="date">Nov 25</span>
+  </div>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/iphones-in-india/">iPhones in India</a>
+    <span class="date">Jun 2</span>
+  </div>
+  <div class="writing-list-item" data-tags="india">
+    <a href="/museums-and-experience-tourism/">Museums and Experience Tourism</a>
+    <span class="date">May 5</span>
+  </div>
+  <div class="writing-list-item" data-tags="confusingphilosophy">
+    <a href="/how-to-decide-to-do-or-not-to-do/">How to decide: to do, or not to do?</a>
+    <span class="date">Apr 13</span>
+  </div>
+  <div class="writing-list-item" data-tags="tools">
+    <a href="/notes-on-linux/">Notes on Linux</a>
+    <span class="date">Feb 26</span>
+  </div></div>
+<div class="year-group">
+  <h3>2018</h3>
+  <div class="writing-list-item" data-tags="academiastatistics">
+    <a href="/presentation-on-latex/">Presentation on LaTeX</a>
+    <span class="date">Nov 24</span>
+  </div></div>
+<div class="year-group">
+  <h3>2016</h3>
+  <div class="writing-list-item" data-tags="personal">
+    <a href="/smart-villages-indore/">Smart Villages Indore</a>
+    <span class="date">Nov 1</span>
+  </div></div>
+
+<script>
+(function() {
+  var filter = document.getElementById('tagFilter');
+  if (!filter) return;
+  var pills = filter.querySelectorAll('a');
+  var entries = document.querySelectorAll('.writing-list-item[data-tags]');
+
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function(e) {
+      e.preventDefault();
+      var tag = this.getAttribute('data-tag');
+      pills.forEach(function(p) { p.classList.remove('active'); });
+      this.classList.add('active');
+
+      entries.forEach(function(entry) {
+        if (tag === 'all') {
+          entry.style.display = '';
+        } else {
+          var tags = entry.getAttribute('data-tags');
+          entry.style.display = tags.indexOf(tag) !== -1 ? '' : 'none';
+        }
+      });
+
+      document.querySelectorAll('.year-group').forEach(function(yg) {
+        var visible = yg.querySelectorAll('.writing-list-item:not([style*="display: none"])');
+        yg.style.display = visible.length ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="//localhost:1313/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

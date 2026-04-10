@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Language Models and Multiverse | Harshvardhan</title>
+<meta name="keywords" content="philosophy">
+<meta name="description" content="I was listening to a podcast by OpenAI where they tell us how they trained GPT-4.5, one of the largest models they have today.
+GPT-4.5 shows intelligence in unexpected ways, demonstrating common sense like other models totally miss.
+I haven’t used it much myself so cannot comment on that, but at 38:38 in the video, Sam Altman asks Daniel Selsam “why does supervised learning work?”.
+Without skipping a beat, he replies “compression”.
+Then he explains that “the ideal intelligence is Solomonoff Induction”.
+Unfamiliar with this term, I jumped on a conversation with GPT-4.5 and along the way, I learnt several interesting things that I want to share with you all.">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/language-models-and-multiverse/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/language-models-and-multiverse/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/language-models-and-multiverse/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Language Models and Multiverse">
+  <meta property="og:description" content="I was listening to a podcast by OpenAI where they tell us how they trained GPT-4.5, one of the largest models they have today. GPT-4.5 shows intelligence in unexpected ways, demonstrating common sense like other models totally miss. I haven’t used it much myself so cannot comment on that, but at 38:38 in the video, Sam Altman asks Daniel Selsam “why does supervised learning work?”. Without skipping a beat, he replies “compression”. Then he explains that “the ideal intelligence is Solomonoff Induction”. Unfamiliar with this term, I jumped on a conversation with GPT-4.5 and along the way, I learnt several interesting things that I want to share with you all.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2025-09-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-09-01T00:00:00+00:00">
+    <meta property="article:tag" content="Philosophy">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Language Models and Multiverse">
+  <meta name="twitter:description" content="I was listening to a podcast by OpenAI where they tell us how they trained GPT-4.5, one of the largest models they have today. GPT-4.5 shows intelligence in unexpected ways, demonstrating common sense like other models totally miss. I haven’t used it much myself so cannot comment on that, but at 38:38 in the video, Sam Altman asks Daniel Selsam “why does supervised learning work?”. Without skipping a beat, he replies “compression”. Then he explains that “the ideal intelligence is Solomonoff Induction”. Unfamiliar with this term, I jumped on a conversation with GPT-4.5 and along the way, I learnt several interesting things that I want to share with you all.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Language Models and Multiverse",
+      "item": "/language-models-and-multiverse/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Language Models and Multiverse",
+  "name": "Language Models and Multiverse",
+  "description": "I was listening to a podcast by OpenAI where they tell us how they trained GPT-4.5, one of the largest models they have today. GPT-4.5 shows intelligence in unexpected ways, demonstrating common sense like other models totally miss. I haven’t used it much myself so cannot comment on that, but at 38:38 in the video, Sam Altman asks Daniel Selsam “why does supervised learning work?”. Without skipping a beat, he replies “compression”. Then he explains that “the ideal intelligence is Solomonoff Induction”. Unfamiliar with this term, I jumped on a conversation with GPT-4.5 and along the way, I learnt several interesting things that I want to share with you all.\n",
+  "keywords": [
+    "philosophy"
+  ],
+  "articleBody": "I was listening to a podcast by OpenAI where they tell us how they trained GPT-4.5, one of the largest models they have today. GPT-4.5 shows intelligence in unexpected ways, demonstrating common sense like other models totally miss. I haven’t used it much myself so cannot comment on that, but at 38:38 in the video, Sam Altman asks Daniel Selsam “why does supervised learning work?”. Without skipping a beat, he replies “compression”. Then he explains that “the ideal intelligence is Solomonoff Induction”. Unfamiliar with this term, I jumped on a conversation with GPT-4.5 and along the way, I learnt several interesting things that I want to share with you all.\nSolomonoff Induction Imagine that you are given the following set of numbers and you have to predict the next one:\n2, 4, 6, 8, ___\nDid you guess 10? Why? Probably because that’s the simplest pattern — “add two each time”. But consider this alternative explanation — “Add two every time until you reach 8, then suddenly switch to adding five”. Then, the next number would be 13.\nBoth explanations match the observed data. Yet, intuitively, you’d bet on 10 because it’s simpler. But why exactly does simplicity feel right?\nSimplicity feels right because of Occam’s Razor: “Among competing hypotheses, choose the simplest one”.\nThen, in 1960s, Ray Solomonoff had a brilliant idea. He decided to represent each possible explanation (or hypothesis) as a computer program. The shorter the program length (in bits or complexity), the simpler the hypothesis.\nFor example, there are several computer programs to decide the next number in our series 2, 4, 6, 8, ___:\nProgram Length (in bits) Interpretation Print all even numbers Short Simple, general Print 2, 4, 6, 8, then print 13, 18, … (add 5 to last number) Medium Complicated, special-case explanation Print numbers 2, 4, 6, 8, followed by random unpredictable numbers Very Long Highly complex, arbitrary, no clear pattern (While Kolmogorov complexity—the length of the shortest program that generates your data—is a powerful theoretical idea, it’s actually uncomputable in practice, so we use description length as an ideal guide for simplicity.)\nThe shortest program often has the simplest interpretation. Supervised learning algorithms are attempts to compress all available information in data useful for decision making into simple binary. Solomonoff said that to predict the next event, we should:\nConsider every possible program that could produce the observed data. Assign probabilities based on simplicity: Shorter program → Higher probability Longer program → Lower probability \\(\\text{Probability} \\propto 2^{-\\text{program length}}\\) Predict the next event by taking a weighted average of the predictions from all programs. In other words, we can imagine an infinite “multiverse” of programs generating your data. We don’t just pick one; we average over them all, weighing each according to simplicity.\nEven though practically it is impossible to use, it guides us to understand that simpler algorithms that compress data better are almost always better representations of data. Additionally, since Solomonoff induction relies on an uncomputable prior, real-world machine learning uses practical substitutes like Minimum Description Length (MDL), Bayesian model averaging, or ensembling to approximate the idea of weighing simpler explanations more heavily.\nMultiverse? Now, while exploring Solomonoff induction, I stumbled upon its intriguing connection with another concept: the multiverse. Physicist Max Tegmark proposed four levels of multiverse, each level capturing a different kind of parallel universe.1\nThe first level Tegmark describes includes regions beyond our observable cosmic horizon. Essentially, these universes are extensions of our own, governed by the same physical laws but possibly differing in their initial conditions.\nThe second level imagines universes arising from something called eternal inflation (recall that because of cosmic inflation our universe is constantly expanding), each potentially having different physical constants and laws of nature. Solomonoff induction would, in theory, incorporate these universes too, evaluating them based on how simple and computable their fundamental rules are.\nShorter, simpler descriptions (or programs) of universes would be considered more probable than complicated, special-case scenarios.\nThe third level relates directly to quantum mechanics, specifically the many-worlds interpretation. Here, every quantum event creates branching universes, each representing different outcomes. This concept resonates strongly with Solomonoff induction’s approach, where each potential future event is considered simultaneously, weighted by simplicity and computability. Each “branch” is akin to a different program output, contributing to the overall prediction.\nFinally, Tegmark’s fourth level—the “ultimate ensemble”—is the broadest and most abstract. It suggests that every mathematically consistent universe that can exist does exist. This level again matches perfectly with Solomonoff induction. Since Solomonoff induction evaluates every conceivable computable hypothesis, it inherently encompasses this idea, assigning probabilities to these universes based purely on the elegance and simplicity of their mathematical description.\nIt’s worth noting that in quantum mechanics, the many-worlds interpretation assigns probabilities to outcomes using the Born rule, not by simplicity—so the analogy with Solomonoff is more metaphorical than literal. Also, eternal inflation refers to the ongoing creation of new “pocket universes” with different constants, while the current expansion of our universe is driven by dark energy.\nOkay, but how is this related to language models? Bringing it back to language models: when models like GPT-4.5 predict text, they’re essentially compressing huge amounts of information into compact representations—similar to the spirit of Solomonoff induction. Training methods like cross-entropy loss connect to Minimum Description Length, rewarding models that capture patterns efficiently.\nWhen sampling outputs, techniques like temperature scaling and nucleus sampling let us explore a range of possible continuations, almost like averaging predictions from multiple “programs” or hypotheses. In practice, ensembling and mixture-of-experts architectures mimic the idea of averaging over many models, echoing the theoretical blend of simplicity and diversity that Solomonoff induction imagines.\nIs Multiverse Real? We don’t know. But as a fan of “Everything Everywhere All at Once”, I would totally say “Yes!”.\nSee “Physics in the multiverse: an introductory review” by Aurélien Barrau for brief introduction on multiverse theory in Physics.↩︎\n",
+  "wordCount" : "980",
+  "inLanguage": "en",
+  "datePublished": "2025-09-01T00:00:00Z",
+  "dateModified": "2025-09-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/language-models-and-multiverse/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Language Models and Multiverse
+    </h1>
+    <div class="post-meta"><span title='2025-09-01 00:00:00 +0000 UTC'>September 1, 2025</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>I was listening to a podcast by OpenAI where they tell us how they trained GPT-4.5, one of the largest models they have today.
+GPT-4.5 shows intelligence in unexpected ways, demonstrating common sense like other models totally miss.
+I haven’t used it much myself so cannot comment on that, but at <a href="https://youtu.be/6nJZopACRuQ?t=2318">38:38</a> in the video, Sam Altman asks Daniel Selsam “why does supervised learning work?”.
+Without skipping a beat, he replies “compression”.
+Then he explains that “the ideal intelligence is Solomonoff Induction”.
+Unfamiliar with this term, I jumped on a conversation with GPT-4.5 and along the way, I learnt several interesting things that I want to share with you all.</p>
+<div id="solomonoff-induction" class="section level2">
+<h2>Solomonoff Induction</h2>
+<p>Imagine that you are given the following set of numbers and you have to predict the next one:</p>
+<blockquote>
+<p>2, 4, 6, 8, ___</p>
+</blockquote>
+<p>Did you guess 10?
+Why?
+Probably because that’s the simplest pattern — “add two each time”.
+But consider this alternative explanation — “Add two every time until you reach 8, then suddenly switch to adding five”.
+Then, the next number would be 13.</p>
+<p>Both explanations match the observed data.
+Yet, intuitively, you’d bet on 10 because it’s simpler.
+<strong>But why exactly does simplicity feel right?</strong></p>
+<p>Simplicity feels right because of <a href="https://en.wikipedia.org/wiki/Occam%27s_razor">Occam’s Razor</a>: “Among competing hypotheses, choose the simplest one”.</p>
+<p>Then, in 1960s, Ray Solomonoff had a brilliant idea.
+He decided to represent each possible explanation (or hypothesis) as a computer program.
+The shorter the program length (in bits or complexity), the simpler the hypothesis.</p>
+<p>For example, there are several computer programs to decide the next number in our series <code>2, 4, 6, 8, ___</code>:</p>
+<table>
+<colgroup>
+<col width="45%" />
+<col width="25%" />
+<col width="29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Program</th>
+<th>Length (in bits)</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Print all even numbers</td>
+<td>Short</td>
+<td>Simple, general</td>
+</tr>
+<tr class="even">
+<td>Print 2, 4, 6, 8, then print 13, 18, … (add 5 to last number)</td>
+<td>Medium</td>
+<td>Complicated, special-case explanation</td>
+</tr>
+<tr class="odd">
+<td>Print numbers 2, 4, 6, 8, followed by random unpredictable numbers</td>
+<td>Very Long</td>
+<td>Highly complex, arbitrary, no clear pattern</td>
+</tr>
+</tbody>
+</table>
+<p>(While <a href="https://en.wikipedia.org/wiki/Kolmogorov_complexity">Kolmogorov complexity</a>—the length of the shortest program that generates your data—is a powerful theoretical idea, it’s actually uncomputable in practice, so we use description length as an ideal guide for simplicity.)</p>
+<p>The shortest program often has the simplest interpretation.
+<strong>Supervised learning algorithms are attempts to compress all available information in data useful for decision making into simple binary.</strong> Solomonoff said that to predict the next event, we should:</p>
+<ol style="list-style-type: decimal">
+<li>Consider every possible program that could produce the observed data.</li>
+<li>Assign probabilities based on simplicity:
+<ol style="list-style-type: decimal">
+<li>Shorter program → Higher probability</li>
+<li>Longer program → Lower probability</li>
+<li><span class="math inline">\(\text{Probability} \propto 2^{-\text{program length}}\)</span></li>
+</ol></li>
+<li>Predict the next event by taking a weighted average of the predictions from <strong>all programs</strong>.</li>
+</ol>
+<p>In other words, we can imagine an infinite “multiverse” of programs generating your data.
+We don’t just pick one; we average over them all, weighing each according to simplicity.</p>
+<p>Even though practically it is impossible to use, it guides us to understand that simpler algorithms that compress data better are almost always better representations of data.
+Additionally, since Solomonoff induction relies on an uncomputable prior, real-world machine learning uses practical substitutes like Minimum Description Length (MDL), Bayesian model averaging, or ensembling to approximate the idea of weighing simpler explanations more heavily.</p>
+</div>
+<div id="multiverse" class="section level2">
+<h2>Multiverse?</h2>
+<p>Now, while exploring Solomonoff induction, I stumbled upon its intriguing connection with another concept: the multiverse.
+Physicist Max Tegmark proposed <a href="https://space.mit.edu/home/tegmark/PDF/multiverse_sciam.pdf">four levels of multiverse</a>, each level capturing a different kind of parallel universe.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>The first level Tegmark describes includes regions beyond our observable cosmic horizon.
+Essentially, these universes are extensions of our own, governed by the same physical laws but possibly differing in their initial conditions.</p>
+<p>The second level imagines universes arising from something called eternal inflation (recall that because of cosmic inflation our universe is constantly expanding), each potentially having different physical constants and laws of nature.
+Solomonoff induction would, in theory, incorporate these universes too, evaluating them based on how simple and computable their fundamental rules are.</p>
+<p>Shorter, simpler descriptions (or programs) of universes would be considered more probable than complicated, special-case scenarios.</p>
+<p>The third level relates directly to quantum mechanics, specifically the many-worlds interpretation.
+Here, every quantum event creates branching universes, each representing different outcomes.
+This concept resonates strongly with Solomonoff induction’s approach, where each potential future event is considered simultaneously, weighted by simplicity and computability.
+Each “branch” is akin to a different program output, contributing to the overall prediction.</p>
+<p>Finally, Tegmark’s fourth level—the “ultimate ensemble”—is the broadest and most abstract.
+It suggests that every mathematically consistent universe that can exist does exist.
+This level again matches perfectly with Solomonoff induction.
+Since Solomonoff induction evaluates every conceivable computable hypothesis, it inherently encompasses this idea, assigning probabilities to these universes based purely on the elegance and simplicity of their mathematical description.</p>
+<p>It’s worth noting that in quantum mechanics, the many-worlds interpretation assigns probabilities to outcomes using the <a href="https://en.wikipedia.org/wiki/Born_rule">Born rule</a>, not by simplicity—so the analogy with Solomonoff is more metaphorical than literal.
+Also, eternal inflation refers to the ongoing creation of new “pocket universes” with different constants, while the current expansion of our universe is driven by dark energy.</p>
+</div>
+<div id="okay-but-how-is-this-related-to-language-models" class="section level2">
+<h2>Okay, but how is this related to language models?</h2>
+<p>Bringing it back to language models: when models like GPT-4.5 predict text, they’re essentially compressing huge amounts of information into compact representations—similar to the spirit of Solomonoff induction.
+Training methods like cross-entropy loss connect to Minimum Description Length, rewarding models that capture patterns efficiently.</p>
+<p>When sampling outputs, techniques like temperature scaling and nucleus sampling let us explore a range of possible continuations, almost like averaging predictions from multiple “programs” or hypotheses.
+In practice, ensembling and mixture-of-experts architectures mimic the idea of averaging over many models, echoing the theoretical blend of simplicity and diversity that Solomonoff induction imagines.</p>
+</div>
+<div id="is-multiverse-real" class="section level2">
+<h2>Is Multiverse Real?</h2>
+<p>We don’t know.
+But as a fan of “Everything Everywhere All at Once”, I would totally say “Yes!”.</p>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>See “Physics in the multiverse: an introductory review” by Aurélien Barrau for brief introduction on multiverse theory in Physics.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/philosophy/">Philosophy</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="/albania/">
+    <span class="title">Next »</span>
+    <br>
+    <span>A Week in Tirana, Albania</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

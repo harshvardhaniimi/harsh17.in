@@ -1,0 +1,626 @@
+---
+title: 'Classification: Logistic Regression and Random Forest'
+subtitle: "Using Tidymodels to Find Sex of Penguins"
+summary: "Using Tidymodels to Find Sex of Penguins"
+author: Harshvardhan
+date: '2022-02-11'
+slug: classification-logistic-regression-and-random-forest
+categories:
+  - R
+tags: []
+---
+
+
+
+<p>In this tutorial-cum-note, I will demonstrate how to use Logistic Regression and Random Forest algorithms to predict sex of a penguin. The data <code>penguins</code> comes from <code>palmerpenguins</code> package in R. It was collected by <a href="https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php">Dr. Kristen Gorman</a> on three species of penguins at the <a href="https://pal.lternet.edu/">Palmer Station, Antarctica LTER</a>, a member of the <a href="https://lternet.edu/">Long Term Ecological Research Network</a>.</p>
+<p><strong>The goal is to build a classifier model that predicts sex of the penguins given its physical characteristics.</strong></p>
+<p>The dataset can be installed from CRAN.</p>
+<pre class="r"><code># If you don&#39;t have palmerpenguins package, first install it.
+# install.packages(&quot;palmerpenguins&quot;)
+
+# Loading Libraries
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.2     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>library(palmerpenguins)
+
+# setting my personal theme
+theme_set(theme_h())
+
+# Loading data
+data(&quot;penguins&quot;)
+penguins</code></pre>
+<pre><code>## # A tibble: 344 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           NA            NA                  NA          NA
+##  5 Adelie  Torgersen           36.7          19.3               193        3450
+##  6 Adelie  Torgersen           39.3          20.6               190        3650
+##  7 Adelie  Torgersen           38.9          17.8               181        3625
+##  8 Adelie  Torgersen           39.2          19.6               195        4675
+##  9 Adelie  Torgersen           34.1          18.1               193        3475
+## 10 Adelie  Torgersen           42            20.2               190        4250
+## # ℹ 334 more rows
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<p>We see that there are many missing instances. Let’s see how many of them are missing.</p>
+<pre class="r"><code>sum(is.na(penguins))</code></pre>
+<pre><code>## [1] 19</code></pre>
+<p>So, nineteen entries are missing. Most likely, I will exclude them from the analysis at present but before that, I want to explore the data as it is.</p>
+<div id="exploration" class="section level1">
+<h1>Exploration</h1>
+<p>One of the best methods to do it is via <code>count()</code> from dplyr.</p>
+<pre class="r"><code>penguins %&gt;% 
+   count(species)</code></pre>
+<pre><code>## # A tibble: 3 × 2
+##   species       n
+##   &lt;fct&gt;     &lt;int&gt;
+## 1 Adelie      152
+## 2 Chinstrap    68
+## 3 Gentoo      124</code></pre>
+<pre class="r"><code>penguins %&gt;% 
+   count(island)</code></pre>
+<pre><code>## # A tibble: 3 × 2
+##   island        n
+##   &lt;fct&gt;     &lt;int&gt;
+## 1 Biscoe      168
+## 2 Dream       124
+## 3 Torgersen    52</code></pre>
+<pre class="r"><code>penguins %&gt;% 
+   count(species, island)</code></pre>
+<pre><code>## # A tibble: 5 × 3
+##   species   island        n
+##   &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;
+## 1 Adelie    Biscoe       44
+## 2 Adelie    Dream        56
+## 3 Adelie    Torgersen    52
+## 4 Chinstrap Dream        68
+## 5 Gentoo    Biscoe      124</code></pre>
+<pre class="r"><code>penguins %&gt;% 
+   count(sex)</code></pre>
+<pre><code>## # A tibble: 3 × 2
+##   sex        n
+##   &lt;fct&gt;  &lt;int&gt;
+## 1 female   165
+## 2 male     168
+## 3 &lt;NA&gt;      11</code></pre>
+<pre class="r"><code>penguins %&gt;% 
+   count(year)</code></pre>
+<pre><code>## # A tibble: 3 × 2
+##    year     n
+##   &lt;int&gt; &lt;int&gt;
+## 1  2007   110
+## 2  2008   114
+## 3  2009   120</code></pre>
+<p>Cool. It looks pretty balanced.</p>
+<pre class="r"><code>penguins %&gt;% 
+   filter(!is.na(sex)) %&gt;% 
+   ggplot(aes(flipper_length_mm, bill_length_mm, colour = sex, size = body_mass_g)) +
+   geom_point(alpha = 0.6) +
+   facet_wrap(~species)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>In general, there is significant difference between <code>bill_length_mm</code> for both the sexes. Also, bill length for Adelie is shorter than other two species — for moth the sexes.</p>
+<p>There are also packages like <a href="https://cran.r-project.org/web/packages/DataExplorer/vignettes/dataexplorer-intro.html">DataExplorer</a> that can aid in the process. For this simplistic case, I want to demonstrate how to create classification model, so I will ignore the process.</p>
+<p>The dataset has missing values as I noted earlier. So, I will remove the observations with missing values. I also do not need year and island for my classification model — there is no logical reason why should they be affecting sex of a penguin.</p>
+<pre class="r"><code>penguins_df = penguins %&gt;% 
+   filter(!is.na(sex)) %&gt;% 
+   select(-year, -island)</code></pre>
+</div>
+<div id="modelling" class="section level1">
+<h1>Modelling</h1>
+<p>Let’s start by loading <code>tidymodels</code> and setting the seed for randomisation.</p>
+<pre class="r"><code>library(tidymodels)</code></pre>
+<pre><code>## ── Attaching packages ────────────────────────────────────── tidymodels 1.1.1 ──</code></pre>
+<pre><code>## ✔ broom        1.0.5     ✔ rsample      1.2.0
+## ✔ dials        1.2.0     ✔ tune         1.1.2
+## ✔ infer        1.0.4     ✔ workflows    1.1.3
+## ✔ modeldata    1.2.0     ✔ workflowsets 1.0.1
+## ✔ parsnip      1.1.1     ✔ yardstick    1.2.0
+## ✔ recipes      1.0.8</code></pre>
+<pre><code>## ── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+## ✖ scales::discard() masks purrr::discard()
+## ✖ dplyr::filter()   masks stats::filter()
+## ✖ recipes::fixed()  masks stringr::fixed()
+## ✖ dplyr::lag()      masks stats::lag()
+## ✖ yardstick::spec() masks readr::spec()
+## ✖ recipes::step()   masks stats::step()
+## • Learn how to get started at https://www.tidymodels.org/start/</code></pre>
+<pre class="r"><code>set.seed(1)</code></pre>
+<p>The first step of modelling is to create the training and testing split. Validation set will never be exposed to us during the modelling process. Once our final model is made, we can test it against the validation set.</p>
+<p>In Tidy Models, this split is created using <code>initial_split</code> function. I also have the option to stratify the split — which is necessary because we have multiple species and they are unbalanced. We only have 68 Chinstrap penguins but have 152 Adelie and 124 Gentoo. Let’s explore the help file for <code>initial_split</code> too.</p>
+<pre class="r"><code>?initial_split
+
+# Specify the split
+penguins_split = initial_split(penguins_df, strata = sex)</code></pre>
+<p>The proportion is set by default to 75% in training and 25% in testing. The functions <code>training()</code> and <code>testing()</code> will give me the resulting datasets.</p>
+<pre class="r"><code>penguins_train = training(penguins_split)
+penguins_test = testing(penguins_split)
+
+penguins_train</code></pre>
+<pre><code>## # A tibble: 249 × 6
+##    species bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex   
+##    &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;fct&gt; 
+##  1 Adelie            39.5          17.4               186        3800 female
+##  2 Adelie            40.3          18                 195        3250 female
+##  3 Adelie            36.7          19.3               193        3450 female
+##  4 Adelie            36.6          17.8               185        3700 female
+##  5 Adelie            38.7          19                 195        3450 female
+##  6 Adelie            35.9          19.2               189        3800 female
+##  7 Adelie            37.9          18.6               172        3150 female
+##  8 Adelie            39.5          16.7               178        3250 female
+##  9 Adelie            39.5          17.8               188        3300 female
+## 10 Adelie            42.2          18.5               180        3550 female
+## # ℹ 239 more rows</code></pre>
+<pre class="r"><code>penguins_test</code></pre>
+<pre><code>## # A tibble: 84 × 6
+##    species bill_length_mm bill_depth_mm flipper_length_mm body_mass_g sex   
+##    &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;fct&gt; 
+##  1 Adelie            38.9          17.8               181        3625 female
+##  2 Adelie            39.2          19.6               195        4675 male  
+##  3 Adelie            41.1          17.6               182        3200 female
+##  4 Adelie            34.4          18.4               184        3325 female
+##  5 Adelie            46            21.5               194        4200 male  
+##  6 Adelie            37.8          18.3               174        3400 female
+##  7 Adelie            37.7          18.7               180        3600 male  
+##  8 Adelie            35.3          18.9               187        3800 female
+##  9 Adelie            40.6          18.6               183        3550 male  
+## 10 Adelie            40.5          17.9               187        3200 female
+## # ℹ 74 more rows</code></pre>
+<p>The datasets looks good; our split worked well.</p>
+<div id="bootstrapping-samples" class="section level2">
+<h2>Bootstrapping Samples</h2>
+<p>Note that our training sample has only 249 rows. This is not a huge dataset and we are not sure if the model we will make from this will be generalisable.</p>
+<p>One simple way to solve this is using Bootstrapped samples. Each bootstrap sample is of original sample size but is also different from each other. They are collected sample of observations with replacement. Again, see the help file to understand the function.</p>
+<pre class="r"><code>?bootstraps
+
+penguins_boot = bootstraps(penguins_train)
+penguins_boot</code></pre>
+<pre><code>## # Bootstrap sampling 
+## # A tibble: 25 × 2
+##    splits           id         
+##    &lt;list&gt;           &lt;chr&gt;      
+##  1 &lt;split [249/85]&gt; Bootstrap01
+##  2 &lt;split [249/93]&gt; Bootstrap02
+##  3 &lt;split [249/85]&gt; Bootstrap03
+##  4 &lt;split [249/93]&gt; Bootstrap04
+##  5 &lt;split [249/84]&gt; Bootstrap05
+##  6 &lt;split [249/87]&gt; Bootstrap06
+##  7 &lt;split [249/88]&gt; Bootstrap07
+##  8 &lt;split [249/92]&gt; Bootstrap08
+##  9 &lt;split [249/93]&gt; Bootstrap09
+## 10 &lt;split [249/86]&gt; Bootstrap10
+## # ℹ 15 more rows</code></pre>
+<p>So, we have 25 bootstrapped samples each with different resamples. Of course, if you have enough data or are confident enough about your data, you can skip this step.</p>
+</div>
+<div id="logistic-regression-pipeline" class="section level2">
+<h2>Logistic Regression Pipeline</h2>
+<p>Logistic regression model is one of the simplest classification model. It is also the basic building block of neural networks; it dictates how a node behaves. Until 2010 when neural networks and support vector machines gained popularity, logistic regression was the model in force.</p>
+<p>Even today, the model is widely used in variety of real world applications. The biggest benefit of logistic regression models is its ability to explain and linear implementation.</p>
+<p>The first step will be to set up model pipeline. This only sets up how the model would work and neither training or test has happened yet.</p>
+<pre class="r"><code># Simple Logistic Regression
+glm_spec = logistic_reg() %&gt;% 
+   set_engine(&quot;glm&quot;)
+
+glm_spec</code></pre>
+<pre><code>## Logistic Regression Model Specification (classification)
+## 
+## Computational engine: glm</code></pre>
+<p>There are other alternatives too. We can use Lasso regression (yes, Lasso <a href="https://stats.stackexchange.com/a/340963/185332">can be used</a> for classification as well. It “estimate[s] the parameters of the binomial GLM by optimising the binomial likelihood whilst imposing the lasso penalty on the parameter estimates”.) Or we can just use a regularised classification model.</p>
+<pre class="r"><code># regularised regression
+glm_spec = logistic_reg() %&gt;% 
+   set_engine(&quot;glmnet&quot;)
+
+# LASSO regression
+glm_spec = logistic_reg(mixture = 1) %&gt;% 
+   set_engine(&quot;glmnet&quot;)</code></pre>
+<p>But for this simple tutorial, I will stick to simple logistic regression model.</p>
+<pre class="r"><code># Simple Logistic Regression
+glm_spec = logistic_reg() %&gt;% 
+   set_engine(&quot;glm&quot;)</code></pre>
+</div>
+<div id="random-forest-pipeline" class="section level2">
+<h2>Random Forest Pipeline</h2>
+<p>Let’s set up a pipeline for random forest model as well. The good part about random forest model is that they do not require huge tuning efforts like neural networks.</p>
+<p>Random forest models can be used for classification as well as regression. Furthermore, there are many implementations (packages) in R to choose from. <code>randomForest</code> is probably the most known one. <code>ranger</code> is a fast implementation of random forest models in R. I will use <code>ranger</code> for this model.</p>
+<pre class="r"><code># Engine could be spark
+rand_forest() %&gt;% 
+   set_mode(&quot;classification&quot;) %&gt;% 
+   set_engine(&quot;spark&quot;)</code></pre>
+<pre><code>## Random Forest Model Specification (classification)
+## 
+## Computational engine: spark</code></pre>
+<pre class="r"><code># Or it could be randomForest
+rand_forest() %&gt;% 
+   set_mode(&quot;classification&quot;) %&gt;% 
+   set_engine(&quot;randomForest&quot;)</code></pre>
+<pre><code>## Random Forest Model Specification (classification)
+## 
+## Computational engine: randomForest</code></pre>
+<pre class="r"><code># Or ranger
+rf_spec = rand_forest() %&gt;% 
+   set_mode(&quot;classification&quot;) %&gt;% 
+   set_engine(&quot;ranger&quot;)
+rf_spec</code></pre>
+<pre><code>## Random Forest Model Specification (classification)
+## 
+## Computational engine: ranger</code></pre>
+</div>
+<div id="workflow" class="section level2">
+<h2>Workflow</h2>
+<p>The next step in modelling pipeline is setting up the model with formula, model and data — in that order. Because I have multiple models that I want to compare, I will only set up formula in my workflow.</p>
+<pre class="r"><code>penguin_wf = workflow() %&gt;% 
+   add_formula(sex ~ .)
+penguin_wf</code></pre>
+<pre><code>## ══ Workflow ════════════════════════════════════════════════════════════════════
+## Preprocessor: Formula
+## Model: None
+## 
+## ── Preprocessor ────────────────────────────────────────────────────────────────
+## sex ~ .</code></pre>
+<p>As it is seen, there is no model set yet.</p>
+<div id="training-logistic-regression" class="section level3">
+<h3>Training Logistic Regression</h3>
+<p>Let’s add logistic regression model. I can fit it directly to the training sample.</p>
+<pre class="r"><code>penguin_wf %&gt;% 
+   add_model(glm_spec) %&gt;% 
+   fit(data = penguins_train)</code></pre>
+<pre><code>## ══ Workflow [trained] ══════════════════════════════════════════════════════════
+## Preprocessor: Formula
+## Model: logistic_reg()
+## 
+## ── Preprocessor ────────────────────────────────────────────────────────────────
+## sex ~ .
+## 
+## ── Model ───────────────────────────────────────────────────────────────────────
+## 
+## Call:  stats::glm(formula = ..y ~ ., family = stats::binomial, data = data)
+## 
+## Coefficients:
+##       (Intercept)   speciesChinstrap      speciesGentoo     bill_length_mm  
+##        -95.852333          -6.932255          -8.535185           0.633832  
+##     bill_depth_mm  flipper_length_mm        body_mass_g  
+##          2.014378           0.056401           0.006365  
+## 
+## Degrees of Freedom: 248 Total (i.e. Null);  242 Residual
+## Null Deviance:	    345.2 
+## Residual Deviance: 85.49 	AIC: 99.49</code></pre>
+<p>I get the coefficients and other detains for my model which is great.</p>
+<p>However, as I said before I can’t be absolutely sure of my model right away because of small sample. So, I will use bootstrapped samples that I created earlier. <code>verbose = T</code> will show me all steps.</p>
+<pre class="r"><code>glm_rs = penguin_wf %&gt;% 
+   add_model(glm_spec) %&gt;%
+   fit_resamples(resamples = penguins_boot, 
+                 control = control_resamples(save_pred = TRUE, verbose = F))</code></pre>
+<pre><code>## → A | warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
+<pre><code>## There were issues with some computations   A: x1
+## There were issues with some computations   A: x1</code></pre>
+<pre><code>## </code></pre>
+<pre class="r"><code>glm_rs</code></pre>
+<pre><code>## # Resampling results
+## # Bootstrap sampling 
+## # A tibble: 25 × 5
+##    splits           id          .metrics         .notes           .predictions
+##    &lt;list&gt;           &lt;chr&gt;       &lt;list&gt;           &lt;list&gt;           &lt;list&gt;      
+##  1 &lt;split [249/85]&gt; Bootstrap01 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  2 &lt;split [249/93]&gt; Bootstrap02 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  3 &lt;split [249/85]&gt; Bootstrap03 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  4 &lt;split [249/93]&gt; Bootstrap04 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  5 &lt;split [249/84]&gt; Bootstrap05 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  6 &lt;split [249/87]&gt; Bootstrap06 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  7 &lt;split [249/88]&gt; Bootstrap07 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  8 &lt;split [249/92]&gt; Bootstrap08 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  9 &lt;split [249/93]&gt; Bootstrap09 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+## 10 &lt;split [249/86]&gt; Bootstrap10 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+## # ℹ 15 more rows
+## 
+## There were issues with some computations:
+## 
+##   - Warning(s) x1: glm.fit: fitted probabilities numerically 0 or 1 occurred
+## 
+## Run `show_notes(.Last.tune.result)` for more information.</code></pre>
+<p>One bootstrapped sample had sampling issues (they training labels were unbalanced). To solve this, I could have specified <code>strata = sex</code> in <code>bootstraps()</code>. In this case it is acceptable because 24 of them worked well.</p>
+</div>
+<div id="training-random-forest" class="section level3">
+<h3>Training Random Forest</h3>
+<p>The process is almost the same as that for logistic regression.</p>
+<pre class="r"><code>rf_rs = penguin_wf %&gt;% 
+   add_model(rf_spec) %&gt;%
+   fit_resamples(resamples = penguins_boot, 
+                 control = control_resamples(save_pred = TRUE, verbose = F))
+
+rf_rs</code></pre>
+<pre><code>## # Resampling results
+## # Bootstrap sampling 
+## # A tibble: 25 × 5
+##    splits           id          .metrics         .notes           .predictions
+##    &lt;list&gt;           &lt;chr&gt;       &lt;list&gt;           &lt;list&gt;           &lt;list&gt;      
+##  1 &lt;split [249/85]&gt; Bootstrap01 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  2 &lt;split [249/93]&gt; Bootstrap02 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  3 &lt;split [249/85]&gt; Bootstrap03 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  4 &lt;split [249/93]&gt; Bootstrap04 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  5 &lt;split [249/84]&gt; Bootstrap05 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  6 &lt;split [249/87]&gt; Bootstrap06 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  7 &lt;split [249/88]&gt; Bootstrap07 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  8 &lt;split [249/92]&gt; Bootstrap08 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+##  9 &lt;split [249/93]&gt; Bootstrap09 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+## 10 &lt;split [249/86]&gt; Bootstrap10 &lt;tibble [2 × 4]&gt; &lt;tibble [0 × 3]&gt; &lt;tibble&gt;    
+## # ℹ 15 more rows</code></pre>
+<p>Notice that I did not get the same warning in random forest model. Why? Because random forest is not probabilistic in nature. Tree based models do not necessitate presence of balanced samples. They will simply give biased results and it is up to the researcher to investigate the flaws. That’s why they are little tricky.</p>
+</div>
+</div>
+</div>
+<div id="evaluation" class="section level1">
+<h1>Evaluation</h1>
+<p>How well do they compare against each other? The metrics to compare can be obtained using <code>collect_metrics()</code>.</p>
+<div id="logistic-regression-metrics" class="section level2">
+<h2>Logistic Regression Metrics</h2>
+<pre class="r"><code>collect_metrics(glm_rs)</code></pre>
+<pre><code>## # A tibble: 2 × 6
+##   .metric  .estimator  mean     n std_err .config             
+##   &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+## 1 accuracy binary     0.905    25 0.00695 Preprocessor1_Model1
+## 2 roc_auc  binary     0.971    25 0.00291 Preprocessor1_Model1</code></pre>
+</div>
+<div id="random-forest-metrics" class="section level2">
+<h2>Random Forest Metrics</h2>
+<pre class="r"><code>collect_metrics(rf_rs)</code></pre>
+<pre><code>## # A tibble: 2 × 6
+##   .metric  .estimator  mean     n std_err .config             
+##   &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;               
+## 1 accuracy binary     0.901    25 0.00629 Preprocessor1_Model1
+## 2 roc_auc  binary     0.970    25 0.00255 Preprocessor1_Model1</code></pre>
+<p>Logistic regression performs slightly better in both metrics: accuracy and AUC. Even if they were nearly equal and I had to choose, I would choose linear model. It is faster to implement, scalable and most importantly explainable.</p>
+</div>
+<div id="predictions" class="section level2">
+<h2>Predictions</h2>
+<p>The predictions can be found using <code>collect_predictions()</code> function.</p>
+<pre class="r"><code>glm_rs %&gt;% 
+  collect_predictions()</code></pre>
+<pre><code>## # A tibble: 2,250 × 7
+##    id          .pred_female .pred_male  .row .pred_class sex    .config         
+##    &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;  &lt;chr&gt;           
+##  1 Bootstrap01       0.580  0.420          6 female      female Preprocessor1_M…
+##  2 Bootstrap01       0.987  0.0125         7 female      female Preprocessor1_M…
+##  3 Bootstrap01       0.978  0.0219         9 female      female Preprocessor1_M…
+##  4 Bootstrap01       0.0277 0.972         10 male        female Preprocessor1_M…
+##  5 Bootstrap01       0.842  0.158         11 female      female Preprocessor1_M…
+##  6 Bootstrap01       1.00   0.000350      12 female      female Preprocessor1_M…
+##  7 Bootstrap01       0.999  0.000525      13 female      female Preprocessor1_M…
+##  8 Bootstrap01       1.00   0.00000806    14 female      female Preprocessor1_M…
+##  9 Bootstrap01       0.918  0.0824        16 female      female Preprocessor1_M…
+## 10 Bootstrap01       0.966  0.0341        19 female      female Preprocessor1_M…
+## # ℹ 2,240 more rows</code></pre>
+<p>The two important columns in this are <code>.pred_female</code> and <code>.pred_male</code>. This is the probability that they belong to a particular class. <code>.pred_class</code> gives the class that our model predicts a penguin to be in; <code>sex</code> is their true class.</p>
+</div>
+<div id="confusion-matrix" class="section level2">
+<h2>Confusion Matrix</h2>
+<p><code>conf_mat_resampled()</code> with no arguments gives confusion matrix in tidy format.</p>
+<pre class="r"><code>glm_rs %&gt;% 
+  conf_mat_resampled()</code></pre>
+<pre><code>## # A tibble: 4 × 3
+##   Prediction Truth   Freq
+##   &lt;fct&gt;      &lt;fct&gt;  &lt;dbl&gt;
+## 1 female     female 39   
+## 2 female     male    4.04
+## 3 male       female  4.44
+## 4 male       male   42.5</code></pre>
+<p>Let’s see it in conventional format.</p>
+<pre class="r"><code>glm_rs %&gt;% 
+  collect_predictions() %&gt;% 
+  conf_mat(sex, .pred_class)</code></pre>
+<pre><code>##           Truth
+## Prediction female male
+##     female    975  101
+##     male      111 1063</code></pre>
+<p>The model looks pretty good.</p>
+</div>
+<div id="roc-curve" class="section level2">
+<h2>ROC Curve</h2>
+<p>The ROC curve can be produced by <code>roc_curve()</code> function. <code>autoplot()</code> uses default settings.</p>
+<pre class="r"><code>glm_rs %&gt;% 
+   collect_predictions() %&gt;% 
+   group_by(id) %&gt;% # -- to get 25 ROC curves, for each bootstrapped sample
+   roc_curve(sex, .pred_female) %&gt;% 
+   autoplot()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>How does <code>autoplot()</code> work?</p>
+<pre class="r"><code>glm_rs %&gt;% 
+   collect_predictions() %&gt;% 
+   group_by(id) %&gt;% # -- to get 25 ROC curves, for each bootstrapped sample
+   roc_curve(sex, .pred_female)</code></pre>
+<pre><code>## # A tibble: 2,296 × 4
+## # Groups:   id [25]
+##    id           .threshold specificity sensitivity
+##    &lt;chr&gt;             &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+##  1 Bootstrap01 -Inf             0                1
+##  2 Bootstrap01    6.67e-10      0                1
+##  3 Bootstrap01    7.64e- 8      0.0250           1
+##  4 Bootstrap01    8.21e- 8      0.0500           1
+##  5 Bootstrap01    1.28e- 7      0.0750           1
+##  6 Bootstrap01    1.58e- 7      0.1              1
+##  7 Bootstrap01    3.33e- 6      0.125            1
+##  8 Bootstrap01    1.42e- 5      0.15             1
+##  9 Bootstrap01    1.49e- 5      0.175            1
+## 10 Bootstrap01    2.19e- 5      0.2              1
+## # ℹ 2,286 more rows</code></pre>
+<p>Let’s beautify our ROC curve.</p>
+<pre class="r"><code>glm_rs %&gt;% 
+   collect_predictions() %&gt;% 
+   group_by(id) %&gt;% # -- to get 25 ROC curves, for each bootstrapped sample
+   roc_curve(sex, .pred_female) %&gt;% 
+   ggplot(aes(1 - specificity, sensitivity, col = id)) +
+   geom_abline(lty = 2, colour = &quot;grey80&quot;, size = 1.5) +
+   geom_path(show.legend = FALSE, alpha = 0.6, size = 1.2) +
+   coord_equal()</code></pre>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>I’m using <code>geom_path</code> instead of <code>geom_line</code> because I want to see discrete jumps. <code>geom_line</code> would give me a continious plot as it connects the points in the order of the variable on the x-axis. Another option is <code>geom_step</code> which only highlights changes — when a variable steps to take another value.</p>
+<pre class="r"><code># Using geom_line()
+glm_rs %&gt;% 
+   collect_predictions() %&gt;% 
+   group_by(id) %&gt;% # -- to get 25 ROC curves, for each bootstrapped sample
+   roc_curve(sex, .pred_female) %&gt;% 
+   ggplot(aes(1 - specificity, sensitivity, col = id)) +
+   geom_abline(lty = 2, colour = &quot;grey80&quot;, size = 1.5) +
+   geom_line(show.legend = FALSE, alpha = 0.6, size = 1.2) +
+   coord_equal()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<pre class="r"><code># Using geom_step()
+glm_rs %&gt;% 
+   collect_predictions() %&gt;% 
+   group_by(id) %&gt;% # -- to get 25 ROC curves, for each bootstrapped sample
+   roc_curve(sex, .pred_female) %&gt;% 
+   ggplot(aes(1 - specificity, sensitivity, col = id)) +
+   geom_abline(lty = 2, colour = &quot;grey80&quot;, size = 1.5) +
+   geom_step(show.legend = FALSE, alpha = 0.6, size = 1.2) +
+   coord_equal()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-27-2.png" width="672" /></p>
+<p><code>geom_abline()</code> can take two arguments: intercept and slope. If you provide none of these, it plots <span class="math inline">\(y = x\)</span>. So, the best plot is from <code>geom_path()</code>.</p>
+<pre class="r"><code>glm_rs %&gt;% 
+   collect_predictions() %&gt;% 
+   group_by(id) %&gt;% # -- to get 25 ROC curves, for each bootstrapped sample
+   roc_curve(sex, .pred_female) %&gt;% 
+   ggplot(aes(1 - specificity, sensitivity, col = id)) +
+   geom_abline(lty = 2, colour = &quot;grey80&quot;, size = 1.5) +
+   geom_path(show.legend = FALSE, alpha = 0.6, size = 1.2) +
+   coord_equal()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Okay, enough on <code>ggplot2</code>. From the above ROC curves, we can deduce the model is doing great for the training samples.</p>
+</div>
+<div id="testing-samples" class="section level2">
+<h2>Testing Samples</h2>
+<p>The above metrics used only the test data. We need to check our model’s performance on test dataset too.</p>
+<p>Let’s fit the model using <code>last_fit()</code>. <code>last_fit()</code> fits the final best model to the training set and evaluates the test set.</p>
+<pre class="r"><code>penguins_final = penguin_wf %&gt;% 
+  add_model(glm_spec) %&gt;% 
+  last_fit(penguins_split)
+
+penguins_final</code></pre>
+<pre><code>## # Resampling results
+## # Manual resampling 
+## # A tibble: 1 × 6
+##   splits           id               .metrics .notes   .predictions .workflow 
+##   &lt;list&gt;           &lt;chr&gt;            &lt;list&gt;   &lt;list&gt;   &lt;list&gt;       &lt;list&gt;    
+## 1 &lt;split [249/84]&gt; train/test split &lt;tibble&gt; &lt;tibble&gt; &lt;tibble&gt;     &lt;workflow&gt;</code></pre>
+<p>Let’s check how good our final model is.</p>
+<pre class="r"><code>penguins_final %&gt;% 
+  collect_metrics()</code></pre>
+<pre><code>## # A tibble: 2 × 4
+##   .metric  .estimator .estimate .config             
+##   &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;               
+## 1 accuracy binary         0.905 Preprocessor1_Model1
+## 2 roc_auc  binary         0.966 Preprocessor1_Model1</code></pre>
+<pre class="r"><code>penguins_final %&gt;% 
+  collect_predictions()</code></pre>
+<pre><code>## # A tibble: 84 × 7
+##    id               .pred_female .pred_male  .row .pred_class sex    .config    
+##    &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt; &lt;fct&gt;       &lt;fct&gt;  &lt;chr&gt;      
+##  1 train/test split  0.887          0.113       6 female      female Preprocess…
+##  2 train/test split  0.0000979      1.00        7 male        male   Preprocess…
+##  3 train/test split  0.976          0.0238      8 female      female Preprocess…
+##  4 train/test split  0.996          0.00431    14 female      female Preprocess…
+##  5 train/test split  0.000000623    1.00       15 male        male   Preprocess…
+##  6 train/test split  0.973          0.0273     16 female      female Preprocess…
+##  7 train/test split  0.772          0.228      17 female      male   Preprocess…
+##  8 train/test split  0.662          0.338      21 female      female Preprocess…
+##  9 train/test split  0.434          0.566      22 male        male   Preprocess…
+## 10 train/test split  0.961          0.0388     23 female      female Preprocess…
+## # ℹ 74 more rows</code></pre>
+<p>Our model is 90.5% accurate and has AUC of 0.966. These are very high accuracies.</p>
+<div id="confusion-matrix-for-test-set" class="section level3">
+<h3>Confusion Matrix for Test Set</h3>
+<pre class="r"><code>penguins_final %&gt;% 
+  collect_predictions() %&gt;% 
+  conf_mat(sex, .pred_class)</code></pre>
+<pre><code>##           Truth
+## Prediction female male
+##     female     39    5
+##     male        3   37</code></pre>
+<p>This does pretty good to be honest.</p>
+</div>
+<div id="final-workflow" class="section level3">
+<h3>Final Workflow</h3>
+<p>Let’s see the final model.</p>
+<pre class="r"><code>penguins_final$.workflow[[1]]</code></pre>
+<pre><code>## ══ Workflow [trained] ══════════════════════════════════════════════════════════
+## Preprocessor: Formula
+## Model: logistic_reg()
+## 
+## ── Preprocessor ────────────────────────────────────────────────────────────────
+## sex ~ .
+## 
+## ── Model ───────────────────────────────────────────────────────────────────────
+## 
+## Call:  stats::glm(formula = ..y ~ ., family = stats::binomial, data = data)
+## 
+## Coefficients:
+##       (Intercept)   speciesChinstrap      speciesGentoo     bill_length_mm  
+##        -95.852333          -6.932255          -8.535185           0.633832  
+##     bill_depth_mm  flipper_length_mm        body_mass_g  
+##          2.014378           0.056401           0.006365  
+## 
+## Degrees of Freedom: 248 Total (i.e. Null);  242 Residual
+## Null Deviance:	    345.2 
+## Residual Deviance: 85.49 	AIC: 99.49</code></pre>
+<p>Can we tidy it up? (We need <code>[[1]]</code> to get the element out as <code>.workflow</code> is a list.</p>
+<pre class="r"><code>penguins_final$.workflow[[1]] %&gt;% 
+  tidy()</code></pre>
+<pre><code>## # A tibble: 7 × 5
+##   term               estimate std.error statistic     p.value
+##   &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1 (Intercept)       -95.9      18.1        -5.30  0.000000115
+## 2 speciesChinstrap   -6.93      1.91       -3.62  0.000295   
+## 3 speciesGentoo      -8.54      3.25       -2.63  0.00866    
+## 4 bill_length_mm      0.634     0.159       4.00  0.0000639  
+## 5 bill_depth_mm       2.01      0.455       4.43  0.00000940 
+## 6 flipper_length_mm   0.0564    0.0653      0.863 0.388      
+## 7 body_mass_g         0.00637   0.00138     4.63  0.00000374</code></pre>
+<p>The coefficients can be exponentiated to find the odds ratio.</p>
+<pre class="r"><code>penguins_final$.workflow[[1]] %&gt;% 
+   tidy(exponentiate = TRUE) %&gt;% 
+   arrange(estimate)</code></pre>
+<pre><code>## # A tibble: 7 × 5
+##   term              estimate std.error statistic     p.value
+##   &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1 (Intercept)       2.35e-42  18.1        -5.30  0.000000115
+## 2 speciesGentoo     1.96e- 4   3.25       -2.63  0.00866    
+## 3 speciesChinstrap  9.76e- 4   1.91       -3.62  0.000295   
+## 4 body_mass_g       1.01e+ 0   0.00138     4.63  0.00000374 
+## 5 flipper_length_mm 1.06e+ 0   0.0653      0.863 0.388      
+## 6 bill_length_mm    1.88e+ 0   0.159       4.00  0.0000639  
+## 7 bill_depth_mm     7.50e+ 0   0.455       4.43  0.00000940</code></pre>
+<p>The coefficient of 3.75 means that for every one mm increase in bill depth, the odds of being male increases by almost eight times. So, bill depth is very important.</p>
+<p>Flipper value are not very important. Remember that previously we explored the relationship between sex and flipper length. If flipper length is not important (high p-value), let’s see how the graph would look like with bill depth which is apparently very important.</p>
+<pre class="r"><code>penguins %&gt;% 
+   filter(!is.na(sex)) %&gt;% 
+   ggplot(aes(bill_depth_mm, bill_length_mm, colour = sex, size = body_mass_g)) +
+   geom_point(alpha = 0.6) +
+   facet_wrap(~species)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>In this creating this short tutorial, I learnt how to classify data using tidymodels workflow with logistic regression and random forest. An important lesson was that logistic regression can outperform complicated trees like random forest too.</p>
+<hr />
+<p>If you are interested in data science and R, check out my <a href="https://www.getrevue.co/profile/harshbutjust">free weekly newsletter</a> <strong>Next</strong>.</p>
+<blockquote>
+<h3 id="next-today-i-learnt-about-r">Next — Today I Learnt About R</h3>
+<p>A short and sweet curated collection of R-related works. Five stories. Four packages. Three jargons. Two tweets. One Meme.</p>
+</blockquote>
+<p>You can read the past editions and subscribe to it <a href="https://www.getrevue.co/profile/harshbutjust">here</a>.</p>
+</div>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Blogdown on Harshvardhan</title>
+    <link>/tags/blogdown/</link>
+    <description>Recent content in Blogdown on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/blogdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Technical and Casual Writing</title>
+      <link>/technical-and-casual-writing/</link>
+      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>/technical-and-casual-writing/</guid>
+      <description>My experience of technical and casual writing.</description>
+    </item>
+  </channel>
+</rss>

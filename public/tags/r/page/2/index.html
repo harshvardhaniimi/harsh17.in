@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>R | Harshvardhan</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="/tags/r/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="/tags/r/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="/tags/r/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/tags/r/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="R">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="R">
+
+</head>
+<body class="list" id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    R
+    <a href="/tags/r/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Next — Today I learnt About R
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>
+What is Next? A short and sweet curated collection of R-related works. Five stories. Four packages. Three jargons. Two tweets. One Meme.
+You can subscribe by providing your details here. Promise, no spams.
+Email address First name (Optional) Last name (Optional) By subscribing, you agree with Revue’s Terms of Service and Privacy Policy. If you are unsure, here are some editions that my readers loved.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-06-18 00:00:00 +0000 UTC'>June 18, 2022</span>&nbsp;·&nbsp;<span>1 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to Next — Today I learnt About R" href="/newsletter/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Street Maps (of Some Cities)
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I’ve visited. Today, I thought to make street maps of some of them (and other cool cities).</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-05-28 00:00:00 +0000 UTC'>May 28, 2022</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to Street Maps (of Some Cities)" href="/city-maps/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Joint Probability-based Dissimilarity Measure for Discrete Variables
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>A Simple Method to Calculate Distance between Discrete Variable</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-05-10 00:00:00 +0000 UTC'>May 10, 2022</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to Joint Probability-based Dissimilarity Measure for Discrete Variables" href="/joint-probability-based-dissimilarity-measure-for-discrete-variables/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Billionaires and Taxes
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>How much do the super rich really pay? Until now, the answer was unknown — thanks to privacy laws. Recently, tax returns of the super rich was leaked to ProPublica. I thought of exploring the billionaires and their tax rates.</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-04-14 00:00:00 +0000 UTC'>April 14, 2022</span>&nbsp;·&nbsp;<span>2 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to Billionaires and Taxes" href="/billionaires-and-taxes/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Creating your own short URLs with blogdown
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Here’s how to make your short URLs using Hugo &#43; Blogdown</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-03-24 00:00:00 +0000 UTC'>March 24, 2022</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to Creating your own short URLs with blogdown" href="/creating-your-own-short-urls-with-blogdown/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Let’s say you’re copying a folder to a folder
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>What should the progress bar show? How to measure 10% work done?</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-03-10 00:00:00 +0000 UTC'>March 10, 2022</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to Let’s say you’re copying a folder to a folder" href="/lets-say-you-re-copying-a-folder-to-a-folder/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">garlic: Some R Functions I Use Rather Frequently
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>My personal R package for custom functions</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-03-05 00:00:00 +0000 UTC'>March 5, 2022</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to garlic: Some R Functions I Use Rather Frequently" href="/garlic-some-r-functions-i-use-rather-frequently/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Titanic: Who Survived The Tragedy?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Yet Another Machine Learning Project with Titanic Dataset</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-02-22 00:00:00 +0000 UTC'>February 22, 2022</span>&nbsp;·&nbsp;<span>21 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to Titanic: Who Survived The Tragedy?" href="/titanic-who-survived-the-tragegy/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Number of PhDs by Field
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>An Incomplete Data Exploration</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-02-20 00:00:00 +0000 UTC'>February 20, 2022</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to Number of PhDs by Field" href="/number-of-phds/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Classification: Logistic Regression and Random Forest
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Using Tidymodels to Find Sex of Penguins</p>
+  </div>
+  <footer class="entry-footer"><span title='2022-02-11 00:00:00 +0000 UTC'>February 11, 2022</span>&nbsp;·&nbsp;<span>20 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span></footer>
+  <a class="entry-link" aria-label="post link to Classification: Logistic Regression and Random Forest" href="/classification-logistic-regression-and-random-forest/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="/tags/r/">
+      «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="/tags/r/page/3/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

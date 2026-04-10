@@ -1,0 +1,386 @@
+---
+title: Basics of Text Mining in R
+subtitle: "Thinking of Text as List of Words"
+summary: "Thinking of Text as List of Words"
+author: Harshvardhan
+date: '2022-01-27'
+slug: basics-of-text-mining-in-r
+categories:
+  - R
+  - ML
+tags:
+  - R
+  - ML
+---
+
+
+
+<p>Text in R can be represented in several ways but generally it is a character vector (strings). Reading a text file would mean most of the content would either be in a single long character file, or broken into several variables and observations as a data frame like comma separated files (CSV). In this blog tutorial, I will download a Jane Austen’s book and perform some basic analysis to understand how these text functions work.</p>
+<div id="packages" class="section level1">
+<h1>Packages</h1>
+<p>The common packages for text mining in R are <code>stringr</code>, <code>tidytext</code>, <code>tidyverse</code> and <code>quanteda</code>. I will also use <code>gutenbergr</code> to download the book for analysis.</p>
+<pre class="r"><code>library(stringr)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.2.0     ✔ purrr     1.2.1
+## ✔ forcats   1.0.1     ✔ readr     2.2.0
+## ✔ ggplot2   4.0.1     ✔ tibble    3.3.1
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>library(tidytext)
+library(quanteda)</code></pre>
+<pre><code>## Package version: 4.4
+## Unicode version: 14.0
+## ICU version: 71.1
+## Parallel computing: disabled
+## See https://quanteda.io for tutorials and examples.</code></pre>
+<pre class="r"><code>library(gutenbergr)
+
+# changing default ggplot theme to minimal
+theme_set(theme_minimal())</code></pre>
+</div>
+<div id="downloading-the-book" class="section level1">
+<h1>Downloading the Book</h1>
+<p>Once I have the required functions in my namespace, I can download the book using <code>gutenberg_download()</code>. <code>gutenberg_works()</code> gives a list of works that can be downloaded. (<code>gutenberg_metadata</code> will give a list of all books in Project Gutenberg, but we only need the ones that can be downloaded.)</p>
+<pre class="r"><code>gutenberg_works(title == &quot;Persuasion&quot;)</code></pre>
+<pre><code>## # A tibble: 1 × 8
+##   gutenberg_id title     author gutenberg_author_id language gutenberg_bookshelf
+##          &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;                &lt;int&gt; &lt;fct&gt;    &lt;chr&gt;              
+## 1          105 Persuasi… Auste…                  68 en       Category: Novels/C…
+## # ℹ 2 more variables: rights &lt;fct&gt;, has_text &lt;lgl&gt;</code></pre>
+<p>I am looking for <strong>Persuasion</strong>, Jane Austen’s last book. R tells me the rights to the book are public and it has text, so works for my purpose. Downloading the book requires its <code>gutenberg_id,</code> which is 105 for <strong>Persuasion</strong>, as seen in previous output.</p>
+<pre class="r"><code>book = gutenberg_download(105)</code></pre>
+<pre><code>## Using mirror https://aleph.pglaf.org.</code></pre>
+<p>I can download more than one books at a time and many other fancy things. Check <code>gutenbergr</code>’s <a href="https://docs.ropensci.org/gutenbergr/">vignette</a> for more information.</p>
+</div>
+<div id="exploring-the-book" class="section level1">
+<h1>Exploring the Book</h1>
+<p>Let’s see what we have in <code>book</code>.</p>
+<pre class="r"><code>book</code></pre>
+<pre><code>## # A tibble: 8,357 × 2
+##    gutenberg_id text            
+##           &lt;int&gt; &lt;chr&gt;           
+##  1          105 &quot;Persuasion&quot;    
+##  2          105 &quot;&quot;              
+##  3          105 &quot;&quot;              
+##  4          105 &quot;by Jane Austen&quot;
+##  5          105 &quot;&quot;              
+##  6          105 &quot;(1818)&quot;        
+##  7          105 &quot;&quot;              
+##  8          105 &quot;&quot;              
+##  9          105 &quot;&quot;              
+## 10          105 &quot;&quot;              
+## # ℹ 8,347 more rows</code></pre>
+<p>The <code>book</code> object has two variables: <code>gutenberg_id</code> and <code>text</code>. Unless you are downloading multiple books, <code>text</code> is the only useful variable.</p>
+<p>Also note that there are 8,328 rows in the dataset. However, this text is not in <code>tidytext</code> <a href="https://www.tidytextmining.com/tidytext.html">format</a>, where each row identifies a token and each column is a variable. (An easy way to remember the format is to repeat out loud “<strong>One Token Per Document Per Row</strong>” as often as you can.)</p>
+<p>To convert it into <code>tidytext</code> format, I will use <code>unnest_tokens()</code> function from <code>tidytext</code> package.</p>
+<pre class="r"><code>book %&gt;% 
+  unnest_tokens(word, text)</code></pre>
+<pre><code>## # A tibble: 83,707 × 2
+##    gutenberg_id word      
+##           &lt;int&gt; &lt;chr&gt;     
+##  1          105 persuasion
+##  2          105 by        
+##  3          105 jane      
+##  4          105 austen    
+##  5          105 1818      
+##  6          105 contents  
+##  7          105 chapter   
+##  8          105 i         
+##  9          105 chapter   
+## 10          105 ii        
+## # ℹ 83,697 more rows</code></pre>
+<p><code>unnest_tokens</code> used here has two parameters: what you want to convert <em>into</em> and what you want to convert. First we have the output column name that will be created as the text is unnested into it (<code>word</code>, in this case), and then the input column that the text comes from (<code>text</code>, in this case).</p>
+<p>The function also did some other operations in the background. It removed all the punctuation marks from the text. It also converted everything to lower case (which can be toggled OFF by using <code>to_lower = FALSE</code> in <code>unnest_tokens</code>. The function also has an argument <code>token</code> to specify what kind of text is it. <code>words</code> is the default option that worked for our case. Other options are <code>characters</code>, <code>character_shingles</code>, <code>ngrams</code>, <code>skip_ngrams</code>, <code>sentences</code>, <code>lines</code>, <code>paragraphs</code>, <code>regex</code>, <code>tweets</code> and <code>ptb</code>.</p>
+</div>
+<div id="exploring-words" class="section level1">
+<h1>Exploring Words</h1>
+<p>We can look for several manipulations for insights about the words. Such as, how many four letter words did she use? Less than four letter words? Longer than ten letter words?</p>
+<pre class="r"><code>book = book %&gt;% 
+  unnest_tokens(word, text)
+
+# Four Letter Words
+book %&gt;% 
+  filter(str_length(word) == 4)</code></pre>
+<pre><code>## # A tibble: 15,513 × 2
+##    gutenberg_id word 
+##           &lt;int&gt; &lt;chr&gt;
+##  1          105 jane 
+##  2          105 1818 
+##  3          105 viii 
+##  4          105 xiii 
+##  5          105 xvii 
+##  6          105 xxii 
+##  7          105 xxiv 
+##  8          105 hall 
+##  9          105 took 
+## 10          105 book 
+## # ℹ 15,503 more rows</code></pre>
+<pre class="r"><code># Less than four letter words
+book %&gt;% 
+  filter(str_length(word) &lt; 4)</code></pre>
+<pre><code>## # A tibble: 37,900 × 2
+##    gutenberg_id word 
+##           &lt;int&gt; &lt;chr&gt;
+##  1          105 by   
+##  2          105 i    
+##  3          105 ii   
+##  4          105 iii  
+##  5          105 iv   
+##  6          105 v    
+##  7          105 vi   
+##  8          105 vii  
+##  9          105 ix   
+## 10          105 x    
+## # ℹ 37,890 more rows</code></pre>
+<pre class="r"><code># More than ten letters
+book %&gt;% 
+  filter(str_length(word) &gt; 10)</code></pre>
+<pre><code>## # A tibble: 1,640 × 2
+##    gutenberg_id word         
+##           &lt;int&gt; &lt;chr&gt;        
+##  1          105 somersetshire
+##  2          105 consolation  
+##  3          105 contemplating
+##  4          105 information  
+##  5          105 respectable  
+##  6          105 representing 
+##  7          105 parliaments  
+##  8          105 handwriting  
+##  9          105 presumptive  
+## 10          105 infatuation  
+## # ℹ 1,630 more rows</code></pre>
+<p>We see that there are 15,505 words that have exactly four letters. 37,908 have less than four letters (that includes numbers such as 1). There are 1,636 words that have more than ten letters in them.</p>
+</div>
+<div id="words-that-start-or-end-with" class="section level1">
+<h1>Words that Start or End with …</h1>
+<p>We can also find words that start or end with a particular string. For example, I wonder how often does Jane Austen use V4 form of the verb — ending in “ing”? We can use <code>str_ends()</code> from <code>stringr</code> package.</p>
+<pre class="r"><code>book %&gt;% 
+  filter(str_ends(word, &quot;ing&quot;))</code></pre>
+<pre><code>## # A tibble: 2,638 × 2
+##    gutenberg_id word         
+##           &lt;int&gt; &lt;chr&gt;        
+##  1          105 contemplating
+##  2          105 arising      
+##  3          105 adding       
+##  4          105 inserting    
+##  5          105 serving      
+##  6          105 representing 
+##  7          105 forming      
+##  8          105 concluding   
+##  9          105 handwriting  
+## 10          105 beginning    
+## # ℹ 2,628 more rows</code></pre>
+<p>She uses 2,638 words that end with “ing”. I’m curious, what are their frequencies? I only need to add the <code>count()</code> at the end.</p>
+<pre class="r"><code>book %&gt;% 
+  filter(str_ends(word, &quot;ing&quot;)) %&gt;% 
+  count(word, sort = T)</code></pre>
+<pre><code>## # A tibble: 549 × 2
+##    word           n
+##    &lt;chr&gt;      &lt;int&gt;
+##  1 being        220
+##  2 nothing      139
+##  3 having        92
+##  4 going         65
+##  5 something     64
+##  6 morning       59
+##  7 evening       54
+##  8 anything      49
+##  9 looking       45
+## 10 everything    43
+## # ℹ 539 more rows</code></pre>
+<p>“Being” and “nothing” are the most often used (no pun intended). What about words that start with “h”? I can use <code>str_starts()</code> from <code>stringr</code> package for this.</p>
+<pre class="r"><code>book %&gt;% 
+  filter(str_starts(word, &quot;h&quot;)) %&gt;% 
+  count(word, sort = T)</code></pre>
+<pre><code>## # A tibble: 215 × 2
+##    word        n
+##    &lt;chr&gt;   &lt;int&gt;
+##  1 her      1201
+##  2 had      1185
+##  3 he        959
+##  4 his       658
+##  5 have      589
+##  6 him       466
+##  7 herself   159
+##  8 how       125
+##  9 has       100
+## 10 himself    95
+## # ℹ 205 more rows</code></pre>
+<p>They’re mostly pronouns. How many times does “gh” appear in her texts and in which words? (If I recall correctly, “gh” is probably one of the most common letter-pair in English.)</p>
+<pre class="r"><code>book %&gt;% 
+  filter(str_detect(word, fixed(&quot;gh&quot;))) %&gt;% 
+  count(word, sort = T)</code></pre>
+<pre><code>## # A tibble: 100 × 2
+##    word        n
+##    &lt;chr&gt;   &lt;int&gt;
+##  1 might     165
+##  2 though    117
+##  3 thought    90
+##  4 enough     71
+##  5 ought      52
+##  6 right      42
+##  7 through    34
+##  8 brought    33
+##  9 high       26
+## 10 night      24
+## # ℹ 90 more rows</code></pre>
+<p>I did this using <code>str_detect()</code> function from <code>stringr</code>. This function usually looks for regular expressions. Since there was a fix string that I was looking for (<code>gh</code>), I used <code>fixed()</code> to tell R exactly what I was looking for. It will not make pattern matches but only exact fixed matches. I’m very naive in handling regular expressions but the starting guide could be Hadley Wickham’s R for Data Science chapter on <a href="https://r4ds.had.co.nz/strings.html">Strings</a>.</p>
+<p>I can also look for words that start with a certain letter(s) and end with certain letter(s). How? Just add another condition in the <code>filter()</code> statement. Let’s look for words Jane used that start and end with “t”.</p>
+<pre class="r"><code>book %&gt;% 
+  filter(str_starts(word, &quot;t&quot;) &amp; str_ends(word, &quot;t&quot;)) %&gt;% 
+  count(word, sort = T)</code></pre>
+<pre><code>## # A tibble: 18 × 2
+##    word            n
+##    &lt;chr&gt;       &lt;int&gt;
+##  1 that          874
+##  2 thought        90
+##  3 tenant         13
+##  4 trust           4
+##  5 throat          2
+##  6 torment         2
+##  7 transient       2
+##  8 treat           2
+##  9 taught          1
+## 10 temperament     1
+## 11 tempt           1
+## 12 tenderest       1
+## 13 test            1
+## 14 thickest        1
+## 15 throughout      1
+## 16 tight           1
+## 17 trent           1
+## 18 trustiest       1</code></pre>
+<p>The most common such word is “that”, followed by “thought”.</p>
+</div>
+<div id="frequency-distribution-plots" class="section level1">
+<h1>Frequency Distribution Plots</h1>
+<p>We saw how adding <code>count(word, sort = T)</code> created the frequency distribution. We can also visualise the counts.</p>
+<div id="frequency-table" class="section level2">
+<h2>Frequency Table</h2>
+<pre class="r"><code>book %&gt;% 
+  count(word, sort = T) %&gt;%
+  head(20) %&gt;% 
+  mutate(word = reorder(word, n))</code></pre>
+<pre><code>## # A tibble: 20 × 2
+##    word      n
+##    &lt;fct&gt; &lt;int&gt;
+##  1 the    3327
+##  2 to     2809
+##  3 and    2800
+##  4 of     2570
+##  5 a      1594
+##  6 in     1389
+##  7 was    1337
+##  8 her    1201
+##  9 had    1185
+## 10 she    1146
+## 11 i      1124
+## 12 it     1038
+## 13 he      959
+## 14 be      950
+## 15 not     933
+## 16 that    874
+## 17 as      810
+## 18 for     707
+## 19 but     664
+## 20 his     658</code></pre>
+</div>
+<div id="frequency-plot" class="section level2">
+<h2>Frequency Plot</h2>
+<p>I will have to reorder the counts for creating the plot as <code>count()</code> only counts and doesn’t change the order of the tibble.</p>
+<pre class="r"><code>book %&gt;% 
+  count(word, sort = T) %&gt;%
+  head(20) %&gt;% 
+  mutate(word = reorder(word, n)) %&gt;% 
+  ggplot(aes(x = n, y = word)) +
+  geom_col() +
+  xlab(&quot;Count&quot;) +
+  ylab(&quot;Word&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-13-1.png" alt="" width="672" /></p>
+</div>
+</div>
+<div id="finding-hapaxes" class="section level1">
+<h1>Finding Hapaxes</h1>
+<p>Hapaxes are words that occur only once in the text. Nothing complicated; I will first count the occurrences and then filter when the <code>count</code> is 1.</p>
+<pre class="r"><code>book %&gt;% 
+  count(word, sort = T) %&gt;% 
+  filter(n == 1)</code></pre>
+<pre><code>## # A tibble: 2,578 × 2
+##    word      n
+##    &lt;chr&gt; &lt;int&gt;
+##  1 15        1
+##  2 16        1
+##  3 1760      1
+##  4 1784      1
+##  5 1785      1
+##  6 1787      1
+##  7 1789      1
+##  8 1791      1
+##  9 1800      1
+## 10 1803      1
+## # ℹ 2,568 more rows</code></pre>
+<p>These are all numbers. What about words?</p>
+<pre class="r"><code>book %&gt;% 
+  count(word, sort = T) %&gt;% 
+  filter(n == 1) %&gt;% 
+  filter(!str_detect(word, &quot;[0-9]&quot;))</code></pre>
+<pre><code>## # A tibble: 2,560 × 2
+##    word               n
+##    &lt;chr&gt;          &lt;int&gt;
+##  1 _arrangé_          1
+##  2 _au                1
+##  3 _captain_          1
+##  4 _did_              1
+##  5 _disagreeable_     1
+##  6 _gentleman_        1
+##  7 _given_            1
+##  8 _great_            1
+##  9 _had_              1
+## 10 _high_             1
+## # ℹ 2,550 more rows</code></pre>
+<p>I have used regular expression here to identify all the words that didn’t have any numerals.</p>
+</div>
+<div id="distribution-of-word-lengths" class="section level1">
+<h1>Distribution of Word Lengths</h1>
+<p>Some writers have a habit of writing long words. What were the longest words used by Jane and how often did she use them?</p>
+<pre class="r"><code>book %&gt;% 
+  mutate(length = str_length(word)) %&gt;% 
+  count(length, sort = T)</code></pre>
+<pre><code>## # A tibble: 16 × 2
+##    length     n
+##     &lt;int&gt; &lt;int&gt;
+##  1      3 19961
+##  2      4 15513
+##  3      2 15202
+##  4      5  8425
+##  5      6  6494
+##  6      7  5712
+##  7      8  3452
+##  8      9  2910
+##  9      1  2737
+## 10     10  1661
+## 11     11   823
+## 12     12   486
+## 13     13   231
+## 14     14    71
+## 15     15    25
+## 16     16     4</code></pre>
+<p>Three letter words are most commonly used, followed by four letter and two letter ones. I have first calculated the length of words using <code>mutate()</code> and <code>str_length()</code>.</p>
+<p>I can also plot them.</p>
+<pre class="r"><code>book %&gt;% 
+  mutate(length = str_length(word)) %&gt;% 
+  count(length, sort = T) %&gt;% 
+  mutate(length = reorder(length, n)) %&gt;% 
+  ggplot(aes(x = length, y = n)) +
+  geom_col() +
+  xlab(&quot;Length of Word&quot;) +
+  ylab(&quot;Count&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-17-1.png" alt="" width="672" /></p>
+<p>That was all! See you in next week when I try some harder text analysis tools.</p>
+<hr />
+<p>P.S. I have used the words “word(s)” and “token(s)” quite liberally. They are not always the same. As <code>token</code> argument in <code>unnest_token</code> informs, there are <em>many</em> options besides words that can be tokens.</p>
+</div>

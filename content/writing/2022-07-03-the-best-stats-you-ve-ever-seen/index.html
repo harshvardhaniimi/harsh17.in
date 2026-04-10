@@ -1,0 +1,101 @@
+---
+title: The best stats you've ever seen
+subtitle: "There's a famous saying: All models are wrong but some are useful. How much of statistics is wrong and how much of it is useful? Some thoughts on Hans Rosling's popular talk on global economic development and optimism."
+summary: "There's a famous saying: All models are wrong but some are useful. How much of statistics is wrong and how much of it is useful? Some thoughts on Hans Rosling's popular talk on global economic development and optimism."
+author: Harshvardhan
+date: '2022-07-03'
+slug: the-best-stats-you-ve-ever-seen
+categories:
+  - life
+  - thoughts
+  - statistics
+  - economics
+tags: []
+---
+
+
+
+<p>Last week, I received a note from a reader of my <a href="https://www.getrevue.co/profile/harshbutjust/issues/what-happened-in-the-last-two-months-next-issue-37-1235976">newsletter</a>:</p>
+<blockquote>
+<p>Dear Harshvardhan,</p>
+<p>I would like to say in advance that I enjoy your collection of R packages in your newsletter very much.</p>
+<p>Today, I saw that you featured the talk „The best stats you’ve ever seen” by Hans Rosling the second time in your newsletter, but I cannot say I share your enthusiasm about it. It could have been equally titled „How to lie with statistics”, as it takes quite some effort to (mis)lead the audience in a particular direction.</p>
+<p>Take the „Income Mountains”: By stacking different regions on top of each other the graph hides inequalities between groups. Even more important, regions are heterogeneous. Who would put Urugay, Chile or Costa Rica in the same group as Bolivia, Haiti or Guatemala?</p>
+<p>But it gets worse when looking at the underlying transformation: Using logarithmic scale hides the long tail of rich people and thus extreme differences in income. (It is worth pointing out that the Gapminder foundation is sponsored by Bill Gates these days.)</p>
+<p>And the raw data are unfit for the purpose either: PPP as used by the World Bank – Roslings data source – overstates the purchasing power of the poor vis-a-vis the rich. Calculations of PPP invariably make poor people’s income look greater than it is.</p>
+<p>And all of this to convey the happy message that we do not live in a two-hump world anymore. Sadly, this is not the case and I believe putting the talk into context would have been appropriate for the newsletter. Something I actually urge you to do for the next issue.</p>
+<p>Read on: <a href="https://www.jasonhickel.org/blog/2019/3/17/two-hump-world" class="uri">https://www.jasonhickel.org/blog/2019/3/17/two-hump-world</a></p>
+<p>Best,</p>
+</blockquote>
+<p>They were referring to Hans Rosling’s talk on how our pre-conceived notions of the world are not aligned with general reality shown by data.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hVimVzgtD6w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>Development and growth are tricky subjects.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> There are complicated and do not seem to have one single answer.</p>
+<p>In this TED talk, Rosling presents how when he started teaching as a professor of international health at the Karolinska Institute, his biggest problem was not the student’s ignorance but preconceived notions. He asked his students to choose one country from the pair with higher mortality rates.</p>
+<p><img src="images/Screen%20Shot%202022-07-03%20at%202.22.35%20PM.png" /></p>
+<p>The countries with the arrow actually have higher child mortality rate. But the bigger lesson is the students performed worse than a Chimpanzee (or a coin toss) and professors performed as good/bad as a Chimpanzee.</p>
+<p>The graph that stood out most to me was how life expectancy had varied by GDP per capita over the years. Here’s an updated version of the graph. <strong>Hit play button.</strong></p>
+<iframe src="//www.gapminder.org/tools/?embedded=true#%24chart-type=bubbles&amp;url=v1" style="width: 100%; height: 500px; margin: 0 0 0 0; border: 1px solid grey;" allowfullscreen>
+</iframe>
+<p>But what they had written to me was about Income Mountains.</p>
+<div id="mountain-peaks" class="section level1">
+<h1>Mountain Peaks</h1>
+<p><img src="images/Screen%20Shot%202022-07-03%20at%202.39.17%20PM.png" /></p>
+<p>Rosling’s point was the incomes are converging to one “hump”, something that my reader and Jason Hickel disputed. Here’s how the graph looks in 2020.</p>
+<iframe src="//www.gapminder.org/tools/?embedded=true#%24chart-type=mountain&amp;url=v1" style="width: 100%; height: 500px; margin: 0 0 0 0; border: 1px solid grey;" allowfullscreen>
+</iframe>
+<p>But everything aside, it was great to hear some criticism of Hans Rosling’s work. I read his book Factfulness which interested me in telling stories with data. I hadn’t heard/seen significant criticism of his work — which is dangerous, especially in development economy works.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+</div>
+<div id="stacking-regions" class="section level1">
+<h1>Stacking Regions</h1>
+<p>The stacked plots do hide the differences between the regions. Countries in the same group likely have very different economic indicators, which is one way to say the average is the average because it’s the average. In the figure below, I expanded his chart to all countries.</p>
+<iframe src="//www.gapminder.org/tools/?embedded=true#$model$markers$mountain$data$filter$dimensions$geo$un_state:true;;;;&amp;encoding$selected$data$filter$markers@=ury&amp;=gtm;;;;&amp;facet_row$data$constant=none;;;;;;&amp;chart-type=mountain&amp;url=v1" style="width: 100%; height: 500px; margin: 0 0 0 0; border: 1px solid grey;" allowfullscreen>
+</iframe>
+<p>One obvious peril is that smaller countries like Uruguay are now almost hidden. However, the trend still looks the same. Both Uruguay’s hump and the global hump are very much aligned. Furthermore, all six countries mentioned in their email have a pretty similar distribution.</p>
+</div>
+<div id="logarithmic-scales" class="section level1">
+<h1>Logarithmic Scales</h1>
+<p>Logarithmic scales are hideous. They correspond larger differences to smaller differences, making it easy to read but not easy to interpret. However, one good thing about log scales is that they supply growth numbers; they’re on <a href="https://stats.stackexchange.com/questions/18844/when-and-why-should-you-take-the-log-of-a-distribution-of-numbers">relative</a> changes rather than absolute change. Hans Rosling acknowledges it in the talk saying, “our concept of economy is to look at growth with percentage”.</p>
+<p>I’ve been fiddling with the idea in my head of what happens if countries stop growing, and I’ve not settled on an answer yet. It was great to see Jason Hickel (whose blog they shared) had a book on it: <em>Less is More: How Degrowth Will Save the World</em> and I will check it out.</p>
+</div>
+<div id="purchasing-power-parity" class="section level1">
+<h1>Purchasing Power Parity</h1>
+<p>PPP is a wrong but valuable metric. Before starting my PhD, I worked for a few months in India. According to tax returns, my pay would’ve put me in 0.1% of India. During my PhD, I’m graciously supported with a scholarship. Just the scholarship amount, when converted to Indian rupees using the current exchange rate of ₹78:$1, would put me in 0.001% of India. And I’m making below US minimum wage on the scholarship.</p>
+<p><img src="images/Screen%20Shot%202022-07-03%20at%203.56.06%20PM.png" /></p>
+<p>PPP exchange rates are not the complete picture. But they are a compromise between foreign exchange rates and no exchange rate. People argue for RER, REER, NEER, PER and many others, but each has its pros and cons.</p>
+<p>Jason presents a graph with constant dollars. While eye-opening, I don’t think that’s very useful.</p>
+<p><img src="images/Screen%20Shot%202022-07-03%20at%203.22.50%20PM.png" /></p>
+<p>The blog talks about issues with making the baskets as well. That is well-founded. People consume different goods in different countries, and it’s tough to come up with the same basket. Some economists suggested using <a href="https://www.gapminder.org/dollar-street">time</a> as a metric: consumption in a day measured in local currency.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> That has its shortcomings.</p>
+<p>The broader picture from Rosling’s talk is about bringing forward the optimistic view of the world. His central argument is that economic conditions in developing countries are not as bad as they used to be. Does that mean we’ve reached our goal? Far from it. Bill and Melinda Gates Foundation is working on it in many cases, including by <a href="https://www.gapminder.org/about/about-gapminder/supporters/">supporting</a> Gapminder.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>Living here in the US made me realise the importance of starting resources. An average kid in developed countries has more options than her counterpart in the developing world. This means there are more questions than answers, which is why development economics is a growing field these days.</p>
+<p>Hopefully, we will make it so that everyone can be rich.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+</div>
+<div id="update-july-5-2022" class="section level1">
+<h1>Update: July 5, 2022</h1>
+<p>They responded back to my note and this blog post bringing forward another set of interesting points.</p>
+<p>It is important to understand logarithmic transformations are not trivial. As they correctly identified — which most readers would miss — logarithmic scales in graphs grossly underestimate actual differences.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p><del>For example, the difference between $1 and $10 in this graph actually means a difference of $3 and $22,026. Why use logarithmic scales at all? Because incomes vary widely and log-transform brings some order. Furthermore, growth is more easily captured with log numbers. But difference of $22,023 is much more than $9, right?</del><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
+<blockquote>
+<p>One could also ask whether relative change is actually what is of interest. It is often deemed appropriate with a reference to “diminishing returns”: the logarithmic scale incorporates peoples perception about the worth of additional income, giving 1 dollar to a person with 1$/day income is much more significant than giving to a 10$/day person. But to quote <a href="https://www.jasonhickel.org/blog/2019/5/15/how-not-to-measure-inequality">Jason Hickel</a>: “Ultimately, there is a difference in perspectives at stake here. Additional dollars going to the rich are, from the perspective of the rich, diminishing in terms of marginal utility. But from the perspective of the poor they represent increasing egregiousness. To rely solely on the theory of diminishing marginal utility in discussing inequality, then, is to adopt the perspective of the rich and dress it up as neutral and objective.”</p>
+</blockquote>
+<p>If you have a hundred dollar and I give you a hundred more, you’d be ecstatic. If you have a million and I give you a hundred more, you’d be meh…</p>
+<p>To hammer the point home, here’s what they say:</p>
+<blockquote>
+<p>When transforming and ultimately visualizing data, we are driven by questions, make omissions, simplifications and assumptions. It is not proper to omit them afterwards as more often than not we communicate “facts” through our very own lens.</p>
+</blockquote>
+<hr />
+<p>Thanks for reading my blogpost. Thanks to the wonderful readers who take time to write back with such fervor. Such interactions motivate me to continue writing.</p>
+<p><em>Next — Today I Learnt About R</em> is a free weekly newsletter on R related stories. I present five stories, four packages, three jargon, two tweets and one meme related to Data Science and R. Click <a href="https://www.getrevue.co/profile/harshbutjust">here</a> to subscribe or read past editions.</p>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>Prof Abhijit Banerjee’s <a href="https://www.youtube.com/watch?v=K2LvCx8H0OU">lecture</a> on The Challenge of World Poverty might be a good starting point.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Some people say development economics is all that’s left for novel economic work. No wonder many recent Nobel prize economists worked in the area of development economics.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>The dollar street has several other visualisations: on <a href="https://www.gapminder.org/dollar-street?topic=alcoholic-drinks">alcohol</a>, on <a href="https://www.gapminder.org/dollar-street?topic=pets">pets</a>, on <a href="https://www.gapminder.org/dollar-street?topic=toothbrushes">toothbrushes</a> and even <a href="https://www.gapminder.org/dollar-street?topic=toys">toys</a>.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>I don’t agree Gapminder being supported by Gates Foundation is the same as being sponsored by Bill Gates. Isn’t that akin to calling my $10 donation to Wikipedia a sponsorship? Also, Gapminder has apparently <a href="https://www.gapminder.org/about/about-gapminder/supporters/">diversified</a> its income sources to strengthen their economic independence. No single source of income is allowed to exceed 60% of the total annual income.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>If you’re looking for a shortcut, there are none. Here are <a href="https://twitter.com/naval/status/1002103360646823936?s=20&amp;t=nj-qRNJ-9ReLDHarokx5xg">some tips</a> to get started on your long journey.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>They shared <a href="https://mkorostoff.github.io/1-pixel-wealth/">this amazing website</a> which shows wealth in pixels. No log scales; just note the difference.<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>This description is wrong/incomplete. Here’s how Gapminder makes income mountains: <a href="https://www.gapminder.org/data/documentation/income-mountains-dataset/" class="uri">https://www.gapminder.org/data/documentation/income-mountains-dataset/</a>.<a href="#fnref7" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

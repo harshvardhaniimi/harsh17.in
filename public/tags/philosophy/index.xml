@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Philosophy on Harshvardhan</title>
+    <link>/tags/philosophy/</link>
+    <description>Recent content in Philosophy on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/philosophy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Language Models and Multiverse</title>
+      <link>/language-models-and-multiverse/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>/language-models-and-multiverse/</guid>
+      <description>&lt;p&gt;I was listening to a podcast by OpenAI where they tell us how they trained GPT-4.5, one of the largest models they have today.
+GPT-4.5 shows intelligence in unexpected ways, demonstrating common sense like other models totally miss.
+I haven’t used it much myself so cannot comment on that, but at &lt;a href=&#34;https://youtu.be/6nJZopACRuQ?t=2318&#34;&gt;38:38&lt;/a&gt; in the video, Sam Altman asks Daniel Selsam “why does supervised learning work?”.
+Without skipping a beat, he replies “compression”.
+Then he explains that “the ideal intelligence is Solomonoff Induction”.
+Unfamiliar with this term, I jumped on a conversation with GPT-4.5 and along the way, I learnt several interesting things that I want to share with you all.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Happiness: What makes us happy?</title>
+      <link>/happiness/</link>
+      <pubDate>Wed, 11 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>/happiness/</guid>
+      <description>&lt;div id=&#34;try-the-quiz&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Try the quiz&lt;/h2&gt;
+&lt;p&gt;If you want to test your knowledge about happiness around the world, try this quiz I made based on &lt;a href=&#34;https://worldhappiness.report/&#34;&gt;World Happiness Report 2024&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Link to Quiz (10 questions, 5 mins activity): &lt;a href=&#34;https://happiness-quiz.netlify.app/&#34; class=&#34;uri&#34;&gt;https://happiness-quiz.netlify.app/&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-makes-us-happy&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What makes us happy?&lt;/h2&gt;
+&lt;p&gt;One of the early realizations of my life was that happiness depends more on perspectives than circumstances.
+A wise person would strive for a perspective that brings them happiness.
+So, why isn’t everyone happy?
+To a large extent, it’s because we are told what should make us happy: job, marriage, kids, and so on.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Thoughts about Vipassana Meditation (and My Second Experience)</title>
+      <link>/vipassana2/</link>
+      <pubDate>Mon, 03 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>/vipassana2/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.lesswrong.com/posts/mELQFMi9egPn5EAjK/my-attempt-to-explain-looking-insight-meditation-and&#34;&gt;Kaj Sotala&lt;/a&gt; writes:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Usually, most of us are - on some implicit level - operating off a belief that we &lt;strong&gt;need&lt;/strong&gt; to experience pleasant feelings and need to avoid experiencing unpleasant feelings.
+In a sense, thinking about getting into an unpleasant or painful situation may feel almost like death: if we think that the experience would be unpleasant enough, then no matter how brief it might be, we might do almost anything to avoid ending up there.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Theory of Mind</title>
+      <link>/theory-of-mind/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>/theory-of-mind/</guid>
+      <description>Four parts of our mind according to Buddha</description>
+    </item>
+    <item>
+      <title>What are you optimizing for?</title>
+      <link>/what-are-you-optimizing-for/</link>
+      <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>/what-are-you-optimizing-for/</guid>
+      <description>In a world driven by optimization, individuals are guided by nudges promoting beneficial choices and sludges creating barriers. Using examples from urban design, food choices, and media, I explore how these influences often prioritize convenience over genuine well-being, challenging you to critically assess what&amp;rsquo;s truly being optimized for in your lives.</description>
+    </item>
+    <item>
+      <title>Chitta-vritis: Exploring the Depths of Consciousness</title>
+      <link>/yoga/</link>
+      <pubDate>Thu, 09 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>/yoga/</guid>
+      <description>Through the chitta-vritis of pramana, smriti, nidra, vikalpa, and viparyaya, Patanjali offers insights into the workings of the mind and how we can cultivate greater awareness and understanding of our own mental processes.</description>
+    </item>
+    <item>
+      <title>How to Hack Your Own Mind?</title>
+      <link>/experiments/</link>
+      <pubDate>Sat, 25 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>/experiments/</guid>
+      <description>Instead of relying solely on previously published psychological research, I suggest conducting personal experiments on oneself to test and develop new behaviors and attitudes. Experimentation is a cheap and effective way to determine what works best for you, and it allows for personalised results that can be applied directly to one&amp;rsquo;s life.</description>
+    </item>
+    <item>
+      <title>What happens when you meditate ten hours a day?</title>
+      <link>/meditation/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>/meditation/</guid>
+      <description>Between Dec 15 and 25 of 2022 I attended a meditation course called Vipassana. Vipassana is a Pali word that means &amp;lsquo;seeing things as they are&amp;rsquo;. The course promised me to teach how to have a clear awareness of exactly what is happening as it happens. It is a form of mindfulness meditation.</description>
+    </item>
+    <item>
+      <title>Infallible Memory: The Truth of Fact, the Truth of Feeling</title>
+      <link>/infallible-memory/</link>
+      <pubDate>Thu, 24 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>/infallible-memory/</guid>
+      <description>You rarely come across a story so powerful that you experience so many different feelings — at the same time. Ted Chiang&amp;rsquo;s &amp;lsquo;The Truth of Fact, the Truth of Feeling&amp;rsquo; does that. It evokes several strong feelings, one after another, that will leave you soul-searching.</description>
+    </item>
+    <item>
+      <title>Bullets of Wisdom</title>
+      <link>/wise/</link>
+      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>/wise/</guid>
+      <description>&lt;p&gt;Life is short for learning from your own mistakes; you need to play catch-up with people who tried new things. Most people do not document their learnings. The rare culturati group that notes their understandings in an essay easily trumps the large group, which keeps their learnings to themselves.&lt;/p&gt;
+&lt;p&gt;I have read many interesting essays. Some of them stuck with me &amp;mdash; like fingers working with super glue. I revisit them often. When I reread them, I often see myself clinging to an awfully good section. In this live post, I will share some of those good nuggets.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Being Optimistic</title>
+      <link>/optimistic/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>/optimistic/</guid>
+      <description>Things are bad. We know that; everyone knows that. But you can choose to look at the positives. Granted, we&amp;rsquo;ll sometimes be cherry-picking. But not always. Life is like a box of chocolates; there will be good things about every negative thing and bad about most positive things. I want to be happy, so I look at the positives.</description>
+    </item>
+    <item>
+      <title>The Song of The Lord</title>
+      <link>/the-song-of-the-lord/</link>
+      <pubDate>Sun, 12 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>/the-song-of-the-lord/</guid>
+      <description>Shrimad Bhagavad Gita, or the song of the lord, is a 700 verses long conversation between Lord Sri Krishna and Arjun. It discusses key principles of action and embodies more wisdom than I can grasp.</description>
+    </item>
+    <item>
+      <title>धर्मक्षेत्र: माता गांधारी का आरोप</title>
+      <link>/%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0-%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A4%BE-%E0%A4%97%E0%A4%BE%E0%A4%82%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A5%80-%E0%A4%95%E0%A4%BE-%E0%A4%86%E0%A4%B0%E0%A5%8B%E0%A4%AA/</link>
+      <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
+      <guid>/%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0-%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A4%BE-%E0%A4%97%E0%A4%BE%E0%A4%82%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A5%80-%E0%A4%95%E0%A4%BE-%E0%A4%86%E0%A4%B0%E0%A5%8B%E0%A4%AA/</guid>
+      <description>माता गांधारी का मानना है की महाभारत श्रीकृष्ण ने करवाया। सिर्फ अपने अहम् के लिए।</description>
+    </item>
+    <item>
+      <title>Imaginary Reality</title>
+      <link>/imaginary-reality/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>/imaginary-reality/</guid>
+      <description>We know less than we think and we don&amp;rsquo;t even know what we don&amp;rsquo;t know.</description>
+    </item>
+    <item>
+      <title>Improbable Doesn&#39;t Mean Impossible</title>
+      <link>/improbable-doesn-t-mean-impossible/</link>
+      <pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>/improbable-doesn-t-mean-impossible/</guid>
+      <description>Please don&amp;rsquo;t treat them alike</description>
+    </item>
+    <item>
+      <title>Ellsberg&#39;s Paradox</title>
+      <link>/ellsberg-paradox/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>/ellsberg-paradox/</guid>
+      <description>Simulation of Ellsberg&amp;rsquo;s Paradox</description>
+    </item>
+    <item>
+      <title>How to decide: to do, or not to do?</title>
+      <link>/how-to-decide-to-do-or-not-to-do/</link>
+      <pubDate>Sat, 13 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>/how-to-decide-to-do-or-not-to-do/</guid>
+      <description>Thinking about the most crucial dilemma of all time.</description>
+    </item>
+  </channel>
+</rss>

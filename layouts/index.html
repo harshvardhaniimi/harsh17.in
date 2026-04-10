@@ -1,0 +1,40 @@
+{{- define "main" }}
+
+<div class="profile">
+  <div class="profile_inner">
+    {{- with site.Params.homeInfoParams }}
+    <h1>{{ .Title }}</h1>
+    <div>{{ .Content | markdownify }}</div>
+    {{- end }}
+
+    {{- with site.Params.socialIcons }}
+    <div class="social-icons" style="margin-top:1.5rem;">
+      {{- range . }}
+      <a href="{{ .url | absURL }}" target="_blank" rel="noopener noreferrer me"
+         title="{{ .name }}">
+        {{- partial "svg.html" . }}
+      </a>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    <a href="#" id="randomPost" class="random-post" onclick="goRandom(event)">
+      Feeling adventurous? Read a random post →
+    </a>
+  </div>
+</div>
+
+<script>
+var allPosts = [
+  {{- range where site.RegularPages "Section" "writing" -}}
+  "{{ .RelPermalink }}",
+  {{- end -}}
+];
+function goRandom(e) {
+  e.preventDefault();
+  var url = allPosts[Math.floor(Math.random() * allPosts.length)];
+  window.location.href = url;
+}
+</script>
+
+{{- end }}

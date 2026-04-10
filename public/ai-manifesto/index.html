@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>AI Manifesto | Harshvardhan</title>
+<meta name="keywords" content="ai">
+<meta name="description" content="I’ve used a lot of AI in the last few years.
+I’ve also written a lot about it previously.
+Here are some of my previous posts around AI.
+
+Improvements in Artificial
+Intelligence, December 9,
+2021
+I wonder how this AI thing is going to shape
+up, March 3, 2023
+How does GPT work? Understanding Generative AI
+Models, April 26, 2023
+Four AI Chatbots other than
+ChatGPT,
+November 27, 2023
+OpenAI’s GPT is a terrific
+idea, February 8, 2024
+
+When ChatGPT (GPT-3.5) took the world by storm, I was actually offline in a Vipassana course.
+I only got to know about it after a while but it fascinated me that it could write a poem, albeit poorly.
+Now, I couldn’t make the joke “oh, it can’t write a poem anyway”. Creative jobs were up for grabs now.">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/ai-manifesto/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/ai-manifesto/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/ai-manifesto/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="AI Manifesto">
+  <meta property="og:description" content="I’ve used a lot of AI in the last few years. I’ve also written a lot about it previously. Here are some of my previous posts around AI.
+Improvements in Artificial Intelligence, December 9, 2021 I wonder how this AI thing is going to shape up, March 3, 2023 How does GPT work? Understanding Generative AI Models, April 26, 2023 Four AI Chatbots other than ChatGPT, November 27, 2023 OpenAI’s GPT is a terrific idea, February 8, 2024 When ChatGPT (GPT-3.5) took the world by storm, I was actually offline in a Vipassana course. I only got to know about it after a while but it fascinated me that it could write a poem, albeit poorly. Now, I couldn’t make the joke “oh, it can’t write a poem anyway”. Creative jobs were up for grabs now.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2025-02-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-18T00:00:00+00:00">
+    <meta property="article:tag" content="Ai">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI Manifesto">
+  <meta name="twitter:description" content="I’ve used a lot of AI in the last few years. I’ve also written a lot about it previously. Here are some of my previous posts around AI.
+Improvements in Artificial Intelligence, December 9, 2021 I wonder how this AI thing is going to shape up, March 3, 2023 How does GPT work? Understanding Generative AI Models, April 26, 2023 Four AI Chatbots other than ChatGPT, November 27, 2023 OpenAI’s GPT is a terrific idea, February 8, 2024 When ChatGPT (GPT-3.5) took the world by storm, I was actually offline in a Vipassana course. I only got to know about it after a while but it fascinated me that it could write a poem, albeit poorly. Now, I couldn’t make the joke “oh, it can’t write a poem anyway”. Creative jobs were up for grabs now.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "AI Manifesto",
+      "item": "/ai-manifesto/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI Manifesto",
+  "name": "AI Manifesto",
+  "description": "I’ve used a lot of AI in the last few years. I’ve also written a lot about it previously. Here are some of my previous posts around AI.\nImprovements in Artificial Intelligence, December 9, 2021 I wonder how this AI thing is going to shape up, March 3, 2023 How does GPT work? Understanding Generative AI Models, April 26, 2023 Four AI Chatbots other than ChatGPT, November 27, 2023 OpenAI’s GPT is a terrific idea, February 8, 2024 When ChatGPT (GPT-3.5) took the world by storm, I was actually offline in a Vipassana course. I only got to know about it after a while but it fascinated me that it could write a poem, albeit poorly. Now, I couldn’t make the joke “oh, it can’t write a poem anyway”. Creative jobs were up for grabs now.\n",
+  "keywords": [
+    "ai"
+  ],
+  "articleBody": "I’ve used a lot of AI in the last few years. I’ve also written a lot about it previously. Here are some of my previous posts around AI.\nImprovements in Artificial Intelligence, December 9, 2021 I wonder how this AI thing is going to shape up, March 3, 2023 How does GPT work? Understanding Generative AI Models, April 26, 2023 Four AI Chatbots other than ChatGPT, November 27, 2023 OpenAI’s GPT is a terrific idea, February 8, 2024 When ChatGPT (GPT-3.5) took the world by storm, I was actually offline in a Vipassana course. I only got to know about it after a while but it fascinated me that it could write a poem, albeit poorly. Now, I couldn’t make the joke “oh, it can’t write a poem anyway”. Creative jobs were up for grabs now.\nHowever, the more I think of it, I find AI to be complementing my intelligence rather than replacing it. My own curiosities that required a lot of effort to answer, now can be answered quickly and reliably (thanks Perplexity!). Obscure technical questions around topics that no one except me cares about (like learning Kaithee script and Hindustani language) are so much better with Claude and ChatGPT. Often I find myself checking for updated information on Reddit Answers or Grok’s tweet search. Image generation by Grok is too good. Coding (especially debugging) is so much better today that without these LLMs. I have created projects where I got extensive help from LLMs like Spotify Randomizer and jailbreaking my Kindle.\nSome of the newer writings on this website may have been “proofread” with the help of an AI. So far, I haven’t found any AI that’s able to write with my level of English or Hindustani. But, it’s amazing for correcting spelling mistakes and reorganizing text for better flow. I use it for that. Which tool specifically, varies quite a bit over time and space.\nBut like all authors in their books say, “all mistakes are mine alone”. If I say something to you because I had a faulty source, my explanation that it was faulty source isn’t enough. Thus, if I present it to you, it has my word of confirmation and verification. I might still make an honest mistake and in that case, PLEASE correct me.\nI think it goes back to what Douglas Adams wrote in 1999 about the internet:\nSo people complain that there’s a lot of rubbish online,… or that you can’t necessarily trust what you read on the web. Imagine trying to apply any of those criticisms to what you hear on the telephone. Of course you can’t ‘trust’ what people tell you on the web anymore than you can ‘trust’ what people tell you on megaphones, postcards or in restaurants. Working out the social politics of who you can trust and why is, quite literally, what a very large part of our brain has evolved to do. For some batty reason we turn off this natural scepticism when we see things in any medium which require a lot of work or resources to work in, or in which we can’t easily answer back – like newspapers, television or granite. Hence ‘carved in stone.’ What should concern us is not that we can’t take what we read on the internet on trust – of course you can’t, it’s just people talking – but that we ever got into the dangerous habit of believing what we read in the newspapers or saw on the TV – a mistake that no one who has met an actual journalist would ever make. One of the most important things you learn from the internet is that there is no ‘them’ out there. It’s just an awful lot of ‘us’.\nDouglas Adams’ prescient observations about internet skepticism parallel our current relationship with AI in striking ways. Just as he noted that we shouldn’t inherently trust internet content simply because it exists in a medium that requires significant resources to operate, we shouldn’t automatically trust (or distrust) AI outputs merely because they come from sophisticated models trained on vast datasets. Just as Adams pointed out there is no “them” on the internet, just lots of “us,” we should remember that AI systems are ultimately tools created by and for humans, reflecting our collective knowledge, biases, and limitations.\nWhat you can trust or not trust will be the job of institutions, like Yuval Noah Harrari says in the interview with Kara Swisher. Thus, trust the institutions. To that effect, I have also created a Chrome extension that you can select any text and then ask Perplexity or Grok to factcheck it for you (for free). By making fact-checking more accessible, we’re not just helping individuals make better decisions; we’re contributing to a broader ecosystem of trust and verification in the AI age.\nAnother side note on AI text: These language models were trained on all1 human text and many people consider this an evil act by itself. I’m not so sure of my position. In one way, everything that humans have done so far was to advance the humanity even further. No one gave Aristotle or Kalidasa money for translating or copying their works in many languages. Today, the problem has arisen primarily due to the speed at which this transmission has happened. Writings of yesterday might end up in training dataset today. But philosophically, nothing has changed.\nAncient authors often didn’t seek personal attribution or compensation. Rather, they were supported by patronage from the royal courts — like media agencies pay journalists today. Like Patanjali’s Yoga Sutras advanced our knowledge of medicine and surgery without any compensation to them, I am certain these systems being created will result in even better creative works, which will fuel next systems supercharging creativity.\nThus, our works should be considered an homage to the future civilizations rather than mere intellectual property to be guarded.\nI know it is easy for me to be philosophical; my bread and butter isn’t writing. Thus, I expect a lot of people, especially independent journalists and writers, to completely disagree with me.\nBut, this is my AI manifesto for this website. For this website (and for this website alone), I give OpenAI, Anthropic, Google, DeepSeek and everyone else, who wants to use my work to create something new, express permission to use them however they see fit. I believe their creation will help the future humanity and thus I will have fulfilled my duty to make the world a better place.\nThis was inspired from Damola Morenikeji’s AI Manifesto. I’ve also requested this to be added to the list of AI manifesto.\nNot all literally, but figuratively. We are running out of scaling training data and now data curation — selecting right set of data to fine tune the model — is more rewarding that just dumping more data.↩︎\n",
+  "wordCount" : "1144",
+  "inLanguage": "en",
+  "datePublished": "2025-02-18T00:00:00Z",
+  "dateModified": "2025-02-18T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/ai-manifesto/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      AI Manifesto
+    </h1>
+    <div class="post-meta"><span title='2025-02-18 00:00:00 +0000 UTC'>February 18, 2025</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>I’ve used a lot of AI in the last few years.
+I’ve also written a lot about it previously.
+Here are some of my previous posts around AI.</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://blog.harsh17.in/ai-improvements/">Improvements in Artificial
+Intelligence</a>, December 9,
+2021</li>
+<li><a href="https://blog.harsh17.in/ai2/">I wonder how this AI thing is going to shape
+up</a>, March 3, 2023</li>
+<li><a href="https://blog.harsh17.in/gpt/">How does GPT work? Understanding Generative AI
+Models</a>, April 26, 2023</li>
+<li><a href="https://blog.harsh17.in/four-ai-chatbots-other-than-chatgpt/">Four AI Chatbots other than
+ChatGPT</a>,
+November 27, 2023</li>
+<li><a href="https://blog.harsh17.in/openai-gpts/">OpenAI’s GPT is a terrific
+idea</a>, February 8, 2024</li>
+</ol>
+<p>When ChatGPT (GPT-3.5) took the world by storm, I was actually offline in a Vipassana course.
+I only got to know about it after a while but it fascinated me that it could write a poem, albeit poorly.
+Now, I couldn’t make the joke “oh, it can’t write a poem anyway”. Creative jobs were up for grabs now.</p>
+<p>However, the more I think of it, I find AI to be complementing my intelligence rather than replacing it.
+My own curiosities that required a lot of effort to answer, now can be answered quickly and reliably (thanks Perplexity!).
+Obscure technical questions around topics that no one except me cares about (like learning Kaithee script and Hindustani language) are so much better with Claude and ChatGPT.
+Often I find myself checking for updated information on Reddit Answers or Grok’s tweet search. Image generation by Grok is too good.
+Coding (especially debugging) is so much better today that without these LLMs.
+I have created projects where I got extensive help from LLMs like <a href="https://www.harsh17.in/spotify-randomizer/">Spotify Randomizer</a> and <a href="https://www.harsh17.in/kindle/">jailbreaking my Kindle</a>.</p>
+<p>Some of the newer writings on this website may have been “proofread” with the help of an AI.
+So far, I haven’t found any AI that’s able to write with my level of English or Hindustani.
+But, it’s amazing for correcting spelling mistakes and reorganizing text for better flow. I use it for that.
+Which tool specifically, varies quite a bit over time and space.</p>
+<p>But like all authors in their books say, “all mistakes are mine alone”.
+If I say something to you because I had a faulty source, my explanation that it was faulty source isn’t enough.
+Thus, if I present it to you, it has my word of confirmation and verification.
+I might still make an honest mistake and in that case, PLEASE correct me.</p>
+<p>I think it goes back to what <a href="https://www.douglasadams.com/dna/19990901-00-a.html">Douglas
+Adams</a> wrote in
+1999 about the internet:</p>
+<blockquote>
+<p>So people complain that there’s a lot of rubbish online,… or that
+you can’t necessarily trust what you read on the web. Imagine trying
+to apply any of those criticisms to what you hear on the telephone. Of
+course you can’t ‘trust’ what people tell you on the web anymore than
+you can ‘trust’ what people tell you on megaphones, postcards or in
+restaurants. <strong>Working out the social politics of who you can trust
+and why is, quite literally, what a very large part of our brain has
+evolved to do.</strong> For some batty reason we turn off this natural
+scepticism when we see things in any medium which require a lot of
+work or resources to work in, or in which we can’t easily answer back
+– like newspapers, television or granite. Hence ‘carved in stone.’
+What should concern us is not that we can’t take what we read on the
+internet on trust – of course you can’t, it’s just people talking –
+but that we ever got into the dangerous habit of believing what we
+read in the newspapers or saw on the TV – a mistake that no one who
+has met an actual journalist would ever make. One of the most
+important things you learn from the internet is that there is no
+‘them’ out there. It’s just an awful lot of ‘us’.</p>
+</blockquote>
+<p>Douglas Adams’ prescient observations about internet skepticism parallel our current relationship with AI in striking ways.
+Just as he noted that we shouldn’t inherently trust internet content simply because it exists in a medium that requires significant resources to operate, we shouldn’t automatically trust (or distrust) AI outputs merely because they come from sophisticated models trained on vast datasets.
+Just as Adams pointed out there is no “them” on the internet, just lots of “us,” we should remember that AI systems are ultimately tools created by and for humans, reflecting our collective knowledge, biases, and limitations.</p>
+<p>What you can trust or not trust will be the job of institutions, like <a href="https://www.youtube.com/watch?v=H9vEfI8aWTE">Yuval Noah Harrari</a> says in the interview with Kara Swisher. Thus, trust the institutions.
+To that effect, I have also created a <a href="https://textsage.netlify.app/">Chrome extension</a> that you can select any text and then ask Perplexity or Grok to factcheck it for you (for free).
+By making fact-checking more accessible, we’re not just helping individuals make better decisions; we’re contributing to a broader ecosystem of trust and verification in the AI age.</p>
+<p>Another side note on AI text: These language models were trained on all<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> human text and many people consider this an evil act by itself.
+I’m not so sure of my position. In one way, everything that humans have done so far was to advance the humanity even further.
+No one gave Aristotle or Kalidasa money for translating or copying their works in many languages.
+Today, the problem has arisen primarily due to the speed at which this transmission has happened.
+Writings of yesterday might end up in training dataset today. But philosophically, nothing has changed.</p>
+<p>Ancient authors often didn’t seek personal attribution or compensation.
+Rather, they were supported by patronage from the royal courts — like media agencies pay journalists today.
+Like Patanjali’s Yoga Sutras advanced our knowledge of medicine and surgery without any compensation to them, I am certain these systems being created will result in even better creative works, which will fuel next systems supercharging
+creativity.</p>
+<p>Thus, our works should be considered an homage to the future civilizations rather than mere intellectual property to be guarded.</p>
+<p>I know it is easy for me to be philosophical; my bread and butter isn’t writing.
+Thus, I expect a lot of people, especially independent journalists and writers, to completely disagree with me.</p>
+<p>But, this is my AI manifesto for this website.
+For this website (and for this website alone), I give OpenAI, Anthropic, Google, DeepSeek and everyone else, who wants to use my work to create something new, express permission to use them however they see fit.
+I believe their creation will help the future humanity and thus I will have fulfilled my duty to make the world a better place.</p>
+<hr />
+<p>This was inspired from <a href="https://www.bydamo.la/p/ai-manifesto">Damola Morenikeji’s AI Manifesto</a>.
+I’ve also requested this to be added to the list of <a href="https://slashai.page/">AI manifesto</a>.</p>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>Not all literally, but figuratively. We are <a href="https://www.nature.com/articles/d41586-024-03990-2">running
+out</a> of scaling
+training data and now data curation — selecting right set of data
+to fine tune the model — is more rewarding that just dumping more
+data.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/ai/">Ai</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/phd/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>From Data to Decisions: The Story Behind My PhD</span>
+  </a>
+  <a class="next" href="/making-an-indian-curry/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Recipe: Making a Homestyle Indian Curry</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

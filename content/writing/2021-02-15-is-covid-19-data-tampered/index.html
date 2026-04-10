@@ -1,0 +1,79 @@
+---
+title: Is COVID-19 Data tampered?
+subtitle: Testing Benford's Law on COVID-19 Data Reported by Countries
+summary: Is there any evidence of tampering or manipulation in COVID-19 daily cases reported by countries? Using Benford analysis in R, I try to reach at some conclusion.
+author: Harshvardhan
+date: '2021-02-15'
+slug: []
+categories:
+  - R
+  - statistics
+tags:
+  - covid-19
+---
+
+
+
+<p>Are COVID-19 numbers reported by countries altered? I test the validity of COVID-19 new daily cases for every country using Benford’s Law. Since the pandemic gained global centre stage, there has been a surge in data manipulation accusations. Independent media agencies questioned country-level data, and all of us made our own conclusions if the data is correct.</p>
+<p>Benford’s law tells us that in many naturally occurring collections of numbers, the leading digit is likely to be small (<a href="https://en.wikipedia.org/wiki/Benford%27s_law">Wikipedia</a>).</p>
+<p>Take any naturally occurring dataset. If you count the frequency of the first digits, 1 appears around 30 per cent of the time, 2 appears for 18% of the time, …, and 9 appears around 5 per cent of the time. This amazingly simple “law” can be an authoritative proof to start an investigation — following natural justice, we shouldn’t call anyone guilty of manipulation just on this violation.</p>
+<p>Mathematically, the digits’ occurrence probability can be modelled using Benford’s Distribution, with the following probability distribution function.</p>
+<p><span class="math display">\[
+P(d) = \log_{10}(d+1) - \log_{10}(d) = \log_{10}\left(\frac{d+1}{d}\right) = \log_{10} \left(1 + \frac{1}{d}\right)
+\]</span></p>
+<p>The probability of each digit comes out exactly as the following.</p>
+<p><img src="https://www.harsh17.in/is-covid-19-data-tampered/images/Screenshot%202021-06-17%20at%206.13.56%20PM.png" alt="benford probability distribution" width="70%"/></p>
+<p>The law is so universal that the Income Tax Department uses it to detect fraud, legal cases have admitted it as evidence, regulators analyse prices to see cartel-like behaviour, forensics use it to identify deep-fakes and doctored videos, among others, and in our case, COVID-19 data reported by countries. The Netflix TV-series “<a href="https://www.imdb.com/title/tt12753692/">Connected</a>” did an episode “Digits” on Benford’s Law. It is absolutely brilliant and you should watch it.</p>
+<div id="approach" class="section level2">
+<h2>Approach</h2>
+<p>My approach is simple and direct. Using the COVID-19 data available at <a href="https://github.com/owid/covid-19-data/tree/master/public/data">Our World in Data (John Hopkins University)</a>, I modelled each country’s daily cases using R and found first-digit distribution using the <a href="https://cran.r-project.org/web/packages/benford/index.html">benford</a> package in R. I measured how much they differed from the expected proportion as Root-Mean-Square-Error (RMSE). A lower RMSE value would mean more accurate data reporting.</p>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<p>Explore the world map below to see evidence of manipulation for each country.</p>
+<div class="float">
+<img src="https://www.harsh17.in/is-covid-19-data-tampered/images/country.png" alt="mapplot of all countries" />
+<div class="figcaption">mapplot of all countries</div>
+</div>
+<blockquote>
+<p>R Codes</p>
+</blockquote>
+<pre class="r"><code>##### Map plot
+
+library(&quot;sf&quot;)
+library(&quot;rnaturalearth&quot;)
+library(&quot;rnaturalearthdata&quot;)
+
+world = ne_countries(scale = &quot;medium&quot;, returnclass = &quot;sf&quot;)
+world1 = merge(world,world1,by.x = &quot;iso_a3&quot;, by.y = &quot;iso&quot;)
+
+world_points&lt;- st_centroid(world)
+world_points &lt;- cbind(world, st_coordinates(st_centroid(world$geometry)))
+
+ggplot(data = world1) +
+theme_bw() +
+geom_sf(aes(fill = rmse)) +
+geom_text(data= world_points,aes(x=X, y=Y, label=name), col = &quot;grey&quot;, check_overlap = T, size = 1.5) +
+scale_fill_viridis_c(option = &quot;plasma&quot;) +
+labs(x = &quot;&quot;, y = &quot;&quot;, fill = &quot;RMSE&quot;, caption = &quot;Benford analysis is used for fraud detection. Low RMSE is associated with low fraud probability.\nData from John Hopkins University (Our World in Data, May 23, 2021). Analysis and viz by Harshvardhan.&quot;, title = &quot;Are Countries Manipulating COVID-19 Data?&quot;, subtitle = &quot;Benford Analysis on COVID-19 Daily Cases&quot;)
+
+ggsave(&quot;country.png&quot;)</code></pre>
+</div>
+<div id="as-of-may-23-2021" class="section level2">
+<h2>As of May 23, 2021</h2>
+<p>The countries with very little evidence of manipulation — RMSE less than 3 — are the following.</p>
+<blockquote>
+<p>Comoros, Somalia, Dominica, Republic of Congo, Vatican, Solomon Islands, United Republic of Tanzania, Samoa, Vanuatu, Marshall Islands, Federated States of Micronesia.</p>
+</blockquote>
+<p>The countries with very strong evidence of manipulation — RMSE more than 22 — are the following.</p>
+<blockquote>
+<p>Belarus, Tajikistan, Netherlands, Russia, Egypt, Iran, Iraq, Qatar, South Korea, Colombia, Italy, Turkey, Honduras, Brazil, China, Kuwait, Mexico, Algeria, El Salvador.</p>
+</blockquote>
+<p>My home, India, doesn’t show strong evidence of manipulation (RMSE = 7.32). China (RMSE = 22.6) and Russia (RMSE = 28.9) show major evidence of manipulation. <strong>These results are as on May 23, 2021 and can change in future. Use the app below for live results.</strong></p>
+<p>If you are curious about any specific country, I made a Shiny app for each country on live data. Check it out below or <a href="https://harshvardhan.shinyapps.io/covid19benford/" title="Shiny App">here</a>.</p>
+<iframe height="900" width="100%" frameborder="no" src="https://harshvardhan.shinyapps.io/covid19benford/">
+</iframe>
+<p>The above app takes in live COVID-19 cases data from Our World in Data and analyses using R Shiny. Therefore, the numbers and graphs are updated frequently.</p>
+<p><a href="https://docs.google.com/spreadsheets/d/1Pn6tmOBceBvypNUY537RY0FpWiShsHiwMEjWnFSORaY/edit#gid=0">Here</a> is the complete list of countries and their RMSE values (as of May 31, 2021). The codes for the Shiny app and generating the plots, etc. are included in this Github <a href="https://github.com/harshvardhaniimi/benford-covid-19">repository</a>.</p>
+<p>Of course, much detailed analysis is required to conclude anything confidently. Benford’s Law can give misleading conclusions like <a href="https://www.reuters.com/article/uk-factcheck-benford/fact-check-deviation-from-benfords-law-does-not-prove-election-fraud-idUSKBN27Q3AI">2020 US Elections</a>, and it might as well be the case here. This is only a first-level analysis. Beyond first-order, expert eyes are required to find how fair is Benford in this case.</p>
+</div>

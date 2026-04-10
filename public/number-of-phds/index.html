@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Number of PhDs by Field | Harshvardhan</title>
+<meta name="keywords" content="data-science, economics, r">
+<meta name="description" content="An Incomplete Data Exploration">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/number-of-phds/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/number-of-phds/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/number-of-phds/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Number of PhDs by Field">
+  <meta property="og:description" content="An Incomplete Data Exploration">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2022-02-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-02-20T00:00:00+00:00">
+    <meta property="article:tag" content="Data-Science">
+    <meta property="article:tag" content="Economics">
+    <meta property="article:tag" content="R">
+      <meta property="og:image" content="/number-of-phds/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/number-of-phds/featured.png">
+  <meta name="twitter:title" content="Number of PhDs by Field">
+  <meta name="twitter:description" content="An Incomplete Data Exploration">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Number of PhDs by Field",
+      "item": "/number-of-phds/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Number of PhDs by Field",
+  "name": "Number of PhDs by Field",
+  "description": "An Incomplete Data Exploration",
+  "keywords": [
+    "data-science", "economics", "r"
+  ],
+  "articleBody": " Yesterday I was talking to one of my friends about his plans post PhD. “I want to go for pure sciences and abstract mathematics, but there are hardly any positions in academia on these topics.”, he said. It got me into thinking how many PhD students graduate every year and if the demand (in academia or in industry) is less than that. But I didn’t even know how many PhDs are awarded each year, let alone employed.\nWhile searching for a dataset for my Text Mining class project, I discovered this dataset on number of PhDs by field. So, let’s explore!\nlibrary(tidyverse) ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ── ## ✓ ggplot2 3.3.5 ✓ purrr 0.3.4 ## ✓ tibble 3.1.6 ✓ dplyr 1.0.8.9000 ## ✓ tidyr 1.2.0 ✓ stringr 1.4.0 ## ✓ readr 2.1.2 ✓ forcats 0.5.1 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## x dplyr::filter() masks stats::filter() ## x dplyr::lag() masks stats::lag() library(garlic) library(DT) theme_set(theme_linedraw()) # Loading dataset from their repository phds = readr::read_csv(\"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-02-19/phd_by_field.csv\") ## Rows: 3370 Columns: 5 ## ── Column specification ──────────────────────────────────────────────────────── ## Delimiter: \",\" ## chr (3): broad_field, major_field, field ## dbl (2): year, n_phds ## ## ℹ Use `spec()` to retrieve the full column specification for this data. ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message. phds ## # A tibble: 3,370 × 5 ## broad_field major_field field year n_phds ## ## 1 Life sciences Agricultural sciences and natural resources Agric… 2008 111 ## 2 Life sciences Agricultural sciences and natural resources Agric… 2008 28 ## 3 Life sciences Agricultural sciences and natural resources Agric… 2008 3 ## 4 Life sciences Agricultural sciences and natural resources Agron… 2008 68 ## 5 Life sciences Agricultural sciences and natural resources Anima… 2008 41 ## 6 Life sciences Agricultural sciences and natural resources Anima… 2008 18 ## 7 Life sciences Agricultural sciences and natural resources Anima… 2008 77 ## 8 Life sciences Agricultural sciences and natural resources Envir… 2008 182 ## 9 Life sciences Agricultural sciences and natural resources Fishi… 2008 52 ## 10 Life sciences Agricultural sciences and natural resources Food … 2008 96 ## # … with 3,360 more rows There are many records by fields — in three levels of granularity.There are 337 fields and we have records for each of them between 2008 to 2017. Let’s see how many people are from which field.\nphds %\u003e% group_by(broad_field) %\u003e% summarise(n_phds = sum(n_phds, na.rm = T)) %\u003e% arrange(desc(n_phds)) %\u003e% datatable(colnames = c(\"Broad Field\", \"Number of PhDs\"), rownames = FALSE, caption = \"Number of PhDs by their broad fields. Life sciences lead the way.\") %\u003e% formatRound(\"n_phds\", digits = 0) Life sciences has most number of graduates. Engineering has least number of graduates — even less than mysterious Other. Surprisingly social sciences, humanities and eucation are higher than mathematics and computer science. And they lead by a margin. The number of graduates in “humanities and social science” subjects is four times the number of PhDs in in “hard sciences” like engineering and maths. No wonder there is such a shortage of people in the tech world.\nLife sciences as such a broad encompassing field. Let’s explore what is covered in life sciences.\nphds %\u003e% filter(broad_field == \"Life sciences\") %\u003e% group_by(major_field) %\u003e% summarise(n_phds = sum(n_phds, na.rm = T)) %\u003e% arrange(desc(n_phds)) %\u003e% datatable(colnames = c(\"Major Field\", \"Number of PhDs\"), rownames = FALSE, caption = \"Number of PhDs by their major fields. Biology, excluding health sciences, leads the way.\") %\u003e% formatRound(\"n_phds\", digits = 0) Biological and biomedical sciences has the most number of graduates. Let me explore engineering too. There are so few PhDs in geosciences. With climate change becoming another major issue, I wonder why the field isn’t picking up fast.\nLet’s see the fields in engineering.\nphds %\u003e% filter(broad_field == \"Engineering\") %\u003e% group_by(major_field) %\u003e% summarise(n_phds = sum(n_phds, na.rm = T)) %\u003e% arrange(desc(n_phds)) ## # A tibble: 1 × 2 ## major_field n_phds ## ## 1 Other engineering 18139 Oh, so no information. The information is nested in another column, I guess. I’ll have to group by field.\nphds %\u003e% filter(broad_field == \"Engineering\") %\u003e% group_by(field) %\u003e% summarise(n_phds = sum(n_phds, na.rm = T)) %\u003e% arrange(desc(n_phds)) %\u003e% datatable(colnames = c(\"Field\", \"Number of PhDs\")) %\u003e% formatRound(\"n_phds\", digits = 0) Computer engineering PhDs are most popular; twice as much as next in the list. Environmental engineering is the second most popular. That’s impressive. Let’s visualise the counts.\nphds %\u003e% filter(broad_field == \"Engineering\") %\u003e% group_by(field) %\u003e% summarise(n_phds = sum(n_phds, na.rm = T)) %\u003e% ggplot(aes(reorder(field, n_phds), n_phds)) + geom_col() + coord_flip() + labs(y = \"Number of PhDs\", x = \"Field (Engineering only)\") The data gives me opportunity to see how it grew up with the rise in popoularity of computer engineering. I’ve heard numerous time that its popularity has increased over the years.\n# ggrepel for text labels library(ggrepel) phds %\u003e% filter(broad_field == \"Engineering\") %\u003e% mutate(label = if_else(year == max(year), field, NA_character_)) %\u003e% ggplot(aes(x = year, y = n_phds, colour = field)) + geom_line() + scale_x_continuous(breaks = seq(from = 2008, to = 2017, by = 1)) + geom_label_repel(aes(label = label), nudge_x = 1, na.rm = TRUE) + labs(x = \"Year\", y = \"Number of PhDs\") + theme(legend.position = \"none\") ## Warning: Removed 20 row(s) containing missing values (geom_path). ## Warning: ggrepel: 10 unlabeled data points (too many overlaps). Consider ## increasing max.overlaps phds_top_engineering = phds %\u003e% filter(broad_field == \"Engineering\") %\u003e% group_by(field) %\u003e% summarise(n_phds = sum(n_phds)) %\u003e% filter(n_phds \u003e 100) %\u003e% slice_max(order_by = n_phds, n = 6) phds_top_engineering ## # A tibble: 6 × 2 ## field n_phds ## ## 1 Computer engineering 4030 ## 2 Environmental, environmental health engineeringl 2001 ## 3 Engineering, other 1488 ## 4 Nuclear engineering 1166 ## 5 Operations research (engineering) 985 ## 6 Systems engineering 924 phds %\u003e% filter(field %in% phds_top_engineering$field) %\u003e% ggplot(aes(x = year, y = n_phds, fill = field)) + geom_bar(stat = \"identity\") + scale_x_continuous(labels = scales::label_number(accuracy = 1)) + scale_fill_manual(values = MetBrewer::met.brewer(\"Hokusai1\", 6)) + facet_wrap( ~ field) + labs(x = \"Year\", y = \"Number of PhDs\", fill = \"Field\") Computer engineering has been ever popular. I didn’t expect that.\nBut wait, wasn’t there a computer science in major_field? What was that? It was called Mathematics and computer sciences.\nphds %\u003e% filter(broad_field == \"Mathematics and computer sciences\") %\u003e% group_by(major_field) %\u003e% summarise(n_phds = sum(n_phds, na.rm = T)) %\u003e% arrange(desc(n_phds)) %\u003e% datatable(colnames = c(\"Major Field\", \"Number of PhDs\"), rownames = FALSE, caption = \"Mathematics and computer sciences has two fields.\") %\u003e% formatRound(\"n_phds\", digits = 0) phds %\u003e% filter(broad_field == \"Mathematics and computer sciences\") %\u003e% filter(n_phds \u003e= 300) %\u003e% mutate(label = if_else(year == max(year), field, NA_character_)) %\u003e% ggplot(aes(x = year, y = n_phds, colour = field)) + geom_line() + scale_x_continuous(breaks = seq(from = 2008, to = 2017, by = 1)) + geom_label_repel(aes(label = label), nudge_x = 1, na.rm = TRUE) + labs(x = \"Year\", y = \"Number of PhDs\") + theme(legend.position = \"none\") Computer engineering averaged around 400; computer science averaged around 1500. I think this the “computer science” in general parlance.\nThis exploration is incomplete. I couldn’t finish it in time but I’d get back to it someday.\nToday I found this wonderful visualisation on Twitter that I thought to replicate for the number of PhDs by field.\nlibrary(tweetrmd) tweet_screenshot(\"https://twitter.com/jenjentro/status/1512997114896269312?t=nWQqyQa3tHQVNSHPakh2TA\") Her codes were available on Github.\n# Loading packages library(tidytuesdayR) library(tidylog) ## ## Attaching package: 'tidylog' ## The following objects are masked from 'package:dplyr': ## ## add_count, add_tally, anti_join, count, distinct, distinct_all, ## distinct_at, distinct_if, filter, filter_all, filter_at, filter_if, ## full_join, group_by, group_by_all, group_by_at, group_by_if, ## inner_join, left_join, mutate, mutate_all, mutate_at, mutate_if, ## relocate, rename, rename_all, rename_at, rename_if, rename_with, ## right_join, sample_frac, sample_n, select, select_all, select_at, ## select_if, semi_join, slice, slice_head, slice_max, slice_min, ## slice_sample, slice_tail, summarise, summarise_all, summarise_at, ## summarise_if, summarize, summarize_all, summarize_at, summarize_if, ## tally, top_frac, top_n, transmute, transmute_all, transmute_at, ## transmute_if, ungroup ## The following objects are masked from 'package:tidyr': ## ## drop_na, fill, gather, pivot_longer, pivot_wider, replace_na, ## spread, uncount ## The following object is masked from 'package:stats': ## ## filter library(showtext) ## Loading required package: sysfonts ## Loading required package: showtextdb ",
+  "wordCount" : "1342",
+  "inLanguage": "en",
+  "image": "/number-of-phds/featured.png","datePublished": "2022-02-20T00:00:00Z",
+  "dateModified": "2022-02-20T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/number-of-phds/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Number of PhDs by Field
+    </h1>
+    <div class="post-meta"><span title='2022-02-20 00:00:00 +0000 UTC'>February 20, 2022</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><script src="/number-of-phds/index_files/htmlwidgets/htmlwidgets.js"></script>
+<link href="/number-of-phds/index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/datatables-binding/datatables.js"></script>
+<script src="/number-of-phds/index_files/jquery/jquery-3.6.0.min.js"></script>
+<link href="/number-of-phds/index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="/number-of-phds/index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="/number-of-phds/index_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/crosstalk/js/crosstalk.min.js"></script>
+<script src="/number-of-phds/index_files/htmlwidgets/htmlwidgets.js"></script>
+<link href="/number-of-phds/index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/datatables-binding/datatables.js"></script>
+<script src="/number-of-phds/index_files/jquery/jquery-3.6.0.min.js"></script>
+<link href="/number-of-phds/index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="/number-of-phds/index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="/number-of-phds/index_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/crosstalk/js/crosstalk.min.js"></script>
+<script src="/number-of-phds/index_files/htmlwidgets/htmlwidgets.js"></script>
+<link href="/number-of-phds/index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/datatables-binding/datatables.js"></script>
+<script src="/number-of-phds/index_files/jquery/jquery-3.6.0.min.js"></script>
+<link href="/number-of-phds/index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="/number-of-phds/index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="/number-of-phds/index_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/crosstalk/js/crosstalk.min.js"></script>
+<script src="/number-of-phds/index_files/htmlwidgets/htmlwidgets.js"></script>
+<link href="/number-of-phds/index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/datatables-binding/datatables.js"></script>
+<script src="/number-of-phds/index_files/jquery/jquery-3.6.0.min.js"></script>
+<link href="/number-of-phds/index_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="/number-of-phds/index_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="/number-of-phds/index_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
+<script src="/number-of-phds/index_files/crosstalk/js/crosstalk.min.js"></script>
+<p>Yesterday I was talking to one of my friends about his plans post PhD. “I want to go for pure sciences and abstract mathematics, but there are hardly any positions in academia on these topics.”, he said. It got me into thinking how many PhD students graduate every year and if the demand (in academia or in industry) is less than that. But I didn’t even know how many PhDs are awarded each year, let alone employed.</p>
+<p>While searching for a dataset for my Text Mining class project, I discovered this dataset on number of PhDs by field. So, let’s explore!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+
+## ✓ ggplot2 3.3.5          ✓ purrr   0.3.4     
+## ✓ tibble  3.1.6          ✓ dplyr   1.0.8.9000
+## ✓ tidyr   1.2.0          ✓ stringr 1.4.0     
+## ✓ readr   2.1.2          ✓ forcats 0.5.1
+
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">garlic</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">DT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="nf">theme_linedraw</span><span class="p">())</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Loading dataset from their repository</span>
+</span></span><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">=</span> <span class="n">readr</span><span class="o">::</span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#34;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-02-19/phd_by_field.csv&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>## Rows: 3370 Columns: 5
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (3): broad_field, major_field, field
+## dbl (2): year, n_phds
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds</span>
+</span></span></code></pre></div><pre><code>## # A tibble: 3,370 × 5
+##    broad_field   major_field                                 field   year n_phds
+##    &lt;chr&gt;         &lt;chr&gt;                                       &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Life sciences Agricultural sciences and natural resources Agric…  2008    111
+##  2 Life sciences Agricultural sciences and natural resources Agric…  2008     28
+##  3 Life sciences Agricultural sciences and natural resources Agric…  2008      3
+##  4 Life sciences Agricultural sciences and natural resources Agron…  2008     68
+##  5 Life sciences Agricultural sciences and natural resources Anima…  2008     41
+##  6 Life sciences Agricultural sciences and natural resources Anima…  2008     18
+##  7 Life sciences Agricultural sciences and natural resources Anima…  2008     77
+##  8 Life sciences Agricultural sciences and natural resources Envir…  2008    182
+##  9 Life sciences Agricultural sciences and natural resources Fishi…  2008     52
+## 10 Life sciences Agricultural sciences and natural resources Food …  2008     96
+## # … with 3,360 more rows
+</code></pre>
+<p>There are many records by fields — in three levels of granularity.There are 337 fields and we have records for each of them between 2008 to 2017. Let’s see how many people are from which field.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">group_by</span><span class="p">(</span><span class="n">broad_field</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">summarise</span><span class="p">(</span><span class="n">n_phds</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_phds</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">n_phds</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">datatable</span><span class="p">(</span><span class="n">colnames</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Broad Field&#34;</span><span class="p">,</span> <span class="s">&#34;Number of PhDs&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;Number of PhDs by their broad fields. Life sciences lead the way.&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">formatRound</span><span class="p">(</span><span class="s">&#34;n_phds&#34;</span><span class="p">,</span> <span class="n">digits</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</span></span></code></pre></div><div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","vertical":false,"caption":"<caption>Number of PhDs by their broad fields. Life sciences lead the way.<\/caption>","data":[["Life sciences","Psychology and social sciences","Humanities and arts","Education","Mathematics and computer sciences","Other","Engineering"],[205703,119116,53045,52639,35481,28855,18139]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Broad Field<\/th>\n      <th>Number of PhDs<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
+<p><strong>Life sciences</strong> has most number of graduates. <strong>Engineering</strong> has least number of graduates — even less than mysterious <strong>Other</strong>. Surprisingly social sciences, humanities and eucation are higher than mathematics and computer science. And they lead by a margin. The number of graduates in “humanities and social science” subjects is four times the number of PhDs in in “hard sciences” like engineering and maths. No wonder there is such a shortage of people in the tech world.</p>
+<p>Life sciences as such a broad encompassing field. Let’s explore what is covered in life sciences.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">filter</span><span class="p">(</span><span class="n">broad_field</span> <span class="o">==</span> <span class="s">&#34;Life sciences&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">group_by</span><span class="p">(</span><span class="n">major_field</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">summarise</span><span class="p">(</span><span class="n">n_phds</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_phds</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">n_phds</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">datatable</span><span class="p">(</span><span class="n">colnames</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Major Field&#34;</span><span class="p">,</span> <span class="s">&#34;Number of PhDs&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;Number of PhDs by their major fields. Biology, excluding health sciences, leads the way.&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">formatRound</span><span class="p">(</span><span class="s">&#34;n_phds&#34;</span><span class="p">,</span> <span class="n">digits</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</span></span></code></pre></div><div id="htmlwidget-2" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"filter":"none","vertical":false,"caption":"<caption>Number of PhDs by their major fields. Biology, excluding health sciences, leads the way.<\/caption>","data":[["Biological and biomedical sciences","Physics and astronomy","Chemistry","Health sciences","Geosciences, atmospheric sciences, and ocean sciences","Agricultural sciences and natural resources"],[85637,41176,25015,20882,19868,13125]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Major Field<\/th>\n      <th>Number of PhDs<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
+<p>Biological and biomedical sciences has the most number of graduates. Let me explore engineering too. There are so few PhDs in geosciences. With climate change becoming another major issue, I wonder why the field isn’t picking up fast.</p>
+<p>Let’s see the fields in engineering.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">broad_field</span> <span class="o">==</span> <span class="s">&#34;Engineering&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">major_field</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">n_phds</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_phds</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">n_phds</span><span class="p">))</span>
+</span></span></code></pre></div><pre><code>## # A tibble: 1 × 2
+##   major_field       n_phds
+##   &lt;chr&gt;              &lt;dbl&gt;
+## 1 Other engineering  18139
+</code></pre>
+<p>Oh, so no information. The information is nested in another column, I guess. I’ll have to group by field.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">broad_field</span> <span class="o">==</span> <span class="s">&#34;Engineering&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">field</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">n_phds</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_phds</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">n_phds</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">datatable</span><span class="p">(</span><span class="n">colnames</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Field&#34;</span><span class="p">,</span> <span class="s">&#34;Number of PhDs&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">formatRound</span><span class="p">(</span><span class="s">&#34;n_phds&#34;</span><span class="p">,</span> <span class="n">digits</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</span></span></code></pre></div><div id="htmlwidget-3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],["Computer engineering","Environmental, environmental health engineeringl","Engineering, other","Nuclear engineering","Operations research (engineering)","Systems engineering","Petroleum engineering","Structural engineering","Agricultural engineering","Polymer, plastics engineering","Engineering mechanics","Robotics","Transportation and highway engineering","Engineering science","Engineering, general","Engineering management, administration","Geotechnical and geoenvironmental engineering","Engineering physics","Ocean engineering","Metallurgical engineering","Communications engineering","Mining and mineral engineering","Ceramic sciences engineering"],[4030,2001,1488,1166,985,924,760,743,674,658,644,566,556,497,467,430,396,287,271,244,231,83,38]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Field<\/th>\n      <th>Number of PhDs<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
+<p>Computer engineering PhDs are most popular; twice as much as next in the list. Environmental engineering is the second most popular. That’s impressive. Let’s visualise the counts.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">broad_field</span> <span class="o">==</span> <span class="s">&#34;Engineering&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">field</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">n_phds</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_phds</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="nf">reorder</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">n_phds</span><span class="p">),</span> <span class="n">n_phds</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_col</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">coord_flip</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Number of PhDs&#34;</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Field (Engineering only)&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/number-of-phds/index_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<p>The data gives me opportunity to see how it grew up with the rise in popoularity of computer engineering. I’ve heard numerous time that its popularity has increased over the years.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># ggrepel for text labels</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggrepel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">filter</span><span class="p">(</span><span class="n">broad_field</span> <span class="o">==</span> <span class="s">&#34;Engineering&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">mutate</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="nf">if_else</span><span class="p">(</span><span class="n">year</span> <span class="o">==</span> <span class="nf">max</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="n">field</span><span class="p">,</span> <span class="kc">NA_character_</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">year</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">n_phds</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">field</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span> <span class="o">=</span> <span class="m">2008</span><span class="p">,</span> <span class="n">to</span> <span class="o">=</span> <span class="m">2017</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">geom_label_repel</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">nudge_x</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Year&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Number of PhDs&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s">&#34;none&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>## Warning: Removed 20 row(s) containing missing values (geom_path).
+
+## Warning: ggrepel: 10 unlabeled data points (too many overlaps). Consider
+## increasing max.overlaps
+</code></pre>
+<img src="/number-of-phds/index_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds_top_engineering</span> <span class="o">=</span> <span class="n">phds</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">broad_field</span> <span class="o">==</span> <span class="s">&#34;Engineering&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">field</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">n_phds</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_phds</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">n_phds</span> <span class="o">&gt;</span> <span class="m">100</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">slice_max</span><span class="p">(</span><span class="n">order_by</span> <span class="o">=</span> <span class="n">n_phds</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="m">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">phds_top_engineering</span>
+</span></span></code></pre></div><pre><code>## # A tibble: 6 × 2
+##   field                                            n_phds
+##   &lt;chr&gt;                                             &lt;dbl&gt;
+## 1 Computer engineering                               4030
+## 2 Environmental, environmental health engineeringl   2001
+## 3 Engineering, other                                 1488
+## 4 Nuclear engineering                                1166
+## 5 Operations research (engineering)                   985
+## 6 Systems engineering                                 924
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">filter</span><span class="p">(</span><span class="n">field</span> <span class="o">%in%</span> <span class="n">phds_top_engineering</span><span class="o">$</span><span class="n">field</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">year</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">n_phds</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">field</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span> <span class="o">=</span> <span class="s">&#34;identity&#34;</span><span class="p">)</span> <span class="o">+</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">scales</span><span class="o">::</span><span class="nf">label_number</span><span class="p">(</span><span class="n">accuracy</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">scale_fill_manual</span><span class="p">(</span><span class="n">values</span> <span class="o">=</span> <span class="n">MetBrewer</span><span class="o">::</span><span class="nf">met.brewer</span><span class="p">(</span><span class="s">&#34;Hokusai1&#34;</span><span class="p">,</span> <span class="m">6</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">facet_wrap</span><span class="p">(</span> <span class="o">~</span> <span class="n">field</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Year&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Number of PhDs&#34;</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;Field&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/number-of-phds/index_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<p>Computer engineering has been ever popular. I didn’t expect that.</p>
+<p>But wait, wasn’t there a computer science in <code>major_field</code>? What was that? It was called <code>Mathematics and computer sciences</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">filter</span><span class="p">(</span><span class="n">broad_field</span> <span class="o">==</span> <span class="s">&#34;Mathematics and computer sciences&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">group_by</span><span class="p">(</span><span class="n">major_field</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">summarise</span><span class="p">(</span><span class="n">n_phds</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n_phds</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">n_phds</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">datatable</span><span class="p">(</span><span class="n">colnames</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Major Field&#34;</span><span class="p">,</span> <span class="s">&#34;Number of PhDs&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">caption</span> <span class="o">=</span> <span class="s">&#34;Mathematics and computer sciences has two fields.&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">formatRound</span><span class="p">(</span><span class="s">&#34;n_phds&#34;</span><span class="p">,</span> <span class="n">digits</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+</span></span></code></pre></div><div id="htmlwidget-4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4">{"x":{"filter":"none","vertical":false,"caption":"<caption>Mathematics and computer sciences has two fields.<\/caption>","data":[["Computer and information sciences","Mathematics and statistics"],[18395,17086]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Major Field<\/th>\n      <th>Number of PhDs<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">phds</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">filter</span><span class="p">(</span><span class="n">broad_field</span> <span class="o">==</span> <span class="s">&#34;Mathematics and computer sciences&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">filter</span><span class="p">(</span><span class="n">n_phds</span> <span class="o">&gt;=</span> <span class="m">300</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">mutate</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="nf">if_else</span><span class="p">(</span><span class="n">year</span> <span class="o">==</span> <span class="nf">max</span><span class="p">(</span><span class="n">year</span><span class="p">),</span> <span class="n">field</span><span class="p">,</span> <span class="kc">NA_character_</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">year</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">n_phds</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">field</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span> <span class="o">=</span> <span class="m">2008</span><span class="p">,</span> <span class="n">to</span> <span class="o">=</span> <span class="m">2017</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="m">1</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">geom_label_repel</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">nudge_x</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Year&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Number of PhDs&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span> <span class="o">=</span> <span class="s">&#34;none&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/number-of-phds/index_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<p>Computer engineering averaged around 400; computer science averaged around 1500. I think this the “computer science” in general parlance.</p>
+<hr>
+<p><strong>This exploration is incomplete. I couldn’t finish it in time but I’d get back to it someday.</strong></p>
+<p>Today I found this wonderful visualisation on Twitter that I thought to replicate for the number of PhDs by field.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tweetrmd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">tweet_screenshot</span><span class="p">(</span><span class="s">&#34;https://twitter.com/jenjentro/status/1512997114896269312?t=nWQqyQa3tHQVNSHPakh2TA&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/number-of-phds/index_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<p>Her codes were available on <a href="https://github.com/jenjentro/TidyTuesday/blob/master/2022/2022-04-05/tidytues_newsorg.R">Github</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Loading packages</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidytuesdayR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidylog</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>## 
+## Attaching package: 'tidylog'
+
+## The following objects are masked from 'package:dplyr':
+## 
+##     add_count, add_tally, anti_join, count, distinct, distinct_all,
+##     distinct_at, distinct_if, filter, filter_all, filter_at, filter_if,
+##     full_join, group_by, group_by_all, group_by_at, group_by_if,
+##     inner_join, left_join, mutate, mutate_all, mutate_at, mutate_if,
+##     relocate, rename, rename_all, rename_at, rename_if, rename_with,
+##     right_join, sample_frac, sample_n, select, select_all, select_at,
+##     select_if, semi_join, slice, slice_head, slice_max, slice_min,
+##     slice_sample, slice_tail, summarise, summarise_all, summarise_at,
+##     summarise_if, summarize, summarize_all, summarize_at, summarize_if,
+##     tally, top_frac, top_n, transmute, transmute_all, transmute_at,
+##     transmute_if, ungroup
+
+## The following objects are masked from 'package:tidyr':
+## 
+##     drop_na, fill, gather, pivot_longer, pivot_wider, replace_na,
+##     spread, uncount
+
+## The following object is masked from 'package:stats':
+## 
+##     filter
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">showtext</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>## Loading required package: sysfonts
+
+## Loading required package: showtextdb
+</code></pre>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/data-science/">Data-Science</a></li>
+      <li><a href="/tags/economics/">Economics</a></li>
+      <li><a href="/tags/r/">R</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/titanic-who-survived-the-tragegy/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Titanic: Who Survived The Tragedy?</span>
+  </a>
+  <a class="next" href="/rules/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Rules for Life</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

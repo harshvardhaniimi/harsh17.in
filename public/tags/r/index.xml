@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>R on Harshvardhan</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 20 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Up Your Blogging Game: Three Enhancements to Hugo Apero</title>
+      <link>/hugo/</link>
+      <pubDate>Sat, 20 May 2023 00:00:00 +0000</pubDate>
+      <guid>/hugo/</guid>
+      <description>This post provides a detailed guide to customizing the Hugo Apero template, focusing on changing themes, adding a search bar, and altering fonts for a truly personalized blogging experience.</description>
+    </item>
+    <item>
+      <title>Who are Twitter Blue Users?</title>
+      <link>/twitter-blue/</link>
+      <pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>/twitter-blue/</guid>
+      <description>In this blog post, I explore who are the Twitter Blue subscribers. It is not celebrities, businesses or governments. It is our regular old Joe with fewer than a hundred followers.</description>
+    </item>
+    <item>
+      <title>From Bits to Words: A Tale Computing and Communication Languages</title>
+      <link>/languages/</link>
+      <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>/languages/</guid>
+      <description>A ten-year-old kid was beginning his high school journey when he had to learn a third language. He was already learning two languages: his mother tongue Hindi and the common-speak English. But neither of them had prepared him for Sanskrit.</description>
+    </item>
+    <item>
+      <title>Moving Next from Revue to Substack</title>
+      <link>/substack/</link>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <guid>/substack/</guid>
+      <description>Twitter is shutting down Revue, the newsletter platform that I use for Next. Thus, I’m migrating to Substack. You shouldn’t need to do anything on your side.</description>
+    </item>
+    <item>
+      <title>CK Cafe: Using Association Rules to Find Basket of Goods</title>
+      <link>/ck-cafe/</link>
+      <pubDate>Mon, 21 Nov 2022 11:30:00 +0000</pubDate>
+      <guid>/ck-cafe/</guid>
+      <description>In this lab session, I share how to use apriori algorithm for association mining. The goal is to find useful causal and association rules which can help in designing  promotions for the company. Plus, you get to see what&amp;rsquo;s served at an Indian cafe.</description>
+    </item>
+    <item>
+      <title>A Gentle Introduction to using Support Vector Machines for Classification</title>
+      <link>/svm/</link>
+      <pubDate>Sun, 02 Oct 2022 11:30:00 +0000</pubDate>
+      <guid>/svm/</guid>
+      <description>Support vector machines (SVM) are remarkable for the unification of geometric theory, elegant mathematics, theoretical guarantees with strong practical use cases. In this blog post, I demonstrate certain properties of SVM and how to use them with caret package in R.</description>
+    </item>
+    <item>
+      <title>Up and Running with R Markdown</title>
+      <link>/up-and-running-with-r-markdown/</link>
+      <pubDate>Wed, 24 Aug 2022 11:30:00 +0000</pubDate>
+      <guid>/up-and-running-with-r-markdown/</guid>
+      <description>Introduction to R Markdown for MS (Business Analytics) Class of Fall 2022</description>
+    </item>
+    <item>
+      <title>Using GitHub with RStudio</title>
+      <link>/using-github-with-rstudio/</link>
+      <pubDate>Wed, 24 Aug 2022 11:30:00 +0000</pubDate>
+      <guid>/using-github-with-rstudio/</guid>
+      <description>Introduction to using Git &amp;amp; GitHub with RStudio for MS (Business Analytics) Class of Fall 2022</description>
+    </item>
+    <item>
+      <title>Script monkey! 🐒</title>
+      <link>/script-monkey/</link>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>/script-monkey/</guid>
+      <description>Use a Script Monkey in your codebase at all locations where you need to change things manually. All that involves is writing an extra comment saying &amp;lsquo;Script Monkey&amp;rsquo;. Later on, search for all monkeys in the script and make the changes. Simple.</description>
+    </item>
+    <item>
+      <title>The Ascribed Advantage</title>
+      <link>/the-ascribed-advantage/</link>
+      <pubDate>Sat, 09 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>/the-ascribed-advantage/</guid>
+      <description>How does gender affects pay? In this short exploration, I use #tidytuesday dataset provided by UK Government to visualise gender gaps using R. And why are women working at churches paid 40% less bonus than men?</description>
+    </item>
+    <item>
+      <title>Next — Today I learnt About R</title>
+      <link>/newsletter/</link>
+      <pubDate>Sat, 18 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>/newsletter/</guid>
+      <description>&lt;p&gt;&lt;img alt=&#34;Title Image Next - Today I Learnt About R&#34; loading=&#34;lazy&#34; src=&#34;/img/next.png&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;what-is-next&#34;&gt;What is Next?&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A short and sweet curated collection of R-related works. Five stories. Four packages. Three jargons. Two tweets. One Meme.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can subscribe by providing your details here. Promise, no spams.&lt;/p&gt;
+&lt;div id=&#34;revue-embed&#34;&gt;
+  &lt;form action=&#34;https://www.getrevue.co/profile/harshbutjust/add_subscriber&#34; method=&#34;post&#34; id=&#34;revue-form&#34; name=&#34;revue-form&#34;  target=&#34;_blank&#34;&gt;
+  &lt;div class=&#34;revue-form-group&#34;&gt;
+    &lt;label for=&#34;member_email&#34;&gt;Email address&lt;/label&gt;
+    &lt;input class=&#34;revue-form-field&#34; placeholder=&#34;Your email address...&#34; type=&#34;email&#34; name=&#34;member[email]&#34; id=&#34;member_email&#34;&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;revue-form-group&#34;&gt;
+    &lt;label for=&#34;member_first_name&#34;&gt;First name &lt;span class=&#34;optional&#34;&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+    &lt;input class=&#34;revue-form-field&#34; placeholder=&#34;First name... (Optional)&#34; type=&#34;text&#34; name=&#34;member[first_name]&#34; id=&#34;member_first_name&#34;&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;revue-form-group&#34;&gt;
+    &lt;label for=&#34;member_last_name&#34;&gt;Last name &lt;span class=&#34;optional&#34;&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+    &lt;input class=&#34;revue-form-field&#34; placeholder=&#34;Last name... (Optional)&#34; type=&#34;text&#34; name=&#34;member[last_name]&#34; id=&#34;member_last_name&#34;&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;revue-form-actions&#34;&gt;
+    &lt;input type=&#34;submit&#34; value=&#34;Subscribe&#34; name=&#34;member[subscribe]&#34; id=&#34;member_submit&#34;&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;revue-form-footer&#34;&gt;By subscribing, you agree with Revue’s &lt;a target=&#34;_blank&#34; href=&#34;https://www.getrevue.co/terms&#34;&gt;Terms of Service&lt;/a&gt; and &lt;a target=&#34;_blank&#34; href=&#34;https://www.getrevue.co/privacy&#34;&gt;Privacy Policy&lt;/a&gt;.&lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;If you are unsure, here are some editions that my readers loved.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Street Maps (of Some Cities)</title>
+      <link>/city-maps/</link>
+      <pubDate>Sat, 28 May 2022 00:00:00 +0000</pubDate>
+      <guid>/city-maps/</guid>
+      <description>Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I&amp;rsquo;ve visited. Today, I thought to make street maps of some of them (and other cool cities).</description>
+    </item>
+    <item>
+      <title>Joint Probability-based Dissimilarity Measure for Discrete Variables</title>
+      <link>/joint-probability-based-dissimilarity-measure-for-discrete-variables/</link>
+      <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+      <guid>/joint-probability-based-dissimilarity-measure-for-discrete-variables/</guid>
+      <description>A Simple Method to Calculate Distance between Discrete Variable</description>
+    </item>
+    <item>
+      <title>Billionaires and Taxes</title>
+      <link>/billionaires-and-taxes/</link>
+      <pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>/billionaires-and-taxes/</guid>
+      <description>How much do the super rich really pay? Until now, the answer was unknown &amp;mdash; thanks to privacy laws. Recently, tax returns of the super rich was leaked to &lt;a href=&#34;https://projects.propublica.org/americas-highest-incomes-and-taxes-revealed/&#34;&gt;ProPublica&lt;/a&gt;. I thought of exploring the billionaires and their tax rates.</description>
+    </item>
+    <item>
+      <title>Creating your own short URLs with blogdown</title>
+      <link>/creating-your-own-short-urls-with-blogdown/</link>
+      <pubDate>Thu, 24 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>/creating-your-own-short-urls-with-blogdown/</guid>
+      <description>Here&amp;rsquo;s how to make your short URLs using Hugo + Blogdown</description>
+    </item>
+    <item>
+      <title>Let’s say you’re copying a folder to a folder</title>
+      <link>/lets-say-you-re-copying-a-folder-to-a-folder/</link>
+      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>/lets-say-you-re-copying-a-folder-to-a-folder/</guid>
+      <description>What should the progress bar show? How to measure 10% work done?</description>
+    </item>
+    <item>
+      <title>garlic: Some R Functions I Use Rather Frequently</title>
+      <link>/garlic-some-r-functions-i-use-rather-frequently/</link>
+      <pubDate>Sat, 05 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>/garlic-some-r-functions-i-use-rather-frequently/</guid>
+      <description>My personal R package for custom functions</description>
+    </item>
+    <item>
+      <title>Titanic: Who Survived The Tragedy?</title>
+      <link>/titanic-who-survived-the-tragegy/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>/titanic-who-survived-the-tragegy/</guid>
+      <description>Yet Another Machine Learning Project with Titanic Dataset</description>
+    </item>
+    <item>
+      <title>Number of PhDs by Field</title>
+      <link>/number-of-phds/</link>
+      <pubDate>Sun, 20 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>/number-of-phds/</guid>
+      <description>An Incomplete Data Exploration</description>
+    </item>
+    <item>
+      <title>Classification: Logistic Regression and Random Forest</title>
+      <link>/classification-logistic-regression-and-random-forest/</link>
+      <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>/classification-logistic-regression-and-random-forest/</guid>
+      <description>Using Tidymodels to Find Sex of Penguins</description>
+    </item>
+    <item>
+      <title>Linear Regression and Optimisation</title>
+      <link>/using-linear-regression-to-find-optimal-value/</link>
+      <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>/using-linear-regression-to-find-optimal-value/</guid>
+      <description>Using linear regression to find the optimal value of an input</description>
+    </item>
+    <item>
+      <title>Notes on R</title>
+      <link>/notes-on-r/</link>
+      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>/notes-on-r/</guid>
+      <description>Functions et al</description>
+    </item>
+    <item>
+      <title>Basics of Text Mining in R</title>
+      <link>/basics-of-text-mining-in-r/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>/basics-of-text-mining-in-r/</guid>
+      <description>Thinking of Text as List of Words</description>
+    </item>
+    <item>
+      <title>Notes on Github</title>
+      <link>/notes-on-github/</link>
+      <pubDate>Mon, 24 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>/notes-on-github/</guid>
+      <description>Tricks of trade I learnt along the way</description>
+    </item>
+    <item>
+      <title>I Web, Therefore I Exist</title>
+      <link>/iweb/</link>
+      <pubDate>Fri, 14 Jan 2022 12:00:00 +0000</pubDate>
+      <guid>/iweb/</guid>
+      <description>Slides, recorded lecture and additional resources around my talk on how to create and control your digital identity.</description>
+    </item>
+    <item>
+      <title>Stackoverflow Answers</title>
+      <link>/stackoverflow-answers/</link>
+      <pubDate>Fri, 14 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>/stackoverflow-answers/</guid>
+      <description>A collection of my answers on Stackoverflow</description>
+    </item>
+    <item>
+      <title>IndiaPIN: R Data Package</title>
+      <link>/indiapin/</link>
+      <pubDate>Tue, 11 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>/indiapin/</guid>
+      <description>R Package for All India PIN Codes Directory with Latitude and Longitude Details (Updated: December 2021)</description>
+    </item>
+    <item>
+      <title>How fast is M1?</title>
+      <link>/how-fast-is-m1/</link>
+      <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>/how-fast-is-m1/</guid>
+      <description>Comparing Apple M1 processor with Other Systems in R</description>
+    </item>
+    <item>
+      <title>Next — Today I Learnt About R</title>
+      <link>/next-today-i-learnt-about-r/</link>
+      <pubDate>Wed, 06 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>/next-today-i-learnt-about-r/</guid>
+      <description>My Newsletter on R and Data Science</description>
+    </item>
+    <item>
+      <title>Supervised Learning Using Baysian Decision Rule</title>
+      <link>/supervised-learning-using-baysian-decision-rule/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>/supervised-learning-using-baysian-decision-rule/</guid>
+      <description>Python Functions for Bayesian Learning (COSC 522 Project)</description>
+    </item>
+    <item>
+      <title>Ellsberg&#39;s Paradox</title>
+      <link>/ellsberg-paradox/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>/ellsberg-paradox/</guid>
+      <description>Simulation of Ellsberg&amp;rsquo;s Paradox</description>
+    </item>
+    <item>
+      <title>Yihui on Blogging and Writing Books</title>
+      <link>/yihui-on-blogging-and-writing-books/</link>
+      <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>/yihui-on-blogging-and-writing-books/</guid>
+      <description>Attending My First Academic Conference</description>
+    </item>
+    <item>
+      <title>Is COVID-19 Data tampered?</title>
+      <link>/is-covid-19-data-tampered/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>/is-covid-19-data-tampered/</guid>
+      <description>Is there any evidence of tampering or manipulation in COVID-19 daily cases reported by countries? Using Benford analysis in R, I try to reach at some conclusion.</description>
+    </item>
+    <item>
+      <title>Demonstrating Shiny Apps</title>
+      <link>/demonstrating-shiny-apps/</link>
+      <pubDate>Sat, 13 Feb 2021 10:00:00 +0000</pubDate>
+      <guid>/demonstrating-shiny-apps/</guid>
+      <description>Guest lecture for PhD students on R Shiny (2020 and 2021)</description>
+    </item>
+    <item>
+      <title>Forecasting Malaria Vaccine Demand</title>
+      <link>/forecasting-malaria-vaccine-demand/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/forecasting-malaria-vaccine-demand/</guid>
+      <description>Summary of my research work on forecasting coverage for Malaria vaccines</description>
+    </item>
+    <item>
+      <title>Dynamic GP: Application to Malaria Vaccine Coverage Prediction</title>
+      <link>/dynamic-gp-application-to-malaria-vaccine-coverage-prediction/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/dynamic-gp-application-to-malaria-vaccine-coverage-prediction/</guid>
+      <description>We applied a dynamic Gaussian process model to predict coverage for novel Malaria vaccines in 78 countries. Using publicly available WHO data on coverage of nine vaccines, we developed localised models for countries grouped using the human development index (HDI). We deployed convolutions of standard GP models with weights determined using singular value decomposition of time-series response matrix. &lt;a href=&#34;https://www.harsh17.in/docs/malaria_paper.pdf&#34;&gt;🔗 PDF&lt;/a&gt;</description>
+    </item>
+    <item>
+      <title>Sentiment Analysis of Tweets</title>
+      <link>/twitter-sentiments/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/twitter-sentiments/</guid>
+      <description>Using rTweet package in R to analyse live tweets from Twitter</description>
+    </item>
+    <item>
+      <title>Exploring My Spotify Listening</title>
+      <link>/exploring-my-spotify-listening/</link>
+      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/exploring-my-spotify-listening/</guid>
+      <description>I analyse my listening stats and patterns using R.</description>
+    </item>
+    <item>
+      <title>Statistical Modelling and Analysis of the Computer-Simulated Datasets</title>
+      <link>/statistical-modelling-and-analysis-of-the-computer-simulated-datasets/</link>
+      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/statistical-modelling-and-analysis-of-the-computer-simulated-datasets/</guid>
+      <description>My first academic publication: a peer-reviewed book chapter on statistical modelling using Gaussian processes. We reviewed several GP models and correlation structures, and methods to handle numerical instabilities due to near-singular matrices. Finally, we reviewed several algorithms developed specifically for analysing big data obtained from computer simulators. &lt;a href=&#34;https://www.harsh17.in/docs/simulation_2019.pdf&#34;&gt;🔗 PDF&lt;/a&gt;</description>
+    </item>
+  </channel>
+</rss>

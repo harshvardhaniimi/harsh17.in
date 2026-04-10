@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Music on Harshvardhan</title>
+    <link>/tags/music/</link>
+    <description>Recent content in Music on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 03 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/music/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploring My Spotify Listening</title>
+      <link>/exploring-my-spotify-listening/</link>
+      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>/exploring-my-spotify-listening/</guid>
+      <description>I analyse my listening stats and patterns using R.</description>
+    </item>
+  </channel>
+</rss>

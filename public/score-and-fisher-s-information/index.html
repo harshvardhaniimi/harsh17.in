@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Score and Fisher&#39;s Information | Harshvardhan</title>
+<meta name="keywords" content="data-science">
+<meta name="description" content="Intuitive Understanding and Mathematical Notions">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/score-and-fisher-s-information/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/score-and-fisher-s-information/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/score-and-fisher-s-information/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Score and Fisher&#39;s Information">
+  <meta property="og:description" content="Intuitive Understanding and Mathematical Notions">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2022-02-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-02-13T00:00:00+00:00">
+    <meta property="article:tag" content="Data-Science">
+      <meta property="og:image" content="/score-and-fisher-s-information/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/score-and-fisher-s-information/featured.png">
+  <meta name="twitter:title" content="Score and Fisher&#39;s Information">
+  <meta name="twitter:description" content="Intuitive Understanding and Mathematical Notions">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Score and Fisher's Information",
+      "item": "/score-and-fisher-s-information/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Score and Fisher's Information",
+  "name": "Score and Fisher\u0027s Information",
+  "description": "Intuitive Understanding and Mathematical Notions",
+  "keywords": [
+    "data-science"
+  ],
+  "articleBody": "Likelihood Likelihood is a measure of how probable a parameter is, given our data. It is calculated as the joint probability of the observed data as a function of parameters for a given statistical model. Since joint probabilities are usually products, it is much easier to deal with log-likelihood which is a sum of probabilities.\nNote that, likelihood is not the PDF of parameters. In maximum likelihood estimation, the likelihood function (i.e. the joint probability) is maximised to obtain a specific value of parameter. This value is “most likely” to be the true but unknown parameter. Generally, true parameter is denoted as \\(\\theta\\) and it’s estimate is denoted as \\(\\hat{\\theta}\\).\nScore Score is a derivative of log-likelihood function with respect to the parameter. It is usually evaluated at a particular value of the parameter.\n$$ s(\\theta) = \\frac{\\partial \\log \\mathcal{L}(\\theta)}{\\partial \\theta} $$\nThis differentiation will lead to a \\(1 \\times m\\) vector. This vector indicates the sensitivity of the likelihood. Under certain regularity conditions1, we can prove that the expected value of \\(s(\\theta)\\) is zero when evaluated at the true \\(\\theta\\).\n$$ E \\left[ \\frac{\\partial}{\\partial \\theta} \\log f(X; \\theta) \\bigg\\rvert \\theta \\right] \\ = \\int_\\mathbb{R} \\frac{\\frac{\\partial}{\\partial \\theta} f(x; \\theta)}{f(x;\\theta)} f(x;\\theta) dx \\ = \\frac{\\partial}{\\partial \\theta} \\int_{\\mathbb{R}} f(x;\\theta) dx \\ = \\frac{\\partial}{\\partial \\theta} 1 \\ = 0. $$\nFisher’s Information Fisher’s information is a way to measure how much information is contained in a known random variable \\(X\\) about the unknown population parameter \\(\\theta\\) that is supposed to model \\(X\\). It is calculated as the variance of the score.2\nImagine you want to estimate how good an estimate is given all our knowledge about it. Fisher’s information describes the probability \\(f(x)\\), given a known value of \\(\\theta\\). If \\(f(x)\\) is sharply peaked at a value of \\(X\\), it indicates we have a good estimate of the true \\(X\\). If \\(f(x)\\) is more evenly spread, we know little about the true value. Consequently we would need many more samples to accurately know what the value should be. Theoretically, we would need to know the entire population.\nThis intuitive understanding tells us that there would be some way to know how much information we have or how much information we need. Thus, there has to be a measure of variance with respect to \\(\\theta\\).\nTherefore, Fisher’s information is defined as the variance of the score, \\(s(\\theta)\\).\n$$ I(\\theta) = E \\left[ \\left(\\frac{\\partial}{\\partial \\theta} \\log f(X; \\theta \\right)^2 \\bigg\\rvert \\theta\\right]. $$\nFor a continuous PDF, this can be evaluated as the following.\n$$ I(\\theta) = \\int_\\mathbb{R} \\left( \\frac{\\partial}{\\partial \\theta} \\log f(x;\\theta) \\right)^2 f(x;\\theta) dx. $$\nSince this is variance and has a square term, \\(I(\\theta)\\) is always non-negative.\nSometimes, it is also denoted as the following.\n$$ I(\\theta) = -E \\left[ \\frac{\\partial^2}{\\partial \\theta^2} \\log f(X; \\theta) \\bigg\\rvert \\theta \\right], $$\nas\n$$ \\frac{\\partial^2}{\\partial \\theta^2} \\log f(X; \\theta) = \\frac{\\frac{\\partial^2}{\\partial \\theta^2} f(X; \\theta)}{f(X; \\theta)} - \\left( \\frac{\\frac{\\partial}{\\partial \\theta} f(X; \\theta)}{f(X; \\theta)} \\right)^2 \\ = \\frac{\\frac{\\partial^2}{\\partial \\theta^2} f(X; \\theta)}{f(X; \\theta)} - \\left( \\frac{\\partial}{\\partial \\theta} \\log f(X; \\theta) \\right)^2. $$\nAlso note that\n$$ E \\left[ \\frac{\\frac{\\partial^2}{\\partial \\theta^2} f(X; \\theta)}{f(X; \\theta)} \\bigg\\rvert \\theta \\right] = \\frac{\\partial^2}{\\partial \\theta^2} \\int_\\mathbb{R} f(x; \\theta) dx = 0, $$\nas proved earlier in Score. Putting this result in the last equation, we obtain the expected result.\nCramer-Rao Bound Cramer-Rao bound is a related concept. It states that the inverse of Fisher information is a lower bound on the variance of any unbiased estimator \\(\\theta\\). That is,\n$$ V (\\hat{\\theta}) \\geq \\frac{1}{I(\\theta)}. $$\nTo estimate the population parameter using maximum likelihood approach, we need to assume certain conditions about our probability density and likelihood functions. Continuity assumption is easily satisfied in real life but compactness isn’t as parameter space is often unbounded. Even when it is bounded, the bounds are usually unknown. For more details, see this. ↩︎\nAll that follows is a correct but strong simplification of the complex concepts. For more mathematical notions, check Wikipedia and Ly et al. (2017). ↩︎\n",
+  "wordCount" : "658",
+  "inLanguage": "en",
+  "image": "/score-and-fisher-s-information/featured.png","datePublished": "2022-02-13T00:00:00Z",
+  "dateModified": "2022-02-13T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/score-and-fisher-s-information/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Score and Fisher&#39;s Information
+    </h1>
+    <div class="post-meta"><span title='2022-02-13 00:00:00 +0000 UTC'>February 13, 2022</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="likelihood">Likelihood<a hidden class="anchor" aria-hidden="true" href="#likelihood">#</a></h2>
+<p>Likelihood is a measure of how probable a parameter is, given our data. It is calculated as the joint probability of the observed data as a function of parameters for a given statistical model. Since joint probabilities are usually products, it is much easier to deal with log-likelihood which is a sum of probabilities.</p>
+<p>Note that, likelihood is not the PDF of parameters. In maximum likelihood estimation, the likelihood function (i.e. the joint probability) is maximised to obtain a specific value of parameter. This value is “most likely” to be the true but unknown parameter. Generally, true parameter is denoted as <code>\(\theta\)</code> and it’s estimate is denoted as <code>\(\hat{\theta}\)</code>.</p>
+<h2 id="score">Score<a hidden class="anchor" aria-hidden="true" href="#score">#</a></h2>
+<p>Score is a derivative of log-likelihood function with respect to the parameter. It is usually evaluated at a particular value of the parameter.</p>
+<p>$$
+s(\theta) = \frac{\partial \log \mathcal{L}(\theta)}{\partial \theta}
+$$</p>
+<p>This differentiation will lead to a <code>\(1 \times m\)</code> vector. This vector indicates the sensitivity of the likelihood. Under certain regularity conditions<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, we can prove that the expected value of <code>\(s(\theta)\)</code> is zero when evaluated at the true <code>\(\theta\)</code>.</p>
+<p>$$
+E \left[ \frac{\partial}{\partial \theta} \log f(X; \theta) \bigg\rvert \theta \right] \
+= \int_\mathbb{R} \frac{\frac{\partial}{\partial \theta} f(x; \theta)}{f(x;\theta)}
+f(x;\theta) dx \
+= \frac{\partial}{\partial \theta} \int_{\mathbb{R}} f(x;\theta) dx \
+= \frac{\partial}{\partial \theta} 1 \
+= 0.
+$$</p>
+<h2 id="fishers-information">Fisher’s Information<a hidden class="anchor" aria-hidden="true" href="#fishers-information">#</a></h2>
+<p>Fisher’s information is a way to measure how much information is contained in a known random variable <code>\(X\)</code> about the unknown population parameter <code>\(\theta\)</code> that is supposed to model <code>\(X\)</code>. It is calculated as the variance of the score.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>Imagine you want to estimate how good an estimate is given all our knowledge about it. Fisher’s information describes the probability <code>\(f(x)\)</code>, given a known value of <code>\(\theta\)</code>. If <code>\(f(x)\)</code> is sharply peaked at a value of <code>\(X\)</code>, it indicates we have a good estimate of the true <code>\(X\)</code>. If <code>\(f(x)\)</code> is more evenly spread, we know little about the true value. Consequently we would need many more samples to accurately know what the value should be. Theoretically, we would need to know the entire population.</p>
+<p>This intuitive understanding tells us that there would be some way to know how much information we have or how much information we need. Thus, there has to be a measure of variance with respect to <code>\(\theta\)</code>.</p>
+<p>Therefore, Fisher’s information is defined as the variance of the score, <code>\(s(\theta)\)</code>.</p>
+<p>$$
+I(\theta) = E \left[ \left(\frac{\partial}{\partial \theta} \log f(X; \theta \right)^2 \bigg\rvert \theta\right].
+$$</p>
+<p>For a continuous PDF, this can be evaluated as the following.</p>
+<p>$$
+I(\theta) = \int_\mathbb{R} \left( \frac{\partial}{\partial \theta} \log f(x;\theta) \right)^2 f(x;\theta) dx.
+$$</p>
+<p>Since this is variance and has a square term, <code>\(I(\theta)\)</code> is always non-negative.</p>
+<p>Sometimes, it is also denoted as the following.</p>
+<p>$$
+I(\theta) = -E \left[ \frac{\partial^2}{\partial \theta^2} \log f(X; \theta) \bigg\rvert \theta \right],
+$$</p>
+<p>as</p>
+<p>$$
+\frac{\partial^2}{\partial \theta^2} \log f(X; \theta) = \frac{\frac{\partial^2}{\partial \theta^2} f(X; \theta)}{f(X; \theta)} - \left( \frac{\frac{\partial}{\partial \theta} f(X; \theta)}{f(X; \theta)} \right)^2 \
+= \frac{\frac{\partial^2}{\partial \theta^2} f(X; \theta)}{f(X; \theta)} - \left( \frac{\partial}{\partial \theta} \log f(X; \theta) \right)^2.
+$$</p>
+<p>Also note that</p>
+<p>$$
+E \left[ \frac{\frac{\partial^2}{\partial \theta^2} f(X; \theta)}{f(X; \theta)} \bigg\rvert \theta \right] = \frac{\partial^2}{\partial \theta^2} \int_\mathbb{R} f(x; \theta) dx = 0,
+$$</p>
+<p>as proved earlier in Score. Putting this result in the last equation, we obtain the expected result.</p>
+<h2 id="cramer-rao-bound">Cramer-Rao Bound<a hidden class="anchor" aria-hidden="true" href="#cramer-rao-bound">#</a></h2>
+<p>Cramer-Rao bound is a related concept. It states that the inverse of Fisher information is a lower bound on the variance of any unbiased estimator <code>\(\theta\)</code>. That is,</p>
+<p>$$
+V (\hat{\theta}) \geq \frac{1}{I(\theta)}.
+$$</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>To estimate the population parameter using maximum likelihood approach, we need to assume certain conditions about our probability density and likelihood functions. Continuity assumption is easily satisfied in real life but compactness isn’t as parameter space is often unbounded. Even when it is bounded, the bounds are usually unknown. For more details, see <a href="https://en.wikipedia.org/wiki/Likelihood_function#Regularity_conditions">this</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>All that follows is a correct but strong simplification of the complex concepts. For more mathematical notions, check <a href="https://en.wikipedia.org/wiki/Fisher_information">Wikipedia</a> and <a href="https://arxiv.org/pdf/1705.01064.pdf">Ly et al. (2017)</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/data-science/">Data-Science</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/public-transport-and-lack-thereof/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Public Transport &amp; Lack Thereof</span>
+  </a>
+  <a class="next" href="/classification-logistic-regression-and-random-forest/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Classification: Logistic Regression and Random Forest</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

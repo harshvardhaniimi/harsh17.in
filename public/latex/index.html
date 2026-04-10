@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Notes on LaTeX | Harshvardhan</title>
+<meta name="keywords" content="tools">
+<meta name="description" content="Typesetting isn&rsquo;t that easy">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/latex/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/latex/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/latex/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Notes on LaTeX">
+  <meta property="og:description" content="Typesetting isn’t that easy">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2021-06-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-06-19T00:00:00+00:00">
+    <meta property="article:tag" content="Tools">
+      <meta property="og:image" content="/latex/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/latex/featured.png">
+  <meta name="twitter:title" content="Notes on LaTeX">
+  <meta name="twitter:description" content="Typesetting isn’t that easy">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Notes on LaTeX",
+      "item": "/latex/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Notes on LaTeX",
+  "name": "Notes on LaTeX",
+  "description": "Typesetting isn\u0026rsquo;t that easy",
+  "keywords": [
+    "tools"
+  ],
+  "articleBody": "Write Markdown in LaTeX for Notes I often write my “chain of thought” in documents before writing the full page. I used to use verbatim environment for this. Now, I’ve found an alternative — Markdown directly!\nFirst, make sure you import listings and xcolor packages.\n\\usepackage{listings} \\usepackage{xcolor} Then, create a custom environment:\n\\lstdefinestyle{markdownstyle}{ basicstyle=\\ttfamily\\footnotesize, breaklines=true, moredelim=[is][\\textbf]{**}{**}, moredelim=[is][\\textit]{*}{*}, moredelim=[is][\\textcolor{blue}]{`}{`}, frame=single, backgroundcolor=\\color{gray!10}, } \\lstnewenvironment{markdown}{ \\lstset{style=markdownstyle} }{} Now, whenever you want to write notes, you can put them in “markdown” environment.\n\\begin{markdown} Significance of research and prior work Include - Discussion on novelty compared to previous work - Why is it a hard problem? \\end{markdown} Cosmetics Bold math symbols: Use the command \\mathbf{} to write bold faced symbols like matrix variables.\nMargins: The easiest way is to add \\usepackage[margin=0.5in]{geometry} in the preamble.\nOuter quotes: Latex doesn’t understand \" as outer quotes. By default, you have to use ``. Here is a way out.\n\\usepackage [autostyle, english = american]{csquotes} \\MakeOuterQuote{\"} Some handy commands: \\hfill, \\vfill, \\hskip, \\vskip, \\hspace, \\vspace. Just Google to know their usage. They’re needed for extra spaces here and there in Latex documents.\nHorizontal Line: \\hrulefill for all non-tabular environments.\nImages Inserting Images: Use \\usepackage{graphicx,graphics} in preamble. Then, add image with the following code block. \\begin{figure} \\centering \\includegraphics[width=5in]{example.png} \\caption{An example of fitting \\texttt{GP} model in 1-d function with seven data points.} \\label{fig:example} \\end{figure} Tables Inserting Table: Use Table Generator online. Create the schema and then fill in the content.\nResize Latex Tables to Column-width or Text-width using resizebox:\n\\usepackage{graphics} % ... \\begin{table} \\centering \\resizebox{\\columnwidth}{!}{% \\begin{tabular}{r|lll} \\multicolumn{1}{r}{} \u0026 \\multicolumn{1}{l}{Heading 1} \u0026 \\multicolumn{1}{l}{Heading 2} \u0026 \\multicolumn{1}{l}{Heading 3} \\\\ \\cline{2-4} Row 1 \u0026 Cell 1,1 \u0026 Cell 1,2 \u0026 Cell 1,3 \\\\ Row 2 \u0026 Cell 2,1 \u0026 Cell 2,2 \u0026 Cell 2,3 \\end{tabular}% } \\end{table} Exact Math Symbols argmin and argmax: Use this in preamble: \\DeclareMathOperator*{\\argmax}{argmax} \\DeclareMathOperator*{\\argmin}{argmin} Then, \\underset{x} \\argmax f(x) or \\underset{x} \\argmax f(x). This might not be very right according to this thread, but okay – it serves the purpose. If you find something better, tell me.\nSum (Sigma): \\sum_{i = 1}^{n} x_n\nIntegral: \\int_a^b f(x) \\di x\nOther math symbols: Overleaf and Oeis Wiki.\nTab: The simple tab (horizontal space) can be worked with \\quad.\nDrawing any symbol: It is difficult to find the appropriate symbol every time, so use Detexify to identify what you need.\nWriting algorithms in LaTeX. Use algorithm and algorithmic. See this article for quick review.\nTypesetting Exactly To place pictures exactly in a slide, use tikz package. Exact coordinates by cm: \\begin{tikzpicture}[remember picture,overlay] %% (x coord, y coord) -\u003e (0 cm, 6.5 cm) \\node[anchor=south west,inner sep=0pt] at ($(current page.south west)+(0cm,6.5cm)$) { {picture.png} }; \\end{tikzpicture} The best part is that it also works for exact text placements.\nReferencing and Cross-referencing Bibliography and References: Understand that in most academic writings they are different and Latex considers references as default. To add them, add following lines at the end of file, just before \\end{document}. \\bibliographystyle{apalike} \\bibliography{bibfile} Don’t forget to add \\usepackage{natbib} in the preamble. Note that bibfile.bib contains all bibliographies. If you can’t get the BibTeX citations right, use Google Scholar.\nCitations Generator: Use this tool online to generate citations: https://truben.no/latex/bibtex/. Meta New Commands: Outline format is \\newcommand{newname}{definition}. See this and this for more details.\nStyle File (.sty): Basically, they’re instructions that can be used to redefine the preexisting values in the document. See my Github for two examples that I’ve created - one for homework assignments and other for IIM Indore’s official presentation.\nTemplates Overleaf Gallery is the best. Otherwise, you can find some repositories on Google.\nBy Me: If you are searching for reports or presentations, or are an IIM Indore student looking for presentations, check my templates.\n",
+  "wordCount" : "612",
+  "inLanguage": "en",
+  "image": "/latex/featured.png","datePublished": "2021-06-19T00:00:00Z",
+  "dateModified": "2021-06-19T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/latex/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Notes on LaTeX
+    </h1>
+    <div class="post-meta"><span title='2021-06-19 00:00:00 +0000 UTC'>June 19, 2021</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="write-markdown-in-latex-for-notes">Write Markdown in LaTeX for Notes<a hidden class="anchor" aria-hidden="true" href="#write-markdown-in-latex-for-notes">#</a></h2>
+<p>I often write my &ldquo;chain of thought&rdquo; in documents before writing the full page.
+I used to use verbatim environment for this.
+Now, I&rsquo;ve found an alternative &mdash; Markdown directly!</p>
+<p>First, make sure you import <code>listings</code> and <code>xcolor</code> packages.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>listings<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+</span></span></code></pre></div><p>Then, create a custom environment:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\lstdefinestyle</span><span class="nb">{</span>markdownstyle<span class="nb">}{</span>
+</span></span><span class="line"><span class="cl">    basicstyle=<span class="k">\ttfamily\footnotesize</span>,
+</span></span><span class="line"><span class="cl">    breaklines=true,
+</span></span><span class="line"><span class="cl">    moredelim=[is][<span class="k">\textbf</span>]<span class="nb">{</span>**<span class="nb">}{</span>**<span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">    moredelim=[is][<span class="k">\textit</span>]<span class="nb">{</span>*<span class="nb">}{</span>*<span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">    moredelim=[is][<span class="k">\textcolor</span><span class="nb">{</span>blue<span class="nb">}</span>]<span class="nb">{</span>`<span class="nb">}{</span>`<span class="nb">}</span>,
+</span></span><span class="line"><span class="cl">    frame=single,
+</span></span><span class="line"><span class="cl">    backgroundcolor=<span class="k">\color</span><span class="nb">{</span>gray!10<span class="nb">}</span>,
+</span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\lstnewenvironment</span><span class="nb">{</span>markdown<span class="nb">}{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\lstset</span><span class="nb">{</span>style=markdownstyle<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">}{}</span>
+</span></span></code></pre></div><p>Now, whenever you want to write notes, you can put them in &ldquo;markdown&rdquo; environment.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>markdown<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">Significance of research and prior work
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Include
+</span></span><span class="line"><span class="cl">- Discussion on novelty compared to previous work
+</span></span><span class="line"><span class="cl">- Why is it a hard problem?
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>markdown<span class="nb">}</span>
+</span></span></code></pre></div><h2 id="cosmetics">Cosmetics<a hidden class="anchor" aria-hidden="true" href="#cosmetics">#</a></h2>
+<ul>
+<li>
+<p><strong>Bold math symbols:</strong> Use the command <code>\mathbf{}</code> to write bold faced symbols like matrix variables.</p>
+</li>
+<li>
+<p><strong>Margins:</strong> The easiest way is to add <code>\usepackage[margin=0.5in]{geometry}</code> in the preamble.</p>
+</li>
+<li>
+<p><strong>Outer quotes:</strong> Latex doesn&rsquo;t understand &quot; as outer quotes. By default, you have to use ``. Here is a way out.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\usepackage</span> [autostyle, english = american]<span class="nb">{</span>csquotes<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\MakeOuterQuote</span><span class="nb">{</span>&#34;<span class="nb">}</span>
+</span></span></code></pre></div><ul>
+<li>
+<p><strong>Some handy commands:</strong> <code>\hfill, \vfill, \hskip, \vskip, \hspace, \vspace</code>.
+Just Google to know their usage.
+They&rsquo;re needed for extra spaces here and there in Latex documents.</p>
+</li>
+<li>
+<p><strong>Horizontal Line:</strong> <code>\hrulefill</code> for all non-tabular environments.</p>
+</li>
+</ul>
+<h2 id="images">Images<a hidden class="anchor" aria-hidden="true" href="#images">#</a></h2>
+<ul>
+<li><strong>Inserting Images:</strong> Use \usepackage{graphicx,graphics} in preamble. Then, add image with the following code block.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">\centering</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\includegraphics</span><span class="na">[width=5in]</span><span class="nb">{</span>example.png<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\caption</span><span class="nb">{</span>An example of fitting <span class="k">\texttt</span><span class="nb">{</span>GP<span class="nb">}</span> model in 1-d function with seven data points.<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\label</span><span class="nb">{</span>fig:example<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+</span></span></code></pre></div><h2 id="tables">Tables<a hidden class="anchor" aria-hidden="true" href="#tables">#</a></h2>
+<ul>
+<li>
+<p><strong>Inserting Table:</strong> Use <a href="https://www.tablesgenerator.com">Table Generator</a> online.
+Create the schema and then fill in the content.</p>
+</li>
+<li>
+<p><a href="https://tex.stackexchange.com/a/10864/159263">Resize</a> Latex Tables to Column-width or Text-width using <code>resizebox</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>graphics<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="c">% ...
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\centering</span>
+</span></span><span class="line"><span class="cl"><span class="k">\resizebox</span><span class="nb">{</span><span class="k">\columnwidth</span><span class="nb">}{</span>!<span class="nb">}{</span><span class="c">%
+</span></span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>r|lll<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>r<span class="nb">}{}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>l<span class="nb">}{</span>Heading 1<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>l<span class="nb">}{</span>Heading 2<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>l<span class="nb">}{</span>Heading 3<span class="nb">}</span> <span class="k">\\</span> <span class="k">\cline</span><span class="nb">{</span>2-4<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">Row 1 <span class="nb">&amp;</span> Cell 1,1 <span class="nb">&amp;</span> Cell 1,2 <span class="nb">&amp;</span> Cell 1,3 <span class="k">\\</span>
+</span></span><span class="line"><span class="cl">Row 2 <span class="nb">&amp;</span> Cell 2,1 <span class="nb">&amp;</span> Cell 2,2 <span class="nb">&amp;</span> Cell 2,3
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span><span class="c">%
+</span></span></span><span class="line"><span class="cl"><span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="exact-math-symbols">Exact Math Symbols<a hidden class="anchor" aria-hidden="true" href="#exact-math-symbols">#</a></h2>
+<ul>
+<li><strong>argmin and argmax:</strong> Use this in preamble:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\DeclareMathOperator*</span><span class="nb">{</span><span class="k">\argmax</span><span class="nb">}{</span>argmax<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\DeclareMathOperator*</span><span class="nb">{</span><span class="k">\argmin</span><span class="nb">}{</span>argmin<span class="nb">}</span>
+</span></span></code></pre></div><p>Then, <code>\underset{x} \argmax f(x)</code> or <code>\underset{x} \argmax f(x)</code>.
+This might not be very right according to this thread, but okay &ndash; it serves the purpose.
+If you find something better, tell me.</p>
+<ul>
+<li>
+<p><strong>Sum (Sigma):</strong> <code>\sum_{i = 1}^{n} x_n</code></p>
+</li>
+<li>
+<p><strong>Integral:</strong> <code>\int_a^b f(x) \di x</code></p>
+</li>
+<li>
+<p><strong>Other math symbols:</strong> <a href="https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols">Overleaf</a> and <a href="https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols">Oeis Wiki</a>.</p>
+</li>
+<li>
+<p><strong>Tab:</strong> The simple tab (horizontal space) can be worked with <code>\quad</code>.</p>
+</li>
+<li>
+<p><strong>Drawing any symbol:</strong> It is difficult to find the appropriate symbol every time, so use <a href="http://detexify.kirelabs.org/classify.html">Detexify</a> to identify what you need.</p>
+</li>
+<li>
+<p>Writing algorithms in LaTeX.
+Use <code>algorithm</code> and <code>algorithmic</code>.
+See <a href="https://www.math-linux.com/latex-26/faq/latex-faq/article/how-to-write-algorithm-and-pseudocode-in-latex-usepackage-algorithm-usepackage-algorithmic">this article</a> for quick review.</p>
+</li>
+</ul>
+<h2 id="typesetting-exactly">Typesetting <em>Exactly</em><a hidden class="anchor" aria-hidden="true" href="#typesetting-exactly">#</a></h2>
+<ul>
+<li>To place pictures exactly in a slide, use tikz package. Exact coordinates by cm:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>[remember picture,overlay]
+</span></span><span class="line"><span class="cl"><span class="c">%% (x coord, y coord) -&gt; (0 cm, 6.5 cm)
+</span></span></span><span class="line"><span class="cl">  <span class="k">\node</span><span class="na">[anchor=south west,inner sep=0pt]</span> at (<span class="s">$</span><span class="o">(</span><span class="nb">current page.south west</span><span class="o">)+(</span><span class="m">0</span><span class="nb">cm,</span><span class="m">6</span><span class="nb">.</span><span class="m">5</span><span class="nb">cm</span><span class="o">)</span><span class="s">$</span>) <span class="nb">{</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">{</span>picture.png<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">}</span>;
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span></span></code></pre></div><p>The best part is that it also works for exact text placements.</p>
+<h2 id="referencing-and-cross-referencing">Referencing and Cross-referencing<a hidden class="anchor" aria-hidden="true" href="#referencing-and-cross-referencing">#</a></h2>
+<ul>
+<li><strong>Bibliography and References:</strong> Understand that in most academic writings they are different and Latex considers references as default. To add them, add following lines at the end of file, just before <code>\end{document}</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl">    <span class="k">\bibliographystyle</span><span class="nb">{</span>apalike<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\bibliography</span><span class="nb">{</span>bibfile<span class="nb">}</span>
+</span></span></code></pre></div><p>Don&rsquo;t forget to add <code>\usepackage{natbib}</code> in the preamble.
+Note that bibfile.bib contains all bibliographies.
+If you can&rsquo;t get the BibTeX citations right, use Google Scholar.</p>
+<ul>
+<li><strong>Citations Generator:</strong> Use this tool online to generate citations: <a href="https://truben.no/latex/bibtex/">https://truben.no/latex/bibtex/</a>.</li>
+</ul>
+<h2 id="meta">Meta<a hidden class="anchor" aria-hidden="true" href="#meta">#</a></h2>
+<ul>
+<li>
+<p><strong>New Commands:</strong> Outline format is <code>\newcommand{newname}{definition}</code>.
+See <a href="https://www.overleaf.com/learn/latex/Commands">this</a> and <a href="https://en.wikibooks.org/wiki/LaTeX/Macros#New_commands">this</a> for more details.</p>
+</li>
+<li>
+<p><strong>Style File (<code>.sty</code>):</strong> Basically, they&rsquo;re instructions that can be used to redefine the preexisting values in the document.
+See my Github for two examples that I&rsquo;ve created - one for homework assignments and other for IIM Indore&rsquo;s official presentation.</p>
+</li>
+</ul>
+<h2 id="templates">Templates<a hidden class="anchor" aria-hidden="true" href="#templates">#</a></h2>
+<ul>
+<li>
+<p><a href="https://www.overleaf.com/gallery/">Overleaf Gallery</a> is the best.
+Otherwise, you can find some repositories on Google.</p>
+</li>
+<li>
+<p><a href="https://www.harsh17.in/latex-templates/"><strong>By Me</strong></a><strong>:</strong> If you are searching for reports or presentations, or are an IIM Indore student looking for presentations, check my templates.</p>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/tools/">Tools</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/invento-robotics/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Invento Robotics</span>
+  </a>
+  <a class="next" href="/what-i-find-interesting/">
+    <span class="title">Next »</span>
+    <br>
+    <span>What I Find Interesting</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

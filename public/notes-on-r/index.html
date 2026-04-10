@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Notes on R | Harshvardhan</title>
+<meta name="keywords" content="r">
+<meta name="description" content="Functions et al">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/notes-on-r/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/notes-on-r/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/notes-on-r/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Notes on R">
+  <meta property="og:description" content="Functions et al">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2022-02-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-02-03T00:00:00+00:00">
+    <meta property="article:tag" content="R">
+      <meta property="og:image" content="/notes-on-r/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/notes-on-r/featured.png">
+  <meta name="twitter:title" content="Notes on R">
+  <meta name="twitter:description" content="Functions et al">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Notes on R",
+      "item": "/notes-on-r/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Notes on R",
+  "name": "Notes on R",
+  "description": "Functions et al",
+  "keywords": [
+    "r"
+  ],
+  "articleBody": "On one fine day when I have enough time, they’ll all be wrapped into a package hosted on my Github. Until then, this page in their home.\nlibrary(tidyverse) ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ── ## ✔ ggplot2 3.3.6.9000 ✔ purrr 0.3.4 ## ✔ tibble 3.1.7 ✔ dplyr 1.0.9 ## ✔ tidyr 1.2.0 ✔ stringr 1.4.1 ## ✔ readr 2.1.2 ✔ forcats 0.5.1 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() DT Table with Download Buttons with Search my_DT = function(df) { return(DT::datatable( df, extensions = \"Buttons\", options = list( paging = TRUE, scrollX = TRUE, searching = TRUE, ordering = TRUE, dom = 'Bfrtip', buttons = c('copy', 'csv', 'excel', 'pdf'), pageLength = 5, lengthMenu = c(3, 5, 10) ) )) } Show in Excel show_in_excel = function(.data) { temp = paste0(tempfile(), \".csv\") write.csv(.data, temp) fs::file_show(path = temp) } This can be used with pipes too.\niris %\u003e% show_in_excel() Convert Missing Values to Zero This function converts missing values in a vector to zero.\nn2z = function(x) { x = ifelse(is.na(x), 0, x) return(x) } Finding Index of Missing Elements This function returns index of elements which are missing. Very useful in finding what observations are missing.\nwhich.na = function(x) { return(which(is.na(x))) } Removing Rows Based on Missing Values in a Column Sometimes, I do not want to na.omit() because it will treat all features equally. I want to check values only for one column.\nna.rm.feature = function(x, colname) { nas = which(is.na(x[,colname])) x = x[-nas, ] return(x) } Find row where a condition is satisfied This function can find observations that satisfy a condition. Typically, they are useful in finding specific elements. It is kind of a wrapper around dplyr’s filter().\nwhich.this = function(df, x) { df %\u003e% filter(eval(parse(text = x))) } Example which.this(iris, \"Sepal.Length \u003e 6.5\") %\u003e% head() ## Sepal.Length Sepal.Width Petal.Length Petal.Width Species ## 1 7.0 3.2 4.7 1.4 versicolor ## 2 6.9 3.1 4.9 1.5 versicolor ## 3 6.6 2.9 4.6 1.3 versicolor ## 4 6.7 3.1 4.4 1.4 versicolor ## 5 6.6 3.0 4.4 1.4 versicolor ## 6 6.8 2.8 4.8 1.4 versicolor Remove commas, dollars, or any other such characters The code below replaces all commas with nothing.\nx = \"300,000\" x = gsub(\",\", \"\", x) print(x) ## [1] \"300000\" GGPlot2 Themes See official guide for more details. Also see Benjamin’s blog.\nThe default plot looks like this.\niris %\u003e% ggplot(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) + geom_point() + labs(title = \"Without my theme\") Once I run and set my theme, its way prettier.\n# creating theme theme_h = function(base_size = 14) { theme_bw(base_size = base_size) %+replace% theme( # Specify plot title plot.title = element_text( size = rel(1), face = \"bold\", family = \"serif\", margin = margin(0, 0, 5, 0), hjust = 0 ), # Specifying grid and border panel.grid.minor = element_blank(), panel.border = element_blank(), # Specidy axis details axis.title = element_text( size = rel(0.85), face = \"bold\", family = \"serif\" ), axis.text = element_text(size = rel(0.70), family = \"serif\"), axis.line = element_line( color = \"black\", arrow = arrow(length = unit(0.3, \"lines\"), type = \"closed\") ), # Specify legend details legend.title = element_text( size = rel(0.85), face = \"bold\", family = \"serif\" ), legend.text = element_text( size = rel(0.70), face = \"bold\", family = \"serif\" ), legend.key = element_rect(fill = \"transparent\", colour = NA), legend.key.size = unit(1.5, \"lines\"), legend.background = element_rect(fill = \"transparent\", colour = NA), # Remove default background strip.background = element_rect(fill = \"#17252D\", color = \"#17252D\"), strip.text = element_text( size = rel(0.85), face = \"bold\", family = \"serif\", color = \"white\", margin = margin(5, 0, 5, 0) ) ) } theme_set(theme_h()) iris %\u003e% ggplot(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) + geom_point() + labs(title = \"With my theme\") I like the arrowed axes and serif fonts. This theme has now been implemented in my garlic package. It can be set via theme_set(garlic::gg_serif().\nTheme Clean There are many other alternatives available — beyond the default options. This website has a wonderful compilation of a few of them. I really like theme_clean() from ggthemes package.\ntheme_set(ggthemes::theme_clean()) Tech Themes ggtech has themes related to tech companies. Here are they in the order of my preference.\ntheme_set(ggtech::theme_airbnb_fancy()) theme_set(ggtech::theme_tech(theme=\"etsy\")) theme_set(ggtech::theme_tech(theme=\"google\")) theme_set(ggtech::theme_tech(theme=\"facebook\")) theme_set(ggtech::theme_tech(theme=\"twitter\")) Better Quality Images in R Markdown Using .svg as the image output format gives much better graphics quality than the default option. To use that, include the following code in R Markdown. Source.\n# set output device to svg # this can fail sometimes -- I haven't investigated when knitr::opts_chunk$set(dev = 'svg') Update (March 5, 2022): I finally wrote a package with some of these functions. You can learn more about it here.1\nI do not imagine this package to be useful to many people but I use these functions very frequently. Particularly my ggplot2 theme. ↩︎\n",
+  "wordCount" : "805",
+  "inLanguage": "en",
+  "image": "/notes-on-r/featured.png","datePublished": "2022-02-03T00:00:00Z",
+  "dateModified": "2022-02-03T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/notes-on-r/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Notes on R
+    </h1>
+    <div class="post-meta"><span title='2022-02-03 00:00:00 +0000 UTC'>February 3, 2022</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>On one fine day when I have enough time, they&rsquo;ll all be wrapped into a package hosted on my Github. Until then, this page in their home.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+</code></pre><pre tabindex="0"><code>## ✔ ggplot2 3.3.6.9000     ✔ purrr   0.3.4     
+## ✔ tibble  3.1.7          ✔ dplyr   1.0.9     
+## ✔ tidyr   1.2.0          ✔ stringr 1.4.1     
+## ✔ readr   2.1.2          ✔ forcats 0.5.1
+</code></pre><pre tabindex="0"><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+</code></pre><h2 id="dt-table-with-download-buttons-with-search">DT Table with Download Buttons with Search<a hidden class="anchor" aria-hidden="true" href="#dt-table-with-download-buttons-with-search">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">my_DT</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">return</span><span class="p">(</span><span class="n">DT</span><span class="o">::</span><span class="nf">datatable</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#34;Buttons&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="n">paging</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">scrollX</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">searching</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">ordering</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">dom</span> <span class="o">=</span> <span class="s">&#39;Bfrtip&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">buttons</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;copy&#39;</span><span class="p">,</span> <span class="s">&#39;csv&#39;</span><span class="p">,</span> <span class="s">&#39;excel&#39;</span><span class="p">,</span> <span class="s">&#39;pdf&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pageLength</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">lengthMenu</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="show-in-excel">Show in Excel<a hidden class="anchor" aria-hidden="true" href="#show-in-excel">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">show_in_excel</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">.data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="n">temp</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="nf">tempfile</span><span class="p">(),</span> <span class="s">&#34;.csv&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="nf">write.csv</span><span class="p">(</span><span class="n">.data</span><span class="p">,</span> <span class="n">temp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="n">fs</span><span class="o">::</span><span class="nf">file_show</span><span class="p">(</span><span class="n">path</span> <span class="o">=</span> <span class="n">temp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>This can be used with pipes too.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">iris</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">show_in_excel</span><span class="p">()</span>
+</span></span></code></pre></div><h2 id="convert-missing-values-to-zero">Convert Missing Values to Zero<a hidden class="anchor" aria-hidden="true" href="#convert-missing-values-to-zero">#</a></h2>
+<p>This function converts missing values in a vector to zero.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">n2z</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="n">x</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="m">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="kr">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="finding-index-of-missing-elements">Finding Index of Missing Elements<a hidden class="anchor" aria-hidden="true" href="#finding-index-of-missing-elements">#</a></h2>
+<p>This function returns index of elements which are missing. Very useful in finding what observations are missing.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">which.na</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="kr">return</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="removing-rows-based-on-missing-values-in-a-column">Removing Rows Based on Missing Values in a Column<a hidden class="anchor" aria-hidden="true" href="#removing-rows-based-on-missing-values-in-a-column">#</a></h2>
+<p>Sometimes, I do not want to <code>na.omit()</code> because it will treat all features equally. I want to check values only for one column.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">na.rm.feature</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">colname</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="n">nas</span> <span class="o">=</span> <span class="nf">which</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">x[</span><span class="p">,</span><span class="n">colname]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">   <span class="n">x</span> <span class="o">=</span> <span class="n">x[</span><span class="o">-</span><span class="n">nas</span><span class="p">,</span> <span class="n">]</span>
+</span></span><span class="line"><span class="cl">   <span class="kr">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="find-row-where-a-condition-is-satisfied">Find row where a condition is satisfied<a hidden class="anchor" aria-hidden="true" href="#find-row-where-a-condition-is-satisfied">#</a></h2>
+<p>This function can find observations that satisfy a condition. Typically, they are useful in finding specific elements. It is kind of a wrapper around dplyr&rsquo;s <code>filter()</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">which.this</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">df</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">    <span class="nf">filter</span><span class="p">(</span><span class="nf">eval</span><span class="p">(</span><span class="nf">parse</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">x</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="example">Example<a hidden class="anchor" aria-hidden="true" href="#example">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">which.this</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="s">&#34;Sepal.Length &gt; 6.5&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">head</span><span class="p">()</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 1          7.0         3.2          4.7         1.4 versicolor
+## 2          6.9         3.1          4.9         1.5 versicolor
+## 3          6.6         2.9          4.6         1.3 versicolor
+## 4          6.7         3.1          4.4         1.4 versicolor
+## 5          6.6         3.0          4.4         1.4 versicolor
+## 6          6.8         2.8          4.8         1.4 versicolor
+</code></pre><h2 id="remove-commas-dollars-or-any-other-such-characters">Remove commas, dollars, or any other such characters<a hidden class="anchor" aria-hidden="true" href="#remove-commas-dollars-or-any-other-such-characters">#</a></h2>
+<p>The code below replaces all commas with nothing.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;300,000&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&#34;,&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] &#34;300000&#34;
+</code></pre><h2 id="ggplot2-themes">GGPlot2 Themes<a hidden class="anchor" aria-hidden="true" href="#ggplot2-themes">#</a></h2>
+<p>See <a href="https://ggplot2.tidyverse.org/reference/theme.html">official guide</a> for more details. Also see <a href="https://benjaminlouis-stat.fr/en/blog/2020-05-21-astuces-ggplot-rmarkdown/">Benjamin&rsquo;s blog</a>.</p>
+<p>The default plot looks like this.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">iris</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">Species</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Without my theme&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/notes-on-r/index_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<p>Once I run and set my theme, its way prettier.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># creating theme</span>
+</span></span><span class="line"><span class="cl"><span class="n">theme_h</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">14</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_bw</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="n">base_size</span><span class="p">)</span> <span class="o">%+replace%</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">theme</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># Specify plot title</span>
+</span></span><span class="line"><span class="cl">      <span class="n">plot.title</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">=</span> <span class="nf">rel</span><span class="p">(</span><span class="m">1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">face</span> <span class="o">=</span> <span class="s">&#34;bold&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;serif&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">margin</span> <span class="o">=</span> <span class="nf">margin</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hjust</span> <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># Specifying grid and border</span>
+</span></span><span class="line"><span class="cl">      <span class="n">panel.grid.minor</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">panel.border</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># Specidy axis details</span>
+</span></span><span class="line"><span class="cl">      <span class="n">axis.title</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">=</span> <span class="nf">rel</span><span class="p">(</span><span class="m">0.85</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">face</span> <span class="o">=</span> <span class="s">&#34;bold&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;serif&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">axis.text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="nf">rel</span><span class="p">(</span><span class="m">0.70</span><span class="p">),</span> <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;serif&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">axis.line</span> <span class="o">=</span> <span class="nf">element_line</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;black&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">arrow</span> <span class="o">=</span> <span class="nf">arrow</span><span class="p">(</span><span class="n">length</span> <span class="o">=</span> <span class="nf">unit</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span> <span class="s">&#34;lines&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;closed&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># Specify legend details</span>
+</span></span><span class="line"><span class="cl">      <span class="n">legend.title</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">=</span> <span class="nf">rel</span><span class="p">(</span><span class="m">0.85</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">face</span> <span class="o">=</span> <span class="s">&#34;bold&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;serif&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">legend.text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">=</span> <span class="nf">rel</span><span class="p">(</span><span class="m">0.70</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">face</span> <span class="o">=</span> <span class="s">&#34;bold&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;serif&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">legend.key</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;transparent&#34;</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">legend.key.size</span> <span class="o">=</span> <span class="nf">unit</span><span class="p">(</span><span class="m">1.5</span><span class="p">,</span> <span class="s">&#34;lines&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">legend.background</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;transparent&#34;</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># Remove default background</span>
+</span></span><span class="line"><span class="cl">      <span class="n">strip.background</span> <span class="o">=</span> <span class="nf">element_rect</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="s">&#34;#17252D&#34;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;#17252D&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">strip.text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">=</span> <span class="nf">rel</span><span class="p">(</span><span class="m">0.85</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">face</span> <span class="o">=</span> <span class="s">&#34;bold&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">family</span> <span class="o">=</span> <span class="s">&#34;serif&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">color</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">margin</span> <span class="o">=</span> <span class="nf">margin</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="nf">theme_h</span><span class="p">())</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">iris</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">Species</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;With my theme&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/notes-on-r/index_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<p>I like the arrowed axes and serif fonts. This theme has now been implemented in my <code>garlic</code> package. It can be set via <code>theme_set(garlic::gg_serif()</code>.</p>
+<h3 id="theme-clean">Theme Clean<a hidden class="anchor" aria-hidden="true" href="#theme-clean">#</a></h3>
+<p>There are many other alternatives available &mdash; beyond the default options. <a href="https://r-charts.com/ggplot2/themes/">This website</a> has a wonderful compilation of a few of them. I really like <code>theme_clean()</code> from <code>ggthemes</code> package.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="n">ggthemes</span><span class="o">::</span><span class="nf">theme_clean</span><span class="p">())</span>
+</span></span></code></pre></div><h3 id="tech-themes">Tech Themes<a hidden class="anchor" aria-hidden="true" href="#tech-themes">#</a></h3>
+<p><code>ggtech</code> has <a href="https://github.com/ricardo-bion/ggtech">themes</a> related to tech companies. Here are they in the order of my preference.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="n">ggtech</span><span class="o">::</span><span class="nf">theme_airbnb_fancy</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="n">ggtech</span><span class="o">::</span><span class="nf">theme_tech</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="s">&#34;etsy&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="n">ggtech</span><span class="o">::</span><span class="nf">theme_tech</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="s">&#34;google&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="n">ggtech</span><span class="o">::</span><span class="nf">theme_tech</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="s">&#34;facebook&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="n">ggtech</span><span class="o">::</span><span class="nf">theme_tech</span><span class="p">(</span><span class="n">theme</span><span class="o">=</span><span class="s">&#34;twitter&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><h2 id="better-quality-images-in-r-markdown">Better Quality Images in R Markdown<a hidden class="anchor" aria-hidden="true" href="#better-quality-images-in-r-markdown">#</a></h2>
+<p>Using <code>.svg</code> as the image output format gives much better graphics quality than the default option. To use that, include the following code in R Markdown. <a href="https://stackoverflow.com/questions/64602680/how-to-set-svg-as-default-rendering-in-rmarkdown">Source</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># set output device to svg</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># this can fail sometimes -- I haven&#39;t investigated when</span>
+</span></span><span class="line"><span class="cl"><span class="n">knitr</span><span class="o">::</span><span class="n">opts_chunk</span><span class="o">$</span><span class="nf">set</span><span class="p">(</span><span class="n">dev</span> <span class="o">=</span> <span class="s">&#39;svg&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
+<p><strong>Update (March 5, 2022):</strong> I finally wrote a package with some of these functions. You can learn more about it <a href="https://harshvardhaniimi.github.io/garlic/">here</a>.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I do not imagine this package to be useful to many people but I use these functions very frequently. Particularly my <code>ggplot2</code> theme.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/r/">R</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/ancestors/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>How much do we know about our ancestors?</span>
+  </a>
+  <a class="next" href="/my-mac-workflow/">
+    <span class="title">Next »</span>
+    <br>
+    <span>My Mac Workflow</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

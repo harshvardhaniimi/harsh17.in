@@ -1,0 +1,91 @@
+---
+title: "Up Your Blogging Game: Three Enhancements to Hugo Apero"
+subtitle: "Revamp Themes, Add Search Bars, Change Fonts"
+summary: "This post provides a detailed guide to customizing the Hugo Apero template, focusing on changing themes, adding a search bar, and altering fonts for a truly personalized blogging experience."
+author: Harshvardhan
+date: '2023-05-20'
+slug: hugo
+categories:
+  - R
+  - blog
+tags: []
+draft: false
+---
+
+
+
+<p><a href="https://hugo-apero.netlify.app/">Hugo Apero</a> is the Blogdown template I use for this website. The template ships with great defaults, the best of all Hugo templates in my opinion. Beyond those defaults, it provides many options to modify your website in a meaningful way. In this blog, I list out three good ones.</p>
+<p>From changing the color theme and adding a custom search bar, to customizing the fonts, each of these tweaks can significantly enrich your site’s aesthetic and functionality. So buckle up as we delve into the nuances of the Hugo Apero template, and let’s unlock the potential of your website!</p>
+<div id="change-your-theme" class="section level2">
+<h2>1. Change your Theme</h2>
+<p>The colour theme for Hugo Apero can be changed by editing your <code>config.toml</code> or <code>config.yaml</code> file. The exact one would depend on your template version.</p>
+<p>In your <code>config.yaml</code> file, you will find an option for <code>theme</code>. Edit it to suit your needs! There are six themes available by default.</p>
+<pre class="r"><code># use a built-in color theme
+# one of: forest / grayscale / peach / plum /
+#         poppy / sky / violet / water 
+theme = &quot;violet&quot;</code></pre>
+<div class="float">
+<img src="images/Screenshot%202023-04-16%20at%2011.30.43%20PM.png" alt="Default colour themes in Hugo Apero." />
+<div class="figcaption">Default colour themes in Hugo Apero.</div>
+</div>
+<p><a href="https://github.com/mccarthy-m-g">Michael McCarthy</a> also created <a href="https://github.com/hugo-apero/hugo-apero/pull/72">four new themes</a>: Earth, Paper (Grayscale alternative which I like more), Magma (“dark” mode) and Primer (another dark one based on Github’s “primer” theme).<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> As of today (April 16, 2023), I use “Earth”. If you want to use any of these, you will have to do some additional work.</p>
+<p>Before I describe what you need to do to use them, take a look at these themes.</p>
+<p><img src="images/Screenshot%202023-04-16%20at%2011.53.16%20PM.png" /></p>
+<p><strong>I’ve found Magma and Primer (dark themes basically) to be bad at showing <code>kable</code> and <code>DT</code> tables. Just something to keep in mind.</strong></p>
+<p>To identify the changes needed to your site’s configuration, one can look at the <a href="https://github.com/hugo-apero/hugo-apero/pull/72/commits">pull request</a>. Here are the steps:</p>
+<ol style="list-style-type: decimal">
+<li>First, head over to <code>assets/scaffold.scss</code> and add the theme name you want to use to the following line.</li>
+</ol>
+<pre class="r"><code>{{$themes := (slice &quot;earth&quot; &quot;forest&quot; &quot;grayscale&quot; &quot;paper&quot; &quot;peach&quot; &quot;plum&quot; &quot;poppy&quot; &quot;sky&quot; &quot;violet&quot; &quot;water&quot;)}}</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Then create a <code>theme_name.scss</code> file in <code>assets/theme/</code> folder. You can look at the pull request for exact content of the files. (<a href="https://github.com/hugo-apero/hugo-apero/pull/72/commits/04735183ad6351badcaacabc86196752d899bf6b">Earth and Paper</a>, <a href="https://github.com/hugo-apero/hugo-apero/pull/72/commits/d0bd72003f2084357ec7af15cb1964b3c702fc33">Magma</a>, and <a href="https://github.com/hugo-apero/hugo-apero/pull/72/commits/909406f6c66269b33706fd735728784d861e5dd4">Primer</a>)</p></li>
+<li><p>Go to your <code>config.yaml</code> or <code>config.toml</code> file and change the theme name as described earlier. (Whether is “=” or “:” would depend on whether is <code>yaml</code> or <code>toml</code>.)</p></li>
+</ol>
+<pre class="r"><code>    theme: &quot;sky&quot;</code></pre>
+</div>
+<div id="add-a-search-bar" class="section level2">
+<h2>2. Add a Search Bar</h2>
+<p>Another simple addition is to add a custom search bar in your site. Having a search tab on a website is useful because it allows users to quickly and easily find the information they are looking for. It also helps users who may not be familiar with the website’s organization or navigation, allowing them to quickly locate information without having to spend time browsing through different pages.</p>
+<p>It is super simple to do in Hugo Apero.</p>
+<ol style="list-style-type: decimal">
+<li><p>Head over to <code>cse.google.com</code>. Create a new search engine by clicking “Add”.</p>
+<p><img src="images/Screenshot%202023-05-05%20at%203.22.29%20PM.png" /></p></li>
+<li><p>Give your custom search engine a cool name. Add you website’s URL in “What to Search”. Would you like to include images for search and use safe-search? Choose appropriately.</p></li>
+<li><p>Following this, you will get a public URL for your custom search engine. It would be something like “<a href="https://cse.google.com/cse?cx=7d9698c281e7d2001" class="uri">https://cse.google.com/cse?cx=7d9698c281e7d2001</a>”.</p></li>
+<li><p>I’ve added my search box to About page. To do that, you can head over to <code>/content/about/_index.md</code>. Then in the <code>outro</code> section, add the following HTML code.</p></li>
+</ol>
+<pre class="r"><code>    outro: |
+      &lt;i class=&quot;fas fa-mug-hot pr2&quot;&gt;&lt;/i&gt;If my blog has helped you, you can [buy me a coffee](https://www.buymeacoffee.com/harsh17)!
+      &lt;script async src=&quot;https://cse.google.com/your_search_url&quot;&gt;&lt;/script&gt;
+      &lt;div class=&quot;gcse-search&quot;&gt;&lt;/div&gt;</code></pre>
+<p>Make sure that <code>show_outro</code> is set to <code>true</code>. Enjoy your new search engine!</p>
+</div>
+<div id="changing-fonts" class="section level2">
+<h2>3. Changing Fonts</h2>
+<p>This subsection largely follows the <a href="https://hugo-apero-docs.netlify.app/learn/fonts/">official documentation</a>. There are six fonts included out of the box. You can choose them in <code>config.toml</code> or <code>config.yaml</code>.</p>
+<pre class="r"><code>  textFontFamily = &quot;courier&quot;
+  headingFontFamily = &quot;baskerville&quot;</code></pre>
+<p>You like it spicy? Me too. Let’s play with some nontraditional fonts from Google Fonts.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> We will be using this <a href="https://gwfh.mranftl.com/fonts">Webapp</a> to get the files in the right format.</p>
+<ol style="list-style-type: decimal">
+<li>First, decide which fonts you want for your heading and text. This is likely going to take a lot of trials but to understand the process, you can choose any from <a href="https://fonts.google.com/">Google Fonts site</a>.</li>
+<li>Once you know which font you want, search it’s name in the <a href="https://gwfh.mranftl.com/fonts">Webapp</a>. The app will show you the <strong>custom CSS</strong> as well as prepare the ZIP file.<img src="images/Screenshot%202023-05-05%20at%203.41.19%20PM.png" /></li>
+<li>Create a <code>static/fonts</code> folder and add the font files (that you got from <strong>Download files</strong> option) to that folder.</li>
+<li>Finally, head back to <code>config.toml</code> or <code>config.yaml</code> and edit the font name.</li>
+</ol>
+<pre class="r"><code>  customtextFontFamily = &quot;&quot;
+  customheadingFontFamily = &quot;Nanum Myeongjo&quot;</code></pre>
+<p>Push the commits to Github and enjoy your new fonts! If you’re not sure which fonts to choose, my advice is experiment, experiment and experiment. Jonathan Hoefler, who created fonts for Apple, Obama’s Change campaign, and more, did an episode on typeface design: <a href="https://jonathanhoefler.com/documentary">“Abstract: The Art of Design” (Netflix)</a>.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> The linked site is an introduction to typeface fundamentals.</p>
+</div>
+<div id="and-thats-a-wrap" class="section level2">
+<h2>And that’s a wrap!</h2>
+<p>In this post, we have traversed a number of essential changes that can truly enhance your Hugo Apero site, ensuring it stands out. From switching up the theme and adding a custom search bar, to refining the fonts, these tips serve to unlock the potential that resides in the Blogdown template.</p>
+<p>Experimenting is key – so go ahead and try out various themes, search bars, and fonts until you find the perfect fit. Remember, your website is a reflection of you, so don’t be afraid to show off your style!</p>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>This is a pull request on Apero’s Github repo. At some point, I believe it will be merged into the theme. But that hasn’t happened in almost a year…<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>I’m truly grateful to Google for making such a huge database of fonts freely available. Like seriously…<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Hat tip to Dea for the recommendation.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

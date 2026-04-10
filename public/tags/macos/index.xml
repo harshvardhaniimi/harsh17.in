@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Macos on Harshvardhan</title>
+    <link>/tags/macos/</link>
+    <description>Recent content in Macos on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macchi Trash</title>
+      <link>/macchi-trash/</link>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>/macchi-trash/</guid>
+      <description>A tiny macOS menu-bar app that shows animated flies buzzing around your Trash when it has items.</description>
+    </item>
+    <item>
+      <title>Kalam</title>
+      <link>/kalam/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>/kalam/</guid>
+      <description>A native macOS menu-bar app for speech-to-text transcription — completely local, private, and free.</description>
+    </item>
+  </channel>
+</rss>

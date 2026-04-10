@@ -1,0 +1,154 @@
+---
+title: "50 Statistics Terms Indeed Got Wrong"
+subtitle: "Was this article written by a noob?"
+summary: "Was this article written by a noob?"
+author: Harshvardhan
+date: '2022-04-10'
+slug: 50-statistics-terms-indeed-got-wrong
+categories: 
+- statistics
+tags: []
+draft: true
+---
+
+
+
+<blockquote>
+<p><strong>50 Statistics Terms To Know (With Definitions)</strong></p>
+<p>Indeed Editorial Team, July 8 2021</p>
+<p>Link: <a href="https://www.indeed.com/career-advice/career-development/list-of-statistics-terms" class="uri">https://www.indeed.com/career-advice/career-development/list-of-statistics-terms</a></p>
+</blockquote>
+<p>Many people get statistics wrong these days. Sometimes even <a href="https://twitter.com/tunguz/status/1501574682520080390?s=20&amp;t=gIgoYH1CYElCc4a8771Xyg">senior data scientists</a>, which is just sad. Sometimes, they I wonder <a href="https://twitter.com/tunguz/status/1501903467475914754?s=20&amp;t=gIgoYH1CYElCc4a8771Xyg">if they know what they’re talking about</a>.</p>
+<p>I get it; it’s not easy. But at least Google it. Or even ask — statisticians love to correct wrong assumptions. Make some effort to learn.</p>
+<p>Today, I will present the first few definitions and explain why they are misleading. Here’s the <a href="https://archive.ph/Tn2BF">archive version</a> in case the original link doesn’t work.</p>
+<blockquote>
+<h1 id="alternative-hypothesis"><strong>1. Alternative hypothesis</strong></h1>
+<p>An alternative hypothesis is also known as the null hypothesis. The null hypothesis is the opposite claim of the thesis. If the data you collect demonstrates that your original hypothesis was correct, then you can reject the alternative hypothesis.</p>
+</blockquote>
+<p>Alternative hypothesis is NOT null hypothesis. Null hypothesis is a representation of the <em>status quo</em> of beliefs. Mathematically, it denotes that two possibilities are the same. Usually, it is the thesis. Alternative hypothesis is… <em>drumrolls…</em> the opposite of null hypothesis.</p>
+<blockquote>
+<h1 id="analysis-of-covariance"><strong>2. Analysis of covariance</strong></h1>
+<p>An analysis of covariance refers to a technique that evaluates if a dependent variable produces equal results across numerous independent variable situations. It specifically looks at the differences between the mean values of dependent variables that relate to each other.</p>
+</blockquote>
+<p>This definition is partly true. Analysis of covariance (ANCOVA) measures the impact of independent categorical variables (like sex) on dependent variable (like income) while controlling for other continuous variables that might have an impact (like intellectual abilities). It breaks down the variance of dependent variable (<span class="math inline">\(y_{ij}\)</span>) into variance explained by covariates (continuous variables, <span class="math inline">\(x_{ij}\)</span>) and categorical variable’s variance (<span class="math inline">\(\tau_i\)</span>).</p>
+<p><span class="math display">\[
+y_{ij} = \mu + \tau_i + A(x_{ij} - \bar{x}) + e_{ij},
+\]</span></p>
+<p>where <span class="math inline">\(\mu\)</span> is the “grand mean”, <span class="math inline">\(A\)</span> is the slope of the regression line and <span class="math inline">\(e_{ij}\)</span> is the residual variance.</p>
+<blockquote>
+<h1 id="analysis-of-variance"><strong>3. Analysis of variance</strong></h1>
+<p>An analysis of variance is a method of evaluating the differences between variables in a study. It also includes a two-way study, which is a way to split variability into two parts, including systematic and random factors.</p>
+</blockquote>
+<p>I do not understand this definition well enough to say whether it is right or wrong. Can ANOVA tell me difference between two variables? Yes. But so can t-test, F-test or any mean difference test. What does two-way study mean?</p>
+<p>ANOVA is a generalization of t-test beyond two variables. It is used to compare means between two or more variables, testing if they are equal. It does that by comparing the variances between the groups.</p>
+<blockquote>
+<h1 id="average"><strong>4. Average</strong></h1>
+<p>The average refers to the mean of data. You can calculate the average by adding up the total of the data and dividing it by the number of data points.</p>
+</blockquote>
+<p>This is correct. The technically correct term for this is arithmetic average. There are other kinds of means such as geometric mean and harmonic mean.</p>
+<blockquote>
+<h1 id="bell-curve"><strong>5. Bell curve</strong></h1>
+<p>The bell curve, which is also referred to as the normal distribution, displays the mean, median and mode of the data you collect. It usually follows the shape of a bell with a slope on each side.</p>
+</blockquote>
+<p>Although bell curve typically refers to the normal distribution, it is not the only bell curve. Almost all unimodal symmetric distributions would be bell curve. Most distributions will have mean, median and mode as well. All curves will have a slope at all points where the differential exists. In common parlance, bell curve is the normal distribution. No less and certainly no more.</p>
+<blockquote>
+<h1 id="beta-level"><strong>6. Beta level</strong></h1>
+<p>A beta level refers to the probability of accepting the null or alternative hypothesis. The beta level also means that the hypothesis is incorrect.</p>
+</blockquote>
+<p>This. Is. Just. Wrong. Statistical power of hypothesis test is the probability that we correctly reject the null hypothesis when the alternative hypothesis is true. It is often represented as <span class="math inline">\(1 - \beta\)</span> where <span class="math inline">\(\beta\)</span> is the probability of making Type-II error.</p>
+<table>
+<colgroup>
+<col width="36%" />
+<col width="33%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Reject Null Hypothesis (<span class="math inline">\(H_0\)</span>)</th>
+<th>Fail to Reject Null (<span class="math inline">\(H_0\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Null hypothesis (</strong><span class="math inline">\(H_0\)</span><strong>) is true</strong></td>
+<td>Type - I Error, <span class="math inline">\(\alpha\)</span></td>
+<td>Good call</td>
+</tr>
+<tr class="even">
+<td><strong>Null hypothesis (</strong><span class="math inline">\(H_0\)</span><strong>) is false</strong></td>
+<td>Good call</td>
+<td>Type - II Error, <span class="math inline">\(\beta\)</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<h1 id="binomial-test"><strong>7. Binomial test</strong></h1>
+<p>You can use a binomial test when you are studying a hypothesis with two potential outcomes and you believe one has a higher probability of being true. Its theory is based on probability calculations and the study of small samples.</p>
+</blockquote>
+<p>This is largely correct. It is not based on study of small samples, rather it is valid for small samples.</p>
+<blockquote>
+<h1 id="breakdown-point"><strong>8. Breakdown point</strong></h1>
+<p>The breakdown point is a point in which an estimator is no longer useful. A lower breakdown point means the information may not be useful, whereas a higher number means there is less chance of resistance.</p>
+</blockquote>
+<p>Breakdown point is the proportion of arbitrary large observations that an estimator can handle before giving incorrect arbitrary large results. For example, the mean given by</p>
+<p><span class="math display">\[
+\bar{x} = \frac{x_1 + x_2 + \dots + x_n}{n}
+\]</span></p>
+<p>can become arbitrary large (and thus incorrectly represent the distribution of <span class="math inline">\(x_i\)</span>) by changing any of the <span class="math inline">\(x_i\)</span>. Thus, breakdown point of <span class="math inline">\(\bar{x}\)</span> is zero (<span class="math inline">\(\lim_{n \to \infty} \frac{1}{n}\)</span>).</p>
+<blockquote>
+<h1 id="causation"><strong>9. Causation</strong></h1>
+<p>Causation is a direct relationship between two variables. Two variables have a direct relationship if a change in one value causes a change in the other variable.</p>
+</blockquote>
+<p>This is a really confusing way to say if I hit the accelerator and the car moves, it is the accelerator that moves the car.</p>
+<blockquote>
+<h1 id="coefficient"><strong>10. Coefficient</strong></h1>
+<p>A coefficient measures a variable by using a multiplier. When conducting research and computing equations, the coefficient is often a numerical value that multiplies by a variable, giving you a coefficient of the variable. If a variable does not have a number, the coefficient is always one.</p>
+</blockquote>
+<p>Let’s say you have a algebraic expression like <span class="math inline">\(ax + b\)</span>. <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are coefficients; the constant terms in the expression. They’re most common in regression in statistics.</p>
+<blockquote>
+<h1 id="confidence-intervals"><strong>11. Confidence intervals</strong></h1>
+<p>A confidence interval measures the level of uncertainty of a collection of data. It is also the level of probability that data will fall into a set of pre-assigned values.</p>
+</blockquote>
+<p>Confidence intervals give us a probabilistic range (after accounting for uncertainty) of an unknown parameter. It does not measure uncertainty in data collection. If I say my 95% confidence interval is <span class="math inline">\((I_1, I_2)\)</span> and I collect 100 samples of my data, 95 out of 100 times my parameter of interest would be between <span class="math inline">\(I_1\)</span> and <span class="math inline">\(I_2\)</span>.</p>
+<blockquote>
+<h1 id="correlation-coefficient"><strong>12. Correlation coefficient</strong></h1>
+<p>The correlation coefficient describes the level of correlation or dependence between two variables. This value is a number between negative one and positive one and can suggest when two variables may have an identifiable relationship.</p>
+</blockquote>
+<p>Correlation measures <em>linear</em> relationship between two variables. Many mistake it to represent dependency but <a href="https://en.wikipedia.org/wiki/Correlation_does_not_imply_causation">correlation doesn’t imply causation</a>. Further, there could be quadratic relationship between variables that correlation simply misses out.</p>
+<p>Consider <span class="math inline">\(y = x^2\)</span>. As you can see in the figure below, the correlation is (almost) zero but there is clear quadratic relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Here’s an interesting website with many examples of <a href="https://www.tylervigen.com/spurious-correlations">spurious correlation</a> — where is no relationship but correlation is significant.</p>
+<pre class="r"><code>x = seq(-1, 1, length.out = 100)
+y = x^2
+cor(x, y)</code></pre>
+<pre><code>## [1] 2.754455e-16</code></pre>
+<pre class="r"><code>plot(x, y, type = &quot;l&quot;, xlab = &quot;x&quot;, ylab = &quot;y = x^2&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<blockquote>
+<h1 id="cronbachs-alpha-coefficient"><strong>13. Cronbach’s alpha coefficient</strong></h1>
+<p>Cronbach’s alpha coefficient is a measurement of internal consistency. It shows the nature of the relationship between multiple variables in a subset of data. Additionally, Cronbach’s alpha coefficient remains consistent in the number of items it measures and can increase when the average correlation between items increases.</p>
+</blockquote>
+<p>Honestly, I don’t know much about this. From the <a href="https://data.library.virginia.edu/using-and-interpreting-cronbachs-alpha/">University of Virginia Libraries</a>:</p>
+<blockquote>
+<p>Cronbach’s alpha is a measure used to assess the reliability, or internal consistency, of a set of scale or test items. In other words, the reliability of any given measurement refers to the extent to which it is a consistent measure of a concept, and Cronbach’s alpha is one way of measuring the strength of that consistency.</p>
+</blockquote>
+<blockquote>
+<h1 id="dependent-variable"><strong>14. Dependent variable</strong></h1>
+<p>A dependent variable is a value that depends on another variable to exhibit change. When computing in statistical analysis, you can use dependent variables to make conclusions about causes of events, changes and other translations in statistical research.</p>
+</blockquote>
+<p>This is a good intuitive explanation of dependent variable. In the model <span class="math inline">\(Y = f(X) + \epsilon\)</span>, <span class="math inline">\(Y\)</span> is the dependent variable and <span class="math inline">\(X\)</span> is the independent variable.</p>
+<blockquote>
+<h1 id="descriptive-statistic"><strong>15. Descriptive statistic</strong></h1>
+<p>Descriptive statistics are the results that describe the data of your study. This may include the mean or median of the data as well as any other information that describes a trend among the population.</p>
+</blockquote>
+<p>Descriptive statistics describe the data sample we have. Usually it includes summary statistics like mean, median, standard deviation, mode, skewness, kurtosis, range and many others. The give us the “feel” of what we’re dealing with.</p>
+<blockquote>
+<h1 id="effect-size"><strong>16. Effect size</strong></h1>
+<p>The effect size is a way to quantify significant differences between two populations or sets of data. Effect size considers the size of the population rather than focusing solely on the data you collect.</p>
+</blockquote>
+<p>Effect size is <strong>not</strong> a way to quantify differences between two populations. Statistical tests are used for that purpose.</p>
+<p>Assume that you ask 500 people in Tennessee, US about their opinions on free speech. Then you ask 10 people in Massachusetts, US about their opinions on free speech. You find that they agree — but is it because you asked only 10 people in MA and 500 in TN? This is called the effect size of the sample size, which is kind of effect size. There are more than fifty types of effect size. See <a href="https://en.wikipedia.org/wiki/Effect_size#Types">Wikipedia</a> for more details.</p>
+<blockquote>
+<h1 id="f-test"><strong>17. F-test</strong></h1>
+<p>An F-test is any test that uses F-distribution. F-distribution refers to the process of comparing different models of statistics to determine which model works best for the specific study.</p>
+</blockquote>
+<p>F-test uses the F-distribution. Here’s how F-distribution looks; it’s just a probability distribution.</p>

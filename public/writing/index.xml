@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Writing on Harshvardhan</title>
+    <link>//localhost:1313/writing/</link>
+    <description>Recent content in Writing on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/writing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Language Models and Multiverse</title>
+      <link>//localhost:1313/language-models-and-multiverse/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/language-models-and-multiverse/</guid>
+      <description>&lt;p&gt;I was listening to a podcast by OpenAI where they tell us how they trained GPT-4.5, one of the largest models they have today.
+GPT-4.5 shows intelligence in unexpected ways, demonstrating common sense like other models totally miss.
+I haven’t used it much myself so cannot comment on that, but at &lt;a href=&#34;https://youtu.be/6nJZopACRuQ?t=2318&#34;&gt;38:38&lt;/a&gt; in the video, Sam Altman asks Daniel Selsam “why does supervised learning work?”.
+Without skipping a beat, he replies “compression”.
+Then he explains that “the ideal intelligence is Solomonoff Induction”.
+Unfamiliar with this term, I jumped on a conversation with GPT-4.5 and along the way, I learnt several interesting things that I want to share with you all.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Week in Tirana, Albania</title>
+      <link>//localhost:1313/albania/</link>
+      <pubDate>Tue, 15 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/albania/</guid>
+      <description>&lt;p&gt;Last month, I spent a week in Tirana, Albania.
+Nestled across the Adriatic from Italy and bordered by Montenegro, Kosovo, North Macedonia, and Greece, Albania has long been one of Europe’s hidden secrets.
+Until 1991, this small country lived in almost total isolation under a communist dictatorship.
+After communism collapsed, Albania became a democratic republic.
+In 2009, it joined NATO and today stands as an EU candidate state—to becoming a full member soon.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Power of Your Passport</title>
+      <link>//localhost:1313/passports/</link>
+      <pubDate>Tue, 24 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/passports/</guid>
+      <description>&lt;script src=&#34;//localhost:1313/passports/index_files/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//localhost:1313/passports/index_files/pymjs/pym.v1.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//localhost:1313/passports/index_files/widgetframe-binding/widgetframe.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;images/all-passports.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;A passport is “an official travel document issued by a government that certifies a person’s identity and nationality for international travel.” The word comes from the medieval French &lt;em&gt;passer&lt;/em&gt; (“to pass”) and &lt;em&gt;port&lt;/em&gt; (“harbor”): originally a document allowing you to pass through a port town’s gate.
+The document requests all border protection agencies and governments to give safe passage to the bearer.
+It validates the identity of the concerned citizen.
+My Indian passport specifically says:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>From Data to Decisions: The Story Behind My PhD</title>
+      <link>//localhost:1313/phd/</link>
+      <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/phd/</guid>
+      <description>&lt;p&gt;On March 31, 2025, I successfully defended my dissertation: “From Data to Decisions: Enterprise Demand Forecasting with Machine Learning.” My work is rooted in generalizable research at the intersection of machine learning, operations research, and organizational decision-making, grounded through a real-world implementation at HP Inc.&lt;/p&gt;
+&lt;p&gt;Final accepted draft of my dissertation is available &lt;a href=&#34;https://www.harsh17.in/docs/2025_04_10_Doctoral_Dissertation.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;what-is-my-dissertation-about&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What is my dissertation about?&lt;/h1&gt;
+&lt;p&gt;Demand forecasting has a rich intellectual and practical history.
+Ancient texts like the Indian &lt;em&gt;Arthashastra&lt;/em&gt; (350 BCE) and Chinese Han Dynasty archives both emphasized blending qualitative judgment with quantitative grain records to estimate demand.
+Fast forward to the industrial age, companies like Ford and Chrysler pioneered judgmental forecasting to support assembly lines.
+In the 1960s, statisticians like Box, Jenkins, Holt, and Winters developed foundational time-series methods like ARIMA and exponential smoothing, which still serve as industry baselines.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AI Manifesto</title>
+      <link>//localhost:1313/ai-manifesto/</link>
+      <pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/ai-manifesto/</guid>
+      <description>&lt;p&gt;I’ve used a lot of AI in the last few years.
+I’ve also written a lot about it previously.
+Here are some of my previous posts around AI.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/ai-improvements/&#34;&gt;Improvements in Artificial
+Intelligence&lt;/a&gt;, December 9,
+2021&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/ai2/&#34;&gt;I wonder how this AI thing is going to shape
+up&lt;/a&gt;, March 3, 2023&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/gpt/&#34;&gt;How does GPT work? Understanding Generative AI
+Models&lt;/a&gt;, April 26, 2023&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/four-ai-chatbots-other-than-chatgpt/&#34;&gt;Four AI Chatbots other than
+ChatGPT&lt;/a&gt;,
+November 27, 2023&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/openai-gpts/&#34;&gt;OpenAI’s GPT is a terrific
+idea&lt;/a&gt;, February 8, 2024&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When ChatGPT (GPT-3.5) took the world by storm, I was actually offline in a Vipassana course.
+I only got to know about it after a while but it fascinated me that it could write a poem, albeit poorly.
+Now, I couldn’t make the joke “oh, it can’t write a poem anyway”. Creative jobs were up for grabs now.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Recipe: Making a Homestyle Indian Curry</title>
+      <link>//localhost:1313/making-an-indian-curry/</link>
+      <pubDate>Sat, 25 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/making-an-indian-curry/</guid>
+      <description>&lt;p&gt;Some friends of mine asked me how to make homestyle Indian curries. We
+Indians are good at it; we make many types of Sabzi सब्ज़ी that
+non-Indians simply call “curry”. Sabzi literally means vegetables.
+Today, I’m excited to share a versatile curry recipe that’s perfect for
+anyone looking to explore Indian cooking.&lt;/p&gt;
+&lt;p&gt;The recipe is a template or a base recipe for homemade Sabzi. You can
+use it with any vegetable of your preference or even Chicken (but
+cooking Chicken will take longer, so remember to adjust for that).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Happiness: What makes us happy?</title>
+      <link>//localhost:1313/happiness/</link>
+      <pubDate>Wed, 11 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/happiness/</guid>
+      <description>&lt;div id=&#34;try-the-quiz&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Try the quiz&lt;/h2&gt;
+&lt;p&gt;If you want to test your knowledge about happiness around the world, try this quiz I made based on &lt;a href=&#34;https://worldhappiness.report/&#34;&gt;World Happiness Report 2024&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Link to Quiz (10 questions, 5 mins activity): &lt;a href=&#34;https://happiness-quiz.netlify.app/&#34; class=&#34;uri&#34;&gt;https://happiness-quiz.netlify.app/&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-makes-us-happy&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What makes us happy?&lt;/h2&gt;
+&lt;p&gt;One of the early realizations of my life was that happiness depends more on perspectives than circumstances.
+A wise person would strive for a perspective that brings them happiness.
+So, why isn’t everyone happy?
+To a large extent, it’s because we are told what should make us happy: job, marriage, kids, and so on.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Best Cafes in Knoxville</title>
+      <link>//localhost:1313/best-cafes-in-knoxville/</link>
+      <pubDate>Wed, 07 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/best-cafes-in-knoxville/</guid>
+      <description>&lt;p&gt;I’ve been in Knoxville for more than three years now since I started my PhD in Analytics at the Haslam College of Business, University of Tennessee.
+During this time, I have explored a fair bit of cafes around.
+Not all cafes, but most cafes within 5 mile radius of the university.
+That covers almost every cafe in downtown Knoxville, the university area, and South Knoxville.&lt;/p&gt;
+&lt;p&gt;I’ve had many friends and colleagues ask me about my favorite spots for coffee, so I thought it would be helpful to share my experiences.
+Note that I haven’t been to enough cafes in West or North Knoxville, so they aren’t part of this list.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Ongoing Sixth Mass Extinction</title>
+      <link>//localhost:1313/the-ongoing-sixth-mass-extinction/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/the-ongoing-sixth-mass-extinction/</guid>
+      <description>&lt;p&gt;Estimating the total number of species that have ever existed on Earth is highly challenging due to the vast diversity and complexity of life.
+Current estimates of the number of living species vary widely, from around 3 million to over 100 million.
+One of the more &lt;a href=&#34;https://ourworldindata.org/how-many-species-are-there&#34;&gt;widely cited figures&lt;/a&gt; is approximately 8.7 million species currently on Earth, which includes 6.5 million on land and 2.2 million in the ocean.&lt;/p&gt;
+&lt;p&gt;But knowing the exact number is &lt;a href=&#34;https://ourworldindata.org/how-many-species-are-there&#34;&gt;really hard&lt;/a&gt;.
+As Robert May summarised in a paper published in &lt;em&gt;Science&lt;/em&gt;:&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Recommendations: List of Things to Read, Listen and Watch</title>
+      <link>//localhost:1313/read-listen-watch/</link>
+      <pubDate>Thu, 04 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/read-listen-watch/</guid>
+      <description>&lt;hr /&gt;
+&lt;p&gt;All the ones marked * are freely available at the link.&lt;/p&gt;
+&lt;p&gt;This will be updated over time.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;The following is the grand list of recommendations from me.
+Currently, it has reading, listening, and watching recommendations.
+It &lt;em&gt;may&lt;/em&gt; be updated with other recs, but I can’t promise.
+The last time I posted a &lt;a href=&#34;https://blog.harsh17.in/what-i-find-interesting/&#34;&gt;Rec-List&lt;/a&gt; was three years ago on my father’s birthday.&lt;/p&gt;
+&lt;div id=&#34;read&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Read 📑&lt;/h1&gt;
+&lt;div id=&#34;short-reads&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Short Reads&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Short Stories Collections&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Thoughts about Vipassana Meditation (and My Second Experience)</title>
+      <link>//localhost:1313/vipassana2/</link>
+      <pubDate>Mon, 03 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/vipassana2/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.lesswrong.com/posts/mELQFMi9egPn5EAjK/my-attempt-to-explain-looking-insight-meditation-and&#34;&gt;Kaj Sotala&lt;/a&gt; writes:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Usually, most of us are - on some implicit level - operating off a belief that we &lt;strong&gt;need&lt;/strong&gt; to experience pleasant feelings and need to avoid experiencing unpleasant feelings.
+In a sense, thinking about getting into an unpleasant or painful situation may feel almost like death: if we think that the experience would be unpleasant enough, then no matter how brief it might be, we might do almost anything to avoid ending up there.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Web surfing isn&#39;t fun anymore 🏄</title>
+      <link>//localhost:1313/web-surfing-isn-t-fun-anymore/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/web-surfing-isn-t-fun-anymore/</guid>
+      <description>&lt;div class=&#34;float&#34;&gt;
+&lt;img src=&#34;images/tweet.png&#34; alt=&#34;Like many blog posts, this one started with an idea conveyed in a Tweet. A Tweet where I vented how the internet has changed so much that the art of exploration — called surfing because riding on the waves of information — wasn’t as fun anymore.&#34; /&gt;
+&lt;div class=&#34;figcaption&#34;&gt;Like many blog posts, this one started with an idea conveyed in a Tweet. A Tweet where I vented how the internet has changed so much that the art of exploration — called surfing because riding on the waves of information — wasn’t as fun anymore.&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;There are several reasons why I don’t enjoy it as much as the early days of internet but here are a few of my guesses:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Have fun with Terminal on Mac/Linux</title>
+      <link>//localhost:1313/terminal/</link>
+      <pubDate>Fri, 03 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/terminal/</guid>
+      <description>&lt;p&gt;Terminal can be quite fun to play around with. On encouragement of my friend &lt;a href=&#34;https://pablorious.github.io/&#34;&gt;Pablo&lt;/a&gt;, I ventured around to discover some interesting ones.&lt;/p&gt;
+&lt;p&gt;To use any of them, you should fire up Terminal on your MacOS/Linux/Unix and install the right packages using &lt;code&gt;apt-get&lt;/code&gt; on Linux or &lt;code&gt;brew&lt;/code&gt; on MacOS.&lt;/p&gt;
+&lt;p&gt;First, install &lt;a href=&#34;https://brew.sh/&#34;&gt;Homebrew&lt;/a&gt; if you don&amp;rsquo;t have it already.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Once you have that, install any given package using &lt;code&gt;brew install&lt;/code&gt; command like below.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Book Notes | Range: Why Generalists Triumph in a Specialized World</title>
+      <link>//localhost:1313/range/</link>
+      <pubDate>Tue, 02 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/range/</guid>
+      <description>&lt;p&gt;The following are my notes from the Book &lt;a href=&#34;https://www.goodreads.com/book/show/41795733-range&#34;&gt;Range: Why Generalists Triumph in a Specialized World by David Epstein&lt;/a&gt;. In today&amp;rsquo;s hyper-specialized world, it might seem counterintuitive that broadening one&amp;rsquo;s experiences and delaying specialization could lead to greater success. However, David Epstein provides compelling evidence and stories to support the idea that being a generalist in a specialized world is not just advantageous; it&amp;rsquo;s crucial.&lt;/p&gt;
+&lt;p&gt;Here are some of my key takeaways from the book:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Who&#39;s funding the politics in India?</title>
+      <link>//localhost:1313/who-s-funding-the-politics-in-india/</link>
+      <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/who-s-funding-the-politics-in-india/</guid>
+      <description>An order from India&amp;rsquo;s Supreme Court forced the government-owned State Bank of India to disclose details of electoral bonds, which allow anonymous political donations. The data showed that many companies and individuals who donated over $1.7 billion to political parties through these bonds.</description>
+    </item>
+    <item>
+      <title>Against Capitalism</title>
+      <link>//localhost:1313/against-capitalism/</link>
+      <pubDate>Mon, 26 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/against-capitalism/</guid>
+      <description>In this post, I wonder about capitalism by questioning the adequacy of GDP as a measure of success, highlighting the neglect of unpaid labor, and exploring alternative indicators like Bhutan&amp;rsquo;s Gross National Happiness index.</description>
+    </item>
+    <item>
+      <title>OpenAI&#39;s GPT is a terrific idea</title>
+      <link>//localhost:1313/openai-gpts/</link>
+      <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/openai-gpts/</guid>
+      <description>OpenAI&amp;rsquo;s GPT represents a significant leap forward in language model technology, moving beyond traditional limitations by incorporating mechanisms like preprompting to reduce factual inaccuracies. The introduction of specialized GPTs for targeted tasks has enabled more accurate, context-specific interactions</description>
+    </item>
+    <item>
+      <title>Theory of Mind</title>
+      <link>//localhost:1313/theory-of-mind/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/theory-of-mind/</guid>
+      <description>Four parts of our mind according to Buddha</description>
+    </item>
+    <item>
+      <title>Egypt: An Odyssey Through Time</title>
+      <link>//localhost:1313/egypt/</link>
+      <pubDate>Thu, 11 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/egypt/</guid>
+      <description>Exploring Egypt from Cairo&amp;rsquo;s Zamalek to Luxor&amp;rsquo;s temples, juxtaposing its rich history with contemporary life and political-economic challenges.</description>
+    </item>
+    <item>
+      <title>Four AI Chatbots other than ChatGPT</title>
+      <link>//localhost:1313/four-ai-chatbots-other-than-chatgpt/</link>
+      <pubDate>Mon, 27 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/four-ai-chatbots-other-than-chatgpt/</guid>
+      <description>General purpose AI Chatbots have taken over the world in recent years. Here I take a look at four chatbots that I use quite often in my daily life.</description>
+    </item>
+    <item>
+      <title>Trapped in Beautiful Garden</title>
+      <link>//localhost:1313/apple-walled-garden/</link>
+      <pubDate>Thu, 23 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/apple-walled-garden/</guid>
+      <description>A poem on how I&amp;rsquo;m trapped in Apple&amp;rsquo;s Walled Garden</description>
+    </item>
+    <item>
+      <title>Warren Hastings, The First Governor General of India</title>
+      <link>//localhost:1313/warren-hastings/</link>
+      <pubDate>Sat, 11 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/warren-hastings/</guid>
+      <description>East India Company&amp;rsquo;s first Governor General Warren Hastings held deep respect for the Indian culture and was widely respected by the company officials and the local Indians. In contrast to his predecessor Robert Clive who exported only jewels from India to Britain, Clive exported oriental wisdom in religious texts including Mahabharata, Ramayana, and Vedas.</description>
+    </item>
+    <item>
+      <title>Battle of Palassey and Clive of India</title>
+      <link>//localhost:1313/battle-of-palassey/</link>
+      <pubDate>Thu, 09 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/battle-of-palassey/</guid>
+      <description>How did the British East India company, relatively poor in resources, managed to topple the richest kingdom in the world? Was the company that good, or was it pure luck?</description>
+    </item>
+    <item>
+      <title>What are you optimizing for?</title>
+      <link>//localhost:1313/what-are-you-optimizing-for/</link>
+      <pubDate>Sat, 30 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/what-are-you-optimizing-for/</guid>
+      <description>In a world driven by optimization, individuals are guided by nudges promoting beneficial choices and sludges creating barriers. Using examples from urban design, food choices, and media, I explore how these influences often prioritize convenience over genuine well-being, challenging you to critically assess what&amp;rsquo;s truly being optimized for in your lives.</description>
+    </item>
+    <item>
+      <title>HP Internship: A Year and a Half in the Fast Lane</title>
+      <link>//localhost:1313/hp-blog-2023/</link>
+      <pubDate>Mon, 21 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/hp-blog-2023/</guid>
+      <description>During my 15-month internship at HP Inc., I dove into machine learning forecasting, tackling challenges from SKU-level predictions to data management. Collaborating with the SPaM team, utilizing innovative tools, and embracing HP&amp;rsquo;s culture of innovation and failure, I emerged with invaluable skills, insights, and memories.</description>
+    </item>
+    <item>
+      <title>ML Forecasting at HP Inc.</title>
+      <link>//localhost:1313/hp23/</link>
+      <pubDate>Mon, 21 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/hp23/</guid>
+      <description>Creating ML demand forecast for print products at HP Inc. using LightGBM and pushing it to production for wide adoption.</description>
+    </item>
+    <item>
+      <title>Reflections from KDD 2023</title>
+      <link>//localhost:1313/reflections-from-kdd-2023/</link>
+      <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/reflections-from-kdd-2023/</guid>
+      <description>My notes on talks I attended (mostly on LLMs) at 29th ACM SIGKDD 2023 at Long Beach, CA</description>
+    </item>
+    <item>
+      <title>What makes a good coffee?</title>
+      <link>//localhost:1313/what-makes-a-good-coffee/</link>
+      <pubDate>Sat, 01 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/what-makes-a-good-coffee/</guid>
+      <description>This piece explores the intricacies of coffee, from the influence of its origin and roasting process to the importance of freshness and brewing techniques, primarily from my experience.</description>
+    </item>
+    <item>
+      <title>Seattle: Echoes of Home in the Emerald City</title>
+      <link>//localhost:1313/seattle/</link>
+      <pubDate>Mon, 05 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/seattle/</guid>
+      <description>Sometimes, a journey far from home can unexpectedly transport you back to cherished memories. Such was my experience during my two-day sojourn in Seattle, the Emerald City.</description>
+    </item>
+    <item>
+      <title>Predicting Race, Age and Gender from Face: A Small-sample Example with Encoding</title>
+      <link>//localhost:1313/predicting-race-age-and-gender-from-face-a-small-sample-example-with-encoding/</link>
+      <pubDate>Sat, 03 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/predicting-race-age-and-gender-from-face-a-small-sample-example-with-encoding/</guid>
+      <description>Predicting race, age and gender of faces using Variational Autoencoders and Convolutional Neural Networks.</description>
+    </item>
+    <item>
+      <title>My 10-Day Escape into Nature&#39;s Embrace: A Camping Journey to Moab</title>
+      <link>//localhost:1313/moab/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/moab/</guid>
+      <description>From dry deserts to panoramic mountain vistas, I experienced the unique blend of adventure, history, and tranquility in this 10-day trip through vibrant canvas of the United States.</description>
+    </item>
+    <item>
+      <title>Up Your Blogging Game: Three Enhancements to Hugo Apero</title>
+      <link>//localhost:1313/hugo/</link>
+      <pubDate>Sat, 20 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/hugo/</guid>
+      <description>This post provides a detailed guide to customizing the Hugo Apero template, focusing on changing themes, adding a search bar, and altering fonts for a truly personalized blogging experience.</description>
+    </item>
+    <item>
+      <title>Comparing two BIG data frames in Pandas</title>
+      <link>//localhost:1313/pandas-compare-df/</link>
+      <pubDate>Sat, 06 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/pandas-compare-df/</guid>
+      <description>I needed to compare two data frames with over five million rows. I asked ChatGPT for help. I ended up learning about SHA-256 and hashes.</description>
+    </item>
+    <item>
+      <title>How does GPT work? Understanding Generative AI Models</title>
+      <link>//localhost:1313/gpt/</link>
+      <pubDate>Wed, 26 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gpt/</guid>
+      <description>Curious about ChatGPT, the AI chatbot that&amp;rsquo;s making waves? Dive into this article to learn how it generates human-like responses and its many applications. Get insights into both its strengths and limitations, while understanding why it&amp;rsquo;s essential to approach its responses with a critical eye.</description>
+    </item>
+    <item>
+      <title>Crafting Conversations with GPT Personalities in Python</title>
+      <link>//localhost:1313/gpt-chatbot/</link>
+      <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gpt-chatbot/</guid>
+      <description>Building a customizable chatbot that brings unique characters to life</description>
+    </item>
+    <item>
+      <title>Who are Twitter Blue Users?</title>
+      <link>//localhost:1313/twitter-blue/</link>
+      <pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/twitter-blue/</guid>
+      <description>In this blog post, I explore who are the Twitter Blue subscribers. It is not celebrities, businesses or governments. It is our regular old Joe with fewer than a hundred followers.</description>
+    </item>
+    <item>
+      <title>Planning Cities with People</title>
+      <link>//localhost:1313/cities/</link>
+      <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/cities/</guid>
+      <description>Height of the building determines the sunlight exposure, chess-block organisation helps with high-rise congestion and how zoning laws are hurting Americans.</description>
+    </item>
+    <item>
+      <title>Chitta-vritis: Exploring the Depths of Consciousness</title>
+      <link>//localhost:1313/yoga/</link>
+      <pubDate>Thu, 09 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/yoga/</guid>
+      <description>Through the chitta-vritis of pramana, smriti, nidra, vikalpa, and viparyaya, Patanjali offers insights into the workings of the mind and how we can cultivate greater awareness and understanding of our own mental processes.</description>
+    </item>
+    <item>
+      <title>I wonder how this AI thing is going to shape up</title>
+      <link>//localhost:1313/ai2/</link>
+      <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/ai2/</guid>
+      <description>Revolutionary changes are cyclical. First was agriculture. More recent one was the growth of industries, powered by pooling. It looks like AI is the latest one.</description>
+    </item>
+    <item>
+      <title>How to Hack Your Own Mind?</title>
+      <link>//localhost:1313/experiments/</link>
+      <pubDate>Sat, 25 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/experiments/</guid>
+      <description>Instead of relying solely on previously published psychological research, I suggest conducting personal experiments on oneself to test and develop new behaviors and attitudes. Experimentation is a cheap and effective way to determine what works best for you, and it allows for personalised results that can be applied directly to one&amp;rsquo;s life.</description>
+    </item>
+    <item>
+      <title>From Bits to Words: A Tale Computing and Communication Languages</title>
+      <link>//localhost:1313/languages/</link>
+      <pubDate>Wed, 08 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/languages/</guid>
+      <description>A ten-year-old kid was beginning his high school journey when he had to learn a third language. He was already learning two languages: his mother tongue Hindi and the common-speak English. But neither of them had prepared him for Sanskrit.</description>
+    </item>
+    <item>
+      <title>What happens when you meditate ten hours a day?</title>
+      <link>//localhost:1313/meditation/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/meditation/</guid>
+      <description>Between Dec 15 and 25 of 2022 I attended a meditation course called Vipassana. Vipassana is a Pali word that means &amp;lsquo;seeing things as they are&amp;rsquo;. The course promised me to teach how to have a clear awareness of exactly what is happening as it happens. It is a form of mindfulness meditation.</description>
+    </item>
+    <item>
+      <title>From Mythology to Modernity: The Dual Faces of Pushkar</title>
+      <link>//localhost:1313/pushkar/</link>
+      <pubDate>Fri, 20 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/pushkar/</guid>
+      <description>This winter I visited Pushkar, home to the iconic Pushkar Lake and one of the few Brahma temples in the world. It is a town where tranquility and vibrancy coexist, where ancient mythology mingles with a modern lifestyle. Explore the flavors of Pushkar, the colorful markets, and learn the stories behind the rarity of Brahma temples.</description>
+    </item>
+    <item>
+      <title>Moving Next from Revue to Substack</title>
+      <link>//localhost:1313/substack/</link>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/substack/</guid>
+      <description>Twitter is shutting down Revue, the newsletter platform that I use for Next. Thus, I’m migrating to Substack. You shouldn’t need to do anything on your side.</description>
+    </item>
+    <item>
+      <title>DLTGH: Days Left to Go Home</title>
+      <link>//localhost:1313/dltgh/</link>
+      <pubDate>Thu, 01 Dec 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/dltgh/</guid>
+      <description>Today, I was at Chaiyos. It&amp;rsquo;s a Thai restaurant near my home in Knoxville. I asked for lo mein with spice level 8. I thought it&amp;rsquo;d make me feel homely. I was wrong.</description>
+    </item>
+    <item>
+      <title>Infallible Memory: The Truth of Fact, the Truth of Feeling</title>
+      <link>//localhost:1313/infallible-memory/</link>
+      <pubDate>Thu, 24 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/infallible-memory/</guid>
+      <description>You rarely come across a story so powerful that you experience so many different feelings — at the same time. Ted Chiang&amp;rsquo;s &amp;lsquo;The Truth of Fact, the Truth of Feeling&amp;rsquo; does that. It evokes several strong feelings, one after another, that will leave you soul-searching.</description>
+    </item>
+    <item>
+      <title>History of Coffee</title>
+      <link>//localhost:1313/history-of-coffee/</link>
+      <pubDate>Tue, 22 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/history-of-coffee/</guid>
+      <description>Coffee&amp;rsquo;s captivating history, from its discovery in Ethiopia to its influence on global health and productivity, unveils the transformative impact of this beloved beverage across centuries and continents.</description>
+    </item>
+    <item>
+      <title>Is the world population going to collapse?</title>
+      <link>//localhost:1313/population-collapse/</link>
+      <pubDate>Thu, 10 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/population-collapse/</guid>
+      <description>&lt;script src=&#34;//localhost:1313/population-collapse/index_files/twitter-widget/widgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//localhost:1313/population-collapse/index_files/core-js/shim.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//localhost:1313/population-collapse/index_files/react/react.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//localhost:1313/population-collapse/index_files/react/react-dom.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//localhost:1313/population-collapse/index_files/reactwidget/react-tools.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//localhost:1313/population-collapse/index_files/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//localhost:1313/population-collapse/index_files/reactable-binding/reactable.js&#34;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;//localhost:1313/population-collapse/images/Screenshot%202022-11-10%20at%208.32.15%20PM.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Population collapse is a theory that says if the growth rates continue to decline the way they are decreasing right now, we would reach population zero. It is a stage where the population neither grows, nor declines. That is, the number of births plus in-migrants equals the number of deaths plus out-migrants. While this may sound cheerful, you may not have considered the pitfalls yet. The smaller size of working adults would result in lower taxes and thus lower funds for welfare. The welfare that old and young desperately need.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Supply Chain Analytics at HP Inc.</title>
+      <link>//localhost:1313/hp22/</link>
+      <pubDate>Mon, 31 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/hp22/</guid>
+      <description>Forecasting Global Print Demand Using Machine Learning</description>
+    </item>
+    <item>
+      <title>Bullets of Wisdom</title>
+      <link>//localhost:1313/wise/</link>
+      <pubDate>Fri, 07 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/wise/</guid>
+      <description>&lt;p&gt;Life is short for learning from your own mistakes; you need to play catch-up with people who tried new things. Most people do not document their learnings. The rare culturati group that notes their understandings in an essay easily trumps the large group, which keeps their learnings to themselves.&lt;/p&gt;
+&lt;p&gt;I have read many interesting essays. Some of them stuck with me &amp;mdash; like fingers working with super glue. I revisit them often. When I reread them, I often see myself clinging to an awfully good section. In this live post, I will share some of those good nuggets.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How the government of Bihar is changing lives one girl at a time?</title>
+      <link>//localhost:1313/bihar/</link>
+      <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/bihar/</guid>
+      <description>Bihar is one of the poorest states in India. Their over all literacy rate is 70% but there&amp;rsquo;s stark difference between girls (50%) and boys (70%). In 2007, the government decided to distribute bicycles to all girls for free in the hope to get higher school enrollment. The program was called Mukhyamantri Balika Cycle Yojna (Chief Minister&amp;rsquo;s Programme on Cycle for Girls). The program had astonishing improvements.</description>
+    </item>
+    <item>
+      <title>Rediscovering Coffee: A Newfound Hobby</title>
+      <link>//localhost:1313/rediscovering-coffee/</link>
+      <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rediscovering-coffee/</guid>
+      <description>How did I found a new hobby of making coffee and surprising everyone with my methods? By making bad coffee.</description>
+    </item>
+    <item>
+      <title>Being Optimistic</title>
+      <link>//localhost:1313/optimistic/</link>
+      <pubDate>Fri, 12 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/optimistic/</guid>
+      <description>Things are bad. We know that; everyone knows that. But you can choose to look at the positives. Granted, we&amp;rsquo;ll sometimes be cherry-picking. But not always. Life is like a box of chocolates; there will be good things about every negative thing and bad about most positive things. I want to be happy, so I look at the positives.</description>
+    </item>
+    <item>
+      <title>Stoned to Death at the Public Square</title>
+      <link>//localhost:1313/public-square/</link>
+      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/public-square/</guid>
+      <description>A problem with learning in public is keeping a strong note of how to avoid heresy. Back in the seventeenth century, if you said anything against God, even if the statement were true, you would be penalised. Sometimes it meant death. It didn&amp;rsquo;t matter if the statement was true. If you don&amp;rsquo;t believe me, just ask Galileo.</description>
+    </item>
+    <item>
+      <title>Script monkey! 🐒</title>
+      <link>//localhost:1313/script-monkey/</link>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/script-monkey/</guid>
+      <description>Use a Script Monkey in your codebase at all locations where you need to change things manually. All that involves is writing an extra comment saying &amp;lsquo;Script Monkey&amp;rsquo;. Later on, search for all monkeys in the script and make the changes. Simple.</description>
+    </item>
+    <item>
+      <title>The Ascribed Advantage</title>
+      <link>//localhost:1313/the-ascribed-advantage/</link>
+      <pubDate>Sat, 09 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/the-ascribed-advantage/</guid>
+      <description>How does gender affects pay? In this short exploration, I use #tidytuesday dataset provided by UK Government to visualise gender gaps using R. And why are women working at churches paid 40% less bonus than men?</description>
+    </item>
+    <item>
+      <title>The best stats you&#39;ve ever seen</title>
+      <link>//localhost:1313/the-best-stats-you-ve-ever-seen/</link>
+      <pubDate>Sun, 03 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/the-best-stats-you-ve-ever-seen/</guid>
+      <description>There&amp;rsquo;s a famous saying: All models are wrong but some are useful. How much of statistics is wrong and how much of it is useful? Some thoughts on Hans Rosling&amp;rsquo;s popular talk on global economic development and optimism.</description>
+    </item>
+    <item>
+      <title>Next — Today I learnt About R</title>
+      <link>//localhost:1313/newsletter/</link>
+      <pubDate>Sat, 18 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/newsletter/</guid>
+      <description>&lt;p&gt;&lt;img alt=&#34;Title Image Next - Today I Learnt About R&#34; loading=&#34;lazy&#34; src=&#34;//localhost:1313/img/next.png&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;what-is-next&#34;&gt;What is Next?&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A short and sweet curated collection of R-related works. Five stories. Four packages. Three jargons. Two tweets. One Meme.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can subscribe by providing your details here. Promise, no spams.&lt;/p&gt;
+&lt;div id=&#34;revue-embed&#34;&gt;
+  &lt;form action=&#34;https://www.getrevue.co/profile/harshbutjust/add_subscriber&#34; method=&#34;post&#34; id=&#34;revue-form&#34; name=&#34;revue-form&#34;  target=&#34;_blank&#34;&gt;
+  &lt;div class=&#34;revue-form-group&#34;&gt;
+    &lt;label for=&#34;member_email&#34;&gt;Email address&lt;/label&gt;
+    &lt;input class=&#34;revue-form-field&#34; placeholder=&#34;Your email address...&#34; type=&#34;email&#34; name=&#34;member[email]&#34; id=&#34;member_email&#34;&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;revue-form-group&#34;&gt;
+    &lt;label for=&#34;member_first_name&#34;&gt;First name &lt;span class=&#34;optional&#34;&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+    &lt;input class=&#34;revue-form-field&#34; placeholder=&#34;First name... (Optional)&#34; type=&#34;text&#34; name=&#34;member[first_name]&#34; id=&#34;member_first_name&#34;&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;revue-form-group&#34;&gt;
+    &lt;label for=&#34;member_last_name&#34;&gt;Last name &lt;span class=&#34;optional&#34;&gt;(Optional)&lt;/span&gt;&lt;/label&gt;
+    &lt;input class=&#34;revue-form-field&#34; placeholder=&#34;Last name... (Optional)&#34; type=&#34;text&#34; name=&#34;member[last_name]&#34; id=&#34;member_last_name&#34;&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;revue-form-actions&#34;&gt;
+    &lt;input type=&#34;submit&#34; value=&#34;Subscribe&#34; name=&#34;member[subscribe]&#34; id=&#34;member_submit&#34;&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;revue-form-footer&#34;&gt;By subscribing, you agree with Revue’s &lt;a target=&#34;_blank&#34; href=&#34;https://www.getrevue.co/terms&#34;&gt;Terms of Service&lt;/a&gt; and &lt;a target=&#34;_blank&#34; href=&#34;https://www.getrevue.co/privacy&#34;&gt;Privacy Policy&lt;/a&gt;.&lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;If you are unsure, here are some editions that my readers loved.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Song of The Lord</title>
+      <link>//localhost:1313/the-song-of-the-lord/</link>
+      <pubDate>Sun, 12 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/the-song-of-the-lord/</guid>
+      <description>Shrimad Bhagavad Gita, or the song of the lord, is a 700 verses long conversation between Lord Sri Krishna and Arjun. It discusses key principles of action and embodies more wisdom than I can grasp.</description>
+    </item>
+    <item>
+      <title>Food Choices in America</title>
+      <link>//localhost:1313/food-choices-in-america/</link>
+      <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/food-choices-in-america/</guid>
+      <description>I had always wondered about the ubiquity of unhealthy food in the US and the blatant absence of fresh fruits and vegetables. Why are our supermarkets full of unhealthy chips, why does bread have corn syrup, and why do berries cost $9.99 and berries snacks cost $1.99!?</description>
+    </item>
+    <item>
+      <title>धर्मक्षेत्र: माता गांधारी का आरोप</title>
+      <link>//localhost:1313/%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0-%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A4%BE-%E0%A4%97%E0%A4%BE%E0%A4%82%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A5%80-%E0%A4%95%E0%A4%BE-%E0%A4%86%E0%A4%B0%E0%A5%8B%E0%A4%AA/</link>
+      <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/%E0%A4%A7%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A5%87%E0%A4%A4%E0%A5%8D%E0%A4%B0-%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A4%BE-%E0%A4%97%E0%A4%BE%E0%A4%82%E0%A4%A7%E0%A4%BE%E0%A4%B0%E0%A5%80-%E0%A4%95%E0%A4%BE-%E0%A4%86%E0%A4%B0%E0%A5%8B%E0%A4%AA/</guid>
+      <description>माता गांधारी का मानना है की महाभारत श्रीकृष्ण ने करवाया। सिर्फ अपने अहम् के लिए।</description>
+    </item>
+    <item>
+      <title>Street Maps (of Some Cities)</title>
+      <link>//localhost:1313/city-maps/</link>
+      <pubDate>Sat, 28 May 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/city-maps/</guid>
+      <description>Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I&amp;rsquo;ve visited. Today, I thought to make street maps of some of them (and other cool cities).</description>
+    </item>
+    <item>
+      <title>Some Website Stats</title>
+      <link>//localhost:1313/some-website-stats/</link>
+      <pubDate>Mon, 23 May 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/some-website-stats/</guid>
+      <description>This is my digital garden. Here is it&amp;rsquo;s report card via Google Analytics.</description>
+    </item>
+    <item>
+      <title>हम पंछी उन्मुक्त गगन के</title>
+      <link>//localhost:1313/hum-panchhi-unmukt-gagan-ke/</link>
+      <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/hum-panchhi-unmukt-gagan-ke/</guid>
+      <description>शिवमंगल सिंह सुमन की कविता</description>
+    </item>
+    <item>
+      <title>Trying New Things</title>
+      <link>//localhost:1313/trying-new-things/</link>
+      <pubDate>Fri, 13 May 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/trying-new-things/</guid>
+      <description>It is essential to keep experimenting with new things in life. We don&amp;rsquo;t know what would stick and be successful; we can only take guesses. Take notes; that&amp;rsquo;s the only way to keep a log.</description>
+    </item>
+    <item>
+      <title>Harvard&#39;s Website</title>
+      <link>//localhost:1313/harvard-website/</link>
+      <pubDate>Wed, 11 May 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/harvard-website/</guid>
+      <description>A university&amp;rsquo;s website tells a lot about it. Harvard — like all things in education and research — is a prime example.</description>
+    </item>
+    <item>
+      <title>Joint Probability-based Dissimilarity Measure for Discrete Variables</title>
+      <link>//localhost:1313/joint-probability-based-dissimilarity-measure-for-discrete-variables/</link>
+      <pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/joint-probability-based-dissimilarity-measure-for-discrete-variables/</guid>
+      <description>A Simple Method to Calculate Distance between Discrete Variable</description>
+    </item>
+    <item>
+      <title>Making Nails</title>
+      <link>//localhost:1313/making-nails/</link>
+      <pubDate>Fri, 22 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/making-nails/</guid>
+      <description>Once upon a time, there was a nail-making factory during the peak of the industrial revolution in rural England. The workers arrived there every morning at 8 am and worked till 4 pm to make nails. Just plain nails. One day, the factory owner&amp;rsquo;s son visited the plant.</description>
+    </item>
+    <item>
+      <title>Adrenaline Activities</title>
+      <link>//localhost:1313/adr/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/adr/</guid>
+      <description>Places travelled, hikes, bike rides and adventure sports</description>
+    </item>
+    <item>
+      <title>Billionaires and Taxes</title>
+      <link>//localhost:1313/billionaires-and-taxes/</link>
+      <pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/billionaires-and-taxes/</guid>
+      <description>How much do the super rich really pay? Until now, the answer was unknown &amp;mdash; thanks to privacy laws. Recently, tax returns of the super rich was leaked to &lt;a href=&#34;https://projects.propublica.org/americas-highest-incomes-and-taxes-revealed/&#34;&gt;ProPublica&lt;/a&gt;. I thought of exploring the billionaires and their tax rates.</description>
+    </item>
+    <item>
+      <title>Arguments</title>
+      <link>//localhost:1313/arguments/</link>
+      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/arguments/</guid>
+      <description>There are three types of arguments. You can argue about what happened (past), you can argue about what&amp;rsquo;s happening (present), or you can argue about what&amp;rsquo;s gonna happen (future).</description>
+    </item>
+    <item>
+      <title>Creating your own short URLs with blogdown</title>
+      <link>//localhost:1313/creating-your-own-short-urls-with-blogdown/</link>
+      <pubDate>Thu, 24 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/creating-your-own-short-urls-with-blogdown/</guid>
+      <description>Here&amp;rsquo;s how to make your short URLs using Hugo + Blogdown</description>
+    </item>
+    <item>
+      <title>Imaginary Reality</title>
+      <link>//localhost:1313/imaginary-reality/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/imaginary-reality/</guid>
+      <description>We know less than we think and we don&amp;rsquo;t even know what we don&amp;rsquo;t know.</description>
+    </item>
+    <item>
+      <title>Let’s say you’re copying a folder to a folder</title>
+      <link>//localhost:1313/lets-say-you-re-copying-a-folder-to-a-folder/</link>
+      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/lets-say-you-re-copying-a-folder-to-a-folder/</guid>
+      <description>What should the progress bar show? How to measure 10% work done?</description>
+    </item>
+    <item>
+      <title>How to Decide What to Research?</title>
+      <link>//localhost:1313/how-to-decide-what-to-research/</link>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/how-to-decide-what-to-research/</guid>
+      <description>A Casual Interview of Prof Emre Demirkaya</description>
+    </item>
+    <item>
+      <title>Interesting Problems and Where to Find Them?</title>
+      <link>//localhost:1313/interesting-problems-and-where-to-find-them/</link>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/interesting-problems-and-where-to-find-them/</guid>
+      <description>A Casual Interview of Prof Michael Galbreth</description>
+    </item>
+    <item>
+      <title>garlic: Some R Functions I Use Rather Frequently</title>
+      <link>//localhost:1313/garlic-some-r-functions-i-use-rather-frequently/</link>
+      <pubDate>Sat, 05 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/garlic-some-r-functions-i-use-rather-frequently/</guid>
+      <description>My personal R package for custom functions</description>
+    </item>
+    <item>
+      <title>Titanic: Who Survived The Tragedy?</title>
+      <link>//localhost:1313/titanic-who-survived-the-tragegy/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/titanic-who-survived-the-tragegy/</guid>
+      <description>Yet Another Machine Learning Project with Titanic Dataset</description>
+    </item>
+    <item>
+      <title>Number of PhDs by Field</title>
+      <link>//localhost:1313/number-of-phds/</link>
+      <pubDate>Sun, 20 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/number-of-phds/</guid>
+      <description>An Incomplete Data Exploration</description>
+    </item>
+    <item>
+      <title>Rules for Life</title>
+      <link>//localhost:1313/rules/</link>
+      <pubDate>Fri, 18 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rules/</guid>
+      <description>Constants, not variables</description>
+    </item>
+    <item>
+      <title>Notes on STATA</title>
+      <link>//localhost:1313/notes-on-stata/</link>
+      <pubDate>Wed, 16 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/notes-on-stata/</guid>
+      <description>Some nitty-gritties that economists remember but I don&amp;rsquo;t</description>
+    </item>
+    <item>
+      <title>Public Transport &amp; Lack Thereof</title>
+      <link>//localhost:1313/public-transport-and-lack-thereof/</link>
+      <pubDate>Sun, 13 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/public-transport-and-lack-thereof/</guid>
+      <description>Why aren&amp;rsquo;t we designing anything new?</description>
+    </item>
+    <item>
+      <title>Score and Fisher&#39;s Information</title>
+      <link>//localhost:1313/score-and-fisher-s-information/</link>
+      <pubDate>Sun, 13 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/score-and-fisher-s-information/</guid>
+      <description>Intuitive Understanding and Mathematical Notions</description>
+    </item>
+    <item>
+      <title>Classification: Logistic Regression and Random Forest</title>
+      <link>//localhost:1313/classification-logistic-regression-and-random-forest/</link>
+      <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/classification-logistic-regression-and-random-forest/</guid>
+      <description>Using Tidymodels to Find Sex of Penguins</description>
+    </item>
+    <item>
+      <title>Linear Regression and Optimisation</title>
+      <link>//localhost:1313/using-linear-regression-to-find-optimal-value/</link>
+      <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/using-linear-regression-to-find-optimal-value/</guid>
+      <description>Using linear regression to find the optimal value of an input</description>
+    </item>
+    <item>
+      <title>Improbable Doesn&#39;t Mean Impossible</title>
+      <link>//localhost:1313/improbable-doesn-t-mean-impossible/</link>
+      <pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/improbable-doesn-t-mean-impossible/</guid>
+      <description>Please don&amp;rsquo;t treat them alike</description>
+    </item>
+    <item>
+      <title>Cheatsheet on Python</title>
+      <link>//localhost:1313/notes-on-python/</link>
+      <pubDate>Tue, 08 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/notes-on-python/</guid>
+      <description>Some things that I&amp;rsquo;ll likely forget</description>
+    </item>
+    <item>
+      <title>How much do we know about our ancestors?</title>
+      <link>//localhost:1313/ancestors/</link>
+      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/ancestors/</guid>
+      <description>Genome, Geneology and DNA Tests</description>
+    </item>
+    <item>
+      <title>Notes on R</title>
+      <link>//localhost:1313/notes-on-r/</link>
+      <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/notes-on-r/</guid>
+      <description>Functions et al</description>
+    </item>
+    <item>
+      <title>My Mac Workflow</title>
+      <link>//localhost:1313/my-mac-workflow/</link>
+      <pubDate>Wed, 02 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/my-mac-workflow/</guid>
+      <description>Apps that take me from 0 to 1</description>
+    </item>
+    <item>
+      <title>Basics of Text Mining in R</title>
+      <link>//localhost:1313/basics-of-text-mining-in-r/</link>
+      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/basics-of-text-mining-in-r/</guid>
+      <description>Thinking of Text as List of Words</description>
+    </item>
+    <item>
+      <title>Notes on Github</title>
+      <link>//localhost:1313/notes-on-github/</link>
+      <pubDate>Mon, 24 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/notes-on-github/</guid>
+      <description>Tricks of trade I learnt along the way</description>
+    </item>
+    <item>
+      <title>Stackoverflow Answers</title>
+      <link>//localhost:1313/stackoverflow-answers/</link>
+      <pubDate>Fri, 14 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/stackoverflow-answers/</guid>
+      <description>A collection of my answers on Stackoverflow</description>
+    </item>
+    <item>
+      <title>Urban-Rural Population in 200&#43; Countries</title>
+      <link>//localhost:1313/shiny-urca/</link>
+      <pubDate>Thu, 30 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/shiny-urca/</guid>
+      <description>R Shiny app that creates spreadsheet of population levels segregated at district, state, or any other level</description>
+    </item>
+    <item>
+      <title>Optimizing Order Frequency to Minimize Partial Pallet Orders</title>
+      <link>//localhost:1313/optimizing-order-frequency-to-minimize-partial-pallet-orders/</link>
+      <pubDate>Fri, 10 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/optimizing-order-frequency-to-minimize-partial-pallet-orders/</guid>
+      <description>How can a CPG company improve customers&amp;rsquo; ordering behaviour?</description>
+    </item>
+    <item>
+      <title>Improvements in Artificial Intelligence</title>
+      <link>//localhost:1313/ai/</link>
+      <pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/ai/</guid>
+      <description>What constitutes artificial general intelligence? Where are we lacking? What can we do to &amp;ldquo;get&amp;rdquo; it?</description>
+    </item>
+    <item>
+      <title>My Name</title>
+      <link>//localhost:1313/my-name/</link>
+      <pubDate>Wed, 08 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/my-name/</guid>
+      <description>I do not have a last name and it freaks people out.</description>
+    </item>
+    <item>
+      <title>Replicating Tennessee STAR Project</title>
+      <link>//localhost:1313/replicating-tennessee-star-project/</link>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/replicating-tennessee-star-project/</guid>
+      <description>Econometrics Course Project</description>
+    </item>
+    <item>
+      <title>How fast is M1?</title>
+      <link>//localhost:1313/how-fast-is-m1/</link>
+      <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/how-fast-is-m1/</guid>
+      <description>Comparing Apple M1 processor with Other Systems in R</description>
+    </item>
+    <item>
+      <title>Next — Today I Learnt About R</title>
+      <link>//localhost:1313/next-today-i-learnt-about-r/</link>
+      <pubDate>Wed, 06 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/next-today-i-learnt-about-r/</guid>
+      <description>My Newsletter on R and Data Science</description>
+    </item>
+    <item>
+      <title>Supervised Learning Using Baysian Decision Rule</title>
+      <link>//localhost:1313/supervised-learning-using-baysian-decision-rule/</link>
+      <pubDate>Tue, 07 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/supervised-learning-using-baysian-decision-rule/</guid>
+      <description>Python Functions for Bayesian Learning (COSC 522 Project)</description>
+    </item>
+    <item>
+      <title>Ten days in the United States</title>
+      <link>//localhost:1313/ten-days-in-the-united-states/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/ten-days-in-the-united-states/</guid>
+      <description>Cultural and technological shocks</description>
+    </item>
+    <item>
+      <title>Technical and Casual Writing</title>
+      <link>//localhost:1313/technical-and-casual-writing/</link>
+      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/technical-and-casual-writing/</guid>
+      <description>My experience of technical and casual writing.</description>
+    </item>
+    <item>
+      <title>Aspect Ratio (Merck Inc.)</title>
+      <link>//localhost:1313/aspect-ratio/</link>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/aspect-ratio/</guid>
+      <description>My experience of working as an analyst for Merck Inc. at Aspect Ratio, Pune</description>
+    </item>
+    <item>
+      <title>Ellsberg&#39;s Paradox</title>
+      <link>//localhost:1313/ellsberg-paradox/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/ellsberg-paradox/</guid>
+      <description>Simulation of Ellsberg&amp;rsquo;s Paradox</description>
+    </item>
+    <item>
+      <title>IRCTC&#39;s Captcha is Smart</title>
+      <link>//localhost:1313/irctc-captcha-is-smart/</link>
+      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/irctc-captcha-is-smart/</guid>
+      <description>Why not integrate captcha and ads?</description>
+    </item>
+    <item>
+      <title>Yihui on Blogging and Writing Books</title>
+      <link>//localhost:1313/yihui-on-blogging-and-writing-books/</link>
+      <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/yihui-on-blogging-and-writing-books/</guid>
+      <description>Attending My First Academic Conference</description>
+    </item>
+    <item>
+      <title>Inspiring Quotes</title>
+      <link>//localhost:1313/quotes/</link>
+      <pubDate>Sat, 19 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/quotes/</guid>
+      <description>A collection of things well said</description>
+    </item>
+    <item>
+      <title>Invento Robotics</title>
+      <link>//localhost:1313/invento-robotics/</link>
+      <pubDate>Sat, 19 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/invento-robotics/</guid>
+      <description>Marketing case study on launch of Mitra — a humanoid robot</description>
+    </item>
+    <item>
+      <title>Notes on LaTeX</title>
+      <link>//localhost:1313/latex/</link>
+      <pubDate>Sat, 19 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/latex/</guid>
+      <description>Typesetting isn&amp;rsquo;t that easy</description>
+    </item>
+    <item>
+      <title>What I Find Interesting</title>
+      <link>//localhost:1313/what-i-find-interesting/</link>
+      <pubDate>Sat, 19 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/what-i-find-interesting/</guid>
+      <description>&lt;h3 id=&#34;podcasts&#34;&gt;Podcasts&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TED:&lt;/strong&gt; TED&amp;rsquo;s novelty is not a secret. Watch it; you will indeed find an exciting idea.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Talks At Google:&lt;/strong&gt; Each time, they invite a great person to share their ideas about unconventional topics. They are pretty brave &amp;mdash; not shying away from calling people who are critical about Google&amp;rsquo;s activities. You may like to start with Yuval Noah Harari&amp;rsquo;s episode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Planet Money:&lt;/strong&gt; This is an easy listen with unique insights with practical economics lessons and examples.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How is Government&#39;s Employment System Broken?</title>
+      <link>//localhost:1313/how-is-governments-employment-system-broken/</link>
+      <pubDate>Sun, 30 May 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/how-is-governments-employment-system-broken/</guid>
+      <description>My thoughts on why government hiring is broken and needs system-level redesign to improve.</description>
+    </item>
+    <item>
+      <title>Bliss Lifesciences</title>
+      <link>//localhost:1313/bliss-lifesciences/</link>
+      <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/bliss-lifesciences/</guid>
+      <description>Marketing research live project</description>
+    </item>
+    <item>
+      <title>Is COVID-19 Data tampered?</title>
+      <link>//localhost:1313/is-covid-19-data-tampered/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/is-covid-19-data-tampered/</guid>
+      <description>Is there any evidence of tampering or manipulation in COVID-19 daily cases reported by countries? Using Benford analysis in R, I try to reach at some conclusion.</description>
+    </item>
+    <item>
+      <title>Forecasting Malaria Vaccine Demand</title>
+      <link>//localhost:1313/forecasting-malaria-vaccine-demand/</link>
+      <pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/forecasting-malaria-vaccine-demand/</guid>
+      <description>Summary of my research work on forecasting coverage for Malaria vaccines</description>
+    </item>
+    <item>
+      <title>IPM: What You Need To Know</title>
+      <link>//localhost:1313/ipm-what-you-need-to-know/</link>
+      <pubDate>Fri, 11 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/ipm-what-you-need-to-know/</guid>
+      <description>A Quick Primer on How to Prepare for IPM</description>
+    </item>
+    <item>
+      <title>A (better) Way to Fund College Education</title>
+      <link>//localhost:1313/a-better-way-to-fund-college-education/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/a-better-way-to-fund-college-education/</guid>
+      <description>How about a listed mutual fund for investing in college education?</description>
+    </item>
+    <item>
+      <title>Sentiment Analysis of Tweets</title>
+      <link>//localhost:1313/twitter-sentiments/</link>
+      <pubDate>Wed, 10 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/twitter-sentiments/</guid>
+      <description>Using rTweet package in R to analyse live tweets from Twitter</description>
+    </item>
+    <item>
+      <title>Exploring My Spotify Listening</title>
+      <link>//localhost:1313/exploring-my-spotify-listening/</link>
+      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/exploring-my-spotify-listening/</guid>
+      <description>I analyse my listening stats and patterns using R.</description>
+    </item>
+    <item>
+      <title>Understanding Profits of Non-profits</title>
+      <link>//localhost:1313/understanding-profits-of-non-profits/</link>
+      <pubDate>Sat, 07 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/understanding-profits-of-non-profits/</guid>
+      <description>Non-profits do end up with more capital than they need. What kind of earnings redistribution system do they need?</description>
+    </item>
+    <item>
+      <title>Gartner Hype Cycle</title>
+      <link>//localhost:1313/gartner-hype-cycle/</link>
+      <pubDate>Mon, 25 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/gartner-hype-cycle/</guid>
+      <description>Technologies come and go. The real question is can you predict its popularity?</description>
+    </item>
+    <item>
+      <title>iPhones in India</title>
+      <link>//localhost:1313/iphones-in-india/</link>
+      <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/iphones-in-india/</guid>
+      <description>Why is Apple ignoring such a big market like India?</description>
+    </item>
+    <item>
+      <title>Museums and Experience Tourism</title>
+      <link>//localhost:1313/museums-and-experience-tourism/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/museums-and-experience-tourism/</guid>
+      <description>Museums are a thing of past. Google has more over-the-top information than I need. Why not target for the experience instead of expertise?</description>
+    </item>
+    <item>
+      <title>How to decide: to do, or not to do?</title>
+      <link>//localhost:1313/how-to-decide-to-do-or-not-to-do/</link>
+      <pubDate>Sat, 13 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/how-to-decide-to-do-or-not-to-do/</guid>
+      <description>Thinking about the most crucial dilemma of all time.</description>
+    </item>
+    <item>
+      <title>Notes on Linux</title>
+      <link>//localhost:1313/notes-on-linux/</link>
+      <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/notes-on-linux/</guid>
+      <description>sudo do not forget</description>
+    </item>
+    <item>
+      <title>Presentation on LaTeX</title>
+      <link>//localhost:1313/presentation-on-latex/</link>
+      <pubDate>Sat, 24 Nov 2018 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/presentation-on-latex/</guid>
+      <description>My workshop on using LaTeX for IIM Indore community</description>
+    </item>
+    <item>
+      <title>Smart Villages Indore</title>
+      <link>//localhost:1313/smart-villages-indore/</link>
+      <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/smart-villages-indore/</guid>
+      <description>Creating and deploying web-based content for the Government of Madhya Pradesh</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>garlic: Some R Functions I Use Rather Frequently | Harshvardhan</title>
+<meta name="keywords" content="academia, r, tools">
+<meta name="description" content="My personal R package for custom functions">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/garlic-some-r-functions-i-use-rather-frequently/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/garlic-some-r-functions-i-use-rather-frequently/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/garlic-some-r-functions-i-use-rather-frequently/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="garlic: Some R Functions I Use Rather Frequently">
+  <meta property="og:description" content="My personal R package for custom functions">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2022-03-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-03-05T00:00:00+00:00">
+    <meta property="article:tag" content="Academia">
+    <meta property="article:tag" content="R">
+    <meta property="article:tag" content="Tools">
+      <meta property="og:image" content="/garlic-some-r-functions-i-use-rather-frequently/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/garlic-some-r-functions-i-use-rather-frequently/featured.png">
+  <meta name="twitter:title" content="garlic: Some R Functions I Use Rather Frequently">
+  <meta name="twitter:description" content="My personal R package for custom functions">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "garlic: Some R Functions I Use Rather Frequently",
+      "item": "/garlic-some-r-functions-i-use-rather-frequently/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "garlic: Some R Functions I Use Rather Frequently",
+  "name": "garlic: Some R Functions I Use Rather Frequently",
+  "description": "My personal R package for custom functions",
+  "keywords": [
+    "academia", "r", "tools"
+  ],
+  "articleBody": " Without garlic I simply would not care to live code. — Louis Diat1\nThese are some functions that I use very frequently in my projects. There are three categories of functions: exploratory functions to check missing values and describe data, visualisation functions for my ggplot2 themes and manipulative functions to modify selected variables.\nInstalling the Package If you don’t have devtools, install that first. devtools provides the function install_github() which can be used to install R packages hosted on Github.\ninstall.packages(\"devtools\") #devtools::install_github(\"harshvardhaniimi/garlic\") library(garlic) Exploratory Functions There are three exploratory functions. This vignette demonstrates how exploratory functions like show_in_excel(), which_na() and which_this() can be used.\nlibrary(garlic) Examples df = iris Show a data frame in MS Excel I found this function on Twitter but can’t find that tweet anymore. (Update: Bruno Rodrigues created this function. Here’s the tweet.)\nshow_in_excel(df) It can also be used with pipes.\nlibrary(dplyr) df %\u003e% show_in_excel() Which values are missing? I’m initialising a vector from 1 to 10 with fifth value as missing NA.\nx = c(1:4, NA, 6:10) Using which_na(), I can find index of element in the vector which is NA.\nwhich_na(x) ## [1] 5 Which element is this? It can identify values that satisfy a criteria. It is kind of a wrapper around dplyr’s filter().\nwhich_this(iris, \"Sepal.Length \u003e 7\") ## Sepal.Length Sepal.Width Petal.Length Petal.Width Species ## 1 7.1 3.0 5.9 2.1 virginica ## 2 7.6 3.0 6.6 2.1 virginica ## 3 7.3 2.9 6.3 1.8 virginica ## 4 7.2 3.6 6.1 2.5 virginica ## 5 7.7 3.8 6.7 2.2 virginica ## 6 7.7 2.6 6.9 2.3 virginica ## 7 7.7 2.8 6.7 2.0 virginica ## 8 7.2 3.2 6.0 1.8 virginica ## 9 7.2 3.0 5.8 1.6 virginica ## 10 7.4 2.8 6.1 1.9 virginica ## 11 7.9 3.8 6.4 2.0 virginica ## 12 7.7 3.0 6.1 2.3 virginica Manipulative Functions There are two mutating functions that modify data frames in a certain way. na_rm_feature() is used for removing observations based on a single variable. na_to_zero() converts missing values to zero.\nlibrary(garlic) Examples Removing Rows Based on Missing Values in a Column Sometimes, I do not want to na.omit() because it will treat all features equally. I want to check values only for one column, while removing those observations.\n# First ten rows of iris dataset df = iris[1:10,] df ## Sepal.Length Sepal.Width Petal.Length Petal.Width Species ## 1 5.1 3.5 1.4 0.2 setosa ## 2 4.9 3.0 1.4 0.2 setosa ## 3 4.7 3.2 1.3 0.2 setosa ## 4 4.6 3.1 1.5 0.2 setosa ## 5 5.0 3.6 1.4 0.2 setosa ## 6 5.4 3.9 1.7 0.4 setosa ## 7 4.6 3.4 1.4 0.3 setosa ## 8 5.0 3.4 1.5 0.2 setosa ## 9 4.4 2.9 1.4 0.2 setosa ## 10 4.9 3.1 1.5 0.1 setosa # Setting second sepal width to NA df$Sepal.Width[2] = NA df ## Sepal.Length Sepal.Width Petal.Length Petal.Width Species ## 1 5.1 3.5 1.4 0.2 setosa ## 2 4.9 NA 1.4 0.2 setosa ## 3 4.7 3.2 1.3 0.2 setosa ## 4 4.6 3.1 1.5 0.2 setosa ## 5 5.0 3.6 1.4 0.2 setosa ## 6 5.4 3.9 1.7 0.4 setosa ## 7 4.6 3.4 1.4 0.3 setosa ## 8 5.0 3.4 1.5 0.2 setosa ## 9 4.4 2.9 1.4 0.2 setosa ## 10 4.9 3.1 1.5 0.1 setosa # Removing that observation df = na_rm_feature(df, \"Sepal.Width\") df ## Sepal.Length Sepal.Width Petal.Length Petal.Width Species ## 1 5.1 3.5 1.4 0.2 setosa ## 3 4.7 3.2 1.3 0.2 setosa ## 4 4.6 3.1 1.5 0.2 setosa ## 5 5.0 3.6 1.4 0.2 setosa ## 6 5.4 3.9 1.7 0.4 setosa ## 7 4.6 3.4 1.4 0.3 setosa ## 8 5.0 3.4 1.5 0.2 setosa ## 9 4.4 2.9 1.4 0.2 setosa ## 10 4.9 3.1 1.5 0.1 setosa Changing Missing Values to Zero This function converts missing values to zero.\n# First ten rows of iris dataset df = iris[1:10,] df ## Sepal.Length Sepal.Width Petal.Length Petal.Width Species ## 1 5.1 3.5 1.4 0.2 setosa ## 2 4.9 3.0 1.4 0.2 setosa ## 3 4.7 3.2 1.3 0.2 setosa ## 4 4.6 3.1 1.5 0.2 setosa ## 5 5.0 3.6 1.4 0.2 setosa ## 6 5.4 3.9 1.7 0.4 setosa ## 7 4.6 3.4 1.4 0.3 setosa ## 8 5.0 3.4 1.5 0.2 setosa ## 9 4.4 2.9 1.4 0.2 setosa ## 10 4.9 3.1 1.5 0.1 setosa # Setting second sepal width to NA df$Sepal.Width[2] = NA df ## Sepal.Length Sepal.Width Petal.Length Petal.Width Species ## 1 5.1 3.5 1.4 0.2 setosa ## 2 4.9 NA 1.4 0.2 setosa ## 3 4.7 3.2 1.3 0.2 setosa ## 4 4.6 3.1 1.5 0.2 setosa ## 5 5.0 3.6 1.4 0.2 setosa ## 6 5.4 3.9 1.7 0.4 setosa ## 7 4.6 3.4 1.4 0.3 setosa ## 8 5.0 3.4 1.5 0.2 setosa ## 9 4.4 2.9 1.4 0.2 setosa ## 10 4.9 3.1 1.5 0.1 setosa na_to_zero(df$Sepal.Width) ## [1] 3.5 0.0 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ggserif() Theme I converted axes to directed arrows and made background grid more transparent. In academic publications, serif fonts are often preferred. Thus serif fonts are used.\nlibrary(garlic) library(ggplot2) library(dplyr) ## ## Attaching package: 'dplyr' ## The following objects are masked from 'package:stats': ## ## filter, lag ## The following objects are masked from 'package:base': ## ## intersect, setdiff, setequal, union library(patchwork) This theme upgrades basic ggplot2 themes. It is particularly suitable for academic publications that require serif fonts for labels and arrowed axes.\nVisually Comparing with Default, Linedraw and Dark Themes Among the themes available in ggplot2, linedraw is my favourite.\np1 = iris %\u003e% ggplot(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) + geom_point() + labs(title = \"Default Theme\") p2 = iris %\u003e% ggplot(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) + geom_point() + labs(title = \"theme_minimal()\") + theme_linedraw() p3 = iris %\u003e% ggplot(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) + geom_point() + labs(title = \"theme_dark()\") + theme_dark() p4 = iris %\u003e% ggplot(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) + geom_point() + labs(title = \"ggserif()\") + ggserif() # Using patchwork, I can easily stitch these plots together. p1 / p2 / p3 / p4 Setting theme globally You can set theme globally for all plots using the following command.\ntheme_set(ggserif()) Citation Harshvardhan, M. (March 2022). garlic: Some R Functions I Use Rather Frequently. v0.1.0 (r-package). Github, Zenodo. https://doi.org/10.5281/zenodo.6331095\nLouis Diat was a French-American chef. I added the quote because it sounds cool. I called the package garlic simply because I love the taste of garlic. ↩︎\n",
+  "wordCount" : "1089",
+  "inLanguage": "en",
+  "image": "/garlic-some-r-functions-i-use-rather-frequently/featured.png","datePublished": "2022-03-05T00:00:00Z",
+  "dateModified": "2022-03-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/garlic-some-r-functions-i-use-rather-frequently/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      garlic: Some R Functions I Use Rather Frequently
+    </h1>
+    <div class="post-meta"><span title='2022-03-05 00:00:00 +0000 UTC'>March 5, 2022</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><blockquote>
+<p>Without garlic I simply would not care to <del>live</del> code. &mdash; <a href="https://twitter.com/kitchenbee/status/991244972501368833">Louis Diat</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+</blockquote>
+<p><a href="https://harshvardhaniimi.github.io/garlic/"><img loading="lazy" src="/garlic-some-r-functions-i-use-rather-frequently/images/Screen%20Shot%202022-03-16%20at%2010.24.59%20AM.png"></a></p>
+<p>These are some functions that I use very frequently in my projects. There are three categories of functions: exploratory functions to check missing values and describe data, visualisation functions for my ggplot2 themes and manipulative functions to modify selected variables.</p>
+<h1 id="installing-the-package">Installing the Package<a hidden class="anchor" aria-hidden="true" href="#installing-the-package">#</a></h1>
+<p>If you don&rsquo;t have <code>devtools</code>, install that first. <code>devtools</code> provides the function <code>install_github()</code> which can be used to install R packages hosted on Github.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#34;devtools&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">#devtools::install_github(&#34;harshvardhaniimi/garlic&#34;)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">garlic</span><span class="p">)</span>
+</span></span></code></pre></div><h1 id="exploratory-functions">Exploratory Functions<a hidden class="anchor" aria-hidden="true" href="#exploratory-functions">#</a></h1>
+<p>There are three exploratory functions. This vignette demonstrates how exploratory functions like <code>show_in_excel()</code>, <code>which_na()</code> and <code>which_this()</code> can be used.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">garlic</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="examples">Examples<a hidden class="anchor" aria-hidden="true" href="#examples">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">iris</span>
+</span></span></code></pre></div><h3 id="show-a-data-frame-in-ms-excel">Show a data frame in MS Excel<a hidden class="anchor" aria-hidden="true" href="#show-a-data-frame-in-ms-excel">#</a></h3>
+<p>I found this function on Twitter but can&rsquo;t find that tweet anymore. (Update: Bruno Rodrigues created this function. <a href="https://twitter.com/brodriguesco/status/1525558786164932611">Here&rsquo;s the tweet</a>.)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">show_in_excel</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></span></code></pre></div><p>It can also be used with pipes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">show_in_excel</span><span class="p">()</span>
+</span></span></code></pre></div><h3 id="which-values-are-missing">Which values are missing?<a hidden class="anchor" aria-hidden="true" href="#which-values-are-missing">#</a></h3>
+<p>I&rsquo;m initialising a vector from 1 to 10 with fifth value as missing <code>NA</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="kc">NA</span><span class="p">,</span> <span class="m">6</span><span class="o">:</span><span class="m">10</span><span class="p">)</span>
+</span></span></code></pre></div><p>Using <code>which_na()</code>, I can find index of element in the vector which is <code>NA</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">which_na</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] 5
+</code></pre><h3 id="which-element-is-this">Which element is this?<a hidden class="anchor" aria-hidden="true" href="#which-element-is-this">#</a></h3>
+<p>It can identify values that satisfy a criteria. It is kind of a wrapper around dplyr&rsquo;s filter().</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">which_this</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span> <span class="s">&#34;Sepal.Length &gt; 7&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 1           7.1         3.0          5.9         2.1 virginica
+## 2           7.6         3.0          6.6         2.1 virginica
+## 3           7.3         2.9          6.3         1.8 virginica
+## 4           7.2         3.6          6.1         2.5 virginica
+## 5           7.7         3.8          6.7         2.2 virginica
+## 6           7.7         2.6          6.9         2.3 virginica
+## 7           7.7         2.8          6.7         2.0 virginica
+## 8           7.2         3.2          6.0         1.8 virginica
+## 9           7.2         3.0          5.8         1.6 virginica
+## 10          7.4         2.8          6.1         1.9 virginica
+## 11          7.9         3.8          6.4         2.0 virginica
+## 12          7.7         3.0          6.1         2.3 virginica
+</code></pre><h1 id="manipulative-functions">Manipulative Functions<a hidden class="anchor" aria-hidden="true" href="#manipulative-functions">#</a></h1>
+<p>There are two mutating functions that modify data frames in a certain way. <code>na_rm_feature()</code> is used for removing observations based on a single variable. <code>na_to_zero()</code> converts missing values to zero.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">garlic</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="examples-1">Examples<a hidden class="anchor" aria-hidden="true" href="#examples-1">#</a></h2>
+<h3 id="removing-rows-based-on-missing-values-in-a-column">Removing Rows Based on Missing Values in a Column<a hidden class="anchor" aria-hidden="true" href="#removing-rows-based-on-missing-values-in-a-column">#</a></h3>
+<p>Sometimes, I do not want to <code>na.omit()</code> because it will treat all features equally. I want to check values only for one column, while removing those observations.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># First ten rows of iris dataset</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">iris[1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Setting second sepal width to NA</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">$</span><span class="n">Sepal.Width[2]</span> <span class="o">=</span> <span class="kc">NA</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9          NA          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Removing that observation</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="nf">na_rm_feature</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s">&#34;Sepal.Width&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+</code></pre><h3 id="changing-missing-values-to-zero">Changing Missing Values to Zero<a hidden class="anchor" aria-hidden="true" href="#changing-missing-values-to-zero">#</a></h3>
+<p>This function converts missing values to zero.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># First ten rows of iris dataset</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">iris[1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Setting second sepal width to NA</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">$</span><span class="n">Sepal.Width[2]</span> <span class="o">=</span> <span class="kc">NA</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9          NA          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">na_to_zero</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Sepal.Width</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##  [1] 3.5 0.0 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1
+</code></pre><h1 id="ggserif-theme"><code>ggserif()</code> Theme<a hidden class="anchor" aria-hidden="true" href="#ggserif-theme">#</a></h1>
+<p>I converted axes to directed arrows and made background grid more transparent. In academic publications, serif fonts are often preferred. Thus serif fonts are used.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">garlic</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## 
+## Attaching package: &#39;dplyr&#39;
+</code></pre><pre tabindex="0"><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag
+</code></pre><pre tabindex="0"><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">patchwork</span><span class="p">)</span>
+</span></span></code></pre></div><p>This theme upgrades basic <code>ggplot2</code> themes. It is particularly suitable for academic publications that require serif fonts for labels and arrowed axes.</p>
+<h3 id="visually-comparing-with-default-linedraw-and-dark-themes">Visually Comparing with Default, Linedraw and Dark Themes<a hidden class="anchor" aria-hidden="true" href="#visually-comparing-with-default-linedraw-and-dark-themes">#</a></h3>
+<p>Among the themes available in <code>ggplot2</code>, linedraw is my favourite.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">p1</span> <span class="o">=</span> <span class="n">iris</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">Species</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;Default Theme&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p2</span> <span class="o">=</span> <span class="n">iris</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">Species</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;theme_minimal()&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_linedraw</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p3</span> <span class="o">=</span> <span class="n">iris</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">Species</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;theme_dark()&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">theme_dark</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p4</span> <span class="o">=</span> <span class="n">iris</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">Species</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">labs</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#34;ggserif()&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">ggserif</span><span class="p">()</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Using patchwork, I can easily stitch these plots together.</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span> <span class="o">/</span> <span class="n">p2</span> <span class="o">/</span> <span class="n">p3</span> <span class="o">/</span> <span class="n">p4</span>
+</span></span></code></pre></div><img src="/garlic-some-r-functions-i-use-rather-frequently/index_files/figure-html/unnamed-chunk-13-1.png" width="960" />
+<h2 id="setting-theme-globally">Setting theme globally<a hidden class="anchor" aria-hidden="true" href="#setting-theme-globally">#</a></h2>
+<p>You can set theme globally for all plots using the following command.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="nf">ggserif</span><span class="p">())</span>
+</span></span></code></pre></div><h1 id="citation">Citation<a hidden class="anchor" aria-hidden="true" href="#citation">#</a></h1>
+<p>Harshvardhan, M. (March 2022). garlic: Some R Functions I Use Rather Frequently. v0.1.0 (r-package). Github, Zenodo. <a href="https://doi.org/10.5281/zenodo.6331095">https://doi.org/10.5281/zenodo.6331095</a></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Louis Diat was a French-American chef. I added the quote because it sounds cool. I called the package <code>garlic</code> simply because I love the taste of garlic.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/academia/">Academia</a></li>
+      <li><a href="/tags/r/">R</a></li>
+      <li><a href="/tags/tools/">Tools</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/interesting-problems-and-where-to-find-them/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Interesting Problems and Where to Find Them?</span>
+  </a>
+  <a class="next" href="/titanic-who-survived-the-tragegy/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Titanic: Who Survived The Tragedy?</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

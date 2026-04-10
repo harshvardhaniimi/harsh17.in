@@ -1,0 +1,71 @@
+---
+title: OpenAI's GPT is a terrific idea
+subtitle: "Revolutionizing Information Retrieval: The Evolution of Language Models"
+summary: "OpenAI's GPT represents a significant leap forward in language model technology, moving beyond traditional limitations by incorporating mechanisms like preprompting to reduce factual inaccuracies. The introduction of specialized GPTs for targeted tasks has enabled more accurate, context-specific interactions"
+author: Harshvardhan
+date: '2024-02-08'
+slug: openai-gpts
+categories:
+  - ai
+  - blog
+  - business
+  - life
+  - thoughts
+tags: []
+---
+
+
+
+<p>OpenAI’s GPT is a terrific idea and a huge improvement over vanilla language models.</p>
+<p>Language models as a technology has incredible power.
+However, its knowledge and memory are limited by the model training.
+If the model was trained with data up to 2023, it only “knows” what happened before that.
+All such information is captured in its long term memory, from which information is retrieved.
+Each key piece of knowledge is encoded within the weights of the neural network.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>However, recalling from memory isn’t a great way to answer questions.
+We humans are the best example of this.
+I remember from my Developmental Economics class that <a href="https://arc.net/l/quote/bmbthjrx">India</a> significantly reduced poverty because we started using actual economic measures like consumption and expenditure, instead of relying on surveys.</p>
+<p>Similarly, language models hallucinate when asked to answer a specific question.
+More recently, OpenAI is preprompting our questions to avoid exact factual recall.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+OpenAI’s solution to this lack of knowledge is custom GPTs — language models trained for a specific task.</p>
+<p><img src="images/tweet.png" /></p>
+<p><a href="https://blog.google/products/gemini/google-bard-new-features-update-sept-2023/#:~:text=Connect%20to%20Google%20apps%20and%20services&amp;text=With%20Extensions%2C%20Bard%20can%20find,across%20multiple%20apps%20and%20services.">Bard</a> was clearly an innovator in integrating a wide range of services, thanks to Google’s virtual monopoly on searching and communicating useful information.
+It could easily connect to Gmail, Drive, YouTube, Maps, Docs, Flights and a host of Google services.
+However, the performance was subpar.
+It would hallucinate a lot and often forget that it had the capability to talk to other Google services.
+(It almost always remembered to do that when told.)<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>OpenAI realized that the key to unleashing potential is opening up.
+Just as the App Store and Play Store democratized the capabilities of phones and internet access, a marketplace for LLMs could foster innovation like nothing else.
+I’d say that’s exactly what’s happening.</p>
+<p>I often find myself using these specialized GPTs far more frequently than the base model.
+There seems to be one for most practical purposes, and they’re quite easy to search for too!</p>
+<p><img src="images/gpt-store.png" /></p>
+<p>Here are some of my favourites:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://chat.openai.com/g/g-VgadmpesQ-chat-with-video-pro">Chat with Video Pro:</a> You can chat with YouTube videos directly. Ask specific question about the video. It pulls the entire video’s transcript and injects it into language model’s short term memory as context. Thus, chances of hallucination are significantly less.<br />
+Google says Bard can also talk to YouTube. In my experience, it hallucinates too often and forgets half the time that it can do that.</li>
+<li><a href="https://chat.openai.com/g/g-LIb0ywaxQ-u-s-immigration-assistant">U.S. Immigration Assistant:</a> The situation as an international student/worker in USA is not great; too much depends on your visa status and <a href="https://debarghyadas.com/writes/eb-wait-indians/">lady luck</a>. For answering my most random questions, I use this. It knows about the subject more than the base model. (But is not the same as an actual lawyer.)</li>
+<li><a href="https://chat.openai.com/g/g-aI4P3mWio-mixerbox-calendar">MixerBox Calendat:</a> It is a Google Calendar AI assistant. You can GPT what you want, and it can tell what’s on your calendar and schedule meetings with ability to customize every detail possible.</li>
+</ol>
+<p>There is one for almost every use conceivable.</p>
+<p><img src="images/examples.gif" /></p>
+<p>Creating one is ridiculously easy.
+You tell ChatGPT what you want to create, supply the extra source of information, and voila!
+In fact, Ava from <a href="https://perfectplaces.cool/">PerfectPlaces.Cool</a> — a project Dea and I have been procrastinating long enough — was hard to implement natively.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>Ava has now been transformed into a sophisticated chatbot, capable of guiding visitors through a curated map of unique, crowd-sourced spots.
+By leveraging the power of GPT, Ava provides personalized recommendations with an almost uncanny insight, making the discovery of “tiny perfect things” an adventure in itself.</p>
+<p><img src="images/ava.png" /></p>
+<p><a href="https://chat.openai.com/g/g-FUrjWi9Bn-ava-perfectplaces-cool">You can try Ava here</a>.
+She can plan your visits to a city like no one else.
+Her information is based on crowd-sourced information, not paid advertisement.</p>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>More commonly known as “parameters” of language model.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The most stark difference is in how many fewer actual facts are there in ChatGPT’s answer to historical questions.
+In the original iteration, GPT-4 would attempt to get the right year, impacts, etc.
+More recently, its turning to a novoice summarizer.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Like <a href="https://valmikiramayan.net/utf8/kish/sarga66/kishkindha_66_frame.htm">Hanuman</a> forgetting his powers and remembering them again when Jambavan, son of Brahma, reminded him of them.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Although we tried, and it’s not particularly bad: <a href="https://perfectplaces.streamlit.app/" class="uri">https://perfectplaces.streamlit.app/</a><a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

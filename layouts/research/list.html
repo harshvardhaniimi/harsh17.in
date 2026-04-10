@@ -1,0 +1,21 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>{{ .Title | default "Research" }}</h1>
+  {{ with .Content }}<div class="post-content">{{ . }}</div>{{ end }}
+</header>
+
+{{- range .Pages.ByDate.Reverse -}}
+<div class="pub-entry">
+  <div class="pub-title">{{ .Date.Format "2006" }} &mdash; <a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+  {{- with .Params.authors }}<div class="pub-meta">{{ . }}</div>{{ end -}}
+  {{- with .Params.venue }}<div class="pub-meta"><em>{{ . }}</em></div>{{ end -}}
+  <div class="pub-links">
+    {{- with .Params.pdf }}<a href="{{ . }}">PDF</a>{{ end -}}
+    {{- with .Params.doi }}<a href="https://doi.org/{{ . }}">DOI</a>{{ end -}}
+    {{- with .Params.github }}<a href="{{ . }}">Code</a>{{ end -}}
+  </div>
+</div>
+{{- end -}}
+
+{{- end }}{{/* define "main" */}}

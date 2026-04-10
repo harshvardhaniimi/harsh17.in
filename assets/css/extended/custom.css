@@ -1,0 +1,334 @@
+/* ===== Self-hosted fonts ===== */
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/libre-baskerville-v14-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/fira-code-v21-latin-regular.woff2') format('woff2');
+}
+
+/* ===== Light mode palette ===== */
+:root {
+  --theme: #faf8f5;
+  --entry: #faf8f5;
+  --primary: #2d2d2d;
+  --secondary: #6b6b6b;
+  --tertiary: #e0dbd4;
+  --content: #3a3a3a;
+  --code-bg: #f5f0eb;
+  --border: #d9d3ca;
+  --link-color: #7a4522;
+}
+
+/* ===== Dark mode palette ===== */
+.dark {
+  --theme: #1a1a2e;
+  --entry: #1a1a2e;
+  --primary: #e0e0e0;
+  --secondary: #9a9ab0;
+  --tertiary: #2d2d4a;
+  --content: #d0d0d0;
+  --code-bg: #16213e;
+  --border: #3a3a5c;
+  --link-color: #d4a574;
+}
+
+/* ===== Autorickshaw cursor ===== */
+body {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🛺</text></svg>") 4 4, auto;
+}
+
+a, button, [role="button"] {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>👆</text></svg>") 10 4, pointer;
+}
+
+/* ===== Typography — ALL serif ===== */
+body,
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.profile .profile_inner h1,
+.nav,
+header nav a,
+.menu {
+  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+}
+
+body {
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+h1, h2, h3, h4, h5, h6,
+.post-title,
+.profile .profile_inner h1 {
+  letter-spacing: -0.01em;
+}
+
+code, pre, .highlight {
+  font-family: 'Fira Code', 'Cascadia Code', 'Fira Mono', Menlo, Monaco, monospace;
+  font-size: 0.88em;
+}
+
+/* ===== Layout ===== */
+.main {
+  max-width: 750px;
+}
+
+.post-content {
+  max-width: 750px;
+}
+
+/* ===== Links ===== */
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.post-content a {
+  box-shadow: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.post-content a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ===== Homepage profile ===== */
+.profile .profile_inner h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.profile .profile_inner .tagline {
+  font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+/* ===== Remove boxes from post entries (flat list) ===== */
+.post-entry {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0.6rem 0;
+  margin: 0;
+  border-bottom: none;
+}
+
+.post-entry .entry-header h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.post-entry .entry-content {
+  display: none;
+}
+
+.post-entry .entry-footer {
+  display: none;
+}
+
+/* ===== Writing list — clean, minimal rows ===== */
+.writing-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--tertiary);
+  gap: 1rem;
+}
+
+.writing-list-item:hover {
+  background: var(--code-bg);
+  margin: 0 -0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 3px;
+}
+
+.writing-list-item a {
+  text-decoration: none;
+  color: var(--primary);
+  flex: 1;
+}
+
+.writing-list-item a:hover {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.writing-list-item .date {
+  font-size: 0.82rem;
+  color: var(--secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ===== Tag pills on writing list ===== */
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: none;
+}
+
+.tag-filter a {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.78rem;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  border: 1px solid var(--tertiary);
+  border-radius: 20px;
+  color: var(--secondary);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.tag-filter a:hover,
+.tag-filter a.active {
+  background: var(--link-color);
+  color: var(--theme);
+  border-color: var(--link-color);
+}
+
+/* ===== Year group headers in writing list ===== */
+.year-group h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--secondary);
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: none;
+  padding-bottom: 0;
+  font-style: italic;
+}
+
+/* ===== Random post button ===== */
+.random-post {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.2rem;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.9rem;
+  color: var(--link-color);
+  border: 1.5px solid var(--link-color);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.random-post:hover {
+  background: var(--link-color);
+  color: var(--theme);
+  text-decoration: none;
+}
+
+/* ===== Research/publications list ===== */
+.pub-group h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--link-color);
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+
+.pub-entry {
+  margin-bottom: 1.25rem;
+}
+
+.pub-entry .pub-title {
+  font-weight: 600;
+}
+
+.pub-entry .pub-meta {
+  font-size: 0.88rem;
+  color: var(--secondary);
+  margin-top: 0.15rem;
+}
+
+.pub-entry .pub-links a {
+  font-size: 0.82rem;
+  margin-right: 0.75rem;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--link-color);
+}
+
+/* ===== Talks list ===== */
+.talk-entry {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--tertiary);
+}
+
+.talk-entry .talk-title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.talk-entry .talk-meta {
+  font-size: 0.88rem;
+  color: var(--secondary);
+}
+
+/* ===== Subscribe block ===== */
+.subscribe {
+  margin-top: 3rem;
+  padding: 1.25rem;
+  border: 1px solid var(--tertiary);
+  border-radius: 6px;
+  background: transparent;
+}
+
+.subscribe h3 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+/* ===== Comments ===== */
+.comments {
+  margin-top: 2rem;
+}
+
+/* ===== Footer ===== */
+.footer {
+  font-size: 0.82rem;
+}
+
+/* ===== Mobile adjustments ===== */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+  .profile .profile_inner h1 {
+    font-size: 1.75rem;
+  }
+  .writing-list-item {
+    flex-direction: column;
+    gap: 0;
+  }
+  .writing-list-item .date {
+    font-size: 0.75rem;
+  }
+}
+
+/* ===== KaTeX math support ===== */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}

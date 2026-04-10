@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ai on Harshvardhan</title>
+    <link>/tags/ai/</link>
+    <description>Recent content in Ai on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 18 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI Manifesto</title>
+      <link>/ai-manifesto/</link>
+      <pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>/ai-manifesto/</guid>
+      <description>&lt;p&gt;I’ve used a lot of AI in the last few years.
+I’ve also written a lot about it previously.
+Here are some of my previous posts around AI.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/ai-improvements/&#34;&gt;Improvements in Artificial
+Intelligence&lt;/a&gt;, December 9,
+2021&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/ai2/&#34;&gt;I wonder how this AI thing is going to shape
+up&lt;/a&gt;, March 3, 2023&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/gpt/&#34;&gt;How does GPT work? Understanding Generative AI
+Models&lt;/a&gt;, April 26, 2023&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/four-ai-chatbots-other-than-chatgpt/&#34;&gt;Four AI Chatbots other than
+ChatGPT&lt;/a&gt;,
+November 27, 2023&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.harsh17.in/openai-gpts/&#34;&gt;OpenAI’s GPT is a terrific
+idea&lt;/a&gt;, February 8, 2024&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When ChatGPT (GPT-3.5) took the world by storm, I was actually offline in a Vipassana course.
+I only got to know about it after a while but it fascinated me that it could write a poem, albeit poorly.
+Now, I couldn’t make the joke “oh, it can’t write a poem anyway”. Creative jobs were up for grabs now.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>TextSage</title>
+      <link>/textsage/</link>
+      <pubDate>Sun, 16 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>/textsage/</guid>
+      <description>A Chrome extension that lets you explain or fact-check any selected text with a right-click.</description>
+    </item>
+    <item>
+      <title>Talk to Harshvardhan</title>
+      <link>/talk-to-harshvardhan/</link>
+      <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>/talk-to-harshvardhan/</guid>
+      <description>I created my digital avatar chatbot that you can talk to for free at &lt;a href=&#34;https://harsh17.in/chat&#34;&gt;https://harsh17.in/chat&lt;/a&gt;</description>
+    </item>
+    <item>
+      <title>OpenAI&#39;s GPT is a terrific idea</title>
+      <link>/openai-gpts/</link>
+      <pubDate>Thu, 08 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>/openai-gpts/</guid>
+      <description>OpenAI&amp;rsquo;s GPT represents a significant leap forward in language model technology, moving beyond traditional limitations by incorporating mechanisms like preprompting to reduce factual inaccuracies. The introduction of specialized GPTs for targeted tasks has enabled more accurate, context-specific interactions</description>
+    </item>
+    <item>
+      <title>Four AI Chatbots other than ChatGPT</title>
+      <link>/four-ai-chatbots-other-than-chatgpt/</link>
+      <pubDate>Mon, 27 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>/four-ai-chatbots-other-than-chatgpt/</guid>
+      <description>General purpose AI Chatbots have taken over the world in recent years. Here I take a look at four chatbots that I use quite often in my daily life.</description>
+    </item>
+    <item>
+      <title>Artificial Intelligence and Data Sciences in Real-world Business</title>
+      <link>/data-sciences-in-real-world/</link>
+      <pubDate>Thu, 07 Sep 2023 13:00:00 +0000</pubDate>
+      <guid>/data-sciences-in-real-world/</guid>
+      <description>A quick rundown of my doctoral research presented at the BA Forum 2023</description>
+    </item>
+    <item>
+      <title>Reflections from KDD 2023</title>
+      <link>/reflections-from-kdd-2023/</link>
+      <pubDate>Mon, 14 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>/reflections-from-kdd-2023/</guid>
+      <description>My notes on talks I attended (mostly on LLMs) at 29th ACM SIGKDD 2023 at Long Beach, CA</description>
+    </item>
+    <item>
+      <title>End-to-End Inventory Prediction and Contract Allocation for Guaranteed Delivery Advertising</title>
+      <link>/kdd2023talk/</link>
+      <pubDate>Mon, 07 Aug 2023 16:00:00 +0000</pubDate>
+      <guid>/kdd2023talk/</guid>
+      <description>We proposed a novel end-to-end approach, the Neural Lagrangian Selling (NLS) model, to improve Guaranteed Delivery (GD) advertising by concurrently predicting ad impression inventory and optimizing contract allocation</description>
+    </item>
+    <item>
+      <title>Predicting Race, Age and Gender from Face: A Small-sample Example with Encoding</title>
+      <link>/predicting-race-age-and-gender-from-face-a-small-sample-example-with-encoding/</link>
+      <pubDate>Sat, 03 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>/predicting-race-age-and-gender-from-face-a-small-sample-example-with-encoding/</guid>
+      <description>Predicting race, age and gender of faces using Variational Autoencoders and Convolutional Neural Networks.</description>
+    </item>
+    <item>
+      <title>Comparing two BIG data frames in Pandas</title>
+      <link>/pandas-compare-df/</link>
+      <pubDate>Sat, 06 May 2023 00:00:00 +0000</pubDate>
+      <guid>/pandas-compare-df/</guid>
+      <description>I needed to compare two data frames with over five million rows. I asked ChatGPT for help. I ended up learning about SHA-256 and hashes.</description>
+    </item>
+    <item>
+      <title>Crafting Conversations with GPT Personalities in Python</title>
+      <link>/gpt-chatbot/</link>
+      <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>/gpt-chatbot/</guid>
+      <description>Building a customizable chatbot that brings unique characters to life</description>
+    </item>
+  </channel>
+</rss>

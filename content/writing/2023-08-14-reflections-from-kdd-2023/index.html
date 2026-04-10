@@ -1,0 +1,229 @@
+---
+title: "Reflections from KDD 2023"
+subtitle: "My notes on talks I attended (mostly on LLMs) at 29th ACM SIGKDD 2023 at Long Beach, CA"
+summary: "My notes on talks I attended (mostly on LLMs) at 29th ACM SIGKDD 2023 at Long Beach, CA"
+author: Harshvardhan
+date: '2023-08-14'
+slug: reflections-from-kdd-2023
+categories:
+  - life
+  - thoughts
+  - coding
+  - Python
+  - ML
+  - ai
+tags: []
+---
+
+
+
+<p>Last week was quite busy for me. It was my first time attending and presenting at KDD. <a href="https://kdd.org/kdd2023/">29th ACM SIGKDD</a> (Special Interest Group on Knowledge Discovery and Data Mining) is ACM (Association for Computing Machinery)’s influential conference on machine learning, AI and everything in between. It is one of the most popular conferences in the field of data mining in the world.</p>
+<p>I also presented my research work on end-to-end inventory prediction and optimzation for use in guaranteed delivery advertising field. The work was done in collaboration with Alibaba and it is currently in production on their website. You can learn more about my presentation at <a href="https://www.harsh17.in/kdd2023/" class="uri">https://www.harsh17.in/kdd2023/</a>.</p>
+<p><img src="images/IMG_9533.png" /><img src="images/IMG_9459.png" /><img src="images/IMG_9455.png" /></p>
+<hr />
+<div id="below-are-my-notes-on-the-talks-i-attended" class="section level2">
+<h2>Below are my notes on the talks I attended</h2>
+<p>Full proceedings are at: <a href="https://kdd.org/kdd2023/wp-content/uploads/2023/08/toc.html" class="uri">https://kdd.org/kdd2023/wp-content/uploads/2023/08/toc.html</a></p>
+</div>
+<div id="keynotes" class="section level1">
+<h1>Keynotes</h1>
+<div id="jure-leskovec-sigkdd-innovation-award-winner-2023" class="section level2">
+<h2>Jure Leskovec, SIGKDD Innovation Award Winner 2023</h2>
+<p>Jure Leskovec is a professor at Stanford and was the Chief Scientist at Pinterest. He was the winner of SIGKDD Innovation Award 2023.</p>
+<p>Website: <a href="https://cs.stanford.edu/people/jure/" class="uri">https://cs.stanford.edu/people/jure/</a></p>
+<ul>
+<li>Memetracker is an online tool that tracks the most mentioned phrase by analyzing 900,000 news stories and blog posts per day. It is available at <a href="http://snap.stanford.edu/memetracker/index.html" class="uri">http://snap.stanford.edu/memetracker/index.html</a></li>
+<li>Currently, our work involves use of tabular data. However, more natural state of data is graphs. Graphs showcase the relationships between different datasets and can also use information about the neighbours, that tabluar datasets cannot.</li>
+<li>We need a “transformer” for a database: something that fundamental that transforms how we do all data analysis; just the way transformers changed deep learning</li>
+<li>Graph neural networks learn information from neighbours to obtain enhanced node representations</li>
+<li><a href="https://pyg.org/">PyG</a> from his team is the most widely used graph NN package</li>
+</ul>
+<p><img src="images/IMG_9402.png" /><img src="images/IMG_9400.png" /><img src="images/IMG_9398.png" /><img src="images/IMG_9397.png" /></p>
+</div>
+<div id="ed-chi-google-keynote-day-1" class="section level2">
+<h2>Ed Chi, Google (Keynote Day 1)</h2>
+<p>Ed H. Chi is a Distinguished Scientist at Google, leading several machine learning research teams focusing on neural modeling, reinforcement learning, dialog modeling, reliable/robust machine learning, and recommendation systems in Google Brain team.</p>
+<p>Website: <a href="https://sites.google.com/view/edchi/" class="uri">https://sites.google.com/view/edchi/</a></p>
+<ul>
+<li><p>LLMs have raised the expectations on what we expect from ML and AI models</p>
+<ul>
+<li>100 years ago, we couldn’t fly. Today, we are irritated if our flight is late by half an hour</li>
+</ul></li>
+<li><p>Chain of thought prompting results in better model outputs than base model outputs</p>
+<ul>
+<li><p>In simple terms, it means give examples of what you want from the model</p></li>
+<li><p>Also called few-shot learning</p></li>
+<li><p><a href="https://arxiv.org/pdf/2201.11903.pdf" class="uri">https://arxiv.org/pdf/2201.11903.pdf</a></p></li>
+</ul></li>
+<li><p>Self-consistency Decoding</p>
+<ul>
+<li><p>In critical tasks, ensemble model outputs into one output</p></li>
+<li><p>Ask the same question several times, take the majority vote</p></li>
+</ul></li>
+<li><p>Task decomposition</p>
+<ul>
+<li><p>For complex tasks, decompose into smaller tasks. Either ask the model to break it down before attempting to solve it, or break it down yourself</p></li>
+<li><p>Instruction tuning (prompt engineering) works better with more advanced models than simple models. In some small models, fine-tuning or better prompting results in no improvement at all</p></li>
+</ul></li>
+<li><p>Evaluating outputs is critical</p>
+<ul>
+<li>Similar to how we had to deal with recommender system outputs</li>
+</ul></li>
+</ul>
+<p><img src="images/IMG_9426.png" /><img src="images/IMG_9425.png" /><img src="images/IMG_9424.png" /><img src="images/IMG_9423.png" /><img src="images/IMG_9422.png" /><img src="images/IMG_9421.png" /></p>
+<p><img src="images/IMG_9430.png" /><img src="images/IMG_9429.png" /><img src="images/IMG_9428.png" /><img src="images/IMG_9427.png" /></p>
+</div>
+<div id="eric-horowitz-microsoft-day-2-keynote" class="section level2">
+<h2>Eric Horowitz, Microsoft (Day 2 Keynote)</h2>
+<ul>
+<li><p>GPT performs better than most humans in medical licensing exams (almost perfect at 99.9%)</p></li>
+<li><p>Medical error is the third largest cause of death in the US, after heart diseases and cancer (BMJ)</p></li>
+<li><p>AI enables computation, which enables calculating the expected value of taking action or not taking an action</p>
+<ul>
+<li>Microsoft Teams: to minimise audio errors coming into a group call, predict when a person in a group call likely going to speak</li>
+</ul></li>
+<li><p>P(Action | Information, AI-assistance) &gt; P(Action | Info) or P(Action | AI-assistance)</p></li>
+<li><p>Optimise for copilot</p>
+<ul>
+<li><p>Areas where AI makes error; areas where humans make error</p></li>
+<li><p>Combo of both leads to a better world</p></li>
+</ul></li>
+<li><p>I asked the question: “What is a task that AI wouldn’t be able to do in five to ten years?”</p>
+<ul>
+<li><p><strong>Question:</strong> Five years ago, if you would have asked me if AI could sketch, I would laugh. Two years ago, if you would’ve asked if I can have an interesting argument with an AI, I would have said no. Today, I use it for coding, sketching and a lot more. A lot of “creative skills” can be done by AI. In fact, it performs <a href="https://arxiv.org/abs/2303.12003">better</a> than most humans on creativity tests. What’s something that AI wouldn’t be able to do in ten years? Exclude jobs that we don’t want it to do: SC judges, caretakers, etc.”</p></li>
+<li><p><strong>Answer:</strong> There will be new jobs that’ll get created due to AI. It is difficult to say which jobs, exactly. (He said more but that’s the gist of it.)</p></li>
+</ul></li>
+</ul>
+<p><img src="images/IMG_9484.png" /><img src="images/IMG_9480.png" /><img src="images/IMG_9479.png" /><img src="images/IMG_9478.png" /><img src="images/IMG_9477.png" /><img src="images/IMG_9476.png" /></p>
+</div>
+</div>
+<div id="large-language-models-day" class="section level1">
+<h1>Large Language Models Day</h1>
+<div id="jaime-teevan-microsoft" class="section level2">
+<h2>Jaime Teevan (Microsoft)</h2>
+<p><a href="http://teevan.org/about/index.htm" class="uri">http://teevan.org/about/index.htm</a></p>
+<ul>
+<li><p>Retrieval-based learning is private by design as only the relevant information is communicated via API to the LLM service provider</p></li>
+<li><p>Rest of the document information is stored locally in a VectorDB of embeddings</p></li>
+<li><p>These documents that have so far been isolated in corporate settings and accessible only to those “shared” parties can come together to be part of one database that all in the company can access</p></li>
+<li><p>Like Google Maps, this forms a collaborative knowledge – one brain to feed it all, one source of truth, one access protocol (with several access levels)</p></li>
+</ul>
+</div>
+<div id="denny-zhou-google-deepmind" class="section level2">
+<h2>Denny Zhou (Google DeepMind)</h2>
+<p><a href="https://dennyzhou.github.io/" class="uri">https://dennyzhou.github.io/</a></p>
+<ul>
+<li><p>Chain of thought prompting works better than one-shot or few-shot prompting in larger models</p></li>
+<li><p>Giving specific examples of what you want as the output from the model is better than suggesting the kind of output you want</p>
+<ul>
+<li><p>If you want it as a JSON file, say that</p></li>
+<li><p>If you want it as a pd.DataFrame({…}), say that</p></li>
+<li><p>If you want it as a markdown table, say that</p></li>
+</ul></li>
+<li><p>BIG-Bench is Google’s evaluation tasks for LLMs</p>
+<ul>
+<li><p><a href="https://github.com/google/BIG-bench" class="uri">https://github.com/google/BIG-bench</a></p></li>
+<li><p>OpenAI’s evals: <a href="https://github.com/openai/evals" class="uri">https://github.com/openai/evals</a></p></li>
+</ul></li>
+</ul>
+</div>
+<div id="vedanuj-goswami" class="section level2">
+<h2>Vedanuj Goswami</h2>
+<p><a href="https://vedanuj.github.io/" class="uri">https://vedanuj.github.io/</a></p>
+<ul>
+<li>Even with long training time and data, the models doesn’t show any sign of slowing down. More data and compute, keeps making these models better and better</li>
+</ul>
+<p><img src="images/Screenshot%202023-08-15%20at%207.32.02%20PM.png" width="616" /></p>
+<ul>
+<li><p>For fine-tuning the model (LLaMA 2), perform RLHF and Rejection Sampling</p></li>
+<li><p>Weekly cadence in model output checks: RLHF, comparison between human and LLM output</p></li>
+<li><p>In adversarial prompts, prefix with safety words to reduce their impact</p></li>
+<li><p>In system prompt, feed in critical system values (corporate values, etc.)</p></li>
+</ul>
+<p><img src="images/Screenshot%202023-08-15%20at%207.32.29%20PM.png" width="616" /><img src="images/Screenshot%202023-08-15%20at%207.32.42%20PM.png" width="528" /><img src="images/Screenshot%202023-08-15%20at%207.32.55%20PM.png" width="528" /></p>
+</div>
+<div id="jason-wei-openai" class="section level2">
+<h2>Jason Wei (OpenAI)</h2>
+<p><a href="https://www.jasonwei.net/" class="uri">https://www.jasonwei.net/</a></p>
+<ol style="list-style-type: decimal">
+<li><strong>Scaling Laws</strong>
+<ul>
+<li>Tooling and infrastructure matter as more collaborators get together to work together</li>
+<li>Next word prediction is plateauing in performance, but there are emergent abilities (more on that later)</li>
+</ul></li>
+<li><strong>Emergent Abilities</strong>
+<ul>
+<li>Defined as abilities that the model is not explicitly trained for but performs great</li>
+<li>33% of all tasks are done better by larger models</li>
+<li>Smaller models are great for tasks such as summarisation and search</li>
+<li>Larger models are great for reasoning, solving problems and coding</li>
+<li>What task becomes emergent is an open research question — without trying large models at a full array of QA-pairs, of course</li>
+<li>See Google’s <a href="https://github.com/google/BIG-bench">BIG-Bench</a> (creatively named “Beyond the Imitation Game”, largest QA dataset for evals)</li>
+<li>Benchmarks for QA quickly become outdated. LLMs can beat many creativity tests, turing tests, knowledge tests, reasoning tests, or any such tests that we set up as benchmarks. What is a good benchmark? Does it have to be constantly changing?</li>
+<li>One size doesn’t fit all. Some models are better at some tasks than others. Research should identify which task - which model.</li>
+</ul></li>
+<li><strong>Reasoning via prompting</strong>
+<ul>
+<li>Chain of thought (CoT) reasoning differentiates GPT from previous ML models</li>
+<li><a href="https://arxiv.org/abs/2201.11903" class="uri">https://arxiv.org/abs/2201.11903</a></li>
+<li>CoT helps large models, hurts small models (i.e. helps GPT-4, hurts GPT-3.5, ambiguous with GPT-3.5)</li>
+<li>Black magic of ML: hyperparameters; black magic of LLMs: prompting (prompt engineering is thus important)</li>
+</ul></li>
+</ol>
+<p><img src="images/Screenshot%202023-08-15%20at%207.33.53%20PM.png" width="956" /><img src="images/Screenshot%202023-08-15%20at%207.34.06%20PM.png" width="574" /><img src="images/Screenshot%202023-08-15%20at%207.34.22%20PM.png" width="589" /><img src="images/Screenshot%202023-08-15%20at%207.34.34%20PM.png" width="574" /></p>
+</div>
+</div>
+<div id="applied-data-science-track" class="section level1">
+<h1>Applied Data Science Track</h1>
+<div id="bert4ctr-using-bert-for-predicting-click-through-rates" class="section level2">
+<h2>BERT4CTR: Using BERT for Predicting Click-through Rates</h2>
+<p><a href="https://dl.acm.org/doi/10.1145/3580305.3599780" class="uri">https://dl.acm.org/doi/10.1145/3580305.3599780</a></p>
+<ul>
+<li><p>Use fusion algorithms to include the embeddings from LLM into the models</p></li>
+<li><p>NumBERT: a model to convert non-textual features to textual features</p>
+<ul>
+<li><p>Research by Google et al. using BERT (<a href="https://arxiv.org/abs/2010.05345" class="uri">https://arxiv.org/abs/2010.05345</a>)</p></li>
+<li><p>This paper is super interesting as they found converting numbers to statements like “This is heavy”, “this is large” was helpful in regression and classification tasks</p></li>
+</ul></li>
+<li><p>BERT4CTR takes the first step to convert these non-textual features to textual features and uses them into predicting CTR</p></li>
+<li><p>All non-text tokens are converted to a single token (how?)</p></li>
+<li><p>Uses “uni-attention” to create interactions between non-textual and textual features</p></li>
+<li><p>Dimensionality reduction for embeddings</p>
+<ul>
+<li>My observation from OpenAI’s embeddings was that they were so dense that reduction caused information loss. Maybe not in this case as same numerical information is represented in multiple variables which BERT notices and removes</li>
+</ul></li>
+</ul>
+<p><img src="images/Screenshot%202023-08-15%20at%207.35.07%20PM.png" width="705" /><img src="images/Screenshot%202023-08-15%20at%207.35.20%20PM.png" width="528" /></p>
+</div>
+<div id="quert-query-understanding-in-travel-domain" class="section level2">
+<h2>QUERT: Query Understanding in Travel Domain</h2>
+<p><a href="https://dl.acm.org/doi/10.1145/3580305.3599891" class="uri">https://dl.acm.org/doi/10.1145/3580305.3599891</a></p>
+<ul>
+<li><p>Using LLMs, understand the search query better to streamline the model for recommendation and search engines</p></li>
+<li><p>Query has more than intent: it has geography, time, etc.</p></li>
+<li><p>Phrase permutation is real: “weather new york” and “new york weather now” are likely the same things. LLMs can streamline them into one</p></li>
+<li><p><a href="https://github.com/hsaest/QUERT" class="uri">https://github.com/hsaest/QUERT</a></p></li>
+</ul>
+</div>
+<div id="from-human-days-to-machine-seconds-iddo-drori" class="section level2">
+<h2>From Human Days to Machine Seconds, Iddo Drori</h2>
+<p><a href="https://arxiv.org/abs/2206.05442" class="uri">https://arxiv.org/abs/2206.05442</a></p>
+<ul>
+<li><p>He works at MIT/Columbia and was trying to create questions for MIT’s final exam using LLMs</p>
+<ul>
+<li><p>Questions would be typical questions and then contain the response to that question from an LLM</p></li>
+<li><p>The task for students was: check if LLMs answer is correct or wrong. If correct, explain why. If wrong, explain why and write the correct response.</p></li>
+</ul></li>
+<li><p>Can we teach LLMs to create questions for tests and find answers?</p></li>
+<li><p>Using LLMs to evaluate responses generated by LLMs</p></li>
+<li><p>Evaluation of specific responses using meta-questions</p></li>
+<li><p>Zero-shot, 1-shot, few-shot, chain-of-thought all lead to different levels of accuracy</p>
+<ul>
+<li><p>Zero shot: base LLM</p></li>
+<li><p>1-shot: use most similar one question from history</p></li>
+<li><p>N-shot (few-shot): use most similar N questions from history</p></li>
+</ul></li>
+</ul>
+<p><img src="images/Screenshot%202023-08-15%20at%207.35.52%20PM.png" width="676" /><img src="images/Screenshot%202023-08-15%20at%207.36.11%20PM.png" width="620" /></p>
+</div>
+</div>

@@ -1,0 +1,704 @@
+---
+title: The Ascribed Advantage
+subtitle: "How does gender affects pay? A case study of UK companies. #tidytuesday"
+summary: "How does gender affects pay? In this short exploration, I use #tidytuesday dataset provided by UK Government to visualise gender gaps using R. And why are women working at churches paid 40% less bonus than men?"
+date: '2022-07-09'
+slug: the-ascribed-advantage
+categories:
+  - R
+  - social
+  - economics
+  - business
+tags: []
+---
+
+
+
+<p>How much more do men earn doing the same job as women? In this exploration, I will examine if the gender pay gap exists, in what jobs and how much is it. Specifically, this dataset is from United Kingdom. It was part of #tidytuesday event and can be downloaded from <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-06-28">this link</a>.</p>
+<p>This online tool lets you <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/articles/findoutthegenderpaygapforyourjob/2016-12-09">visualise</a> the difference by gender and occupation. If you’re feeling brave, try this <a href="https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/articles/testyourknowledgeonthegenderpaygap/2016-12-09">quiz</a> too.</p>
+<div id="lets-begin" class="section level1">
+<h1>Let’s begin</h1>
+<pre class="r"><code>knitr::opts_chunk$set(collapse = TRUE, out.width = &quot;100%&quot;)
+
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.2     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>library(DT)
+
+ggthemr::ggthemr(&#39;dust&#39;)
+
+paygap_raw = read_csv(&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-28/paygap.csv&quot;)</code></pre>
+<pre><code>## Rows: 48711 Columns: 27
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr   (9): employer_name, address, post_code, company_number, sic_codes, com...
+## dbl  (15): employer_id, diff_mean_hourly_percent, diff_median_hourly_percent...
+## lgl   (1): submitted_after_the_deadline
+## dttm  (2): due_date, date_submitted
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>glimpse(paygap_raw)</code></pre>
+<pre><code>## Rows: 48,711
+## Columns: 27
+## $ employer_name                &lt;chr&gt; &quot;Bryanston School, Incorporated&quot;, &quot;RED BA…
+## $ employer_id                  &lt;dbl&gt; 676, 16879, 17677, 682, 17101, 687, 17484…
+## $ address                      &lt;chr&gt; &quot;Bryanston House, Blandford, Dorset, DT11…
+## $ post_code                    &lt;chr&gt; &quot;DT11 0PX&quot;, &quot;EH6 8NU&quot;, &quot;LS7 1AB&quot;, &quot;TA6 3J…
+## $ company_number               &lt;chr&gt; &quot;00226143&quot;, &quot;SC016876&quot;, &quot;10530651&quot;, &quot;0672…
+## $ sic_codes                    &lt;chr&gt; &quot;85310&quot;, &quot;47730&quot;, &quot;78300&quot;, &quot;93110&quot;, &quot;5621…
+## $ diff_mean_hourly_percent     &lt;dbl&gt; 18.0, 2.3, 41.0, -22.0, 13.4, 15.1, 15.0,…
+## $ diff_median_hourly_percent   &lt;dbl&gt; 28.2, -2.7, 36.0, -34.0, 8.1, 2.8, 0.0, 0…
+## $ diff_mean_bonus_percent      &lt;dbl&gt; 0.0, 15.0, -69.8, -47.0, 41.4, 77.6, 0.0,…
+## $ diff_median_bonus_percent    &lt;dbl&gt; 0.0, 37.5, -157.2, -67.0, 43.7, 71.2, 0.0…
+## $ male_bonus_percent           &lt;dbl&gt; 0.0, 15.6, 50.0, 25.0, 8.7, 5.8, 0.0, 0.0…
+## $ female_bonus_percent         &lt;dbl&gt; 0.0, 66.7, 73.5, 75.0, 3.2, 4.2, 0.0, 0.0…
+## $ male_lower_quartile          &lt;dbl&gt; 24.4, 20.3, 0.0, 56.0, 29.1, 42.6, 10.0, …
+## $ female_lower_quartile        &lt;dbl&gt; 75.6, 79.7, 100.0, 44.0, 70.9, 57.4, 90.0…
+## $ male_lower_middle_quartile   &lt;dbl&gt; 50.8, 25.4, 2.0, 52.0, 49.4, 45.2, 9.0, 5…
+## $ female_lower_middle_quartile &lt;dbl&gt; 49.2, 74.6, 98.0, 48.0, 50.6, 54.8, 91.0,…
+## $ male_upper_middle_quartile   &lt;dbl&gt; 49.2, 10.3, 11.0, 30.0, 22.8, 46.8, 10.0,…
+## $ female_upper_middle_quartile &lt;dbl&gt; 50.8, 89.7, 89.0, 70.0, 77.2, 53.2, 90.0,…
+## $ male_top_quartile            &lt;dbl&gt; 51.5, 18.1, 23.0, 24.0, 58.2, 35.5, 9.0, …
+## $ female_top_quartile          &lt;dbl&gt; 48.5, 81.9, 77.0, 76.0, 41.8, 64.5, 91.0,…
+## $ company_link_to_gpg_info     &lt;chr&gt; &quot;https://www.bryanston.co.uk/employment&quot;,…
+## $ responsible_person           &lt;chr&gt; &quot;Nick McRobb (Bursar and Clerk to the Gov…
+## $ employer_size                &lt;chr&gt; &quot;500 to 999&quot;, &quot;250 to 499&quot;, &quot;250 to 499&quot;,…
+## $ current_name                 &lt;chr&gt; &quot;BRYANSTON SCHOOL INCORPORATED&quot;, &quot;\&quot;RED B…
+## $ submitted_after_the_deadline &lt;lgl&gt; FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, F…
+## $ due_date                     &lt;dttm&gt; 2018-04-05, 2018-04-05, 2018-04-05, 2018…
+## $ date_submitted               &lt;dttm&gt; 2018-03-27 11:42:49, 2018-03-28 16:44:25…</code></pre>
+<p>The variables that actually look at the differences here are the variables that contain “diff” in their name. Let’s look at those variables in detail.</p>
+<pre class="r"><code>paygap_raw |&gt; 
+  select(contains(&quot;diff&quot;))
+## # A tibble: 48,711 × 4
+##    diff_mean_hourly_percent diff_median_hourly_percent diff_mean_bonus_percent
+##                       &lt;dbl&gt;                      &lt;dbl&gt;                   &lt;dbl&gt;
+##  1                     18                         28.2                     0  
+##  2                      2.3                       -2.7                    15  
+##  3                     41                         36                     -69.8
+##  4                    -22                        -34                     -47  
+##  5                     13.4                        8.1                    41.4
+##  6                     15.1                        2.8                    77.6
+##  7                     15                          0                       0  
+##  8                     11.9                        0                       0  
+##  9                     13.4                        8.5                    62.9
+## 10                     15.3                        6.9                    55.5
+## # ℹ 48,701 more rows
+## # ℹ 1 more variable: diff_median_bonus_percent &lt;dbl&gt;</code></pre>
+<p>There are four variables. First two are differences in hourly pay (mean and median) and last two are differences in bonus (mean and median). The positive numbers have to be interpreted as men earning as much more than women in that company/organisation.</p>
+<p>A useful variable is the <a href="https://www.gov.uk/government/publications/standard-industrial-classification-of-economic-activities-sic">SIC code</a>, stands for standard industrial classification of economic activities. It identifies the business that the company is operating in.</p>
+<pre class="r"><code>paygap_raw |&gt; 
+  select(contains(&quot;sic&quot;))
+## # A tibble: 48,711 × 1
+##    sic_codes        
+##    &lt;chr&gt;            
+##  1 85310            
+##  2 47730            
+##  3 78300            
+##  4 93110            
+##  5 56210:70229      
+##  6 93110:93130:93290
+##  7 86900:88100      
+##  8 56290            
+##  9 1470:10910       
+## 10 10120            
+## # ℹ 48,701 more rows</code></pre>
+<p>As can be noticed, some companies have more than one SIC code. Let’s separate them with <code>seperate_rows()</code> function from <code>tidyr</code>. Then, let’s count them to see which ones are the most common.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<pre class="r"><code>paygap_raw |&gt;  
+  select(sic_codes) |&gt;  
+  separate_rows(sic_codes, sep = &quot;:&quot;) |&gt; 
+  count(sic_codes, sort = TRUE)
+## # A tibble: 639 × 2
+##    sic_codes     n
+##    &lt;chr&gt;     &lt;int&gt;
+##  1 1          6584
+##  2 85310      3020
+##  3 &lt;NA&gt;       2894
+##  4 82990      2588
+##  5 85200      2219
+##  6 84110      1886
+##  7 70100      1541
+##  8 86900      1246
+##  9 78200      1149
+## 10 86210      1074
+## # ℹ 629 more rows</code></pre>
+<p>But what do these SIC codes mean? Let’s check out! The CSV file is available at UK government’s <a href="https://www.gov.uk/government/publications/standard-industrial-classification-of-economic-activities-sic">website</a>.</p>
+<pre class="r"><code>uk_sic_codes = read_csv(&quot;https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/527619/SIC07_CH_condensed_list_en.csv&quot;)
+## Rows: 731 Columns: 2
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (2): SIC Code, Description
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+uk_sic_codes
+## # A tibble: 731 × 2
+##    `SIC Code` Description                                                     
+##    &lt;chr&gt;      &lt;chr&gt;                                                           
+##  1 01110      Growing of cereals (except rice), leguminous crops and oil seeds
+##  2 01120      Growing of rice                                                 
+##  3 01130      Growing of vegetables and melons, roots and tubers              
+##  4 01140      Growing of sugar cane                                           
+##  5 01150      Growing of tobacco                                              
+##  6 01160      Growing of fibre crops                                          
+##  7 01190      Growing of other non-perennial crops                            
+##  8 01210      Growing of grapes                                               
+##  9 01220      Growing of tropical and subtropical fruits                      
+## 10 01230      Growing of citrus fruits                                        
+## # ℹ 721 more rows</code></pre>
+<p>The variable name needs to be cleaned.</p>
+<pre class="r"><code>uk_sic_codes = uk_sic_codes |&gt; 
+  janitor::clean_names()
+uk_sic_codes
+## # A tibble: 731 × 2
+##    sic_code description                                                     
+##    &lt;chr&gt;    &lt;chr&gt;                                                           
+##  1 01110    Growing of cereals (except rice), leguminous crops and oil seeds
+##  2 01120    Growing of rice                                                 
+##  3 01130    Growing of vegetables and melons, roots and tubers              
+##  4 01140    Growing of sugar cane                                           
+##  5 01150    Growing of tobacco                                              
+##  6 01160    Growing of fibre crops                                          
+##  7 01190    Growing of other non-perennial crops                            
+##  8 01210    Growing of grapes                                               
+##  9 01220    Growing of tropical and subtropical fruits                      
+## 10 01230    Growing of citrus fruits                                        
+## # ℹ 721 more rows</code></pre>
+</div>
+<div id="visualise-differences" class="section level1">
+<h1>Visualise Differences</h1>
+<div id="which-companies-have-the-highest-differences" class="section level2">
+<h2>Which companies have the highest differences?</h2>
+<pre class="r"><code>paygap_raw |&gt; 
+  slice_max(order_by = diff_median_hourly_percent, n = 10) |&gt; 
+  select(employer_name) |&gt; 
+  unique()
+## # A tibble: 16 × 1
+##    employer_name                            
+##    &lt;chr&gt;                                    
+##  1 Shrewsbury Academies Trust               
+##  2 ASH &amp; LACY FINISHES LIMITED              
+##  3 BEERE ELECTRICAL SERVICES LIMITED        
+##  4 HARVEY NICHOLS (OWN BRAND) STORES LIMITED
+##  5 HARVEY NICHOLS RESTAURANTS LIMITED       
+##  6 J.C.B.EARTHMOVERS LIMITED                
+##  7 J5C MANAGEMENT LIMITED                   
+##  8 JCB COMPACT PRODUCTS LIMITED             
+##  9 JCB POWER SYSTEMS LIMITED                
+## 10 KALSI PLASTICS (UK) LIMITED              
+## 11 M. ANDERSON CONSTRUCTION LIMITED         
+## 12 PLAYNATION LIMITED                       
+## 13 PSJ FABRICATIONS LTD                     
+## 14 WALTERS RESOURCES LIMITED                
+## 15 ATFC LIMITED                             
+## 16 HPI UK HOLDING LTD.</code></pre>
+<p>J.C.B. is the only familiar name to me. Is the difference one of the highest because of the business it’s involved in? Construction sector doesn’t employ many women. (If you’re curious why there are 16 names when I asked for top-10, it’s because some companies/roles have equal pay difference.)</p>
+</div>
+<div id="which-companies-have-the-lowest-differences" class="section level2">
+<h2>Which companies have the lowest differences?</h2>
+<pre class="r"><code>paygap_raw |&gt; 
+  slice_min(order_by = diff_median_hourly_percent, n = 10) |&gt; 
+  select(employer_name) |&gt; 
+  unique()
+## # A tibble: 10 × 1
+##    employer_name                               
+##    &lt;chr&gt;                                       
+##  1 ANKH CONCEPTS HOSPITALITY MANAGEMENT LIMITED
+##  2 NSS CLEANING LIMITED                        
+##  3 G4S SECURE SOLUTIONS (UK) LIMITED           
+##  4 AUTO-SLEEPERS GROUP LIMITED                 
+##  5 AUTO-SLEEPERS INVESTMENTS LIMITED           
+##  6 BAR 2010 LIMITED                            
+##  7 INBRELLA LIMITED                            
+##  8 DONALDSON TIMBER ENGINEERING LIMITED        
+##  9 FORTEL SERVICES LIMITED                     
+## 10 SPRINGFIELD PROPERTIES PLC</code></pre>
+<p>Some of these look like housekeeping companies.</p>
+</div>
+<div id="distribution-of-hourly-pay" class="section level2">
+<h2>Distribution of Hourly Pay</h2>
+<p>Let’s start by seeing distribution of median difference in hourly pay.</p>
+<pre class="r"><code>paygap_raw |&gt; 
+  ggplot(aes(diff_median_hourly_percent / 100)) +
+  geom_histogram(bins = 25) +
+  scale_x_continuous(limits = c(-0.5, 0.5), labels = scales::percent) +
+  ylim(c(0, 10000)) +
+  labs(x = &quot;Difference&quot;,
+       y = &quot;Count&quot;,
+       caption = &quot;A value of 10% implies that men earn 10% more hourly wage than women.&quot;,
+       title = &quot;Median Hourly Pay Difference&quot;)
+## Warning: Removed 901 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing missing values (`geom_bar()`).</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" width="100%" /></p>
+<p>There are a lot of companies that are on the positive side than they are on the negative side.</p>
+</div>
+</div>
+<div id="distribution-of-bonus" class="section level1">
+<h1>Distribution of Bonus</h1>
+<pre class="r"><code>paygap_raw |&gt; 
+  ggplot(aes(diff_median_bonus_percent / 100)) +
+  geom_histogram(bins = 25) +
+  scale_x_continuous(limits = c(-0.5, 0.5), labels = scales::percent) +
+  ylim(c(0, 10000)) +
+  labs(x = &quot;Difference&quot;,
+       y = &quot;Count&quot;,
+       caption = &quot;A value of 10% implies that men earned 10% more bonus than women.&quot;,
+       title = &quot;Median Bonus Difference&quot;)
+## Warning: Removed 19163 rows containing non-finite values (`stat_bin()`).
+## Warning: Removed 2 rows containing missing values (`geom_bar()`).</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="100%" /></p>
+<p>Ooooh. In most cases, the difference in bonus is zero. Let’s see which companies have the highest difference in bonus.</p>
+<pre class="r"><code>paygap_raw |&gt; 
+  mutate(diff_median_bonus_percent = diff_median_bonus_percent/100) |&gt; 
+  slice_max(diff_median_bonus_percent, n = 10) |&gt; 
+  select(contains(&quot;employer&quot;), diff_median_bonus_percent)
+## # A tibble: 10 × 4
+##    employer_name                employer_id employer_size diff_median_bonus_pe…¹
+##    &lt;chr&gt;                              &lt;dbl&gt; &lt;chr&gt;                          &lt;dbl&gt;
+##  1 The Order of St. Augustine …       17584 250 to 499                     40   
+##  2 BOWDRAPER LIMITED                   2275 500 to 999                     38.5 
+##  3 PRISM UK MEDICAL LIMITED           10055 250 to 499                      3.36
+##  4 ROBINSON MEDICAL RECRUITMEN…       17323 500 to 999                      3.24
+##  5 RED RECRUITMENT PARTNERSHIP…       10332 Less than 250                   3.17
+##  6 CARE BY US LTD                     16116 500 to 999                      3.12
+##  7 TRIFORDS LIMITED                   12941 250 to 499                      2.86
+##  8 VALE OF GLAMORGAN HOTEL LIM…       13230 250 to 499                      2.81
+##  9 TRAFFORD LEISURE COMMUNITY …       17413 250 to 499                      1.92
+## 10 The Healthcare Management T…       12394 250 to 499                      1.9 
+## # ℹ abbreviated name: ¹​diff_median_bonus_percent</code></pre>
+<p>What do we have here… The Order of St. Augustine of the Mercy of Jesus (<a href="https://en.wikipedia.org/wiki/Canonesses_of_St._Augustine_of_the_Mercy_of_Jesus">Roman Catholic Church</a>) has the highest difference in bonus: 40%. Bowdraper is a cleaning service company.</p>
+<p>To proceed, I need to join the SIC code values to that data frame. Before that, I have to separate the SIC codes which can be separated using <code>:</code>.</p>
+<pre class="r"><code>paygap_joined = paygap_raw |&gt; 
+  #select(employer_name, diff_median_hourly_percent, sic_codes) |&gt; 
+  separate_rows(sic_codes, sep = &quot;:&quot;) |&gt; 
+  left_join(uk_sic_codes, by = c(&quot;sic_codes&quot; = &quot;sic_code&quot;))
+
+paygap_joined
+## # A tibble: 71,943 × 28
+##    employer_name          employer_id address post_code company_number sic_codes
+##    &lt;chr&gt;                        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;    
+##  1 Bryanston School, Inc…         676 Bryans… DT11 0PX  00226143       85310    
+##  2 RED BAND CHEMICAL COM…       16879 19 Smi… EH6 8NU   SC016876       47730    
+##  3 123 EMPLOYEES LTD            17677 34 Rou… LS7 1AB   10530651       78300    
+##  4 1610 LIMITED                   682 Trinit… TA6 3JA   06727055       93110    
+##  5 1879 EVENTS MANAGEMEN…       17101 The Su… SR5 1SU   07743495       56210    
+##  6 1879 EVENTS MANAGEMEN…       17101 The Su… SR5 1SU   07743495       70229    
+##  7 1LIFE MANAGEMENT SOLU…         687 Ldh Ho… PE27 4AA  02566586       93110    
+##  8 1LIFE MANAGEMENT SOLU…         687 Ldh Ho… PE27 4AA  02566586       93130    
+##  9 1LIFE MANAGEMENT SOLU…         687 Ldh Ho… PE27 4AA  02566586       93290    
+## 10 1ST HOME CARE LTD.           17484 Real L… KY12 7LG  SC272838       86900    
+## # ℹ 71,933 more rows
+## # ℹ 22 more variables: diff_mean_hourly_percent &lt;dbl&gt;,
+## #   diff_median_hourly_percent &lt;dbl&gt;, diff_mean_bonus_percent &lt;dbl&gt;,
+## #   diff_median_bonus_percent &lt;dbl&gt;, male_bonus_percent &lt;dbl&gt;,
+## #   female_bonus_percent &lt;dbl&gt;, male_lower_quartile &lt;dbl&gt;,
+## #   female_lower_quartile &lt;dbl&gt;, male_lower_middle_quartile &lt;dbl&gt;,
+## #   female_lower_middle_quartile &lt;dbl&gt;, male_upper_middle_quartile &lt;dbl&gt;, …</code></pre>
+<p>Let’s see how many unique descriptions are there for SIC codes.</p>
+<pre class="r"><code>paygap_joined |&gt; 
+  count(description, sort = TRUE)
+## # A tibble: 611 × 2
+##    description                                          n
+##    &lt;chr&gt;                                            &lt;int&gt;
+##  1 &lt;NA&gt;                                             10093
+##  2 General secondary education                       3020
+##  3 Other business support service activities n.e.c.  2588
+##  4 Primary education                                 2219
+##  5 General public administration activities          1886
+##  6 Activities of head offices                        1541
+##  7 Other human health activities                     1246
+##  8 Temporary employment agency activities            1149
+##  9 General medical practice activities               1074
+## 10 Other service activities n.e.c.                    841
+## # ℹ 601 more rows</code></pre>
+<p>Many of them are similar to each other. “General secondary education” is very similar to “Primary education” — considering teachers as one group might be more meaningful for analysis.</p>
+<p>This can be done using <code>tidytext</code> package. I’m not interested in stop words, I will remove them. There are also many missing descriptions; I’ll remove them too.</p>
+<pre class="r"><code>library(tidytext)
+
+paygap_tokenized = paygap_joined |&gt; 
+  unnest_tokens(word, description) |&gt; 
+  anti_join(get_stopwords()) |&gt; 
+  na.omit()
+## Joining with `by = join_by(word)`
+
+paygap_tokenized
+## # A tibble: 129,419 × 28
+##    employer_name          employer_id address post_code company_number sic_codes
+##    &lt;chr&gt;                        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;    
+##  1 Bryanston School, Inc…         676 Bryans… DT11 0PX  00226143       85310    
+##  2 Bryanston School, Inc…         676 Bryans… DT11 0PX  00226143       85310    
+##  3 Bryanston School, Inc…         676 Bryans… DT11 0PX  00226143       85310    
+##  4 1610 LIMITED                   682 Trinit… TA6 3JA   06727055       93110    
+##  5 1610 LIMITED                   682 Trinit… TA6 3JA   06727055       93110    
+##  6 1610 LIMITED                   682 Trinit… TA6 3JA   06727055       93110    
+##  7 1879 EVENTS MANAGEMEN…       17101 The Su… SR5 1SU   07743495       56210    
+##  8 1879 EVENTS MANAGEMEN…       17101 The Su… SR5 1SU   07743495       56210    
+##  9 1879 EVENTS MANAGEMEN…       17101 The Su… SR5 1SU   07743495       56210    
+## 10 1879 EVENTS MANAGEMEN…       17101 The Su… SR5 1SU   07743495       70229    
+## # ℹ 129,409 more rows
+## # ℹ 22 more variables: diff_mean_hourly_percent &lt;dbl&gt;,
+## #   diff_median_hourly_percent &lt;dbl&gt;, diff_mean_bonus_percent &lt;dbl&gt;,
+## #   diff_median_bonus_percent &lt;dbl&gt;, male_bonus_percent &lt;dbl&gt;,
+## #   female_bonus_percent &lt;dbl&gt;, male_lower_quartile &lt;dbl&gt;,
+## #   female_lower_quartile &lt;dbl&gt;, male_lower_middle_quartile &lt;dbl&gt;,
+## #   female_lower_middle_quartile &lt;dbl&gt;, male_upper_middle_quartile &lt;dbl&gt;, …</code></pre>
+<p>Let’s see the most common words.</p>
+<pre class="r"><code>paygap_tokenized |&gt; 
+  count(word, sort = T)
+## # A tibble: 842 × 2
+##    word            n
+##    &lt;chr&gt;       &lt;int&gt;
+##  1 activities  11925
+##  2 n.e.c        5121
+##  3 manufacture  3905
+##  4 service      3235
+##  5 sale         2582
+##  6 support      2174
+##  7 business     2013
+##  8 specialised  1930
+##  9 motor        1876
+## 10 retail       1855
+## # ℹ 832 more rows</code></pre>
+<p>There are 848 words. Some of them are useless, like “activities,”n.e.c”, “general” and “non”. I’ll remove them. If I’m going to build any useful model, 858 categories are not going to be useful for me. Let’s reduce them to say 40 words and call that <code>top_words</code>.</p>
+<pre class="r"><code>top_words =
+  paygap_tokenized |&gt; 
+  count(word) |&gt; 
+  filter(!word %in% c(&quot;activities&quot;, &quot;n.e.c&quot;, &quot;general&quot;, &quot;non&quot;)) |&gt; 
+  slice_max(n, n = 40) |&gt; 
+  pull(word)</code></pre>
+<p>Let’s take the tokenised dataset, filter only the top words. Then, we will see how different jobs have differences in pays.</p>
+<pre class="r"><code>paygap = paygap_tokenized |&gt; 
+  filter(word %in% top_words) |&gt; 
+  transmute(diff_wage = diff_median_hourly_percent / 100, word)
+paygap
+## # A tibble: 48,573 × 2
+##    diff_wage word       
+##        &lt;dbl&gt; &lt;chr&gt;      
+##  1     0.282 education  
+##  2    -0.34  facilities 
+##  3     0.081 management 
+##  4     0.081 consultancy
+##  5     0.081 financial  
+##  6     0.081 management 
+##  7     0.028 facilities 
+##  8     0.028 facilities 
+##  9     0     human      
+## 10     0     health     
+## # ℹ 48,563 more rows</code></pre>
+<p>Okay, now we are ready to analyse the differences.</p>
+</div>
+<div id="comparing-by-sic-codes" class="section level1">
+<h1>Comparing by SIC Codes</h1>
+<pre class="r"><code>paygap_joined |&gt; 
+  mutate(diff_wage = diff_median_hourly_percent / 100) |&gt; 
+  group_by(description) |&gt;
+  summarise(diff_wage = mean(diff_wage)) |&gt; 
+  arrange(desc(diff_wage))
+## # A tibble: 611 × 2
+##    description                                         diff_wage
+##    &lt;chr&gt;                                                   &lt;dbl&gt;
+##  1 Factoring                                               0.355
+##  2 Manufacture of wiring devices                           0.344
+##  3 Plumbing, heat and air-conditioning installation        0.333
+##  4 Banks                                                   0.333
+##  5 Non-scheduled passenger air transport                   0.331
+##  6 Binding and related services                            0.312
+##  7 Activities of construction holding companies            0.312
+##  8 Manufacture of tools                                    0.308
+##  9 Security and commodity contracts dealing activities     0.307
+## 10 Electrical installation                                 0.304
+## # ℹ 601 more rows</code></pre>
+<p>What is factoring? I’ve never heard of it. Here’s how the <a href="https://www.siccode.co.uk/sic2007/code-64992">website</a> describes it.</p>
+<blockquote>
+<p><strong>SIC Code 64992: Factoring</strong></p>
+<p>List of activities classified inside the UK SIC Code 64992</p>
+<ul>
+<li><p>Debt purchasing</p></li>
+<li><p>Discount company (e.g. Debt factoring)</p></li>
+<li><p>Factoring company (buying book debts)</p></li>
+<li><p>Invoice discounting</p></li>
+</ul>
+</blockquote>
+<p>Other top contenders are manufacturing, plumbing services, etc.</p>
+<p>Let’s visualise the difference. Who doesn’t like pictures!</p>
+<div id="industries-with-highest-average-hourly-median-difference" class="section level2">
+<h2>Industries with highest (average) hourly median difference</h2>
+<pre class="r"><code>paygap_joined |&gt; 
+  mutate(diff_wage = diff_median_hourly_percent / 100) |&gt; 
+  group_by(description) |&gt;
+  summarise(diff_wage = mean(diff_wage)) |&gt;
+  slice_max(diff_wage, n = 10) |&gt; 
+  mutate(description = fct_reorder(description, diff_wage)) |&gt; 
+  ggplot(aes(x = description, y = diff_wage)) +
+  geom_point(alpha = 0.9, size = 2) +
+  scale_x_discrete(labels = \(x) stringr::str_wrap(x, width = 50)) +
+  labs(x = &quot;Industry SIC&quot;,
+       y = &quot;Percentage&quot;,
+       caption = &quot;A value of 10% implies that men earn 10% more than women.&quot;,
+       title = &quot;Median Hourly Pay Difference&quot;) +
+  coord_flip() +
+  theme(plot.title.position = &quot;plot&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-19-1.png" width="100%" /></p>
+</div>
+<div id="industries-with-lowest-average-hourly-median-difference" class="section level2">
+<h2>Industries with lowest (average) hourly median difference</h2>
+<pre class="r"><code>paygap_joined |&gt; 
+  mutate(diff_wage = diff_median_hourly_percent / 100) |&gt; 
+  group_by(description) |&gt;
+  summarise(diff_wage = mean(diff_wage)) |&gt;
+  slice_min(diff_wage, n = 10) |&gt; 
+  mutate(description = fct_reorder(description, diff_wage)) |&gt; 
+  ggplot(aes(x = description, y = diff_wage)) +
+  geom_point(alpha = 0.9, size = 2) +
+  scale_x_discrete(labels = \(x) stringr::str_wrap(x, width = 50)) +
+  labs(x = &quot;Industry SIC&quot;,
+       y = &quot;Percentage&quot;,
+       caption = &quot;A value of -10% implies that men earn 10% less than women.&quot;,
+       title = &quot;Median Hourly Pay Difference&quot;) +
+  coord_flip() +
+  theme(plot.title.position = &quot;plot&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-20-1.png" width="100%" /></p>
+<p>The differences are lowest in services and manufacturing activities (factory work).</p>
+<p>These industry classifications are confusing; they provide too specific detail.</p>
+<p>Let’s visualise the difference by words in description. Recall that we stored it in <code>paygap</code> data frame.</p>
+<pre class="r"><code>paygap |&gt; 
+  group_by(word) |&gt;
+  summarise(diff_wage = mean(diff_wage)) |&gt;
+  slice_max(diff_wage, n = 10) |&gt; 
+  mutate(word = fct_reorder(word, diff_wage)) |&gt; 
+  ggplot(aes(x = word, y = diff_wage)) +
+  geom_point(alpha = 0.9, size = 2) +
+  labs(x = NULL, y = &quot;Percentage&quot;,
+       title = &quot;Percentage increase in men&#39;s hourly wages compared to women&#39;s&quot;) +
+  coord_flip() +
+  theme(plot.title.position = &quot;plot&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-1.png" width="100%" /></p>
+<blockquote>
+<p>Education has the highest wage difference.</p>
+</blockquote>
+<p>Let’s see which has the lowest wage difference.</p>
+<pre class="r"><code>paygap |&gt; 
+  group_by(word) |&gt;
+  summarise(diff_wage = mean(diff_wage)) |&gt;
+  mutate(word = fct_reorder(word, diff_wage)) |&gt; 
+  slice_min(diff_wage, n = 10) |&gt; 
+  ggplot(aes(x = word, y = diff_wage)) +
+  geom_point(alpha = 0.9, size = 2) +
+  labs(x = NULL, y = &quot;Percentage&quot;,
+       title = &quot;Percentage increase in men&#39;s hourly wages compared to women&#39;s&quot;) +
+  coord_flip() +
+  theme(plot.title.position = &quot;plot&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-22-1.png" width="100%" /></p>
+<blockquote>
+<p>Management, business and transportation service businesses look like to have the least differences.</p>
+</blockquote>
+</div>
+</div>
+<div id="the-average-is-not-enough.-lets-fit-a-simple-linear-regression-model." class="section level1">
+<h1>The average is not enough. Let’s fit a simple linear regression model.</h1>
+<p>I’m forcing the intercept to be zero as I’m only looking for the differences due to the word; else the difference should be zero.</p>
+<pre class="r"><code>paygap_fit = lm(diff_wage ~ 0 + word, data = paygap)
+broom::tidy(paygap_fit)
+## # A tibble: 40 × 5
+##    term              estimate std.error statistic   p.value
+##    &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+##  1 wordaccommodation   0.0285   0.00532      5.35 8.66e-  8
+##  2 wordagency          0.0752   0.00546     13.8  5.22e- 43
+##  3 wordbusiness        0.164    0.00314     52.3  0        
+##  4 wordcare            0.0137   0.00525      2.61 8.97e-  3
+##  5 wordcars            0.157    0.00496     31.7  2.82e-218
+##  6 wordconstruction    0.209    0.00401     52.1  0        
+##  7 wordconsultancy     0.195    0.00555     35.2  1.67e-268
+##  8 worddevelopment     0.184    0.00569     32.3  5.43e-226
+##  9 wordeducation       0.155    0.00458     33.9  1.53e-248
+## 10 wordemployment      0.0662   0.00504     13.1  2.49e- 39
+## # ℹ 30 more rows</code></pre>
+<p><code>ggstatsplot</code> package provides beautiful ways to present these results.</p>
+<pre class="r"><code>library(ggstatsplot)
+## You can cite this package as:
+##      Patil, I. (2021). Visualizations with statistical details: The &#39;ggstatsplot&#39; approach.
+##      Journal of Open Source Software, 6(61), 3167, doi:10.21105/joss.03167
+
+names(paygap_fit$coefficients) = str_remove(names(paygap_fit$coefficients), &quot;word&quot;)
+
+ggcoefstats(paygap_fit, output = &quot;plot&quot;, sort = &quot;descending&quot;, 
+            stats.labels = FALSE, exclude.intercept = TRUE,
+            only.significant = TRUE) +
+  scale_y_discrete(labels = \(x) stringr::str_wrap(x, width = 50))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-24-1.png" width="100%" height="150%" /></p>
+<p>Primary education (and in general education) has the highest wage gap. Can any one explain that to me? (Note that in above plot, only significant variables are shown.)</p>
+</div>
+<div id="what-about-differences-by-industries" class="section level1">
+<h1>What about differences by industries?</h1>
+<p>I’ll keep only top-10 industries and classify all others as “others”.</p>
+<pre class="r"><code>paygap_fit = paygap_joined |&gt; 
+  mutate(diff_wage = diff_median_hourly_percent / 100,
+         description = fct_lump_n(f = description, n = 10)) %&gt;%
+   lm(diff_wage ~ 0 + description, data = .)
+
+broom::tidy(paygap_fit)
+## # A tibble: 11 × 5
+##    term                                   estimate std.error statistic   p.value
+##    &lt;chr&gt;                                     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+##  1 descriptionActivities of head offices    0.164   0.00399      41.1  0        
+##  2 descriptionGeneral medical practice a…   0.107   0.00478      22.3  1.36e-109
+##  3 descriptionGeneral public administrat…   0.0515  0.00361      14.3  3.48e- 46
+##  4 descriptionGeneral secondary education   0.272   0.00285      95.5  0        
+##  5 descriptionOther business support ser…   0.143   0.00308      46.4  0        
+##  6 descriptionOther human health activit…   0.0280  0.00444       6.30 3.02e- 10
+##  7 descriptionOther service activities n…   0.103   0.00540      19.1  3.04e- 81
+##  8 descriptionPre-primary education         0.270   0.00579      46.7  0        
+##  9 descriptionPrimary education             0.292   0.00333      87.7  0        
+## 10 descriptionTemporary employment agenc…   0.0464  0.00462      10.0  1.09e- 23
+## 11 descriptionOther                         0.111   0.000734    152.   0</code></pre>
+<p>Pictures!</p>
+<pre class="r"><code>names(paygap_fit$coefficients) = str_remove(names(paygap_fit$coefficients), &quot;description&quot;)
+
+ggcoefstats(paygap_fit, output = &quot;plot&quot;, sort = &quot;descending&quot;, 
+            stats.labels = FALSE, exclude.intercept = TRUE,
+            only.significant = TRUE) +
+  scale_y_discrete(labels = \(x) stringr::str_wrap(x, width = 50))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-26-1.png" width="100%" height="150%" /></p>
+<p>The difference is least in unlicensed cafes and restaurants, healthcare facilities and social work areas. That’s something positive. (Note that in above plot, only significant variables are shown.)</p>
+</div>
+<div id="how-does-hourly-pay-gap-correspond-to-bonus" class="section level1">
+<h1>How does hourly pay gap correspond to bonus?</h1>
+<div id="hourly-pay-and-bonus-by-employer" class="section level2">
+<h2>Hourly Pay and Bonus by Employer</h2>
+<p>I’m averaging the data we have for each employer. Each point represents a company. I’ve removed companies which had more than 50% difference in pay. It is sad in itself that we have those companies, but including them would worsen our plots and hide the cases where we can have significant impact.</p>
+<pre class="r"><code>paygap_employer = paygap_raw |&gt; 
+  mutate(diff_median_bonus_percent = diff_median_bonus_percent/100,
+         diff_median_hourly_percent = diff_median_hourly_percent) |&gt; 
+  group_by(employer_name) |&gt; 
+  summarise(diff_median_bonus_percent = mean(diff_median_bonus_percent, na.rm = TRUE),
+            diff_median_hourly_percent = mean(diff_median_hourly_percent, na.rm = TRUE)) |&gt; 
+  na.omit()
+paygap_employer
+## # A tibble: 13,636 × 3
+##    employer_name                   diff_median_bonus_pe…¹ diff_median_hourly_p…²
+##    &lt;chr&gt;                                            &lt;dbl&gt;                  &lt;dbl&gt;
+##  1 10 TRINITY SQUARE HOTEL LIMITED                  0.545                   10.3
+##  2 123 EMPLOYEES LTD                               -0.441                   32.5
+##  3 123-REG LIMITED                                  0.402                   18.1
+##  4 1509 GROUP                                       0                       13.8
+##  5 1610 LIMITED                                    -0.25                   -35  
+##  6 1825 FINANCIAL PLANNING AND AD…                  0.83                    42.6
+##  7 1879 EVENTS MANAGEMENT LIMITED                   0.437                    8.1
+##  8 1LIFE MANAGEMENT SOLUTIONS LIM…                  0.392                  -18.4
+##  9 1ST CHOICE STAFF RECRUITMENT L…                 -2.39                    -1  
+## 10 1ST HOME CARE LTD.                               0                        0.1
+## # ℹ 13,626 more rows
+## # ℹ abbreviated names: ¹​diff_median_bonus_percent, ²​diff_median_hourly_percent</code></pre>
+<pre class="r"><code>paygap_employer |&gt; 
+  ggplot(aes(x = diff_median_hourly_percent/100, 
+             y = diff_median_bonus_percent/100)) +
+  geom_point(alpha = 0.3, size = 3) +
+  scale_x_continuous(limits = c(-0.5, 0.5), labels = scales::percent) +
+  scale_y_continuous(limits = c(-0.5, 0.55), labels = scales::percent) +
+  labs(x = &quot;Hourly pay difference&quot;,
+       y = &quot;Bonus pay difference&quot;,
+       caption = &quot;Each point represents a company. I&#39;ve removed companies which had more than 50% difference in pay.&quot;,
+       title = &quot;How pay hourly pay and bonus difference vary by company&quot;) +
+  theme(plot.title.position = &quot;plot&quot;)
+## Warning: Removed 197 rows containing missing values (`geom_point()`).</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-28-1.png" width="100%" /></p>
+</div>
+<div id="hourly-pay-and-bonus-by-industry" class="section level2">
+<h2>Hourly Pay and Bonus by Industry</h2>
+<p>We can also look at the differences by industry.</p>
+<pre class="r"><code>paygap_industry = paygap_joined |&gt; 
+  mutate(diff_median_bonus_percent = diff_median_bonus_percent/100,
+         diff_median_hourly_percent = diff_median_hourly_percent) |&gt; 
+  group_by(description) |&gt; 
+  summarise(diff_median_bonus_percent = mean(diff_median_bonus_percent, na.rm = TRUE),
+            diff_median_hourly_percent = mean(diff_median_hourly_percent, na.rm = TRUE)) |&gt; 
+  na.omit()
+paygap_industry
+## # A tibble: 609 × 3
+##    description                     diff_median_bonus_pe…¹ diff_median_hourly_p…²
+##    &lt;chr&gt;                                            &lt;dbl&gt;                  &lt;dbl&gt;
+##  1 Accounting and auditing activi…                 0.179                   12.2 
+##  2 Activities auxiliary to financ…                 0.359                   20.6 
+##  3 Activities of amusement parks …                 0.187                    3.75
+##  4 Activities of business and emp…                -0.0625                   8.77
+##  5 Activities of call centres                      0.121                    3.51
+##  6 Activities of collection agenc…                 0.250                    8.74
+##  7 Activities of conference organ…                 0.311                   10.7 
+##  8 Activities of construction hol…                 0.448                   31.2 
+##  9 Activities of credit bureaus                    0.318                   -0.88
+## 10 Activities of distribution hol…                 0.261                   14.5 
+## # ℹ 599 more rows
+## # ℹ abbreviated names: ¹​diff_median_bonus_percent, ²​diff_median_hourly_percent</code></pre>
+<pre class="r"><code>paygap_industry |&gt; 
+  ggplot(aes(x = diff_median_hourly_percent/100, 
+             y = diff_median_bonus_percent/100,
+             label = description)) +
+  geom_point(alpha = 0.3, size = 3) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = &quot;Hourly pay difference&quot;,
+       y = &quot;Bonus pay difference&quot;,
+       caption = &quot;Each point represents an industry.&quot;,
+       title = &quot;How pay hourly pay and bonus difference vary by industry&quot;) +
+  theme(plot.title.position = &quot;plot&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-30-1.png" width="100%" /></p>
+<p>The two outliers are “Manufacturer of ceramic tiles” who pay 60% less bonus to women than men while having 16% less hourly wage, and “Retail sale of bread, cakes, flour confectionary and sugar confectionary in specialised stores” where women have 20% less bonus but 8% more hourly wage.</p>
+</div>
+<div id="hourly-pay-and-bonus-by-industry-word" class="section level2">
+<h2>Hourly Pay and Bonus by Industry-Word</h2>
+<p>Recall that we found the top common words from the descriptions that represented the general ideas.</p>
+<pre class="r"><code>paygap_words = paygap_tokenized |&gt; 
+  filter(word %in% top_words) |&gt; 
+  transmute(diff_wage = diff_median_hourly_percent / 100, 
+            diff_bonus = diff_median_bonus_percent/ 100,
+            word) |&gt; 
+  group_by(word) |&gt; 
+  summarise(diff_wage = mean(diff_wage), diff_bonus = mean(diff_bonus))
+paygap_words
+## # A tibble: 40 × 3
+##    word          diff_wage diff_bonus
+##    &lt;chr&gt;             &lt;dbl&gt;      &lt;dbl&gt;
+##  1 accommodation    0.0285   0.0418  
+##  2 agency           0.0752  -0.220   
+##  3 business         0.164    0.0928  
+##  4 care             0.0137   0.000628
+##  5 cars             0.157    0.347   
+##  6 construction     0.209   -0.0564  
+##  7 consultancy      0.195    0.243   
+##  8 development      0.184    0.168   
+##  9 education        0.155   -0.0361  
+## 10 employment       0.0662  -0.386   
+## # ℹ 30 more rows</code></pre>
+<pre class="r"><code>paygap_words |&gt; 
+  ggplot(aes(x = diff_wage, y = diff_bonus, label = word)) +
+  ggrepel::geom_text_repel(size = 3) +
+  labs(x = &quot;Hourly pay difference&quot;,
+       y = &quot;Bonus pay difference&quot;,
+       title = &quot;How does pay vary by industry?&quot;) +
+  theme(plot.title.position =  &quot;plot&quot;)
+## Warning: ggrepel: 1 unlabeled data points (too many overlaps). Consider
+## increasing max.overlaps</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-32-1.png" width="100%" /></p>
+<hr />
+<p><em>It’s 12:59 am now and I’m sleepy. Probably will pick this up again some day.</em></p>
+<div class="float">
+<img src="https://media.giphy.com/media/12tD1lhZkf3q24/giphy.gif" alt="Peanuts yawning GIF" />
+<div class="figcaption">Peanuts yawning GIF</div>
+</div>
+</div>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>I somehow keep forgetting about <code>count()</code> and end up grouping and summarising, which is a much more complicated way of achieving the same thing. Probably, I need to think of them as equivalent to pandas’ <code>value_counts()</code> .<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>

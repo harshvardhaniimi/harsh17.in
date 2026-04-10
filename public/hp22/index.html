@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Supply Chain Analytics at HP Inc. | Harshvardhan</title>
+<meta name="keywords" content="economics, forecasting, python">
+<meta name="description" content="Forecasting Global Print Demand Using Machine Learning">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/hp22/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/hp22/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/hp22/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Supply Chain Analytics at HP Inc.">
+  <meta property="og:description" content="Forecasting Global Print Demand Using Machine Learning">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2022-10-31T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-10-31T00:00:00+00:00">
+    <meta property="article:tag" content="Economics">
+    <meta property="article:tag" content="Forecasting">
+    <meta property="article:tag" content="Python">
+      <meta property="og:image" content="/hp22/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/hp22/featured.png">
+  <meta name="twitter:title" content="Supply Chain Analytics at HP Inc.">
+  <meta name="twitter:description" content="Forecasting Global Print Demand Using Machine Learning">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Supply Chain Analytics at HP Inc.",
+      "item": "/hp22/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Supply Chain Analytics at HP Inc.",
+  "name": "Supply Chain Analytics at HP Inc.",
+  "description": "Forecasting Global Print Demand Using Machine Learning",
+  "keywords": [
+    "economics", "forecasting", "python"
+  ],
+  "articleBody": "This summer was a fantastic experience for me. I spent three months toying with different machine learning models building large-scale forecasts for HP’s print business. I went in with hardly a year of experience in Python. I came out with a deep understanding of how Python works, internally and visually. From textbook examples of regression and time-series forecasting, I went to creating forecasts for thousands of products that HP produces worldwide.\nProject Forecasting Demand My internship project was primarily focused on using machine learning to forecast the demand for printers worldwide. Caroline Johnston, my co-intern from the University of Southern California, and I created the models for better demand signal prediction. We developed models with LightGBM and tuned them with FLAML. To keep track of our numerous experiments, we used ML Flow.\nHP manufactures and sells over 10,000 print-related products in over 170 countries. An accurate demand forecast is vital as demand forecasts drive supply planning. If we forecast higher than actuals, there is a cost of overage; if we predict too low, there is a cost of underage. We do not want too much inventory; we do not want too little, either. Besides this primary project, we also worked on two other projects: recording data quality issues and designing holistic metrics.\nRecording Data Quality Issues HP believes Data is an asset (Curtland et al., 2022). In 2021, the company gained the new imperative that values data as an asset and places a premium on data quality, access, and utility. This idea evolved from Data Science practitioners and was presented to the HP board and other audiences, including the 2021 Data Science and Knowledge Discovery Summit, an HP internal summit with 100+ presentations over three days.1\nWe created Python code that identified errors before they were fed into the model and logged them separately into a spreadsheet. The business and IT teams could use the error reports to fix the problems at the source.\nDesigning Holistic Metrics Businesses care about different metrics than machine learning models. For example, the overage cost for HP is often less than that of underage, so planners prefer over- vs under-forecasting. However, the machine learning models’ loss function is usually symmetric. RMSE, WMAPE, and almost every metric would treat \\(x\\) units more similarly to \\(x\\) units less.\nWe (largely Caroline) also designed holistic metrics to synthesise business and ML accuracy results. We worked on automatic data quality error detection.\nTeam I worked with the Strategic Planning and Modelling team, abbreviated internally as SPaM.2\nThe SPaM team has an extensive experience in supply chain analytics. They have worked on numerous mission-critical projects over the last 40 years, and my task was no different. My manager, Barrett Crane, and my project mentors, Cara Curtland and Jerry Hwang, cared for us to succeed in the internship.3\nShawn Tay, another SPaMster, taught me ways to think about my career. He suggested that I look at my career as a project consultant Currently, I’m working on a project with HP where I have to maximise my contribution so that the client would be happy and satisfied. In the process, I should aim to upskill myself continuously. A better consultant would get a better project, making them better consultants. It is a continuous improvement loop.4\nOther than that, I also had the fortune to learn from Chuck VanDam, Frederic Marie and Pedro Neto. They were working on a personal systems part optimisation project that I cannot share a lot about. Chuck’s ability to sharpen arguments in powerpoint slides is remarkable.\nSpreadsheet Modelling Workshop The SPaM team in Vancouver also organised an Excel workshop where we learnt interactive spreadsheet modelling. I also got the opportunity to talk about data manipulation in the session!\nInternStellar Award Our internship project got the first runners-up in the technical contribution category at the HP InternStellar Award competition.5 Here is Caroline and me with our final poster at the Interns Poster Fair.\nFun continues… I thoroughly enjoyed the work. The problem was intellectually stimulating, and while many of our models are beating the current forecast performance, we still have lots of ideas for further model improvement. Therefore, I’m continuing the work through the school year, working part-time with them!\nThank you, Meenal and Cara, for reviewing an early draft of this post. Your comments resulted in significant revisions and polished it.\nFrom HP Inc. Advanced Analytics Powers Technology in the Service of Humanity:\nFormalized in 2016, DSKD is composed of more than 3,000 members who hold biweekly knowledge sharing sessions and annual internal summits. The 2021 summit included 114 presentations over three days, culled from more than 500 submitted papers. Topics presented included proactive and predictive services, deep learning, reinforcement learning, data preparation and feature engineering, product improvement, machine learning (ML) and artificial intelligence (AI)-enabled automation, mixed-integer time-phased optimization, business process automation and much more.\n↩︎ The acronym was popular before spam emails became a problem. The word wasn’t in general lingo back when HP SPaM was founded in 1989. ↩︎\nEven today, there’s rarely a meeting with Jerry where I don’t learn something new about Python, Jupyter and ilk. ↩︎\nI believe this idea comes from a book that either Caroline or Shawn mentioned, but I don’t remember the name. ↩︎\nThe winner developed a method that could print on any fiber rather quickly. I’m perfectly fine with the second position; he deserved it. ↩︎\n",
+  "wordCount" : "895",
+  "inLanguage": "en",
+  "image": "/hp22/featured.png","datePublished": "2022-10-31T00:00:00Z",
+  "dateModified": "2022-10-31T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/hp22/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Supply Chain Analytics at HP Inc.
+    </h1>
+    <div class="post-meta"><span title='2022-10-31 00:00:00 +0000 UTC'>October 31, 2022</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>This summer was a fantastic experience for me. I spent three months toying with different machine learning models building large-scale forecasts for HP&rsquo;s print business. I went in with hardly a year of experience in Python. I came out with a deep understanding of how Python works, internally and visually. From textbook examples of regression and time-series forecasting, I went to creating forecasts for thousands of products that HP produces worldwide.</p>
+<h2 id="project">Project<a hidden class="anchor" aria-hidden="true" href="#project">#</a></h2>
+<h3 id="forecasting-demand">Forecasting Demand<a hidden class="anchor" aria-hidden="true" href="#forecasting-demand">#</a></h3>
+<p>My internship project was primarily focused on using machine learning to forecast the demand for printers worldwide. <a href="https://www.linkedin.com/in/caroline-johnston39/">Caroline Johnston</a>, my co-intern from the University of Southern California, and I created the models for better demand signal prediction. We developed models with <a href="https://lightgbm.readthedocs.io/en/v3.3.2/">LightGBM</a> and tuned them with <a href="https://github.com/microsoft/FLAML">FLAML</a>. To keep track of our numerous experiments, we used <a href="https://mlflow.org/">ML Flow</a>.</p>
+<p>HP manufactures and sells over 10,000 print-related products in over 170 countries. An accurate demand forecast is vital as demand forecasts drive supply planning. If we forecast higher than actuals, there is a cost of overage; if we predict too low, there is a cost of underage. We do not want too much inventory; we do not want too little, either. Besides this primary project, we also worked on two other projects: recording data quality issues and designing holistic metrics.</p>
+<h3 id="recording-data-quality-issues">Recording Data Quality Issues<a hidden class="anchor" aria-hidden="true" href="#recording-data-quality-issues">#</a></h3>
+<p>HP believes Data is an asset (<a href="https://pubsonline.informs.org/do/10.1287/orms.2022.02.18/full/">Curtland et al., 2022</a>). In 2021, the company gained the new imperative that values data as an asset and places a premium on data quality, access, and utility. This idea evolved from Data Science practitioners and was presented to the HP board and other audiences, including the 2021 Data Science and Knowledge Discovery Summit, an HP internal summit with 100+ presentations over three days.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p><img loading="lazy" src="/hp22/images/hp_data_rules_of_the_garage-WEB.jpeg"></p>
+<p>We created Python code that identified errors before they were fed into the model and logged them separately into a spreadsheet. The business and IT teams could use the error reports to fix the problems at the source.</p>
+<h3 id="designing-holistic-metrics">Designing Holistic Metrics<a hidden class="anchor" aria-hidden="true" href="#designing-holistic-metrics">#</a></h3>
+<p>Businesses care about different metrics than machine learning models. For example, the overage cost for HP is often less than that of underage, so planners prefer over- vs under-forecasting. However, the machine learning models&rsquo; loss function is usually symmetric. RMSE, WMAPE, and almost every metric would treat <code>\(x\)</code> units more similarly to <code>\(x\)</code> units less.</p>
+<p>We (largely Caroline) also designed holistic metrics to synthesise business and ML accuracy results. We worked on automatic data quality error detection.</p>
+<h2 id="team">Team<a hidden class="anchor" aria-hidden="true" href="#team">#</a></h2>
+<p>I worked with the <a href="https://www.wikiwand.com/en/HP_SPaM">Strategic Planning and Modelling</a> team, abbreviated internally as SPaM.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>The SPaM team has an extensive experience in supply chain analytics. They have worked on numerous mission-critical projects over the last 40 years, and my task was no different. My manager, <a href="https://www.linkedin.com/in/barrett-crane-a3a239/">Barrett Crane</a>, and my project mentors, <a href="https://www.linkedin.com/in/caracurtland/">Cara Curtland</a> and <a href="https://www.linkedin.com/in/jerry-hwang-445191/">Jerry Hwang</a>, cared for us to succeed in the internship.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p><a href="https://www.linkedin.com/in/stay/">Shawn Tay</a>, another SPaMster, taught me ways to think about my career. He suggested that I look at my career as a project <em>consultant</em> Currently, I&rsquo;m working on a project with HP where I have to maximise my contribution so that the <em>client</em> would be happy and satisfied. In the process, I should aim to upskill myself continuously. A better consultant would get a better project, making them better consultants. It is a continuous improvement loop.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<p>Other than that, I also had the fortune to learn from Chuck VanDam, Frederic Marie and Pedro Neto. They were working on a personal systems part optimisation project that I cannot share a lot about. Chuck&rsquo;s ability to sharpen arguments in powerpoint slides is remarkable.</p>
+<h3 id="spreadsheet-modelling-workshop">Spreadsheet Modelling Workshop<a hidden class="anchor" aria-hidden="true" href="#spreadsheet-modelling-workshop">#</a></h3>
+<p>The SPaM team in Vancouver also organised an Excel workshop where we learnt interactive spreadsheet modelling. I also got the opportunity to talk about data manipulation in the session!</p>
+<p><img loading="lazy" src="/hp22/images/20220707_170231.png"></p>
+<h2 id="internstellar-award">InternStellar Award<a hidden class="anchor" aria-hidden="true" href="#internstellar-award">#</a></h2>
+<p>Our internship project got the first runners-up in the technical contribution category at the HP InternStellar Award competition.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> Here is Caroline and me with our final poster at the Interns Poster Fair.</p>
+<p><img loading="lazy" src="/hp22/images/IMG_4431.png"></p>
+<h2 id="fun-continues">Fun continues&hellip;<a hidden class="anchor" aria-hidden="true" href="#fun-continues">#</a></h2>
+<p>I thoroughly enjoyed the work. The problem was intellectually stimulating, and while many of our models are beating the current forecast performance, we still have lots of ideas for further model improvement. Therefore, I&rsquo;m continuing the work through the school year, working part-time with them!</p>
+<hr>
+<p>Thank you, Meenal and Cara, for reviewing an early draft of this post. Your comments resulted in significant revisions and polished it.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>From <a href="https://pubsonline.informs.org/do/10.1287/orms.2022.02.18/full/">HP Inc. Advanced Analytics Powers Technology in the Service of Humanity</a>:</p>
+<blockquote>
+<p>Formalized in 2016, DSKD is composed of more than 3,000 members who hold biweekly knowledge sharing sessions and annual internal summits. The 2021 summit included 114 presentations over three days, culled from more than 500 submitted papers. Topics presented included proactive and predictive services, deep learning, reinforcement learning, data preparation and feature engineering, product improvement, machine learning (ML) and artificial intelligence (AI)-enabled automation, mixed-integer time-phased optimization, business process automation and much more.</p>
+</blockquote>
+&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></li>
+<li id="fn:2">
+<p>The acronym was popular before spam emails became a problem. The word wasn&rsquo;t in general lingo back when HP SPaM was founded in 1989.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Even today, there&rsquo;s rarely a meeting with Jerry where I don&rsquo;t learn something new about Python, Jupyter and ilk.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>I believe this idea comes from a book that either Caroline or Shawn mentioned, but I don&rsquo;t remember the name.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>The winner developed a method that could print on <em>any</em> fiber rather quickly. I&rsquo;m perfectly fine with the second position; he deserved it.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/economics/">Economics</a></li>
+      <li><a href="/tags/forecasting/">Forecasting</a></li>
+      <li><a href="/tags/python/">Python</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/population-collapse/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Is the world population going to collapse?</span>
+  </a>
+  <a class="next" href="/wise/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Bullets of Wisdom</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>{{ .Title | default "Writing" }}</h1>
+  {{ with .Description }}<p style="color:var(--secondary);font-style:italic;">{{ . }}</p>{{ end }}
+</header>
+
+{{- /* Tag filter pills */ -}}
+{{- $allTags := slice -}}
+{{- range .Pages -}}
+  {{- range .Params.tags -}}
+    {{- $allTags = $allTags | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $uniqueTags := $allTags | uniq | sort -}}
+
+{{- if $uniqueTags }}
+<div class="tag-filter" id="tagFilter">
+  <a href="#" class="active" data-tag="all">all</a>
+  {{- range $uniqueTags }}
+  <a href="#" data-tag="{{ . | urlize }}">{{ . }}</a>
+  {{- end }}
+</div>
+{{- end }}
+
+{{- /* Posts grouped by year — clean rows */ -}}
+{{- $pages := .Pages.ByDate.Reverse -}}
+{{- $years := slice -}}
+{{- range $pages -}}
+  {{- $y := .Date.Format "2006" -}}
+  {{- $years = $years | append $y -}}
+{{- end -}}
+{{- $years = $years | uniq -}}
+
+{{- range $year := $years }}
+<div class="year-group">
+  <h3>{{ $year }}</h3>
+  {{- range $pages -}}
+    {{- if eq (.Date.Format "2006") $year }}
+  <div class="writing-list-item" data-tags="{{ with .Params.tags }}{{ delimit . "," | urlize }}{{ end }}">
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <span class="date">{{ .Date.Format "Jan 2" }}</span>
+  </div>
+    {{- end -}}
+  {{- end -}}
+</div>
+{{- end }}
+
+<script>
+(function() {
+  var filter = document.getElementById('tagFilter');
+  if (!filter) return;
+  var pills = filter.querySelectorAll('a');
+  var entries = document.querySelectorAll('.writing-list-item[data-tags]');
+
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function(e) {
+      e.preventDefault();
+      var tag = this.getAttribute('data-tag');
+      pills.forEach(function(p) { p.classList.remove('active'); });
+      this.classList.add('active');
+
+      entries.forEach(function(entry) {
+        if (tag === 'all') {
+          entry.style.display = '';
+        } else {
+          var tags = entry.getAttribute('data-tags');
+          entry.style.display = tags.indexOf(tag) !== -1 ? '' : 'none';
+        }
+      });
+
+      document.querySelectorAll('.year-group').forEach(function(yg) {
+        var visible = yg.querySelectorAll('.writing-list-item:not([style*="display: none"])');
+        yg.style.display = visible.length ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+
+{{- end }}{{/* define "main" */}}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Forecasting on Harshvardhan</title>
+    <link>/tags/forecasting/</link>
+    <description>Recent content in Forecasting on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 18 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/forecasting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enterprise-Scale Machine Learning for Demand Forecasting</title>
+      <link>/foresight-paper/</link>
+      <pubDate>Sat, 18 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>/foresight-paper/</guid>
+      <description>Our HP Inc. forecasting framework was featured in &lt;em&gt;Foresight: The International Journal of Applied Forecasting&lt;/em&gt; (Issue 79, 2025) and recognized as a finalist at the International Institute of Forecasting’s Foresight Conference. &lt;a href=&#34;https://www.harsh17.in/docs/papers/HP_Foresight_Paper.pdf&#34;&gt;🔗 PDF&lt;/a&gt;</description>
+    </item>
+    <item>
+      <title>Print Demand Forecasting with Machine Learning at HP Inc.</title>
+      <link>/print-demand-forecasting-with-machine-learning-at-hp-inc/</link>
+      <pubDate>Wed, 04 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/print-demand-forecasting-with-machine-learning-at-hp-inc/</guid>
+      <description>HP Inc. replaced manual and statistical forecasting with a machine learning (LightGBM) model to improve demand prediction accuracy across 18,000+ print products. The model has been deployed enterprise-wide, with demonstrated business value and principles for scaling ML in large organizations. &lt;a href=&#34;https://www.harsh17.in/docs/papers/HP_Paper_IJAA_Preprint.pdf&#34;&gt;🔗 PDF&lt;/a&gt;</description>
+    </item>
+    <item>
+      <title>From Data to Decisions: Enterprise Demand Forecasting with Machine Learning</title>
+      <link>/dissertation/</link>
+      <pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate>
+      <guid>/dissertation/</guid>
+      <description>My Ph.D. dissertation (University of Tennessee, 2025) develops a machine-learning-driven demand forecasting framework implemented at HP Inc., improving forecast accuracy by 34% and reducing inventory by 28%. &lt;a href=&#34;https://www.harsh17.in/docs/2025_04_10_Doctoral_Dissertation.pdf&#34;&gt;🔗 PDF&lt;/a&gt;</description>
+    </item>
+    <item>
+      <title>From Data to Decisions: The Story Behind My PhD</title>
+      <link>/phd/</link>
+      <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>/phd/</guid>
+      <description>&lt;p&gt;On March 31, 2025, I successfully defended my dissertation: “From Data to Decisions: Enterprise Demand Forecasting with Machine Learning.” My work is rooted in generalizable research at the intersection of machine learning, operations research, and organizational decision-making, grounded through a real-world implementation at HP Inc.&lt;/p&gt;
+&lt;p&gt;Final accepted draft of my dissertation is available &lt;a href=&#34;https://www.harsh17.in/docs/2025_04_10_Doctoral_Dissertation.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;what-is-my-dissertation-about&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;What is my dissertation about?&lt;/h1&gt;
+&lt;p&gt;Demand forecasting has a rich intellectual and practical history.
+Ancient texts like the Indian &lt;em&gt;Arthashastra&lt;/em&gt; (350 BCE) and Chinese Han Dynasty archives both emphasized blending qualitative judgment with quantitative grain records to estimate demand.
+Fast forward to the industrial age, companies like Ford and Chrysler pioneered judgmental forecasting to support assembly lines.
+In the 1960s, statisticians like Box, Jenkins, Holt, and Winters developed foundational time-series methods like ARIMA and exponential smoothing, which still serve as industry baselines.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Artificial Intelligence and Data Sciences in Real-world Business</title>
+      <link>/data-sciences-in-real-world/</link>
+      <pubDate>Thu, 07 Sep 2023 13:00:00 +0000</pubDate>
+      <guid>/data-sciences-in-real-world/</guid>
+      <description>A quick rundown of my doctoral research presented at the BA Forum 2023</description>
+    </item>
+    <item>
+      <title>HP Internship: A Year and a Half in the Fast Lane</title>
+      <link>/hp-blog-2023/</link>
+      <pubDate>Mon, 21 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>/hp-blog-2023/</guid>
+      <description>During my 15-month internship at HP Inc., I dove into machine learning forecasting, tackling challenges from SKU-level predictions to data management. Collaborating with the SPaM team, utilizing innovative tools, and embracing HP&amp;rsquo;s culture of innovation and failure, I emerged with invaluable skills, insights, and memories.</description>
+    </item>
+    <item>
+      <title>ML Forecasting at HP Inc.</title>
+      <link>/hp23/</link>
+      <pubDate>Mon, 21 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>/hp23/</guid>
+      <description>Creating ML demand forecast for print products at HP Inc. using LightGBM and pushing it to production for wide adoption.</description>
+    </item>
+    <item>
+      <title>Supply Chain Analytics at HP Inc.</title>
+      <link>/hp22/</link>
+      <pubDate>Mon, 31 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>/hp22/</guid>
+      <description>Forecasting Global Print Demand Using Machine Learning</description>
+    </item>
+  </channel>
+</rss>

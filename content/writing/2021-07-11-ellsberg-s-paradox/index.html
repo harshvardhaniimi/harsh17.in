@@ -1,0 +1,77 @@
+---
+title: Ellsberg's Paradox
+summary: Simulation of Ellsberg's Paradox
+subtitle: Simulation of Ellsberg's Paradox
+author: Harshvardhan
+date: '2021-07-11'
+slug: ellsberg-paradox
+categories:
+  - R
+  - statistics
+  - life
+  - economics
+tags:
+  - blog
+  - probability
+  - R
+draft: false
+---
+
+
+
+<p>I was reading the book “How Not to Be Wrong: The Power of Mathematical Thinking” by Jordan Ellenberg. The book introduces a paradox named after Daniel Ellsberg, a young analyst at RAND Corporation and famous for leaking the Pentagon papers to civilians. Von Neumann and Morgenstern had proven that all individuals acted based on certain rules so as to maximize their utilities (<a href="https://www.goodreads.com/book/show/483055.Theory_of_Games_and_Economic_Behavior"><em>The Theory of Games and Economic Behaviour</em></a>, 1944). While working at RAND on humans taking decisions under the face of uncertainty, he devised a famous experiment, now known as Ellsbeg’s Paradox.</p>
+<blockquote>
+<p>Suppose there is an urn (or a bag) with ninety balls inside. You know that that thirty of the balls are red; concerning the other sixty balls, you know only that some are black and some are yellow. The experimenter describes to you the following bets:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Red:</strong> You get $100 if the next ball pulled from the urn is red, else you get nothing.</li>
+<li><strong>Black:</strong> You get $100 if the next ball is black, otherwise nothing.</li>
+<li><strong>Not-red:</strong> You get $100 if the next ball is either black or yellow, otherwise nothing.</li>
+<li><strong>Not-black:</strong> You get $100 if the next ball is either red or yellow, otherwise nothing.</li>
+</ol>
+<p>Which bet do you prefer; <strong>Red</strong> or <strong>Black</strong>? What about <strong>Not-red</strong> vs <strong>Not-black</strong>?</p>
+<p><a href="https://www.goodreads.com/book/show/18693884-how-not-to-be-wrong"><em>How Not to Be Wrong: The Power of Mathematical Thinking</em></a><em>, Jordan Ellenberg</em></p>
+</blockquote>
+<div id="simulation" class="section level3">
+<h3>Simulation</h3>
+<p>I want to run a simulation study of this experiment. We know that some are black and some are yellow. I want to vary the number of black and yellow balls in the urn to check the most sensible bet at different combinations.</p>
+<pre class="r"><code># total number of balls
+n_total = 90
+
+# red balls
+n_red = 30
+
+# possible number of red balls
+np_black = c(1:(n_total - n_red))
+np_yellow = n_total - n_red - np_black</code></pre>
+<p>Now, think about this — the number of red balls are fixed (30). The number of black and yellow balls can vary between one to 59, with their sum fixed at 60. Therefore, for each number of black (or yellow) ball, we have distinct probabilities for all four bets. Let us calculate them.</p>
+<pre class="r"><code># creating vectors to store probabilities of black and yellow colours 
+# (probability of red will always remain 1/3)
+p_black = np_black/n_total
+p_yellow = np_yellow/n_total</code></pre>
+<p>Let us visualize these results.</p>
+<pre class="r"><code>plot(p_black, type = &quot;l&quot;, lwd = 3, col = &quot;black&quot;, 
+     xlab = &quot;Number of Black Balls&quot;, ylab = &quot;Probability of Bets&quot;); 
+abline(h = 1/3, lwd = 3, col = &quot;red&quot;); 
+lines(p_yellow, type = &quot;l&quot;, lwd = 3, col = &quot;yellow&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Depending on how many black balls are in the urn, you have different probabilities of winning — nothing unexpected. It is apparent that one should choose <strong>Yellow</strong> when the number of black balls is less than thirty and <strong>Black</strong> when the number of black balls is more than thirty. The only case when one could choose <strong>Red</strong> is when all the balls are in equal number in the urn, and they should be indifferent between all three at that point.</p>
+<div id="catching-up" class="section level4">
+<h4>Catching Up</h4>
+<p>However, our original experiment wasn’t about choosing any of these individual colors, it was choosing between the four bets: <strong>Red</strong>, <strong>Not-red</strong>, <strong>Black</strong> and <strong>Not-black</strong>. Which of these is the better option? Let’s find out!</p>
+<p>The probability of <strong>Red</strong> remains fixed at one-third, no matter what is the combination of black and yellow. Therefore, the probability of <strong>Not-red</strong> also remains fixed at two-third. The probability of <strong>Black</strong> varies between 1/60 to 59/60. Therefore, the probability of <strong>Not-black</strong> varies from 59/60 to 1/60. Let’s visualize all of these!</p>
+<p>Bets <strong>Not-red</strong> and <strong>Not-black</strong> are represented by blue and gray respectively.</p>
+<pre class="r"><code>plot(p_black, type = &quot;l&quot;, lwd = 3, col = &quot;Black&quot;, xlab = &quot;Number of Black Balls&quot;, 
+     ylab = &quot;Probability of Bets&quot;, ylim = c(0,1)); 
+lines(1-p_black, lwd = 3, col = &quot;Gray&quot;);
+abline(h = 1/3, lwd = 3, col = &quot;Red&quot;); 
+abline(h = 2/3, lwd = 3, col = &quot;Blue&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Clearly, <strong>Not-red</strong> dominates <strong>Red</strong> and <strong>Black</strong>. <strong>Not-black</strong> dominates <strong>Red</strong>. So, if presented a choice, I would bet on <strong>Not-black</strong> if the number of black balls is less than 30 and <strong>Not-red</strong> if the number of black balls is more than 30. Since the number of black balls in not known, I will compare the expected value — which is exactly the same for both cases. (A simple way to check this is compare the area under the curve for blue and gray lines. In this case, they’re both 40.)</p>
+</div>
+</div>
+<div id="the-paradox" class="section level3">
+<h3>The Paradox</h3>
+<p>However, Ellsberg found that almost everyone preferred the <strong>Not-red</strong> bet over <strong>Not-black</strong> even when game theory and statistics showed that the two choices should be equally-preferred. This phenomenon was termed <strong>“uncertainty aversion”</strong>.</p>
+<p>When individuals are presented with choices that are equally profitable, they choose the one that has lower uncertainty. This uncertainty is different from risk, which is usually measured as standard deviation in statistics. <em>Risks are known unknowns and uncertainties are unknown unknowns</em> (Donald Rumsfeld)<em>.</em> When presented with the latter, we always choose the option that has lower uncertainty.</p>
+<p>This experiment and paradox may sound trivial today but when it was first presented to the world it was a breakthrough. Utility maximization theory by Von Neumann and Morgenstern was seriously challenged by the results. Utility theory, hitherto unchallenged, had met its first limitation. Today, these limitations are well accepted among economists.</p>
+</div>

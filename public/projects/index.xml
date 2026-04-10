@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Projects on Harshvardhan</title>
+    <link>/projects/</link>
+    <description>Recent content in Projects on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macchi Trash</title>
+      <link>/macchi-trash/</link>
+      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>/macchi-trash/</guid>
+      <description>A tiny macOS menu-bar app that shows animated flies buzzing around your Trash when it has items.</description>
+    </item>
+    <item>
+      <title>Page to Markdown</title>
+      <link>/webpage-to-md/</link>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>/webpage-to-md/</guid>
+      <description>A lightweight browser extension that converts webpages to Markdown, plain text, or downloadable .md files.</description>
+    </item>
+    <item>
+      <title>Good Sign-Offs / अच्छी विदाइयाँ</title>
+      <link>/good-sign-offs/</link>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>/good-sign-offs/</guid>
+      <description>2,000+ English email sign-offs from Are.na and 40+ original Hindi sign-offs, in a beautiful randomizer.</description>
+    </item>
+    <item>
+      <title>Kalam</title>
+      <link>/kalam/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>/kalam/</guid>
+      <description>A native macOS menu-bar app for speech-to-text transcription — completely local, private, and free.</description>
+    </item>
+    <item>
+      <title>TextSage</title>
+      <link>/textsage/</link>
+      <pubDate>Sun, 16 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>/textsage/</guid>
+      <description>A Chrome extension that lets you explain or fact-check any selected text with a right-click.</description>
+    </item>
+    <item>
+      <title>Jailbreaking: Turning My Kindle to A Juggernaut E-Reader</title>
+      <link>/kindle/</link>
+      <pubDate>Tue, 30 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>/kindle/</guid>
+      <description>Jailbreaking my Kindle to run Python, draw, and block lockscreen ads.</description>
+    </item>
+    <item>
+      <title>Talk to Harshvardhan</title>
+      <link>/talk-to-harshvardhan/</link>
+      <pubDate>Mon, 08 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>/talk-to-harshvardhan/</guid>
+      <description>I created my digital avatar chatbot that you can talk to for free at &lt;a href=&#34;https://harsh17.in/chat&#34;&gt;https://harsh17.in/chat&lt;/a&gt;</description>
+    </item>
+    <item>
+      <title>Spotify Randomizer</title>
+      <link>/spotify-randomizer/</link>
+      <pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>/spotify-randomizer/</guid>
+      <description>A new playlist of random songs that I haven&amp;rsquo;t listened in a while generated automatically every Monday</description>
+    </item>
+    <item>
+      <title>IndiaPIN: R Data Package</title>
+      <link>/indiapin/</link>
+      <pubDate>Tue, 11 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>/indiapin/</guid>
+      <description>R Package for All India PIN Codes Directory with Latitude and Longitude Details (Updated: December 2021)</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>IndiaPIN: R Data Package | Harshvardhan</title>
+<meta name="keywords" content="r, tools">
+<meta name="description" content="R Package for All India PIN Codes Directory with Latitude and Longitude Details (Updated: December 2021)">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/indiapin/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/indiapin/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/indiapin/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="IndiaPIN: R Data Package">
+  <meta property="og:description" content="R Package for All India PIN Codes Directory with Latitude and Longitude Details (Updated: December 2021)">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2022-01-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-01-11T00:00:00+00:00">
+    <meta property="article:tag" content="R">
+    <meta property="article:tag" content="Tools">
+      <meta property="og:image" content="/indiapin/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/indiapin/featured.png">
+  <meta name="twitter:title" content="IndiaPIN: R Data Package">
+  <meta name="twitter:description" content="R Package for All India PIN Codes Directory with Latitude and Longitude Details (Updated: December 2021)">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "/projects/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "IndiaPIN: R Data Package",
+      "item": "/indiapin/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "IndiaPIN: R Data Package",
+  "name": "IndiaPIN: R Data Package",
+  "description": "R Package for All India PIN Codes Directory with Latitude and Longitude Details (Updated: December 2021)",
+  "keywords": [
+    "r", "tools"
+  ],
+  "articleBody": " IndiaPIN contains geographic details about 19,300 PIN codes in India. Some PIN codes had more than one offices. Only the first office of that PIN code area has been retained in those cases. (Updated: December 2021.)\nVariables Circle: (chr) Name of the Postal Circle Region: (chr) Name of the Postal Region Division: (chr) Name of the Postal Division Office: (chr) Name of Postal Office PIN: (int) Six-digit PIN Code District: (chr) Name of the District State: (chr) Name of the State Latitude: (dbl) Latitude Longitude: (dbl) Longitude Data Source Department of Posts, Ministry of Communications, Government of India. URL: https://www.indiapost.gov.in/vas/pages/findpincode.aspx. Wrangled for this package by Harshvardhan (https://harsh17.in/).\nInstallation # install `devtools` if not already installed if (!require(\"IndiaPIN\")) devtools::install_github(\"harshvardhaniimi/IndiaPIN\") ## Loading required package: IndiaPIN ## Warning in library(package, lib.loc = lib.loc, character.only = TRUE, ## logical.return = TRUE, : there is no package called 'IndiaPIN' ## Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead. ## Downloading GitHub repo harshvardhaniimi/IndiaPIN@HEAD ## cli (3.6.4 -\u003e 3.6.5) [CRAN] ## utf8 (1.2.4 -\u003e 1.2.5) [CRAN] ## Installing 2 packages: cli, utf8 ## ## The downloaded binary packages are in ## /var/folders/jw/3b0w1v0s3f990hs35ngj6jl40000gn/T//RtmpAZzBDV/downloaded_packages ## ── R CMD build ───────────────────────────────────────────────────────────────── ## * checking for file ‘/private/var/folders/jw/3b0w1v0s3f990hs35ngj6jl40000gn/T/RtmpAZzBDV/remotesd7c37e2d063/harshvardhaniimi-IndiaPIN-da43b49/DESCRIPTION’ ... OK ## * preparing ‘IndiaPIN’: ## * checking DESCRIPTION meta-information ... OK ## * checking for LF line-endings in source and make files and shell scripts ## * checking for empty or unneeded directories ## * building ‘IndiaPIN_0.0.1.tar.gz’ # Tidyverse library(tidyverse) ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ── ## ✔ dplyr 1.1.4 ✔ readr 2.1.5 ## ✔ forcats 1.0.0 ✔ stringr 1.5.1 ## ✔ ggplot2 3.5.2 ✔ tibble 3.2.1 ## ✔ lubridate 1.9.4 ✔ tidyr 1.3.1 ## ✔ purrr 1.0.4 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() ## ℹ Use the conflicted package () to force all conflicts to become errors # load IndiaPIN library(IndiaPIN) data(IndiaPIN) Example Data and Variables IndiaPIN ## # A tibble: 18,169 × 9 ## # Groups: PIN [18,169] ## Circle Region Division Office PIN District State Latitude Longitude ## ## 1 Andhra Prade… Kurno… Hindupu… Pedda… 515631 ANANTAP… ANDH… 14.6 77.9 ## 2 Andhra Prade… Kurno… Hindupu… Obula… 515581 ANANTAP… ANDH… 14.2 78.3 ## 3 Andhra Prade… Kurno… Hindupu… Gurra… 515571 ANANTAP… ANDH… 13.9 78.2 ## 4 Andhra Prade… Kurno… Hindupu… Halli… 515311 ANANTAP… ANDH… 13.8 77.0 ## 5 Andhra Prade… Kurno… Hindupu… Tamma… 515281 ANANTAP… ANDH… 14.1 77.0 ## 6 Andhra Prade… Kurno… Hindupu… Bussa… 515241 ANANTAP… ANDH… 14.0 77.7 ## 7 Andhra Prade… Vijay… Tadepal… Kavul… 534176 WEST GO… ANDH… 16.6 80.6 ## 8 Bihar Circle East … Bhagalp… Kathr… 813105 BANKA BIHAR 84.5 24.2 ## 9 Bihar Circle East … Bhagalp… Kasri… 813203 BHAGALP… BIHAR 87.3 25.3 ## 10 Bihar Circle East … Bhagalp… Akida… 853202 BHAGALP… BIHAR 25.4 84.3 ## # ℹ 18,159 more rows Number of PIN codes by State/UT IndiaPIN %\u003e% group_by(State) %\u003e% summarise(Count = n()) %\u003e% arrange(desc(Count)) %\u003e% print(n = 40) ## # A tibble: 35 × 2 ## State Count ## ## 1 TAMIL NADU 2032 ## 2 UTTAR PRADESH 1581 ## 3 MAHARASHTRA 1466 ## 4 KERALA 1425 ## 5 KARNATAKA 1188 ## 6 WEST BENGAL 1125 ## 7 ANDHRA PRADESH 1071 ## 8 GUJARAT 1007 ## 9 RAJASTHAN 986 ## 10 ODISHA 933 ## 11 BIHAR 853 ## 12 MADHYA PRADESH 760 ## 13 ASSAM 571 ## 14 PUNJAB 531 ## 15 TELANGANA 482 ## 16 HIMACHAL PRADESH 436 ## 17 JHARKHAND 360 ## 18 HARYANA 310 ## 19 UTTARAKHAND 300 ## 20 CHHATTISGARH 240 ## 21 JAMMU AND KASHMIR 195 ## 22 DELHI 97 ## 23 GOA 88 ## 24 CHANDIGARH 25 ## 25 PUDUCHERRY 22 ## 26 SIKKIM 19 ## 27 MEGHALAYA 16 ## 28 TRIPURA 10 ## 29 MIZORAM 9 ## 30 THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU 8 ## 31 LAKSHADWEEP 7 ## 32 ARUNACHAL PRADESH 5 ## 33 NAGALAND 5 ## 34 ANDAMAN AND NICOBAR ISLANDS 4 ## 35 LADAKH 2 PIN Code Locations on Map I will use leaflet package to plot randomly selected 50 PIN codes. I am adding the Region and Circle name in the popup.\nlibrary(leaflet) library(tidyverse) library(IndiaPIN) data(\"IndiaPIN\") set.seed(4) index = sample(nrow(IndiaPIN), 50) data = IndiaPIN::IndiaPIN[index,] l1 = data$Longitude l2 = data$Latitude pop = paste(data$Region, data$Circle, sep = \", \") m = leaflet() %\u003e% addTiles() %\u003e% addMarkers(lng=l1, lat=l2, popup = pop) m Also see this Stackoverflow thread to understand how to save the plots.\nSee Github for source code.\n",
+  "wordCount" : "778",
+  "inLanguage": "en",
+  "image": "/indiapin/featured.png","datePublished": "2022-01-11T00:00:00Z",
+  "dateModified": "2022-01-11T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/indiapin/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      IndiaPIN: R Data Package
+    </h1>
+    <div class="post-meta"><span title='2022-01-11 00:00:00 +0000 UTC'>January 11, 2022</span>&nbsp;·&nbsp;<span>4 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><link href="/indiapin/index_files/htmltools-fill/fill.css" rel="stylesheet" />
+<script src="/indiapin/index_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="/indiapin/index_files/jquery/jquery-3.6.0.min.js"></script>
+<link href="/indiapin/index_files/leaflet/leaflet.css" rel="stylesheet" />
+<script src="/indiapin/index_files/leaflet/leaflet.js"></script>
+<link href="/indiapin/index_files/leafletfix/leafletfix.css" rel="stylesheet" />
+<script src="/indiapin/index_files/proj4/proj4.min.js"></script>
+<script src="/indiapin/index_files/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="/indiapin/index_files/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+<script src="/indiapin/index_files/leaflet-binding/leaflet.js"></script>
+<p><code>IndiaPIN</code> contains geographic details about 19,300 PIN codes in India. Some PIN codes had more than one offices. Only the first office of that PIN code area has been retained in those cases. (Updated: December 2021.)</p>
+<p><img loading="lazy" src="/indiapin/images/indiapin_tweet.png"></p>
+<h2 id="variables">Variables<a hidden class="anchor" aria-hidden="true" href="#variables">#</a></h2>
+<ol>
+<li><strong>Circle:</strong> (chr) Name of the Postal Circle</li>
+<li><strong>Region:</strong> (chr) Name of the Postal Region</li>
+<li><strong>Division:</strong> (chr) Name of the Postal Division</li>
+<li><strong>Office:</strong> (chr) Name of Postal Office</li>
+<li><strong>PIN:</strong> (int) Six-digit PIN Code</li>
+<li><strong>District:</strong> (chr) Name of the District</li>
+<li><strong>State:</strong> (chr) Name of the State</li>
+<li><strong>Latitude:</strong> (dbl) Latitude</li>
+<li><strong>Longitude:</strong> (dbl) Longitude</li>
+</ol>
+<h3 id="data-source">Data Source<a hidden class="anchor" aria-hidden="true" href="#data-source">#</a></h3>
+<p>Department of Posts, Ministry of Communications, Government of India. URL: <a href="https://www.indiapost.gov.in/vas/pages/findpincode.aspx">https://www.indiapost.gov.in/vas/pages/findpincode.aspx</a>. Wrangled for this package by Harshvardhan (<a href="https://harsh17.in/">https://harsh17.in/</a>).</p>
+<hr>
+<h2 id="installation">Installation<a hidden class="anchor" aria-hidden="true" href="#installation">#</a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># install `devtools` if not already installed</span>
+</span></span><span class="line"><span class="cl"><span class="kr">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="s">&#34;IndiaPIN&#34;</span><span class="p">))</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&#34;harshvardhaniimi/IndiaPIN&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>## Loading required package: IndiaPIN
+
+## Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
+## logical.return = TRUE, : there is no package called 'IndiaPIN'
+
+## Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.
+
+## Downloading GitHub repo harshvardhaniimi/IndiaPIN@HEAD
+
+## cli  (3.6.4 -&gt; 3.6.5) [CRAN]
+## utf8 (1.2.4 -&gt; 1.2.5) [CRAN]
+
+## Installing 2 packages: cli, utf8
+
+## 
+## The downloaded binary packages are in
+## 	/var/folders/jw/3b0w1v0s3f990hs35ngj6jl40000gn/T//RtmpAZzBDV/downloaded_packages
+## ── R CMD build ─────────────────────────────────────────────────────────────────
+## * checking for file ‘/private/var/folders/jw/3b0w1v0s3f990hs35ngj6jl40000gn/T/RtmpAZzBDV/remotesd7c37e2d063/harshvardhaniimi-IndiaPIN-da43b49/DESCRIPTION’ ... OK
+## * preparing ‘IndiaPIN’:
+## * checking DESCRIPTION meta-information ... OK
+## * checking for LF line-endings in source and make files and shell scripts
+## * checking for empty or unneeded directories
+## * building ‘IndiaPIN_0.0.1.tar.gz’
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Tidyverse</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.4
+
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># load IndiaPIN</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">IndiaPIN</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">IndiaPIN</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="example">Example<a hidden class="anchor" aria-hidden="true" href="#example">#</a></h2>
+<h3 id="data-and-variables">Data and Variables<a hidden class="anchor" aria-hidden="true" href="#data-and-variables">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">IndiaPIN</span>
+</span></span></code></pre></div><pre><code>## # A tibble: 18,169 × 9
+## # Groups:   PIN [18,169]
+##    Circle        Region Division Office    PIN District State Latitude Longitude
+##    &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+##  1 Andhra Prade… Kurno… Hindupu… Pedda… 515631 ANANTAP… ANDH…     14.6      77.9
+##  2 Andhra Prade… Kurno… Hindupu… Obula… 515581 ANANTAP… ANDH…     14.2      78.3
+##  3 Andhra Prade… Kurno… Hindupu… Gurra… 515571 ANANTAP… ANDH…     13.9      78.2
+##  4 Andhra Prade… Kurno… Hindupu… Halli… 515311 ANANTAP… ANDH…     13.8      77.0
+##  5 Andhra Prade… Kurno… Hindupu… Tamma… 515281 ANANTAP… ANDH…     14.1      77.0
+##  6 Andhra Prade… Kurno… Hindupu… Bussa… 515241 ANANTAP… ANDH…     14.0      77.7
+##  7 Andhra Prade… Vijay… Tadepal… Kavul… 534176 WEST GO… ANDH…     16.6      80.6
+##  8 Bihar Circle  East … Bhagalp… Kathr… 813105 BANKA    BIHAR     84.5      24.2
+##  9 Bihar Circle  East … Bhagalp… Kasri… 813203 BHAGALP… BIHAR     87.3      25.3
+## 10 Bihar Circle  East … Bhagalp… Akida… 853202 BHAGALP… BIHAR     25.4      84.3
+## # ℹ 18,159 more rows
+</code></pre>
+<h3 id="number-of-pin-codes-by-stateut">Number of PIN codes by State/UT<a hidden class="anchor" aria-hidden="true" href="#number-of-pin-codes-by-stateut">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">IndiaPIN</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">State</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">summarise</span><span class="p">(</span><span class="n">Count</span> <span class="o">=</span> <span class="nf">n</span><span class="p">())</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">Count</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">print</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="m">40</span><span class="p">)</span>
+</span></span></code></pre></div><pre><code>## # A tibble: 35 × 2
+##    State                                        Count
+##    &lt;chr&gt;                                        &lt;int&gt;
+##  1 TAMIL NADU                                    2032
+##  2 UTTAR PRADESH                                 1581
+##  3 MAHARASHTRA                                   1466
+##  4 KERALA                                        1425
+##  5 KARNATAKA                                     1188
+##  6 WEST BENGAL                                   1125
+##  7 ANDHRA PRADESH                                1071
+##  8 GUJARAT                                       1007
+##  9 RAJASTHAN                                      986
+## 10 ODISHA                                         933
+## 11 BIHAR                                          853
+## 12 MADHYA PRADESH                                 760
+## 13 ASSAM                                          571
+## 14 PUNJAB                                         531
+## 15 TELANGANA                                      482
+## 16 HIMACHAL PRADESH                               436
+## 17 JHARKHAND                                      360
+## 18 HARYANA                                        310
+## 19 UTTARAKHAND                                    300
+## 20 CHHATTISGARH                                   240
+## 21 JAMMU AND KASHMIR                              195
+## 22 DELHI                                           97
+## 23 GOA                                             88
+## 24 CHANDIGARH                                      25
+## 25 PUDUCHERRY                                      22
+## 26 SIKKIM                                          19
+## 27 MEGHALAYA                                       16
+## 28 TRIPURA                                         10
+## 29 MIZORAM                                          9
+## 30 THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU     8
+## 31 LAKSHADWEEP                                      7
+## 32 ARUNACHAL PRADESH                                5
+## 33 NAGALAND                                         5
+## 34 ANDAMAN AND NICOBAR ISLANDS                      4
+## 35 LADAKH                                           2
+</code></pre>
+<h3 id="pin-code-locations-on-map">PIN Code Locations on Map<a hidden class="anchor" aria-hidden="true" href="#pin-code-locations-on-map">#</a></h3>
+<p>I will use <code>leaflet</code> package to plot randomly selected 50 PIN codes. I am adding the Region and Circle name in the popup.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">leaflet</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">IndiaPIN</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="s">&#34;IndiaPIN&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">index</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">IndiaPIN</span><span class="p">),</span> <span class="m">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">IndiaPIN</span><span class="o">::</span><span class="n">IndiaPIN[index</span><span class="p">,</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">l1</span> <span class="o">=</span> <span class="n">data</span><span class="o">$</span><span class="n">Longitude</span>
+</span></span><span class="line"><span class="cl"><span class="n">l2</span> <span class="o">=</span> <span class="n">data</span><span class="o">$</span><span class="n">Latitude</span>
+</span></span><span class="line"><span class="cl"><span class="n">pop</span> <span class="o">=</span> <span class="nf">paste</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">Region</span><span class="p">,</span> <span class="n">data</span><span class="o">$</span><span class="n">Circle</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34;, &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="nf">leaflet</span><span class="p">()</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">addTiles</span><span class="p">()</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">   <span class="nf">addMarkers</span><span class="p">(</span><span class="n">lng</span><span class="o">=</span><span class="n">l1</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="n">l2</span><span class="p">,</span> <span class="n">popup</span> <span class="o">=</span> <span class="n">pop</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">m</span>
+</span></span></code></pre></div><div class="leaflet html-widget html-fill-item" id="htmlwidget-1" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[15.59,20.8123078,26.4418889,26.49,13.98,26.08,14.896666,9.685375000000001,10.799571,19.0160278,26.198944,23.394827,19.3638871,20.872131,20.2362451,17.75097222,31.32,13.0786433,26.8522,11.67014,15.6618661,8.26,20.8148633,25.57391667,21.2305298,25.3471,10.3,21.475104,17.7041944,29.7208611,31.2101,24.5439167,13.801001,21.783465,26.1095277,17.5476,10.94,10.642185,20.3850278,27.9834271,22.38,24.585445,23.45038,28.9,28.62,14.55,25.393,8.7256944,9.890644,19.08258],[73.34,86.31015480000001,80.3425833,88.58,75.73999999999999,89.61,74.10785180000001,76.99091199999999,76.642318,72.84586109999999,74.143584,79.01925,78.792953,71.40767200000001,82.59031779999999,78.90016667,74.76000000000001,76.4548795,84.78225,78.11459499999999,77.0748349,77.17,86.62437660000001,91.88486111,72.86389,74.6408,78.06999999999999,79.79325,83.29649999999999,75.90252769999999,77.4003,81.3015833,78.925532,70.930808,84.2933611,74.03735,79.25,76.544826,78.119,78.3998642,69.04000000000001,73.712479,73.17921200000001,78.45999999999999,78.77,75.06999999999999,87.193966,78.2025556,76.783423,72.882228],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Vadodara Region, Gujarat Circle","DivReportingCircle, Odisha Circle","Kanpur Region, Uttar Pradesh Circle","North Bengal Region, West Bengal Circle","South Karnataka Region, Karnataka Circle","North Bengal Region, West Bengal Circle","North Karnataka Region, Karnataka Circle","Kochi Region, Kerala Circle","Calicut Region, Kerala Circle","Mumbai Region, Maharashtra Circle","Muzaffarpur Region, Bihar Circle","Jabalpur Region, Madhya Pradesh Circle","Hyderabad Region, Telangana Circle","Rajkot Region, Gujarat Circle","Berhampur Region, Odisha Circle","Hyderabad City Region, Telangana Circle","Punjab West Region, Punjab Circle","South Karnataka Region, Karnataka Circle","Muzaffarpur Region, Bihar Circle","Western Region, Coimbatore, Tamilnadu Circle","North Karnataka Region, Karnataka Circle","Southern Region, Madurai, Tamilnadu Circle","DivReportingCircle, Odisha Circle","Shillong HQ Region, North Eastern Circle","Vadodara Region, Gujarat Circle","Ajmer Region, Rajasthan Circle","Southern Region, Madurai, Tamilnadu Circle","Nagpur Region, Maharashtra Circle","Visakhapatnam Region, Andhra Pradesh Circle","DivReportingCircle, Haryana Circle","DivReportingCircle, Himachal Pradesh Circle","Jabalpur Region, Madhya Pradesh Circle","Jabalpur Region, Madhya Pradesh Circle","Rajkot Region, Gujarat Circle","Muzaffarpur Region, Bihar Circle","Pune Region, Maharashtra Circle","Central Region, Trichirapalli, Tamilnadu Circle","Calicut Region, Kerala Circle","Nagpur Region, Maharashtra Circle","Agra Region, Uttar Pradesh Circle","Rajkot Region, Gujarat Circle","DivReportingCircle, Chattisgarh Circle","Ahmedabad HQ Region, Gujarat Circle","Bareilly Region, Uttar Pradesh Circle","Bareilly Region, Uttar Pradesh Circle","South Karnataka Region, Karnataka Circle","East Region, Bhagalpur, Bihar Circle","Southern Region, Madurai, Tamilnadu Circle","Kochi Region, Kerala Circle","Mumbai Region, Maharashtra Circle"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[8.26,31.32],"lng":[69.04000000000001,91.88486111]}},"evals":[],"jsHooks":[]}</script>
+<p>Also see this <a href="https://stackoverflow.com/questions/31336898/how-to-save-leaflet-in-r-map-as-png-or-jpg-file">Stackoverflow thread</a> to understand how to save the plots.</p>
+<p>See <a href="https://github.com/harshvardhaniimi/IndiaPIN">Github</a> for source code.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/r/">R</a></li>
+      <li><a href="/tags/tools/">Tools</a></li>
+    </ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Confusing on Harshvardhan</title>
+    <link>/tags/confusing/</link>
+    <description>Recent content in Confusing on Harshvardhan</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 13 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/confusing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to decide: to do, or not to do?</title>
+      <link>/how-to-decide-to-do-or-not-to-do/</link>
+      <pubDate>Sat, 13 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>/how-to-decide-to-do-or-not-to-do/</guid>
+      <description>Thinking about the most crucial dilemma of all time.</description>
+    </item>
+  </channel>
+</rss>

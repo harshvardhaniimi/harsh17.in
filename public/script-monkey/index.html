@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Script monkey! 🐒 | Harshvardhan</title>
+<meta name="keywords" content="python, r, tools">
+<meta name="description" content="Use a Script Monkey in your codebase at all locations where you need to change things manually. All that involves is writing an extra comment saying &lsquo;Script Monkey&rsquo;. Later on, search for all monkeys in the script and make the changes. Simple.">
+<meta name="author" content="Harshvardhan">
+<link rel="canonical" href="/script-monkey/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.70899d05b6a930e5595b30927a60901d4fcee08b5cae30b7be2258a93864b4f4.css" integrity="sha256-cImdBbapMOVZWzCSemCQHU/O4ItcrjC3viJYqThktPQ=" rel="preload stylesheet" as="style">
+<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="/script-monkey/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="/script-monkey/">
+  <meta property="og:site_name" content="Harshvardhan">
+  <meta property="og:title" content="Script monkey! 🐒">
+  <meta property="og:description" content="Use a Script Monkey in your codebase at all locations where you need to change things manually. All that involves is writing an extra comment saying ‘Script Monkey’. Later on, search for all monkeys in the script and make the changes. Simple.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writing">
+    <meta property="article:published_time" content="2022-08-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-08-01T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="R">
+    <meta property="article:tag" content="Tools">
+      <meta property="og:image" content="/script-monkey/featured.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/script-monkey/featured.png">
+  <meta name="twitter:title" content="Script monkey! 🐒">
+  <meta name="twitter:description" content="Use a Script Monkey in your codebase at all locations where you need to change things manually. All that involves is writing an extra comment saying ‘Script Monkey’. Later on, search for all monkeys in the script and make the changes. Simple.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Writing",
+      "item": "/writing/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Script monkey! 🐒",
+      "item": "/script-monkey/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Script monkey! 🐒",
+  "name": "Script monkey! 🐒",
+  "description": "Use a Script Monkey in your codebase at all locations where you need to change things manually. All that involves is writing an extra comment saying \u0026lsquo;Script Monkey\u0026rsquo;. Later on, search for all monkeys in the script and make the changes. Simple.",
+  "keywords": [
+    "python", "r", "tools"
+  ],
+  "articleBody": "Recently, I learned a neat trick during my internship at HP.\nSometimes you only need a few changes in the existing script before rerunning it all. For example, while working on a periodically executed project, we needed to run the same set of Jupiter notebooks every month. The code didn’t change, barring a few parameters.\nUsually, I recommend keeping the parameters at the beginning, so you notice what you need to change readily. But sometimes, you cannot avoid changes midway through the script.\nHow do you identify all the changes you need manually before hitting “restart kernel and run all” (in Jupyter Notebooks) or “Source” (in RStudio)?\nHi Monkey 🐵 Use a Script Monkey in your codebase at all locations where you need to change things manually. All that involves is writing an additional comment saying “Script Monkey”. Later, search for all monkeys in the script and make the changes. Simple.\n# Script monkey: Add current month and lag df = pd.DataFrame(month = ['2022-02', '2022-03', '2022-03'], lag = [1, 2, 3]) Adding a small comment with #Script Monkey will save you hours looking through the codes. Just Cmd + F (⌘ + F in Mac or Ctrl + F in Windows) for “monkey”, and you will know what to keep track of!\nBeyond Scripts Scripts are only the beginning. Later on, you might need to modify more things. In that case, use Data Monkey, Tuning Monkey, Timing Monkey – and more!\nData Monkey 🐵 In data analytics or machine learning projects, data modifications are inevitable as new data streams in or data structures evolve.\n# Data monkey: Update data source data = pd.read_csv('new_data_source.csv') # Data monkey: Add new features data['new_feature'] = data['existing_feature1'] * data['existing_feature2'] Utilize “Data Monkey” comments to mark places where data sources or features may need updates. A quick search for “Data Monkey” will guide you to all data-related modifications at once.\nTuning Monkey 🐵 Parameter tuning is crucial for optimizing model performance.\n# Tuning monkey: Update hyperparameters model = RandomForestClassifier(n_estimators=100, max_depth=5) By marking parameter tuning sections with “Tuning Monkey,” you can swiftly locate and adjust model parameters, streamlining the tuning process.\nTiming Monkey 🐵 Project timelines often shift, impacting deadlines and schedules.\n# Timing monkey: Update project month project_month = '2023-11-01' Employ “Timing Monkey” comments to highlight date or time-sensitive code segments, aiding in keeping project timelines accurate and up-to-date.\nEach Monkey variant simplifies managing different project elements, helping maintain a clean, organized, and efficient workflow.\nMonkey will find its way to you.1\nFeatured image credit: Cute monkey vector created by catalyststuff - www.freepik.com ↩︎\n",
+  "wordCount" : "427",
+  "inLanguage": "en",
+  "image": "/script-monkey/featured.png","datePublished": "2022-08-01T00:00:00Z",
+  "dateModified": "2022-08-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Harshvardhan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/script-monkey/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Harshvardhan",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="/" accesskey="h" title="Harshvardhan (Alt + H)">Harshvardhan</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="/research/" title="Research">
+                    <span>Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="/writing/" title="Writing">
+                    <span>Writing</span>
+                </a>
+            </li>
+            <li>
+                <a href="/talks/" title="Talks">
+                    <span>Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/docs/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Script monkey! 🐒
+    </h1>
+    <div class="post-meta"><span title='2022-08-01 00:00:00 +0000 UTC'>August 1, 2022</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Harshvardhan</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Recently, I learned a neat trick during my internship at HP.</p>
+<p>Sometimes you only need a few changes in the existing script before rerunning it all. For example, while working on a periodically executed project, we needed to run the same set of Jupiter notebooks every month. The code didn&rsquo;t change, barring a few parameters.</p>
+<p>Usually, I recommend keeping the parameters at the beginning, so you notice what you need to change readily. But sometimes, you cannot avoid changes midway through the script.</p>
+<p>How do you identify all the changes you need manually before hitting &ldquo;restart kernel and run all&rdquo; (in Jupyter Notebooks) or &ldquo;Source&rdquo; (in RStudio)?</p>
+<h1 id="hi-monkey-">Hi Monkey 🐵<a hidden class="anchor" aria-hidden="true" href="#hi-monkey-">#</a></h1>
+<p>Use a Script Monkey in your codebase at all locations where you need to change things manually. All that involves is writing an additional comment saying &ldquo;Script Monkey&rdquo;. Later, search for all monkeys in the script and make the changes. Simple.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Script monkey: Add current month and lag</span>
+</span></span><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">month</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2022-02&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-03&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-03&#39;</span><span class="p">],</span> 
+</span></span><span class="line"><span class="cl">                  <span class="n">lag</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</span></span></code></pre></div><p>Adding a small comment with #Script Monkey will save you hours looking through the codes. Just Cmd + F (⌘ + F in Mac or Ctrl + F in Windows) for &ldquo;monkey&rdquo;, and you will know what to keep track of!</p>
+<h1 id="beyond-scripts">Beyond Scripts<a hidden class="anchor" aria-hidden="true" href="#beyond-scripts">#</a></h1>
+<p>Scripts are only the beginning. Later on, you might need to modify more things. In that case, use Data Monkey, Tuning Monkey, Timing Monkey &ndash; and more!</p>
+<h2 id="data-monkey-">Data Monkey 🐵<a hidden class="anchor" aria-hidden="true" href="#data-monkey-">#</a></h2>
+<p>In data analytics or machine learning projects, data modifications are inevitable as new data streams in or data structures evolve.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Data monkey: Update data source</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;new_data_source.csv&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Data monkey: Add new features</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span><span class="p">[</span><span class="s1">&#39;new_feature&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;existing_feature1&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;existing_feature2&#39;</span><span class="p">]</span>
+</span></span></code></pre></div><p>Utilize &ldquo;Data Monkey&rdquo; comments to mark places where data sources or features may need updates. A quick search for &ldquo;Data Monkey&rdquo; will guide you to all data-related modifications at once.</p>
+<h2 id="tuning-monkey-">Tuning Monkey 🐵<a hidden class="anchor" aria-hidden="true" href="#tuning-monkey-">#</a></h2>
+<p>Parameter tuning is crucial for optimizing model performance.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># Tuning monkey: Update hyperparameters</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></div><p>By marking parameter tuning sections with &ldquo;Tuning Monkey,&rdquo; you can swiftly locate and adjust model parameters, streamlining the tuning process.</p>
+<h2 id="timing-monkey-">Timing Monkey 🐵<a hidden class="anchor" aria-hidden="true" href="#timing-monkey-">#</a></h2>
+<p>Project timelines often shift, impacting deadlines and schedules.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Timing monkey: Update project month</span>
+</span></span><span class="line"><span class="cl"><span class="n">project_month</span> <span class="o">=</span> <span class="s">&#39;2023-11-01&#39;</span>
+</span></span></code></pre></div><p>Employ &ldquo;Timing Monkey&rdquo; comments to highlight date or time-sensitive code segments, aiding in keeping project timelines accurate and up-to-date.</p>
+<p>Each Monkey variant simplifies managing different project elements, helping maintain a clean, organized, and efficient workflow.</p>
+<p><a href="https://www.instagram.com/reel/CO8WNMDnjLnKt9Pscy4_74xykrDqwZXAtrG2zw0/">Monkey will find its way to you.</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Featured image credit: <a href='https://www.freepik.com/vectors/cute-monkey'>Cute monkey vector created by catalyststuff - <a href="https://www.freepik.com">www.freepik.com</a></a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="/tags/python/">Python</a></li>
+      <li><a href="/tags/r/">R</a></li>
+      <li><a href="/tags/tools/">Tools</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="/public-square/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Stoned to Death at the Public Square</span>
+  </a>
+  <a class="next" href="/the-ascribed-advantage/">
+    <span class="title">Next »</span>
+    <br>
+    <span>The Ascribed Advantage</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="/">Harshvardhan</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

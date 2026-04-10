@@ -1,0 +1,211 @@
+---
+title: Supervised Learning Using Baysian Decision Rule
+subtitle: 'Python Functions for Bayesian Learning (COSC 522 Project)'
+summary: 'Python Functions for Bayesian Learning (COSC 522 Project)'
+author: Harshvardhan
+date: '2021-09-07'
+slug: supervised-learning-using-baysian-decision-rule
+categories:
+  - R
+  - Python
+  - statistics
+  - ML
+tags: []
+links:
+- icon: github
+  icon_pack: fab
+  name: GitHub Repository
+  url: https://github.com/harshvardhaniimi/cosc522-utk/tree/main/projects/Project%201
+---
+
+
+
+<p>In this project, I applied Bayesian decision theory for classification problem. The datasets used were from Ripley’s Pattern Recognition and Neural Networks. The first dataset has two features and has a balanced class portfolio. The second dataset is for diabetes in Pima Indians with seven features where the number of diabetic patients is much less than the number of normal patients.</p>
+<p>Codes to perform these calculations are in <a href="https://github.com/harshvardhaniimi/cosc522-utk/tree/main/projects/Project%201">this Github repository</a>.</p>
+<p>The heart of this project was in three functions.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Euclidean Classifier</strong></li>
+<li><strong>Mahalanobis Classifier</strong></li>
+<li><strong>Bayesian Quadratic Classifier</strong></li>
+</ol>
+<div id="euclidean-classifier" class="section level1">
+<h1>Euclidean Classifier</h1>
+<ul>
+<li><p>The features are assumed to be statistically independent of each other (strictly speaking, no correlation) and have the same variance.</p></li>
+<li><p>Geometrically, the samples would fall in a equal-radii hyperspherical cluster.</p></li>
+<li><p>The decision boundary for a two class problem would be a hyperplane <span class="math inline">\(d\)</span>-dimensions.</p></li>
+</ul>
+<p><span class="math display">\[
+\Sigma =
+\begin{bmatrix}
+\sigma^2 \dots 0 \\
+\vdots \ddots \vdots \\
+0 \dots \sigma^2
+\end{bmatrix}.
+\]</span></p>
+<p><span class="math display">\[
+g_i(\vec{x}) = - \frac{||\vec{x} - \vec{\mu_i}||}{2\sigma^2} + \ln{P(\omega_i)}.
+\]</span></p>
+<div id="python-function" class="section level2">
+<h2>Python Function</h2>
+<pre class="python"><code>def euclid_classifier(xtrain, ytrain, xtest, ytest, pw):
+    t1 = t.time()
+    
+    pw0 = pw
+    pw1 = 1-pw
+
+    nn, nf = xtest.shape
+
+    # for class 0
+    arr = xtrain[ytrain == 0]
+    covs0 = np.cov(np.transpose(arr))
+    means0 = np.mean(arr, axis = 0)
+
+    # for class 1
+    arr = xtrain[ytrain == 1]
+    covs1 = np.cov(np.transpose(arr))
+    means1 = np.mean(arr, axis = 0)
+
+    # for euclidean distance
+    covavg = (covs0+covs1)/2
+    avg_var = np.mean(np.diagonal(covavg))
+
+    # initialising yhat array
+    yhat = np.ones(len(ytest))
+    
+    for i in range(len(ytest)):
+        #for class 0
+        d = np.dot(xtest[i]-means0, xtest[i]-means0)
+        g0 = -d/(2*avg_var) + np.log(pw0)
+        
+        # for class 1
+        d = np.dot(xtest[i]-means1, xtest[i]-means1)
+        g1 = -d/(2*avg_var) + np.log(pw1)
+        
+        # if g0&gt;g1, then i belongs to 0, else to 1
+        if(g0&gt;g1):
+            yhat[i] = 0
+            
+    overall_acc = np.sum(yhat == ytest)/len(ytest)
+    class0_acc = np.sum(yhat[ytest == 0] == 0)/np.sum(ytest == 0)
+    class1_acc = np.sum(yhat[ytest == 1] == 1)/np.sum(ytest == 1)
+    
+    t2 = t.time()
+    tt = t2-t1
+    
+    return yhat, overall_acc, class0_acc, class1_acc, tt</code></pre>
+</div>
+</div>
+<div id="mahalanobis-classifier" class="section level1">
+<h1>Mahalanobis Classifier</h1>
+<ul>
+<li><p>The covariance matrices for all classes are identical but not identity (times <span class="math inline">\(\sigma^2\)</span>). There is a constant variance.</p></li>
+<li><p>Geometrically, the samples fall in a hyperellipsoidal shape.</p></li>
+<li><p>Decision boundary is a hyperplane of <span class="math inline">\(d\)</span>-dimensions.</p></li>
+</ul>
+<p><span class="math display">\[
+g_i(\vec{x}) = - \frac{1}{2}(\vec{x} - \vec{\mu_i})&#39;\Sigma_i (\vec{x} - \vec{\mu_i}) + \ln{P(\omega_i)},
+\]</span></p>
+<p>where <span class="math inline">\(\Sigma_i = \Sigma\)</span>.</p>
+<div id="python-function-1" class="section level2">
+<h2>Python Function</h2>
+<pre class="python"><code>def maha_classifier(xtrain, ytrain, xtest, ytest, pw):
+    t1 = t.time()
+    
+    pw0 = pw
+    pw1 = 1-pw
+
+    nn, nf = xtest.shape
+
+    # for class 0
+    arr = xtrain[ytrain == 0]
+    covs0 = np.cov(np.transpose(arr))
+    means0 = np.mean(arr, axis = 0)
+
+    # for class 1
+    arr = xtrain[ytrain == 1]
+    covs1 = np.cov(np.transpose(arr))
+    means1 = np.mean(arr, axis = 0)
+
+    # for Mahalanobis distance, avg of the two covariance matrix is chosen
+    covavg = (covs0+covs1)/2
+
+    # initialising yhat array
+    yhat = np.ones(len(ytest))
+    
+    for i in range(len(ytest)):
+        #for class 0
+        d = np.matmul(np.matmul(xtest[i]-means0, np.linalg.inv(covavg)), xtest[i]-means0)
+        g0 = -d + np.log(pw0)
+        
+        # for class 1
+        d = np.matmul(np.matmul(xtest[i]-means1, np.linalg.inv(covavg)), xtest[i]-means1)
+        g1 = -d + np.log(pw1)
+        
+        # if g0&gt;g1, then i belongs to 0, else to 1
+        if(g0&gt;g1):
+            yhat[i] = 0
+            
+    overall_acc = np.sum(yhat == ytest)/len(ytest)
+    class0_acc = np.sum(yhat[ytest == 0] == 0)/np.sum(ytest == 0)
+    class1_acc = np.sum(yhat[ytest == 1] == 1)/np.sum(ytest == 1)
+
+    t2 = t.time()
+    tt = t2-t1
+    
+    return yhat, overall_acc, class0_acc, class1_acc, tt</code></pre>
+</div>
+</div>
+<div id="bayesian-quadratic-classifier" class="section level1">
+<h1>Bayesian (Quadratic) Classifier</h1>
+<ul>
+<li><p>The covariance matrix is different for different categories.</p></li>
+<li><p>It is a quadratic classifier.</p></li>
+</ul>
+<p><span class="math display">\[
+g_i(\vec{x}) = -\frac{1}{2} (\vec{x} - \vec{\mu_i})&#39;\Sigma_i (\vec{x} - \vec{\mu_i}) - \frac{1}{2} \ln{|\Sigma_i|} + \ln{P(\omega_i)}.
+\]</span></p>
+<div id="python-function-2" class="section level2">
+<h2>Python Function</h2>
+<pre class="python"><code>def bayes_classifier(xtrain, ytrain, xtest, ytest, pw):
+    t1 = t.time()
+    
+    pw0 = pw
+    pw1 = 1-pw
+
+    nn, nf = xtest.shape
+
+    # for class 0
+    arr = xtrain[ytrain == 0]
+    covs0 = np.cov(np.transpose(arr))
+    means0 = np.mean(arr, axis = 0)
+
+    # for class 1
+    arr = xtrain[ytrain == 1]
+    covs1 = np.cov(np.transpose(arr))
+    means1 = np.mean(arr, axis = 0)
+
+    # initialising yhat array
+    yhat = np.ones(len(ytest))
+    
+    for i in range(len(ytest)):
+        d = np.matmul(np.matmul(xtest[i]-means0, np.linalg.inv(covs0)), xtest[i]-means0) * -0.5
+        g0 = -0.5*np.log(np.linalg.det(covs0)) + d + np.log(pw0)
+        
+        d = np.matmul(np.matmul(xtest[i]-means1, np.linalg.inv(covs1)), xtest[i]-means1) * -0.5
+        g1 = -0.5*np.log(np.linalg.det(covs1)) + d + np.log(pw1)        
+        
+        # if g0&gt;g1, then i belongs to 0, else to 1
+        if(g0&gt;g1):
+            yhat[i] = 0
+            
+    overall_acc = np.sum(yhat == ytest)/len(ytest)
+    class0_acc = np.sum(yhat[ytest == 0] == 0)/np.sum(ytest == 0)
+    class1_acc = np.sum(yhat[ytest == 1] == 1)/np.sum(ytest == 1)
+    
+    t2 = t.time()
+    tt = t2-t1
+    
+    return yhat, overall_acc, class0_acc, class1_acc, tt</code></pre>
+</div>
+</div>

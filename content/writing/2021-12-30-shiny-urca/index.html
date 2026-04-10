@@ -1,0 +1,71 @@
+---
+title: Urban-Rural Population in 200+ Countries
+subtitle: R Shiny app that creates spreadsheet of population levels segregated at district, state, or any other level
+summary: R Shiny app that creates spreadsheet of population levels segregated at district, state, or any other level
+author: Harshvardhan
+date: '2021-12-30'
+slug: shiny-urca
+categories: []
+tags: []
+links:
+- icon: github
+  icon_pack: fab
+  name: GitHub Repository
+  url: https://github.com/harshvardhaniimi/raster-population
+---
+
+
+
+<p>I worked on this project with <a href="https://www.asarforindia.org/">Asar</a> between April and June 2021 to create a Shiny app. Having a full-time job didn’t leave much time for side projects, and this project never reached fruition. This app has limitations — primarily computational — but can be helpful to researchers in finding urban and rural populations at the country level, state level, district level, or any of the 30 classes. The limitations are on computing power. My laptop, <a href="/how-fast-is-m1/">despite its prowess</a>, not good enough. Probably we need a cluster or Google/AWS computational resource.</p>
+<div id="how-to-use-it" class="section level1">
+<h1><strong>How to use it?</strong></h1>
+<p>Consider you want to find how many people in Nigeria live in a rural setting. You need to select Nigeria and set the level to 1. You will see a map and an option to download spreadsheets of urban and rural populations. What about the Abia state of Nigeria? Shift the divider value to 7, and you will have the urban-rural population of every state in Nigeria. It’s not complicated. It’s slow but not complicated.</p>
+<p>The divider value represents the level of detail till which you need the data. For a Taluka (in India) or a block (in US), you would choose 25. For state level data you would choose 3.</p>
+<p>The app works for 2020 data but extending to other years is trivial. I haven’t already done it because rasters quickly explode in sizes beyond the computational power of my laptop.</p>
+<div class="float">
+<img src="featured-hex.png" title="Screenshot of the web app" alt="You have to choose the country and then the divider value. 29 would be most detailed (till a plot) and 1 would be most aggregated (for a country)." />
+<div class="figcaption">You have to choose the country and then the divider value. 29 would be most detailed (till a plot) and 1 would be most aggregated (for a country).</div>
+</div>
+<p><strong>The <a href="https://github.com/harshvardhaniimi/raster-population">Github repository</a> contains codebase and related datasets/databases for Population Raster App.</strong></p>
+</div>
+<div id="how-does-this-app-work" class="section level1">
+<h1><strong>How does this app work?</strong></h1>
+<ul>
+<li><p>The original raster to be aggregated is regional/country-level population, sourced from Worldpop (<a href="https://www.worldpop.org/geodata/listing?id=75" class="uri">https://www.worldpop.org/geodata/listing?id=75</a>).</p></li>
+<li><p>Choose the level of the urban-rural catchment.</p></li>
+<li><p>(Features below are not implemented yet)</p></li>
+<li><p>Partitioning raster could also be Urban-rural classification, Time-to-healthcare unit, etc.</p></li>
+<li><p>The level of partitioning will be decided by the user in runtime.</p></li>
+</ul>
+<p><strong>The current app supports Urban-Rural classification for more than 200 countries and regions for 2020.</strong></p>
+<hr />
+</div>
+<div id="limitations-of-current-version" class="section level1">
+<h1>Limitations of Current Version</h1>
+<ul>
+<li>The app is as slow as snail. I can probably fix this with some degree of caching but working on <code>sf</code> data is generally slow. Additionally, the data from <code>worldpop</code> is surprisingly granular. That aggregation would require several levels of analysis.</li>
+<li>It only supports urban-rural classification for partitioning. Implementing other rasters for partitioning is not trivial.</li>
+<li>It only works for year 2020. Making it work for other years is trivial but probably not as a great idea because it will make the app even slower.</li>
+</ul>
+</div>
+<div id="future-work" class="section level1">
+<h1>Future Work</h1>
+<div id="high-priority" class="section level2">
+<h2>High Priority</h2>
+<ul>
+<li><p>Redesign the app with partitioning raster instead of country as focus. Instead of having the choices at the navigation bar, the users should see a single screen where they choose the country and the partitioning raster (possibly multiple partioning rasters).</p></li>
+<li><p>Improving runtime speed (AWS web hosting and better caching can be explored). Currently, the app downloads population and mappings of the country for the first time and reuses them when required.</p></li>
+</ul>
+<p>For example, when you search the population for Latvia for the first time, it will download the relevant files and save them for future use. Next time someone uses the app again for Latvia, the processing will be faster as the files are already available offline.</p>
+</div>
+<div id="low-priority" class="section level2">
+<h2>Low Priority</h2>
+<ul>
+<li>Include support for years other than 2020. This is not a difficult thing to pull off but would require extensive computing resource, beyond what a laptop can provide.</li>
+</ul>
+</div>
+<div id="p.s." class="section level2">
+<h2>P.S.</h2>
+<p>I do not work or engage with ASAR anymore. I had to drop this project due to other commitments. This app is useful despite its limitations.</p>
+</div>
+</div>
