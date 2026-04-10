@@ -121,6 +121,9 @@ params:
     icon: ""
     iconHeight: 35
 
+  images:
+    - "/img/sharing-image.png"
+
   assets:
     favicon: "/img/favicon.ico"
     disableHLJS: true
