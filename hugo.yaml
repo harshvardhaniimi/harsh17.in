@@ -4,6 +4,10 @@ theme: PaperMod
 paginate: 1000
 enableRobotsTXT: true
 
+services:
+  rss:
+    limit: 10
+
 taxonomies:
   tag: tags
 
