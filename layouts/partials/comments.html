@@ -2,21 +2,35 @@
 {{- if .repo -}}
 <section class="comments" style="margin-top:3rem;">
   <h3>Comments</h3>
-  <script src="https://giscus.app/client.js"
-          data-repo="{{ .repo }}"
-          data-repo-id="{{ .repoId }}"
-          data-category="{{ .category | default "General" }}"
-          data-category-id="{{ .categoryId }}"
-          data-mapping="{{ .mapping | default "pathname" }}"
-          data-strict="1"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="{{ .theme | default "preferred_color_scheme" }}"
-          data-lang="en"
-          data-loading="lazy"
-          crossorigin="anonymous"
-          async>
+  <script>
+  // Set Giscus theme based on PaperMod's current theme
+  (function() {
+    var theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'auto') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark_tritanopia' : 'light';
+    } else if (theme === 'dark') {
+      theme = 'dark_tritanopia';
+    } else {
+      theme = 'light';
+    }
+    var s = document.createElement('script');
+    s.src = 'https://giscus.app/client.js';
+    s.setAttribute('data-repo', '{{ .repo }}');
+    s.setAttribute('data-repo-id', '{{ .repoId }}');
+    s.setAttribute('data-category', '{{ .category | default "General" }}');
+    s.setAttribute('data-category-id', '{{ .categoryId }}');
+    s.setAttribute('data-mapping', '{{ .mapping | default "pathname" }}');
+    s.setAttribute('data-strict', '1');
+    s.setAttribute('data-reactions-enabled', '1');
+    s.setAttribute('data-emit-metadata', '0');
+    s.setAttribute('data-input-position', 'top');
+    s.setAttribute('data-theme', theme);
+    s.setAttribute('data-lang', 'en');
+    s.setAttribute('data-loading', 'lazy');
+    s.crossOrigin = 'anonymous';
+    s.async = true;
+    document.currentScript.parentElement.appendChild(s);
+  })();
   </script>
 </section>
 {{- end -}}

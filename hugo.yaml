@@ -41,24 +41,27 @@ outputs:
 
 menu:
   main:
+    - name: Search
+      url: /search/
+      weight: 1
     - name: About
       url: /about/
-      weight: 1
+      weight: 2
     - name: Research
       url: /research/
-      weight: 2
+      weight: 3
     - name: Writing
       url: /writing/
-      weight: 3
+      weight: 4
     - name: Talks
       url: /talks/
-      weight: 4
+      weight: 5
     - name: Projects
       url: /projects/
-      weight: 5
+      weight: 6
     - name: CV
       url: /docs/cv.pdf
-      weight: 6
+      weight: 7
 
 params:
   env: production
