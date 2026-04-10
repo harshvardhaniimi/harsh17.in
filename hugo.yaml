@@ -1,7 +1,7 @@
 baseURL: /
 title: Harshvardhan
 theme: PaperMod
-paginate: 20
+paginate: 1000
 enableRobotsTXT: true
 
 taxonomies:
