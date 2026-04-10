@@ -64,6 +64,6 @@ I considered setting up a newsletter but every free service either charges for R
 
 ---
 
-The old personal website is still accessible at [harsh17.in/old2](https://harsh17.in/old2) if you're feeling nostalgic, and the even older Google Sites version lives at [harsh17.in/old](https://harsh17.in/old). Three generations of the same impulse: put things on the internet and hope someone finds them interesting.
+The old personal website is still accessible at [hv.netlify.app](https://hv.netlify.app/) if you're feeling nostalgic, and the even older Google Sites version lives at [harsh17.in/old](https://harsh17.in/old). Three generations of the same impulse: put things on the internet and hope someone finds them interesting.
 
 Here's to the new home. 🏡

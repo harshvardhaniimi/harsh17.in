@@ -7,9 +7,9 @@
   (function() {
     var theme = document.documentElement.getAttribute('data-theme');
     if (theme === 'auto') {
-      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark_tritanopia' : 'light';
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'transparent_dark' : 'light';
     } else if (theme === 'dark') {
-      theme = 'dark_tritanopia';
+      theme = 'transparent_dark';
     } else {
       theme = 'light';
     }
