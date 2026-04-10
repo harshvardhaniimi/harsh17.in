@@ -4,7 +4,7 @@ https://blog.harsh17.in/index.xml  https://harsh17.in/writing/index.xml 301!
 https://blog.harsh17.in/*          https://harsh17.in/:splat 301!
 
 # Legacy domain
-https://hv.netlify.app/*           https://harsh17.in/:splat 301!
+# hv.netlify.app stays accessible as archive — only www.harsh17.in redirects
 https://www.harsh17.in/*           https://harsh17.in/:splat 301!
 
 # Short URLs
