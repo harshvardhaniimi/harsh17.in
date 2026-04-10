@@ -43,7 +43,7 @@ No more. The new site is plain Markdown. I edit in VS Code (or any text editor),
 
 I also replaced the embedded [Are.na](https://www.are.na/) iframes with simple links. Those iframes were loading entire pages worth of content on every visit and eating through my Netlify bandwidth. A link works just as well.
 
-## Staying Updated {#subscribe}
+## Staying Updated
 
 If you'd like to follow along, the best way is through **RSS** — an open, simple protocol that lets you subscribe to websites without giving away your email or depending on any platform's algorithm.
 
