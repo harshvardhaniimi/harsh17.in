@@ -53,9 +53,12 @@ menu:
     - name: Talks
       url: /talks/
       weight: 4
+    - name: Projects
+      url: /projects/
+      weight: 5
     - name: CV
       url: /docs/cv.pdf
-      weight: 5
+      weight: 6
 
 params:
   env: production
@@ -76,12 +79,13 @@ params:
   homeInfoParams:
     Title: "Harshvardhan"
     Content: >
-      I'm a professor at [AUS](https://www.aus.edu/) who builds machine learning systems
-      for real-world forecasting problems. Before that, I earned my
-      [PhD](/phd/) at the University of Tennessee and spent time at HP Inc.
-      figuring out how to predict demand for printers.
+      I'm an Assistant Professor at
+      [American University of Sharjah](https://www.aus.edu/) 🇦🇪
+      who builds machine learning systems for real-world forecasting problems.
+      Before that, I earned my [PhD](/phd/) at the University of Tennessee
+      and spent time at HP Inc. 🇺🇸 figuring out how to predict demand for printers.
       When I'm not teaching or researching, I [write](/writing/) about
-      whatever catches my curiosity — data, philosophy, coffee, travel, India, and life.
+      whatever catches my curiosity — data, philosophy, travel, India, and life ☕
 
   socialIcons:
     - name: googlescholar
