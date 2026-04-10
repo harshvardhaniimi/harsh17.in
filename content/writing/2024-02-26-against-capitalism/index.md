@@ -128,6 +128,4 @@ We must craft economic systems that not only measure but also honor the full spe
 Capitalist metrics may have served us well in one era, but as we evolve, so too must our systems.
 It's time to redefine what we value and find new ways to measure the true wealth of nations: the well-being of its people.
 
-<iframe style="border:none;" width="100%" height="590" src="https://www.are.na/harsh/anti-capitalism-and-pro-degrowth/embed" title="Harsh&#39;s Are.na Channel on Economics et al.">
-
-</iframe>
+[View my Are.na channel on Economics et al. →](https://www.are.na/harsh/anti-capitalism-and-pro-degrowth)
