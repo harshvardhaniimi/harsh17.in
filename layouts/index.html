@@ -7,6 +7,16 @@
     <div>{{ .Content | markdownify }}</div>
     {{- end }}
 
+    <div class="quick-links">
+      <a href="/research/">Research</a>
+      <span class="sep">&middot;</span>
+      <a href="/writing/">Writing</a>
+      <span class="sep">&middot;</span>
+      <a href="/talks/">Talks</a>
+      <span class="sep">&middot;</span>
+      <a href="/projects/">Projects</a>
+    </div>
+
     {{- with site.Params.socialIcons }}
     <div class="social-icons" style="margin-top:1.5rem;">
       {{- range . }}
@@ -19,7 +29,7 @@
     {{- end }}
 
     <a href="#" id="randomPost" class="random-post" onclick="goRandom(event)">
-      Feeling adventurous? Read a random post →
+      Feeling adventurous? Read a random post &rarr;
     </a>
 
     <p style="margin-top:1.5rem;font-size:0.88rem;color:var(--secondary);">
@@ -31,6 +41,12 @@
 <script>
 var allPosts = [
   {{- range where site.RegularPages "Section" "writing" -}}
+  "{{ .RelPermalink }}",
+  {{- end -}}
+  {{- range where site.RegularPages "Section" "research" -}}
+  "{{ .RelPermalink }}",
+  {{- end -}}
+  {{- range where site.RegularPages "Section" "projects" -}}
   "{{ .RelPermalink }}",
   {{- end -}}
 ];

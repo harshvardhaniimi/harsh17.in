@@ -117,6 +117,24 @@ a:hover {
   font-family: 'Libre Baskerville', Georgia, serif;
 }
 
+/* Quick links row */
+.quick-links {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-family: 'Libre Baskerville', Georgia, serif;
+}
+.quick-links a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.quick-links a:hover {
+  color: var(--link-color);
+}
+.quick-links .sep {
+  margin: 0 0.4rem;
+  color: var(--secondary);
+}
+
 /* ===== Remove boxes from post entries (flat list) ===== */
 .post-entry {
   border: none;
