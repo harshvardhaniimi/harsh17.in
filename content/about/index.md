@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "Data scientist by training, professor by profession, curious human by default."
+description: "Data scientist by training, professor by profession, curious by default."
 ---
 
 <img src="/img/avatar.png" alt="Harshvardhan" style="float:right;width:180px;margin:0 0 1.5rem 2rem;border-radius:50%;" />
