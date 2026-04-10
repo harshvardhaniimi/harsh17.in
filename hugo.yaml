@@ -77,12 +77,12 @@ params:
   homeInfoParams:
     Title: "Harshvardhan"
     Content: >
-      Assistant Professor of Information Systems & Business Analytics at
-      [American University of Sharjah](https://www.aus.edu/).
-      I study machine learning for demand forecasting and enterprise analytics.
-      Previously PhD in Business Analytics at the University of Tennessee, 
-      research internships at HP Inc for supply chain planning.
-      I write about data science, philosophy, travel, and life.
+      I'm a professor at [AUS](https://www.aus.edu/) who builds machine learning systems
+      for real-world forecasting problems. Before that, I earned my
+      [PhD](/phd/) at the University of Tennessee and spent time at HP Inc.
+      figuring out how to predict demand for printers.
+      When I'm not teaching or researching, I [write](/writing/) about
+      whatever catches my curiosity — data, philosophy, coffee, travel, India, and life.
 
   socialIcons:
     - name: googlescholar
