@@ -82,13 +82,13 @@ params:
   homeInfoParams:
     Title: "Dr. Harshvardhan"
     Content: >
-      I'm an Assistant Professor at
-      [American University of Sharjah](https://www.aus.edu/) 🇦🇪
-      who builds machine learning systems for real-world forecasting problems.
-      Before that, I earned my [PhD](/phd/) at the University of Tennessee 🇺🇸
-      and spent time at [HP Inc.](/hp-blog-2023/) figuring out how to predict demand for printers. 🖨️
-      When I'm not teaching or researching, I [write](/writing/) about
-      whatever catches my curiosity — data, philosophy, travel, India, and life ☕
+      I’m an Assistant Professor at [American University of Sharjah](https://www.aus.edu/) 🇦🇪, 
+      where I study how machine learning can help people and organizations make better decisions. 
+      Before joining AUS, I earned my [PhD](/phd/) at the University of Tennessee 🇺🇸 
+      and spent time at [HP Inc.](/hp-blog-2023/) working on demand forecasting for printers 🖨️. 
+      Earlier, I completed a B.A. and M.B.A. at 
+      [IIM Indore](https://iimidr.ac.in/programmes/academic-programmes/five-year-integrated-programme-in-management-ipm/) 🇮🇳. 
+      I also [write](/writing/) about the things I keep returning to — data, philosophy, travel, India, and ordinary life ☕
 
   socialIcons:
     - name: googlescholar
