@@ -1,0 +1,29 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+</header>
+
+{{- $pages := .Pages.ByDate.Reverse -}}
+{{- $years := slice -}}
+{{- range $pages -}}
+  {{- $y := .Date.Format "2006" -}}
+  {{- $years = $years | append $y -}}
+{{- end -}}
+{{- $years = $years | uniq -}}
+
+{{- range $year := $years }}
+<div class="year-group">
+  <h3>{{ $year }}</h3>
+  {{- range $pages -}}
+    {{- if eq (.Date.Format "2006") $year }}
+  <div class="writing-list-item">
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <span class="date">{{ .Date.Format "Jan 2" }}</span>
+  </div>
+    {{- end -}}
+  {{- end -}}
+</div>
+{{- end }}
+
+{{- end }}{{/* define "main" */}}
