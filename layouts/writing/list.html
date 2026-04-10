@@ -5,6 +5,10 @@
   {{ with .Description }}<p style="color:var(--secondary);font-style:italic;">{{ . }}</p>{{ end }}
 </header>
 
+<p style="font-size:0.88rem;color:var(--secondary);margin-bottom:1.5rem;">
+  Never miss a post — <a href="/writing/index.xml">subscribe via RSS</a>.
+</p>
+
 {{- /* Tag filter pills */ -}}
 {{- $allTags := slice -}}
 {{- range .Pages -}}

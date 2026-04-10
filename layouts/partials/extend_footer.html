@@ -1,6 +1,5 @@
 {{- if .IsPage -}}
   {{- if and (ne .Type "page") (not (eq .Params.comments false)) -}}
-    {{- partial "subscribe.html" . -}}
     {{- partial "comments.html" . -}}
   {{- end -}}
 {{- end -}}
