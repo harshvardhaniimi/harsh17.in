@@ -9,13 +9,19 @@ tags:
   - tools
 ---
 
-For the last few years, I've maintained two separate websites. My [personal website](https://hv.netlify.app/) — built with Hugo Apero — housed my publications, projects, talks, and an about page. My [blog](https://blog.harsh17.in/) — a separate Hugo site with the Archie theme — held all my writing. The idea was to keep "professional" and "personal" apart. In practice, it meant I was never sure where something belonged. Is a technical tutorial about R a "project" or a "blog post"? Is a conference reflection a "talk" or a piece of writing? The boundaries were artificial, and maintaining two sites meant twice the headaches.
+For the last few years, I've maintained two separate websites. My [personal website](https://hv.netlify.app/) — built with Hugo Apero — housed my publications, projects, talks, and an about page. My [blog](https://hvblog.netlify.app/) — a separate Hugo site with the Archie theme — held all my writing. The idea was to keep "professional" and "personal" apart. In practice, it meant I was never sure where something belonged. Is a technical tutorial about R a "project" or a "blog post"? Is a conference reflection a "talk" or a piece of writing? The boundaries were artificial, and maintaining two sites meant twice the headaches.
+
+![The old personal website, built with Hugo Apero](personal-web2.png)
+
+![The old blog — Harsh's Corner, built with the Archie theme](blog.png)
 
 So I merged them.
 
 ## What Changed
 
 Everything now lives at [harsh17.in](https://harsh17.in). One site, one theme, one place to find anything I've written or built.
+
+![The new site — warm, minimal, everything in one place](personal-web3.png)
 
 The new site uses [PaperMod](https://github.com/adityatelange/hugo-PaperMod) — a minimal Hugo theme that I've customized with a warm cream palette, serif typography ([Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville)), and a layout inspired by academic sites like [Kieran Healy's](https://kieranhealy.org/). The aesthetic is deliberately quiet. No boxes, no cards, no sidebars. Just text, links, and whitespace. I wanted it to feel like opening a well-organized notebook.
 
@@ -64,6 +70,10 @@ I considered setting up a newsletter but every free service either charges for R
 
 ---
 
-The old personal website and blog are still accessible at [hv.netlify.app](https://hv.netlify.app/) and [hvblog.netlify.app](https://hvblog.netlify.app/) if you're feeling nostalgic, and the even older Google Sites version lives at [harsh17.in/old](https://harsh17.in/old). Three generations of the same impulse: put things on the internet and hope someone finds them interesting.
+The old personal website and blog are still accessible at [hv.netlify.app](https://hv.netlify.app/) and [hvblog.netlify.app](https://hvblog.netlify.app/) if you're feeling nostalgic. And the even older Google Sites version — my very first website — lives at [harsh17.in/old](https://harsh17.in/old).
+
+![Where it all started — the Google Sites era](personal-website1.png)
+
+Three generations of the same impulse: put things on the internet and hope someone finds them interesting.
 
 Here's to the new home. 🏡
