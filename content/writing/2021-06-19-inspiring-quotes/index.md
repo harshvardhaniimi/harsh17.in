@@ -7,6 +7,9 @@ date: '2021-06-19'
 slug: quotes
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 There isn't one quote that I love.
 Euphemisms and quotes keep me lasting.

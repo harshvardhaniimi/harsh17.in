@@ -9,6 +9,9 @@ date: '2022-05-13'
 slug: trying-new-things
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 It is essential to keep experimenting with new things in life. We don't know what would stick and be successful; we can only take guesses. More often than not, we tend to be risk averse because we don't know enough. However, being a little more optimistic pays off in the long term.
 

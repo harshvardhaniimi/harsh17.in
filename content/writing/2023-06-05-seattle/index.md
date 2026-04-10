@@ -11,6 +11,9 @@ date: '2023-06-05'
 slug: seattle
 tags:
 - travel
+cover:
+  image: og.png
+  hidden: true
 ---
 Sometimes, a journey far from home can unexpectedly transport you back to cherished memories. Such was my experience during my two-day sojourn in Seattle, the Emerald City. Seattle's urban charm, combined with its vibrant market scene, immediately stirred recollections of bustling "Sabzi Bazaars" back home in India, igniting a sense of nostalgia and familiarity that added warmth to my adventure.
 

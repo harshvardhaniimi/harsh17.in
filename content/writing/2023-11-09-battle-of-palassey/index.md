@@ -11,6 +11,9 @@ slug: battle-of-palassey
 tags:
 - history
 - india
+cover:
+  image: og.png
+  hidden: true
 ---
 When "Clive of India" gained importance in the East India Company --- and managed to survive more than two years in India where most Company officers died from diseases and change in climate, etc. --- he realized the importance of India in making Britannia, more specifically him, rich.
 To him, India was a little more than a treasure of riches, waiting to be "looted" and plundered to exhaustion.

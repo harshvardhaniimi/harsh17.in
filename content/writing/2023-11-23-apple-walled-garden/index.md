@@ -7,6 +7,9 @@ date: '2023-11-23'
 slug: apple-walled-garden
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](images/_2c117f37-7d10-4c7e-bdce-9a037b9bcaea.jpeg)
 

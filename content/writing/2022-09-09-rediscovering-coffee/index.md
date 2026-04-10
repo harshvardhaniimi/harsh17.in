@@ -9,6 +9,9 @@ date: '2022-09-09'
 slug: rediscovering-coffee
 tags:
 - coffee
+cover:
+  image: og.png
+  hidden: true
 ---
 The allure of coffee has always been a constant in my life, somewhat like a well-worn book that continually unveils new chapters. I've not been a fan of Chai (चाय) like most Indians. But the rich aroma of South Indian filter coffee holds a special place in my heart, brewed traditionally and delivering a strong, aromatic decoction. During the pandemic, I also had a short fling with [Dalgona coffee](https://www.youtube.com/watch?v=9SjCEOWd3PU).
 

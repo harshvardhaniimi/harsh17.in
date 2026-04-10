@@ -11,6 +11,9 @@ tags:
 - data-science
 - economics
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 **TLDR:** Twitter is shutting down Revue, the newsletter platform that I use for [Next](http://harsh17.in/next). 
 Thus, I’m migrating to Substack. You shouldn’t need to do anything on your side.

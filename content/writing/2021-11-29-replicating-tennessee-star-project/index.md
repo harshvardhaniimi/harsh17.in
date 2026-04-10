@@ -8,6 +8,9 @@ slug: replicating-tennessee-star-project
 tags:
 - data-science
 - economics
+cover:
+  image: og.png
+  hidden: true
 ---
 [![](featured.png)](/docs/tennessee_STAR.pdf)
 

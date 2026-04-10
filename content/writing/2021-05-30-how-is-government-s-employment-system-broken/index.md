@@ -9,6 +9,9 @@ slug: []
 tags:
 - government
 - india
+cover:
+  image: og.png
+  hidden: true
 ---
 In 1858, after India's first war of independence, the British Empire set up a new government executive arm --- the Indian Civil Service. Trained at the University of Oxford, University of Cambridge, University of London and Trinity College, Dublin for two years, these elite executives were responsible for overseeing all government activities in the British Raj. Today, they train at Lal Bahadur Shashtri National Academy of Administration for two years with very similar content. Soon after, they join different departments of government and lead the personnel.
 

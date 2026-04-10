@@ -7,6 +7,9 @@ date: '2022-02-03'
 slug: ancestors
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 ![Sirius Black's Family Tree as seen in Harry Potter and the Order of the Phoenix.](Black-Family-Tree.jpg "Sirius Black's Family Tree as seen in Harry Potter and the Order of the Phoenix.")
 

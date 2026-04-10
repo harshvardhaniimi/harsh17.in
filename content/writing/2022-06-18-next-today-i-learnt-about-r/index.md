@@ -8,6 +8,9 @@ tags:
 - academia
 - data-science
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 ![Title Image Next - Today I Learnt About R](/img/next.png)
 

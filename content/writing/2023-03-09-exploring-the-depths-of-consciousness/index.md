@@ -10,6 +10,9 @@ date: '2023-03-09'
 slug: yoga
 tags:
 - philosophy
+cover:
+  image: og.png
+  hidden: true
 ---
 "Yoga is the restraint of the fluctuations of the mind" --- Patanjali
 

@@ -7,6 +7,9 @@ date: '2019-11-25'
 slug: []
 tags:
 - academia
+cover:
+  image: og.png
+  hidden: true
 ---
 When a new technology makes it to the headlines, it is vital to understand which of those are commercially viable and which are futile attempts of modernisation. Gartner hype cycle helps understand the evolution of technology and its use cases. Every year, Gartner releases multiple hype cycles – each focusing on some new technology. The hype cycle for Artificial Intelligence is one such tool (others being on emerging technology and marketing).
 

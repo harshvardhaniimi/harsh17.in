@@ -8,6 +8,9 @@ slug: interesting-problems-and-where-to-find-them
 tags:
 - academia
 - data-science
+cover:
+  image: og.png
+  hidden: true
 ---
 I interviewed [Prof Mike Galbreth](https://haslam.utk.edu/experts/michael-galbreth) from my department at the University of Tennessee. This was part of my seminar course on research by [Prof Sean Willems](https://seanwillems.com/) (my advisor too 🚀). This essay is my reflection on our conversations.
 

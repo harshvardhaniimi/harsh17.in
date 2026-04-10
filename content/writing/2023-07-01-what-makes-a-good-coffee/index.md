@@ -11,6 +11,9 @@ date: '2023-07-01'
 slug: what-makes-a-good-coffee
 tags:
 - coffee
+cover:
+  image: og.png
+  hidden: true
 ---
 Ever since I began chronicling my coffee journey, things have become intriguingly more flavorful. ☕
 

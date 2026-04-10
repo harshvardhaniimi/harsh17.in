@@ -15,6 +15,9 @@ tags:
 - economics
 - forecasting
 - python
+cover:
+  image: og.png
+  hidden: true
 ---
 Wow, what a ride! My 15-month time at HP Inc. feels like a full-on sprint through a techno-maze. Machine learning forecasting models for over 18,000 products in HP Print? Bring it on! 📊
 

@@ -13,6 +13,9 @@ summary: A quick rundown of my doctoral research presented at the BA Forum 2023
 date: '2023-09-07T13:00:00Z'
 event: Business Analytics Forum
 location: University of Tennessee, Knoxville
+cover:
+  image: og.png
+  hidden: true
 ---
 In a recent talk, I discussed my PhD research which aims to leverage AI to solve two business problems - forecasting print demand at HP and optimizing guaranteed delivery advertisment at Alibaba.
 

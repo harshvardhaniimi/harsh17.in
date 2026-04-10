@@ -6,6 +6,9 @@ slug: range
 draft: false
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 The following are my notes from the Book [Range: Why Generalists Triumph in a Specialized World by David Epstein](https://www.goodreads.com/book/show/41795733-range). In today's hyper-specialized world, it might seem counterintuitive that broadening one's experiences and delaying specialization could lead to greater success. However, David Epstein provides compelling evidence and stories to support the idea that being a generalist in a specialized world is not just advantageous; it's crucial.
 

@@ -8,6 +8,9 @@ slug: technical-and-casual-writing
 tags:
 - academia
 - blogdown
+cover:
+  image: og.png
+  hidden: true
 ---
 Every writing is meant to be read --- at least by the writer. As the writings and writer gain popularity, the readership expands. Most of my blogs are read only by me. Some blog posts like [COVID-19 data testing](/is-covid-19-data-tampered/) and [Spotify visualisation](/exploring-my-spotify-listening/) did gain traction. But by and large, I am my website's audience.
 

@@ -8,6 +8,9 @@ tags:
 - personal
 - tools
 draft: false
+cover:
+  image: og.png
+  hidden: true
 ---
 I never knew I could miss a piece of tech until I found myself longing for my old Kindle.
 The compact 6" form factor that fit perfectly in my hand, easily slipped into my back pocket, and allowed me to read while walking was irreplaceable. The Kindle Scribe I upgraded to had its perks---now all my books and notebooks were with me all the time, no cloud sync needed. But, it was just too big to carry around all the time.

@@ -10,6 +10,9 @@ tags:
 - economics
 - r
 draft: true
+cover:
+  image: og.png
+  hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
 <link href="{{< blogdown/postref >}}index_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />

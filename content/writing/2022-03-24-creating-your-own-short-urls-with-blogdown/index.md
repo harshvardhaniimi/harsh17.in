@@ -8,6 +8,9 @@ slug: creating-your-own-short-urls-with-blogdown
 tags:
 - r
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 A few days ago I shared my personal Zoom room link to a few people: <https://www.harsh17.in/zoom>. The neatness of this in comparison to something like <https://zoom.us/j/99672273048?pwd=eXV5R2pBR0FqNlBUWmtLdCt6THl3dz09> was amazing. It had two immediate effects:
 

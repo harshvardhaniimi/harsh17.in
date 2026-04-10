@@ -10,6 +10,9 @@ date: '2024-03-15'
 slug: who-s-funding-the-politics-in-india
 tags:
 - india
+cover:
+  image: og.png
+  hidden: true
 ---
 ## Political System in India
 

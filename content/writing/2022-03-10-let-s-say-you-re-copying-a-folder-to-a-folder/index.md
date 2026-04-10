@@ -8,6 +8,9 @@ slug: lets-say-you-re-copying-a-folder-to-a-folder
 tags:
 - data-science
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 Imagine a folder A whose content is to be copied to a folder B. A has five subfolders, each with 1, 2, 3, 4 and 5 files, respectively. For simplicity, consider the case that each file is of equal size. When copying the files from A to B, how would you measure the progress?
 

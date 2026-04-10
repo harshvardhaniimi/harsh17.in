@@ -8,6 +8,9 @@ slug: my-name
 draft: false
 tags:
 - academia
+cover:
+  image: og.png
+  hidden: true
 ---
 ### TL;DR
 

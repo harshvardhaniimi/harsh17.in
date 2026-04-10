@@ -13,6 +13,9 @@ date: '2022-06-05'
 slug: food-choices-in-america
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 I had always wondered about the ubiquity of unhealthy food in the US and the blatant absence of fresh fruits and vegetables. Why are supermarkets full of unhealthy chips, why does bread have corn syrup, and why do berries cost \$9.99 and berries snacks cost \$1.99!?
 

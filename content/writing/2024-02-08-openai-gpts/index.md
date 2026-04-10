@@ -11,6 +11,9 @@ slug: openai-gpts
 tags:
 - ai
 - economics
+cover:
+  image: og.png
+  hidden: true
 ---
 OpenAI's GPT is a terrific idea and a huge improvement over vanilla language models.
 

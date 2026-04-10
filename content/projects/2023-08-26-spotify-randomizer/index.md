@@ -10,6 +10,9 @@ slug: spotify-randomizer
 tags:
 - tools
 github: https://github.com/harshvardhaniimi/spotify-randomizer
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](images/_6306366c-de6a-46be-8e9e-41bd55a73565.jpeg)
 

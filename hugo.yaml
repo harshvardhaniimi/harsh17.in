@@ -124,6 +124,10 @@ params:
   images:
     - "/img/sharing-image.png"
 
+  cover:
+    hidden: true
+    responsiveImages: false
+
   assets:
     favicon: "/img/favicon.ico"
     disableHLJS: true

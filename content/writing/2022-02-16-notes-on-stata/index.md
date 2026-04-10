@@ -8,6 +8,9 @@ slug: notes-on-stata
 tags:
 - data-science
 - economics
+cover:
+  image: og.png
+  hidden: true
 ---
 #### Conventions through this page
 

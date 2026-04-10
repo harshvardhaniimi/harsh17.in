@@ -9,6 +9,9 @@ date: '2021-12-09'
 slug: ai
 tags:
 - data-science
+cover:
+  image: og.png
+  hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/twitter-widget/widgets.js"></script>
 <script src="{{< blogdown/postref >}}index_files/twitter-widget/widgets.js"></script>

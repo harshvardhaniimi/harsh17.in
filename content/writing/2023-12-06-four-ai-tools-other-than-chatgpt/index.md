@@ -8,6 +8,9 @@ date: '2023-11-27'
 slug: four-ai-chatbots-other-than-chatgpt
 tags:
 - ai
+cover:
+  image: og.png
+  hidden: true
 ---
 Since its launch, ChatGPT has taken over the world by a storm.
 While many are afraid of losing their jobs (which likely [will happen](https://www.harsh17.in/ai2/)), many of us are thinking of using these tools to upgrade our existing work quality.

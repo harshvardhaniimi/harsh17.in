@@ -8,6 +8,9 @@ tags:
 - ai
 draft: false
 website: https://harsh17.in/chat
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](images/talk-to-harsh.png)
 

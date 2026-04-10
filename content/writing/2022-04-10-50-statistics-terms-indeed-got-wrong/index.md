@@ -8,6 +8,9 @@ slug: 50-statistics-terms-indeed-got-wrong
 tags:
 - data-science
 draft: true
+cover:
+  image: og.png
+  hidden: true
 ---
 > **50 Statistics Terms To Know (With Definitions)**
 >

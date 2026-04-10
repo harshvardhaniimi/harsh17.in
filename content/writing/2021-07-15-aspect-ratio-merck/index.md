@@ -8,6 +8,9 @@ tags:
 - economics
 - india
 slug: aspect-ratio
+cover:
+  image: og.png
+  hidden: true
 ---
 [![](images/Screen%20Recording%202022-03-16%20at%2010.28.44%20AM.gif)](https://www.aspectratioai.com/)
 

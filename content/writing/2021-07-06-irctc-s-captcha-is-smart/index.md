@@ -6,6 +6,9 @@ date: '2021-07-06'
 slug: irctc-captcha-is-smart
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 I realised IRCTC's captcha system is a brilliant move. Why? Well, you can't do away with captcha systems. They are everywhere identifying robots from humans. At the same time, people don't want to see ads, and everyone uses ad-blockers specifically for that purpose. Why not integrate something indispensable with something disliked?
 

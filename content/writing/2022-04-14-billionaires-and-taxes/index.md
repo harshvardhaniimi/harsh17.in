@@ -11,6 +11,9 @@ slug: billionaires-and-taxes
 tags:
 - economics
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
 <script src="{{< blogdown/postref >}}index_files/plotly-binding/plotly.js"></script>

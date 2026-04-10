@@ -8,6 +8,9 @@ slug: []
 tags:
 - academia
 - iim indore
+cover:
+  image: og.png
+  hidden: true
 ---
 Funding education is probably the most heavily debated topic in recent years, with both sides having equally strong views. Some say education is the state's duty and a citizen's right; others call it the individual's responsibility. But the consensus is that school education is the government's responsibility.
 

@@ -7,6 +7,9 @@ date: '2021-06-19'
 tags:
 - tools
 slug: latex
+cover:
+  image: og.png
+  hidden: true
 ---
 ## Write Markdown in LaTeX for Notes
 

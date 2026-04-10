@@ -11,6 +11,9 @@ tags:
 - ai
 - python
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](images/702587.jpg)
 

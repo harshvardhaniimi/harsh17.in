@@ -8,6 +8,9 @@ slug: ten-days-in-the-united-states
 tags:
 - government
 - india
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](images/B1398821-4B08-4463-ADB1-6D2878332A5D_1_105_c.jpeg)
 

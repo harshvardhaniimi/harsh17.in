@@ -12,6 +12,9 @@ slug: what-are-you-optimizing-for
 tags:
 - philosophy
 draft: false
+cover:
+  image: og.png
+  hidden: true
 ---
 > When a measure becomes a target, it ceases to be a good measure.
 >

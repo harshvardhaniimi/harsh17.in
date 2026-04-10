@@ -7,6 +7,9 @@ date: '2022-02-08'
 slug: notes-on-python
 tags:
 - python
+cover:
+  image: og.png
+  hidden: true
 ---
 # Installing Packages
 

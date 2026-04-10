@@ -6,6 +6,9 @@ date: '2022-11-10'
 slug: population-collapse
 tags:
 - data-science
+cover:
+  image: og.png
+  hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/twitter-widget/widgets.js"></script>
 <script src="{{< blogdown/postref >}}index_files/core-js/shim.min.js"></script>

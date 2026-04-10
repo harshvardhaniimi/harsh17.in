@@ -9,6 +9,9 @@ date: '2022-05-11'
 slug: harvard-website
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 A university's website tells a lot about it. Harvard --- like all things in education and research --- is a prime example.
 

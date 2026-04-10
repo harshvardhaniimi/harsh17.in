@@ -11,6 +11,9 @@ date: '2023-05-21'
 slug: moab
 tags:
 - travel
+cover:
+  image: og.png
+  hidden: true
 ---
 Welcome to the story of my 10-day nature escape, a journey from Maupin to Moab to Glenwood Springs that promises a delightful mix of adventure, discovery, and tranquillity. Join me as I traverse vibrant landscapes, make friends with Frank, and delve into the history of Moab along the way.
 

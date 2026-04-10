@@ -11,6 +11,9 @@ tags:
 - academia
 - economics
 - forecasting
+cover:
+  image: og.png
+  hidden: true
 ---
 My three-year-long collaboration with HP Inc.—including an 18-month internship with their Strategic Planning and Modeling team—has culminated in a new publication in the *INFORMS Journal of Applied Analytics*.
 This paper is also the primary research output from [my dissertation](https://blog.harsh17.in/phd/), co-authored with the HP team and my advisor, Dr. Charles Liu.

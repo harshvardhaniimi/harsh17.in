@@ -14,6 +14,9 @@ tags:
 editor_options:
   markdown:
     wrap: sentence
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](images/image.jpg)
 

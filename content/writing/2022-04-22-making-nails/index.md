@@ -10,6 +10,9 @@ date: '2022-04-22'
 slug: making-nails
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](featured.jpg)
 

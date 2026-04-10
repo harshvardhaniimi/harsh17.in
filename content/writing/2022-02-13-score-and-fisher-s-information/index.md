@@ -10,6 +10,9 @@ tags:
 header-includes:
 - \usepackage{amsmath}
 bibliography: references.bib
+cover:
+  image: og.png
+  hidden: true
 ---
 ## Likelihood
 

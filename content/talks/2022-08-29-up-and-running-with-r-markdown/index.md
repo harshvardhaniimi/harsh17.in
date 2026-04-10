@@ -10,6 +10,9 @@ slug: up-and-running-with-r-markdown
 tags:
 - r
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 <iframe src="https://sage-fenglisu-c38dfb.netlify.app" width="672" height="400px" data-external="1"></iframe>
 

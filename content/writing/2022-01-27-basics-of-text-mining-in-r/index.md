@@ -9,6 +9,9 @@ tags:
 - machine-learning
 - ml
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 Text in R can be represented in several ways but generally it is a character vector (strings). Reading a text file would mean most of the content would either be in a single long character file, or broken into several variables and observations as a data frame like comma separated files (CSV). In this blog tutorial, I will download a Jane Austen's book and perform some basic analysis to understand how these text functions work.
 

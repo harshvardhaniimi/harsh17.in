@@ -10,6 +10,9 @@ tags:
 - academia
 - forecasting
 - machine-learning
+cover:
+  image: og.png
+  hidden: true
 ---
 Our work at HP Inc. on enterprise-scale demand forecasting was featured in *Foresight: The International Journal of Applied Forecasting* (Issue 79, 2025).  
 I had the privilege of presenting this project at the **International Institute of Forecasting’s Foresight Practitioner Conference**, where HP was named one of five global finalists in the *Forecasting in Practice Competition*.  

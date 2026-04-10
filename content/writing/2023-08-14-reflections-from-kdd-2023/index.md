@@ -12,6 +12,9 @@ tags:
 - machine-learning
 - python
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 Last week was quite busy for me. It was my first time attending and presenting at KDD. [29th ACM SIGKDD](https://kdd.org/kdd2023/) (Special Interest Group on Knowledge Discovery and Data Mining) is ACM (Association for Computing Machinery)'s influential conference on machine learning, AI and everything in between. It is one of the most popular conferences in the field of data mining in the world.
 

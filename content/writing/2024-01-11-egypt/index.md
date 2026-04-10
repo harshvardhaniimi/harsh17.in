@@ -8,6 +8,9 @@ date: '2024-01-11'
 slug: egypt
 tags:
 - travel
+cover:
+  image: og.png
+  hidden: true
 ---
 My first day in Cairo, Egypt (specifically in the vibrant district of Zamalek): I witnessed a striking scene.
 A young woman, donning a hijab and lost in her music, skillfully rollerbladed 🛼 through the bustling streets.

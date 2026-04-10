@@ -9,6 +9,9 @@ date: '2024-02-26'
 slug: against-capitalism
 tags:
 - economics
+cover:
+  image: og.png
+  hidden: true
 ---
 > The world has enough for everyone's need, but not enough for everyone's greed.
 >

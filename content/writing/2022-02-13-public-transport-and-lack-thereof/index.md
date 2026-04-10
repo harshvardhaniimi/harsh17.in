@@ -7,6 +7,9 @@ date: '2022-02-13'
 slug: public-transport-and-lack-thereof
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](driving.jpg)
 

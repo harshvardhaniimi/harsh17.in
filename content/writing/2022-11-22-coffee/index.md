@@ -8,6 +8,9 @@ slug: coffee
 tags:
 - coffee
 draft: false
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](images/Image-01.jpeg)
 

@@ -7,6 +7,9 @@ date: '2021-12-10'
 slug: optimizing-order-frequency-to-minimize-partial-pallet-orders
 tags:
 - economics
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](featured.jpg)
 

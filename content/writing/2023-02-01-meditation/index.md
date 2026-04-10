@@ -14,6 +14,9 @@ tags:
 editor_options:
   markdown:
     wrap: sentence
+cover:
+  image: og.png
+  hidden: true
 ---
 Between Dec 15 and 25 of 2022 I attended a meditation course called Vipassana.
 Vipassana is a Pali[^1] word that means "seeing things as they are".

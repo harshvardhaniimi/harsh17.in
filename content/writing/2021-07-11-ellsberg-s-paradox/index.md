@@ -12,6 +12,9 @@ tags:
 - probability
 - r
 draft: false
+cover:
+  image: og.png
+  hidden: true
 ---
 I was reading the book "How Not to Be Wrong: The Power of Mathematical Thinking" by Jordan Ellenberg. The book introduces a paradox named after Daniel Ellsberg, a young analyst at RAND Corporation and famous for leaking the Pentagon papers to civilians. Von Neumann and Morgenstern had proven that all individuals acted based on certain rules so as to maximize their utilities ([*The Theory of Games and Economic Behaviour*](https://www.goodreads.com/book/show/483055.Theory_of_Games_and_Economic_Behavior), 1944). While working at RAND on humans taking decisions under the face of uncertainty, he devised a famous experiment, now known as Ellsbeg's Paradox.
 

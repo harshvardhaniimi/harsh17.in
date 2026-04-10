@@ -10,6 +10,9 @@ tags:
 - data-science
 - government
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/twitter-widget/widgets.js"></script>
 

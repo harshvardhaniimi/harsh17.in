@@ -7,6 +7,9 @@ date: '2022-05-23'
 slug: some-website-stats
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 Here are some interesting stats about my website. I would probably do this every year in the last week of May.
 

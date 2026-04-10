@@ -11,6 +11,9 @@ slug: sainik-school-tilaiya
 tags:
 - personal
 draft: true
+cover:
+  image: og.png
+  hidden: true
 ---
 I passed the National Entrance Exam for Sainik School Tilaiya in 2009.
 I was eleven.

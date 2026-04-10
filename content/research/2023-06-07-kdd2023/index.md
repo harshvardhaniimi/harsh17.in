@@ -14,6 +14,9 @@ tags:
 - academia
 - machine-learning
 - python
+cover:
+  image: og.png
+  hidden: true
 ---
 Recently, our research on end to end inventory prediction and contract allocation model got accepted to [KDD 2023 Conference](https://kdd.org/kdd2023/). I will be presenting the paper in Long Beach, CA between August 6-10, 2023. KDD (29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining) is the premier conference on data science. I am thrilled to share our research. The poster presentation and the talk went great. Scroll down for some pictures!
 

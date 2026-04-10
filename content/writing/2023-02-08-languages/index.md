@@ -11,6 +11,9 @@ tags:
 - python
 - r
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 ![](featured.png)
 

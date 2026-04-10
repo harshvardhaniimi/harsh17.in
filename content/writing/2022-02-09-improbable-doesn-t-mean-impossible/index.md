@@ -7,6 +7,9 @@ date: '2022-02-09'
 slug: improbable-doesn-t-mean-impossible
 tags:
 - philosophy
+cover:
+  image: og.png
+  hidden: true
 ---
 ![Everyone thought there were no black swans until someone caught them sunbathing in Australia.](featured.jpg)
 

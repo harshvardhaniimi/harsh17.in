@@ -11,6 +11,9 @@ tags:
 - python
 - r
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 Recently, I learned a neat trick during my internship at HP.
 

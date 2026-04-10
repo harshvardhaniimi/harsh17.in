@@ -10,6 +10,9 @@ date: '2022-11-24'
 slug: infallible-memory
 tags:
 - philosophy
+cover:
+  image: og.png
+  hidden: true
 ---
 You rarely come across a story so powerful that you experience so many different feelings --- at the same time. Ted Chiang's "[The Truth of Fact, the Truth of Feeling](https://devonzuegel.com/post/the-truth-of-fact-the-truth-of-feeling-by-ted-chiang-subterranean-press)" does that. It evokes several strong feelings, one after another, that will leave you soul-searching.
 

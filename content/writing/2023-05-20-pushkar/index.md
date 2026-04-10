@@ -15,6 +15,9 @@ date: '2023-01-20'
 slug: pushkar
 tags:
 - travel
+cover:
+  image: og.png
+  hidden: true
 ---
 Nestled in the arid desert landscape of Rajasthan, India, the quiet town of Pushkar is a colorful mosaic of culture, spirituality, and history. Known for its captivating charm and mythical allure, Pushkar is an exquisite destination that intertwines the old-world charm with vibrant hues of contemporary life.
 

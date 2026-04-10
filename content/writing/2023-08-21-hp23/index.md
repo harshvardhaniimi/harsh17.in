@@ -11,6 +11,9 @@ tags:
 - forecasting
 - python
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 (This is a formal write-up of my internship work. Read [this blog](hp-blog-2023/) for a chirpy review of my internship!)
 

@@ -7,6 +7,9 @@ date: '2021-06-19'
 slug: []
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 ### Podcasts
 

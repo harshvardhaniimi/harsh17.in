@@ -7,6 +7,9 @@ date: '2019-02-26'
 slug: notes-on-linux
 tags:
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 ## Linux Ubuntu
 

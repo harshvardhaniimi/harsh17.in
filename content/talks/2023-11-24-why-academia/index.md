@@ -12,6 +12,9 @@ location: IIM Indore
 tags:
 - academia
 - india
+cover:
+  image: og.png
+  hidden: true
 ---
 It gave me a tonne of happiness in talking to IPM students on "Why Research?" at IIM Indore last week!
 

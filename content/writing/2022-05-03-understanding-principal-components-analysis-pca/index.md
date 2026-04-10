@@ -6,6 +6,9 @@ slug: understanding-principal-components-analysis-pca
 tags:
 - data-science
 draft: true
+cover:
+  image: og.png
+  hidden: true
 ---
 Principal Components Analysis is a technique to reduce the dimensions of data while accounting for linear variability. Consider a simple equation:
 

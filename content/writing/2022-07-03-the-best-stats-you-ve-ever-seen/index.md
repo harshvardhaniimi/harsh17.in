@@ -12,6 +12,9 @@ slug: the-best-stats-you-ve-ever-seen
 tags:
 - data-science
 - economics
+cover:
+  image: og.png
+  hidden: true
 ---
 Last week, I received a note from a reader of my [newsletter](https://www.getrevue.co/profile/harshbutjust/issues/what-happened-in-the-last-two-months-next-issue-37-1235976):
 

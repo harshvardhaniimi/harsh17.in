@@ -7,6 +7,9 @@ date: '2024-01-20'
 slug: theory-of-mind
 tags:
 - philosophy
+cover:
+  image: og.png
+  hidden: true
 ---
 One day, a disciple complained to the Buddha about his restless mind, 2500 years ago.
 Buddha told him a parable of a tree and the monkey.

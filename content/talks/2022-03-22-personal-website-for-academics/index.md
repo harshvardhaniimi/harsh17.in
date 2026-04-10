@@ -10,6 +10,9 @@ location: University of Tennessee
 slug: personal-websites-for-academics
 tags:
 - academia
+cover:
+  image: og.png
+  hidden: true
 ---
 Websites used to be developed by groups of people to meet the needs of other groups of people. **Today, as the internet grows more personalised than an encyclopedia of information, I argue we need more personal websites.** Social media platforms are limited and occupational in treating your content. Your message might be curtailed by what LinkedIn allows or 280 characters on Twitter.
 

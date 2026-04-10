@@ -10,6 +10,9 @@ date: '2022-08-10'
 slug: public-square
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/twitter-widget/widgets.js"></script>
 

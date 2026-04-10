@@ -7,6 +7,9 @@ date: '2022-01-14'
 slug: stackoverflow-answers
 tags:
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 Most of the time when I answer questions on Stack Overflow, I end up learning a thing or two about R myself. Answering questions gets me warmed up on unrelated topics. These questions are one of their kind. This blog post documents all my answers so that I can find the answers readily.
 

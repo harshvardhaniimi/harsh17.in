@@ -9,6 +9,9 @@ date: '2021-12-30'
 slug: shiny-urca
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 I worked on this project with [Asar](https://www.asarforindia.org/) between April and June 2021 to create a Shiny app. Having a full-time job didn't leave much time for side projects, and this project never reached fruition. This app has limitations --- primarily computational --- but can be helpful to researchers in finding urban and rural populations at the country level, state level, district level, or any of the 30 classes. The limitations are on computing power. My laptop, [despite its prowess](/how-fast-is-m1/), not good enough. Probably we need a cluster or Google/AWS computational resource.
 

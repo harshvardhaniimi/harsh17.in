@@ -9,6 +9,9 @@ summary: Shrimad Bhagavad Gita, or the song of the lord, is a 700 verses long co
 date: '2022-06-12'
 tags:
 - philosophy
+cover:
+  image: og.png
+  hidden: true
 ---
 It is sometime around 4000 BC, and almost all of India is on the verge of war.[^1] It is a war between two princes but is also the war between right and wrong --- *dharma* and *adharma*. *Pandavas*, five righteous brothers led by *Yudhistir*, ask king *Dhritrashtra* for their fair share of land. *Kauravas*, led by prince *Duryodhan*, were unwilling to share an inch of land.[^2]
 

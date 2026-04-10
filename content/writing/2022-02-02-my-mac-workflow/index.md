@@ -11,6 +11,9 @@ tags:
 - personal
 - productivity
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 Apple certainly improves how productive you are. I have lost an uncountable number of hours (cumulatively) on switching on my Windows machine alone --- something that's almost instantaneous in Mac. I am not entirely satisfied with iPhones, but I'm not sure if that's due to my muscle memory about how androids work or if it's iPhone. Here are specific applications on Mac that significantly boost my productivity --- even for rare cases.
 

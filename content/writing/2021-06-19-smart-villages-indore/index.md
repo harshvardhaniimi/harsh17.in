@@ -6,6 +6,9 @@ date: '2016-11-01'
 slug: []
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 * Created bilingual audio-video content for classes 6th to 8th for Science and English by digitising NCERT textbooks
 * Created, managed and maintained program's Hindi website using WordPress for four months

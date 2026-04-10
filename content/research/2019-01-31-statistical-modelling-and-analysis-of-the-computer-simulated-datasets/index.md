@@ -12,6 +12,9 @@ tags:
 - academia
 - data-science
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 My first academic publication: a peer-reviewed book chapter on statistical modelling using Gaussian processes. We reviewed several GP models and correlation structures, and methods to handle numerical instabilities due to near-singular matrices. Finally, we reviewed several algorithms developed specifically for analysing big data obtained from computer simulators.
 

@@ -10,6 +10,9 @@ tags:
 - covid-19
 - data-science
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 Are COVID-19 numbers reported by countries altered? I test the validity of COVID-19 new daily cases for every country using Benford's Law. Since the pandemic gained global centre stage, there has been a surge in data manipulation accusations. Independent media agencies questioned country-level data, and all of us made our own conclusions if the data is correct.
 

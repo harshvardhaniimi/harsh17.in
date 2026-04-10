@@ -9,6 +9,9 @@ date: '2023-03-16'
 slug: cities
 tags:
 - economics
+cover:
+  image: og.png
+  hidden: true
 ---
 > Many people ask me, why didn't you continue your father's profession as a painter? My answer is, I did. My father's painting was a few centimeters in size. My painting is thousands of square kilometers in size.
 >

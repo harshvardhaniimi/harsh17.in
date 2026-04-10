@@ -14,6 +14,9 @@ date: '2023-04-26'
 slug: gpt
 tags:
 - academia
+cover:
+  image: og.png
+  hidden: true
 ---
 ## Introduction
 

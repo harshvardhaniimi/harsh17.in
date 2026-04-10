@@ -8,6 +8,9 @@ slug: titanic-who-survived-the-tragegy
 tags:
 - data-science
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
 <script src="{{< blogdown/postref >}}index_files/plotly-binding/plotly.js"></script>

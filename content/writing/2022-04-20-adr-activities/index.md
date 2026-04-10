@@ -7,6 +7,9 @@ date: '2022-04-20'
 slug: adr
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
 <script src="{{< blogdown/postref >}}index_files/jquery/jquery.min.js"></script>

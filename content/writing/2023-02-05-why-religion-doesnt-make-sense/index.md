@@ -12,6 +12,9 @@ slug: religion
 tags:
 - philosophy
 draft: true
+cover:
+  image: og.png
+  hidden: true
 ---
 Once upon a time, the entire planet Earth was cast as the lead in a hit reality TV show. The show followed the daily lives of humans, animals, and the environment, and it quickly became the most popular show in the universe.
 

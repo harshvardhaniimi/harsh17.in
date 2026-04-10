@@ -13,6 +13,9 @@ slug: warren-hastings
 tags:
 - history
 - india
+cover:
+  image: og.png
+  hidden: true
 ---
 Warren Hastings deserves a special mention in the history of Colonial India.
 While Robert Clive thought of India as nothing more than a treasure trove ripe for plunder to exhaustion, Hastings saw an ancient and venerable culture that deserved praise, respect, and most importantly attention of the west.

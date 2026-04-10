@@ -7,6 +7,9 @@ date: '2021-03-01'
 slug: []
 tags:
 - economics
+cover:
+  image: og.png
+  hidden: true
 ---
 [![](images/Screen%20Shot%202022-03-16%20at%2010.32.22%20AM.png)](http://www.blisslifesciences.com/)
 

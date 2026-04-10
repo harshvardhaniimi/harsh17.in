@@ -12,6 +12,9 @@ slug: using-github-with-rstudio
 tags:
 - r
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 Watch the slides below or [here](https://astonishing-kitten-c51790.netlify.app/#1).
 

@@ -11,6 +11,9 @@ tags:
 - forecasting
 - machine-learning
 - tools
+cover:
+  image: og.png
+  hidden: true
 ---
 This is my Ph.D. dissertation.
 I earned my Ph.D. in Business Analytics from the Haslam College of Business, University of Tennessee, USA, in May 2025.

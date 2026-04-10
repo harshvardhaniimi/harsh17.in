@@ -11,6 +11,9 @@ date: '2022-04-10'
 slug: arguments
 tags:
 - personal
+cover:
+  image: og.png
+  hidden: true
 ---
 There are three types of arguments.
 

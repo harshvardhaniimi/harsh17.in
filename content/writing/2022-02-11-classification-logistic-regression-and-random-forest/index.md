@@ -7,6 +7,9 @@ date: '2022-02-11'
 slug: classification-logistic-regression-and-random-forest
 tags:
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 In this tutorial-cum-note, I will demonstrate how to use Logistic Regression and Random Forest algorithms to predict sex of a penguin. The data `penguins` comes from `palmerpenguins` package in R. It was collected by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) on three species of penguins at the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), a member of the [Long Term Ecological Research Network](https://lternet.edu/).
 

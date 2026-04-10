@@ -7,6 +7,9 @@ date: '2022-01-24'
 slug: notes-on-github
 tags:
 - r
+cover:
+  image: og.png
+  hidden: true
 ---
 ------------------------------------------------------------------------
 
