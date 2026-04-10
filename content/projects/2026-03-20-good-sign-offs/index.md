@@ -10,6 +10,8 @@ tags:
 - email
 - hindi
 - tools
+github: https://github.com/harshvardhaniimi/good-sign-offs
+website: https://harshvardhaniimi.github.io/good-sign-offs/
 ---
 How do you end an email? If you're like most people, you've been cycling between "Best," "Thanks," and "Regards" for years. Maybe you throw in a "Cheers" when you're feeling adventurous. I was stuck in this rut too, until I stumbled upon [Meg Miller's Are.na channel](https://www.are.na/meg-miller/good-sign-offs) --- a crowd-sourced collection of over 2,100 creative email sign-offs.
 

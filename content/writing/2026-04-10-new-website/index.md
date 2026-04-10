@@ -19,7 +19,7 @@ Everything now lives at [harsh17.in](https://harsh17.in). One site, one theme, o
 
 The new site uses [PaperMod](https://github.com/adityatelange/hugo-PaperMod) — a minimal Hugo theme that I've customized with a warm cream palette, serif typography ([Libre Baskerville](https://fonts.google.com/specimen/Libre+Baskerville)), and a layout inspired by academic sites like [Kieran Healy's](https://kieranhealy.org/). The aesthetic is deliberately quiet. No boxes, no cards, no sidebars. Just text, links, and whitespace. I wanted it to feel like opening a well-organized notebook.
 
-Oh, and the cursor is an autorickshaw. Because why not.
+Oh, and the cursor is an autorickshaw. Because why not. 🛺
 
 ## Where Things Are
 
@@ -29,7 +29,7 @@ The navigation is simple:
 - **[Research](/research/)** — my publications, from the dissertation to conference papers
 - **[Writing](/writing/)** — everything I write: essays, tutorials, travel notes, philosophy, technical notes, coffee musings. All of it, in one stream. You can filter by tags at the top of the page — click "philosophy" or "travel" or "data-science" to narrow things down
 - **[Talks](/talks/)** — conference presentations, guest lectures, workshops
-- **[CV](/docs/cv.pdf)** — the PDF
+- **[CV](/docs/cv.pdf)** — PDF of my CV
 
 If you're looking for something specific, there's a [search page](/search/) too.
 

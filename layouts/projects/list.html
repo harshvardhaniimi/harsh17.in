@@ -1,0 +1,35 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>{{ .Title | default "Projects" }}</h1>
+  {{ with .Content }}<div class="post-content">{{ . }}</div>{{ end }}
+</header>
+
+{{- range .Pages.ByDate.Reverse -}}
+<div class="project-entry">
+  <div class="project-image">
+    {{- $featured := "" -}}
+    {{- range (slice "featured.png" "featured.jpg" "featured.jpeg") -}}
+      {{- with $.Page.Resources.GetMatch . -}}
+        {{- $featured = . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- with .Resources.GetMatch "featured*" -}}
+    <a href="{{ $.RelPermalink }}">
+      <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy" />
+    </a>
+    {{- end -}}
+  </div>
+  <div class="project-info">
+    <div class="project-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+    {{- with .Params.subtitle }}<div class="project-subtitle">{{ . }}</div>{{ end -}}
+    {{- with .Params.summary }}<div class="project-summary">{{ . }}</div>{{ end -}}
+    <div class="project-links">
+      {{- with .Params.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end -}}
+      {{- with .Params.website }}<a href="{{ . }}" target="_blank" rel="noopener">Website</a>{{ end -}}
+    </div>
+  </div>
+</div>
+{{- end -}}
+
+{{- end }}{{/* define "main" */}}

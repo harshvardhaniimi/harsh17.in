@@ -7,6 +7,7 @@ slug: talk-to-harshvardhan
 tags:
 - ai
 draft: false
+website: https://harsh17.in/chat
 ---
 ![](images/talk-to-harsh.png)
 

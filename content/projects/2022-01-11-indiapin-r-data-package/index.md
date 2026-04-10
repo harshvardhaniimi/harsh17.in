@@ -10,6 +10,7 @@ slug: IndiaPIN
 tags:
 - r
 - tools
+github: https://github.com/harshvardhaniimi/IndiaPIN
 ---
 <link href="{{< blogdown/postref >}}index_files/htmltools-fill/fill.css" rel="stylesheet" />
 <script src="{{< blogdown/postref >}}index_files/htmlwidgets/htmlwidgets.js"></script>
