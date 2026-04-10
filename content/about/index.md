@@ -1,6 +1,6 @@
 ---
-title: "About"
-description: "About Harshvardhan"
+title: "About Dr. Harshvardhan"
+description: "About Dr. Harshvardhan"
 ---
 
 <img src="/img/avatar.png" alt="Harshvardhan" style="float:right;width:180px;margin:0 0 1.5rem 2rem;border-radius:50%;" />
