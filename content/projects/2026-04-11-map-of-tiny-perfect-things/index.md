@@ -12,6 +12,7 @@ github: https://github.com/harshvardhaniimi/map-of-tiny-perfect-things
 website: https://mtpt.netlify.app/
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 

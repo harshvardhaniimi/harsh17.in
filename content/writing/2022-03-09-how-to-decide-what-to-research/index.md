@@ -10,6 +10,7 @@ tags:
 - data-science
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 I interviewed [Prof Emre Demirkaya](https://scholar.google.com/citations?user=vCG5bM0AAAAJ&hl=en) from my department at the University of Tennessee. This was part of my seminar course on research by [Prof Sean Willems](https://seanwillems.com/) (my advisor too 🚀). This essay is my reflection on our conversations.

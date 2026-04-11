@@ -13,6 +13,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Recently, I learned a neat trick during my internship at HP.

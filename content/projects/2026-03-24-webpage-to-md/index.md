@@ -14,6 +14,7 @@ tags:
 github: https://github.com/harshvardhaniimi/page-to-markdown
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 I read a lot online. Articles, documentation, research threads, blog posts --- there's always something worth saving. For a while, I'd been copying and pasting text into my notes, losing all the formatting in the process. Or I'd save the whole page as HTML and end up with a bloated file full of ads and navigation bars. What I really wanted was a quick way to grab just the article content, nicely formatted as Markdown.

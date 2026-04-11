@@ -9,6 +9,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Here are some interesting stats about my website. I would probably do this every year in the last week of May.

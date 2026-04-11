@@ -9,6 +9,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 On one fine day when I have enough time, they'll all be wrapped into a package hosted on my Github. Until then, this page in their home.

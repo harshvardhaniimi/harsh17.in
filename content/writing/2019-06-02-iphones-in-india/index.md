@@ -9,6 +9,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Apple, as you very well know, is facing falling iPhone sales - for various reasons. One primary cause is the increased life of phones and long upgrade cycle. So, to maintain similar levels of profit, they either have to increase the margins; perhaps the reason for remarkably high prices for the current line. Or, they can learn a lesson on global expansion from the cigarettes industry.

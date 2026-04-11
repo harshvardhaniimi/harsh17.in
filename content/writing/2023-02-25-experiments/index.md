@@ -16,6 +16,7 @@ editor_options:
     wrap: sentence
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![](images/image.jpg)

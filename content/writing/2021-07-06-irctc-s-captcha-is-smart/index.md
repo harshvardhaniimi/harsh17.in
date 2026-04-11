@@ -8,6 +8,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 I realised IRCTC's captcha system is a brilliant move. Why? Well, you can't do away with captcha systems. They are everywhere identifying robots from humans. At the same time, people don't want to see ads, and everyone uses ad-blockers specifically for that purpose. Why not integrate something indispensable with something disliked?

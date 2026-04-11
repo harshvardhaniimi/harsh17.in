@@ -13,6 +13,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 This is my Ph.D. dissertation.

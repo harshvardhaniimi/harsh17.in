@@ -11,6 +11,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 > Without garlic I simply would not care to ~~live~~ code. --- [Louis Diat](https://twitter.com/kitchenbee/status/991244972501368833)[^1]

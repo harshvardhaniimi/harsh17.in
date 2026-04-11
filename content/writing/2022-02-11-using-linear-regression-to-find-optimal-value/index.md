@@ -10,6 +10,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 When I first learnt linear regression six years ago, I was surprised by its power. I could know the effect of one phenomenon on another and the extent of the relationship. As years passed by, I revisited its different parts in pieces. Stability. Consistency. Precision. R Squared. The list goes on.

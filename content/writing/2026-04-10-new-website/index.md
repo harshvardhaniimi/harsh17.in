@@ -9,6 +9,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 For the last few years, I've maintained two separate websites. My [personal website](https://hv.netlify.app/) — built with Hugo Apero — housed my publications, projects, talks, and an about page. My [blog](https://hvblog.netlify.app/) — a separate Hugo site with the Archie theme — held all my writing. The idea was to keep "professional" and "personal" apart. In practice, it meant I was never sure where something belonged. Is a technical tutorial about R a "project" or a "blog post"? Is a conference reflection a "talk" or a piece of writing? The boundaries were artificial, and maintaining two sites meant twice the headaches.

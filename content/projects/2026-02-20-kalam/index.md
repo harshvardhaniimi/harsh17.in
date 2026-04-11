@@ -16,6 +16,7 @@ github: https://github.com/harshvardhaniimi/kalam
 website: https://harshvardhaniimi.github.io/kalam/
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ## THIS IS A WORK-IN-PROGRESS APP. KINDLY EXCUSE THE ROUGH EDGES. FEEL FREE TO TRY IT OUT AND OPEN ISSUES OR CONTRIBUTIONS ON GITHUB.

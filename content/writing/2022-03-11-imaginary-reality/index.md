@@ -9,6 +9,7 @@ tags:
 - philosophy
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Many years ago, Schrodinger figured out that imaginary numbers are the only way to make sense of reality. Professor F Dyson described it best in his recent lecture[^1]:

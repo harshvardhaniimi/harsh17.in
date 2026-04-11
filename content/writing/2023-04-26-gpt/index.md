@@ -16,6 +16,7 @@ tags:
 - academia
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ## Introduction

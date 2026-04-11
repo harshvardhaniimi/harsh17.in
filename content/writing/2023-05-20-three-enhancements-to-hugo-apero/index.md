@@ -12,6 +12,7 @@ tags:
 draft: false
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 [Hugo Apero](https://hugo-apero.netlify.app/) is the Blogdown template I use for this website. The template ships with great defaults, the best of all Hugo templates in my opinion. Beyond those defaults, it provides many options to modify your website in a meaningful way. In this blog, I list out three good ones.

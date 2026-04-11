@@ -13,6 +13,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 In my high school, vacations were a treasure. We would eagerly wait for those 52 days of summer break after those long six months of studies to meet family and friends. There would be another 28 days break in autumn, full of festivities like Diwali, Durga Puja and Chat. Either way, we would get excited looking forward to it.

@@ -16,6 +16,7 @@ editor_options:
     wrap: sentence
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Between Dec 15 and 25 of 2022 I attended a meditation course called Vipassana.

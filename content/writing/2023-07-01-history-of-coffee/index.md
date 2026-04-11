@@ -13,6 +13,7 @@ tags:
 - coffee
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Imagine a world without coffee -- it's challenging, isn't it? But how exactly did we come to cherish this energizing beverage? It all began around 800 AD when a shepherd in Ethiopia observed an unusual phenomenon. His goats, after nibbling on a certain shrub, seemed particularly alert, foregoing sleep and bleating well into the night.

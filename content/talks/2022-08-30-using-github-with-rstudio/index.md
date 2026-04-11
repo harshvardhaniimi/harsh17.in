@@ -14,6 +14,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Watch the slides below or [here](https://astonishing-kitten-c51790.netlify.app/#1).

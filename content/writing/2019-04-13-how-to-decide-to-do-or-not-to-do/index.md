@@ -10,6 +10,7 @@ tags:
 - philosophy
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 At times in your life, you will arrive at a point when you need to decide between the two equally good sounding options. You will feel one of the choices is "right". Other isn't. One of the picks will result in instant gratification. The other will give you long term benefits. Arguments exist for both sides, but you, probably like me, remain confused.

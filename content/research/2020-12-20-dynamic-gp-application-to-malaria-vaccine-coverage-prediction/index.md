@@ -15,6 +15,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 We applied a dynamic Gaussian process model to predict coverage for novel Malaria vaccines in 78 countries. Using publicly available WHO data on coverage of nine vaccines, we developed localised models for countries grouped using the human development index (HDI). We deployed convolutions of standard GP models with weights determined using singular value decomposition of time-series response matrix.

@@ -10,6 +10,7 @@ tags:
 - ai
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Since its launch, ChatGPT has taken over the world by a storm.

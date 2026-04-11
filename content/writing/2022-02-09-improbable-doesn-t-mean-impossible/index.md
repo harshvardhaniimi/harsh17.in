@@ -9,6 +9,7 @@ tags:
 - philosophy
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![Everyone thought there were no black swans until someone caught them sunbathing in Australia.](featured.jpg)

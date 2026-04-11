@@ -12,6 +12,7 @@ tags:
 - india
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ## Political System in India

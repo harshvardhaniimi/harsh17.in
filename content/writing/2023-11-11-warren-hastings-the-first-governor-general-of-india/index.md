@@ -15,6 +15,7 @@ tags:
 - india
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Warren Hastings deserves a special mention in the history of Colonial India.

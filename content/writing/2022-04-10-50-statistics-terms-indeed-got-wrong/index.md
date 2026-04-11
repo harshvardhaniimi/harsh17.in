@@ -10,6 +10,7 @@ tags:
 draft: true
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 > **50 Statistics Terms To Know (With Definitions)**

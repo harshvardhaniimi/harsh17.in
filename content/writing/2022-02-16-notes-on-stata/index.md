@@ -10,6 +10,7 @@ tags:
 - economics
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 #### Conventions through this page

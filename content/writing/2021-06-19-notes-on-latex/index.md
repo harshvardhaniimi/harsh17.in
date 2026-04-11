@@ -9,6 +9,7 @@ tags:
 slug: latex
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ## Write Markdown in LaTeX for Notes

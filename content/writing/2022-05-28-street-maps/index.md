@@ -11,6 +11,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Over the last few days, I dabbled with maps in R. Two days ago, I made a map of all the cities I've visited. Today, I thought to make street maps of some of them (and other cool cities).

@@ -11,6 +11,7 @@ tags:
 - economics
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 > The world has enough for everyone's need, but not enough for everyone's greed.

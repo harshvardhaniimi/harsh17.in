@@ -11,6 +11,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Two days back I got curious about the Twitter API. I worked with a few APIs (using R) in the past but had never chanced upon using Twitter data. Additionally, Twitter provided a rich source of "what people are talking about". I searched and found a very easy to use package for R called [rTweet](https://docs.ropensci.org/rtweet/). This package's simplicity and easiness blew my mind.

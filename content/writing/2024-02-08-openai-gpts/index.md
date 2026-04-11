@@ -13,6 +13,7 @@ tags:
 - economics
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 OpenAI's GPT is a terrific idea and a huge improvement over vanilla language models.

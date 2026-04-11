@@ -16,6 +16,7 @@ tags:
 draft: false
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 In our econometrics class few months ago, [Prof Luiz](https://web.utk.edu/~llima/) showed us a video to demonstrate how difference-in-difference-in-difference works. To measure the impact of some policy (or *treatment* in economic-speak), we can compare the outcomes before and after the policy.

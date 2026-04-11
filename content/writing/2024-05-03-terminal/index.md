@@ -7,6 +7,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Terminal can be quite fun to play around with. On encouragement of my friend [Pablo](https://pablorious.github.io/), I ventured around to discover some interesting ones.

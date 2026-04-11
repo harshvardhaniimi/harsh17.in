@@ -14,6 +14,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Animated Slides: [Keynote](https://drive.google.com/file/d/1grOse1OGVCaTnT_DX_rGTrxSTCUTUjz1/view?usp=sharing)

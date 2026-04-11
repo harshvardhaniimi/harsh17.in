@@ -10,6 +10,7 @@ tags:
 - iim indore
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 IPM, IIM Indore is an unconventional programme. In a country like India when most high school students think of engineering or medicine as the only possible career option, clearly an eclectic course like IPM will attract attention -- and rightly so. However, being relatively new programme (less than ten years old), little reliable information is available.

@@ -9,6 +9,7 @@ tags:
 - economics
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![](featured.jpg)

@@ -11,6 +11,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 I have been using Spotify for two years now. I was always curious to know my listening trends, which is why I started using last.fm and other tools like that. However, they didn't give me exact information as to what I listened -- the insights Spotify gave me were limited to what Spotify thought! I couldn't know more about which artists I listened to, what were the top songs from that artist and so on.

@@ -13,6 +13,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 I wonder how this AI thing is going to shape up in the near and distant future. Many have said, and I agree, that there hasn't been such a revolutionary growth in productivity since the industrial age. Paul Graham was likely the first one to point this out. He [tweeted](https://twitter.com/paulg/status/1598698665337561088?s=20), "The striking thing about the reaction to ChatGPT is not just the number of people who are blown away by it, but who they are. These are not people who get excited by every shiny new thing. Clearly something big is happening."

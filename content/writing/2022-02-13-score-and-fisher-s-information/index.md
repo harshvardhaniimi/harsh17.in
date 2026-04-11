@@ -12,6 +12,7 @@ header-includes:
 bibliography: references.bib
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ## Likelihood

@@ -15,6 +15,7 @@ github: https://github.com/harshvardhaniimi/macchi-trash
 website: https://harshvardhaniimi.github.io/macchi-trash/
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Macchi (मक्खी) is Hindi for fly --- the pesky kind that won't leave your food alone. If you've ever left trash out for too long in an Indian summer, you know the flies will find it before you do.

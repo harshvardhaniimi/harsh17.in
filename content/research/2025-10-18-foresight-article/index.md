@@ -12,6 +12,7 @@ tags:
 - machine-learning
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Our work at HP Inc. on enterprise-scale demand forecasting was featured in *Foresight: The International Journal of Applied Forecasting* (Issue 79, 2025).  

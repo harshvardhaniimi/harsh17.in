@@ -10,6 +10,7 @@ tags:
 - economics
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 [![](featured.png)](/docs/tennessee_STAR.pdf)

@@ -13,6 +13,7 @@ tags:
 draft: true
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 I passed the National Entrance Exam for Sainik School Tilaiya in 2009.

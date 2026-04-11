@@ -9,6 +9,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 There isn't one quote that I love.

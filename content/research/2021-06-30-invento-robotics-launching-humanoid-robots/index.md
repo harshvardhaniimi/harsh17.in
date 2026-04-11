@@ -14,6 +14,7 @@ tags:
 - economics
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Invento Robotics by Balaji Viswanathan is probably one of the most famous start-ups in the Indian robotics space. Their flagship robot Mitra was used at a high profile Global Entrepreneurship Summit in October 2017. This marketing case study is on designing their marketing plan. This research work was selected into The Case Center 2021 Competition in the Hot Topics category. Colloquially, this competition is known as the Oscars of case studies.

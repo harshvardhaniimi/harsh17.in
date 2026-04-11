@@ -12,6 +12,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 <iframe src="https://sage-fenglisu-c38dfb.netlify.app" width="672" height="400px" data-external="1"></iframe>

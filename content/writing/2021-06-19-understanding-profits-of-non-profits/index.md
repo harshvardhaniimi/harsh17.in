@@ -13,6 +13,7 @@ tags:
 - india
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 It is not very uncommon — if not often — that non-profits acquire sums of money beyond what their operations need. Their calling to a cause and popularity rewards them handsomely. In their pursuit of generating enough funds for their cause, they often bite more than they can chew. Consider the corpus — called by different names in different countries — of Greenpeace. Their fund balance is 38,316,000 euros with net income of 1,413,000 euros, or 3.7%. In a general sense, it means that they’re playing with very small money in comparison with their pocket size.

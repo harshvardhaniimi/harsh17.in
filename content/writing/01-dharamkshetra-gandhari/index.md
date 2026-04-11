@@ -9,6 +9,7 @@ tags:
 - philosophy
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 माता गांधारी का मानना है की महाभारत मैंने करवाया। सिर्फ अपने अहम् के लिए। माँ क्या गलत हो सकती है?

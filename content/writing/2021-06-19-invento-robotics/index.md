@@ -10,6 +10,7 @@ tags:
 - economics
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![Mitra Robot, created by Invento Robotics, was launched by Prime Minister Narendra Modi and Ivanka Trump, advisor to the President of the United States in November 2017 at the Global Entrepreneurship Summit (GES) 2017 conference held at Hyderabad.](https://inc42.com/wp-content/uploads/2018/01/mitra-feature.jpg)

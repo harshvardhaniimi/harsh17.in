@@ -13,6 +13,7 @@ tags:
 - india
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 When "Clive of India" gained importance in the East India Company --- and managed to survive more than two years in India where most Company officers died from diseases and change in climate, etc. --- he realized the importance of India in making Britannia, more specifically him, rich.

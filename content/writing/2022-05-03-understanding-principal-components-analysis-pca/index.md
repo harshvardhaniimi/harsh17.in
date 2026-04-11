@@ -8,6 +8,7 @@ tags:
 draft: true
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Principal Components Analysis is a technique to reduce the dimensions of data while accounting for linear variability. Consider a simple equation:

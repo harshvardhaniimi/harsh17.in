@@ -9,6 +9,7 @@ tags:
 - python
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 # Installing Packages

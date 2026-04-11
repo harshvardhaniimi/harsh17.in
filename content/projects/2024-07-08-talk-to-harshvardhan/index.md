@@ -10,6 +10,7 @@ draft: false
 website: https://harsh17.in/chat
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![](images/talk-to-harsh.png)

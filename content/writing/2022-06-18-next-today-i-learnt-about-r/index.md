@@ -10,6 +10,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![Title Image Next - Today I Learnt About R](/img/next.png)

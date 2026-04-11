@@ -10,6 +10,7 @@ tags:
 draft: false
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![](images/Image-01.jpeg)

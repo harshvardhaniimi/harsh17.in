@@ -9,6 +9,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 1.  **If it takes less than 2 mins to do, do it now.** The mental overhead to remember is more than the inconvenience to do it now.

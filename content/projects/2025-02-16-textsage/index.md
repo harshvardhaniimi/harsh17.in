@@ -16,6 +16,7 @@ github: https://github.com/harshvardhaniimi/textsage-website
 website: https://timely-speculoos-7541eb.netlify.app/
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 We read a lot of things online that make us go "wait, is that actually true?" or "what does that even mean?" Usually the next step is to open a new tab, paste the text into ChatGPT or Perplexity, and ask. TextSage cuts out those steps.

@@ -12,6 +12,7 @@ tags:
 - philosophy
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 "Yoga is the restraint of the fluctuations of the mind" --- Patanjali

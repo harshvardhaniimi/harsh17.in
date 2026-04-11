@@ -10,6 +10,7 @@ tags:
 draft: false
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 I upgraded my laptop to MacBook Air (2020) with the infamous M1 processor a few days ago. I went after the most powerful machine in the category, one with 16 gigabytes of RAM and one terabyte of storage --- I didn't want to regret my choices anytime soon. M1 has been [praised](https://www.tomsguide.com/news/intel-alder-lake-chips-beat-apple-m1-max-for-speed-but-thats-only-half-the-story) for its [performance](https://www.cpubenchmark.net/cpu.php?cpu=Apple+M1+8+Core+3200+MHz&id=4104) time and again by multiple different agencies. M1 Macs are probably the only products that Apple has promoted less than it should.

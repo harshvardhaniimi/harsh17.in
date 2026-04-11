@@ -10,6 +10,7 @@ tags:
 - india
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 I’ve spent some time in European museums. I’ve visited Riga, Vilnius, Warsaw, Oslo, Bergen, Prague, Berlin and Munich. They are immensely packed with a variety of artefacts and a pretty good amount of collected history. Each of them has some content – very niche but does have content.

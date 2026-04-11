@@ -9,6 +9,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![Sirius Black's Family Tree as seen in Harry Potter and the Order of the Phoenix.](Black-Family-Tree.jpg "Sirius Black's Family Tree as seen in Harry Potter and the Order of the Phoenix.")

@@ -13,6 +13,7 @@ tags:
 github: https://github.com/harshvardhaniimi/IndiaPIN
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 <link href="{{< blogdown/postref >}}index_files/htmltools-fill/fill.css" rel="stylesheet" />

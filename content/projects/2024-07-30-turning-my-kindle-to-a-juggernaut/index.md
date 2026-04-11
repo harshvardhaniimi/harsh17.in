@@ -10,6 +10,7 @@ tags:
 draft: false
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 I never knew I could miss a piece of tech until I found myself longing for my old Kindle.

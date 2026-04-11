@@ -12,6 +12,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/twitter-widget/widgets.js"></script>

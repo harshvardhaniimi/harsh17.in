@@ -9,6 +9,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ------------------------------------------------------------------------

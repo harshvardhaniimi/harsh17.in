@@ -13,6 +13,7 @@ tags:
 - forecasting
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 My three-year-long collaboration with HP Inc.—including an 18-month internship with their Strategic Planning and Modeling team—has culminated in a new publication in the *INFORMS Journal of Applied Analytics*.

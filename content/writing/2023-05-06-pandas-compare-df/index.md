@@ -12,6 +12,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Recently, I ran into a situation where I need to compare two huge `pandas` data frames. When `df` has five million rows and 100 columns, `all.equal` function is not a good option. I had to do something creative.

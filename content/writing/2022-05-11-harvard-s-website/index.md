@@ -11,6 +11,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 A university's website tells a lot about it. Harvard --- like all things in education and research --- is a prime example.

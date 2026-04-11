@@ -10,6 +10,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 <iframe src="https://www.harsh17.in/docs/demonstrating-shiny-apps/slides2021.pdf" width="672" height="400px" data-external="1"></iframe>

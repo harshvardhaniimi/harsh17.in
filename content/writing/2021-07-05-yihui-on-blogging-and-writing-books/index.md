@@ -10,6 +10,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 This year, I am participating in [useR 2021](https://user2021.r-project.org), the R conference. It is my first conference so I expect to miss out on a few things but still hope to learn as much as I can. I am relatively free for the next week so learning as much as possible from the conference will be my central focus. 

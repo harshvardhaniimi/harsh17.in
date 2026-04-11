@@ -13,6 +13,7 @@ tags:
 - philosophy
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![](images/4E95D36E-9ABC-4EDD-A9FF-C730C10E8F78_1_105_c.jpeg)

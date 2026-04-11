@@ -10,6 +10,7 @@ tags:
 - travel
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 My first day in Cairo, Egypt (specifically in the vibrant district of Zamalek): I witnessed a striking scene.

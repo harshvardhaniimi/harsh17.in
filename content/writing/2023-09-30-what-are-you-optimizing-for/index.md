@@ -14,6 +14,7 @@ tags:
 draft: false
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 > When a measure becomes a target, it ceases to be a good measure.

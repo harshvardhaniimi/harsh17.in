@@ -11,6 +11,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 **For details, read the complete report. This project was part of [Prof Wenjun Zhou](http://web.utk.edu/~wzhou4/)'s Machine Learning class at University of Tennessee.**

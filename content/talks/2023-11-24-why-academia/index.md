@@ -14,6 +14,7 @@ tags:
 - india
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 It gave me a tonne of happiness in talking to IPM students on "Why Research?" at IIM Indore last week!

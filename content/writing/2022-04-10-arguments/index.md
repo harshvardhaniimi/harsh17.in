@@ -13,6 +13,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 There are three types of arguments.

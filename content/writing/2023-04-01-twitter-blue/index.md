@@ -15,6 +15,7 @@ tags:
 draft: false
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 <script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>

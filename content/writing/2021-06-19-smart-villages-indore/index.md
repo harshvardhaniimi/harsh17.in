@@ -8,6 +8,7 @@ tags:
 - personal
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 * Created bilingual audio-video content for classes 6th to 8th for Science and English by digitising NCERT textbooks

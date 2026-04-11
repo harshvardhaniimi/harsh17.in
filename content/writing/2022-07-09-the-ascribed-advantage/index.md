@@ -11,6 +11,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 How much more do men earn doing the same job as women? In this exploration, I will examine if the gender pay gap exists, in what jobs and how much is it. Specifically, this dataset is from United Kingdom. It was part of #tidytuesday event and can be downloaded from [this link](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-06-28).

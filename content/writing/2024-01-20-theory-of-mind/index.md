@@ -9,6 +9,7 @@ tags:
 - philosophy
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 One day, a disciple complained to the Buddha about his restless mind, 2500 years ago.

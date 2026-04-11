@@ -12,6 +12,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 In this project, I applied Bayesian decision theory for classification problem. The datasets used were from Ripley's Pattern Recognition and Neural Networks. The first dataset has two features and has a balanced class portfolio. The second dataset is for diabetes in Pima Indians with seven features where the number of diabetic patients is much less than the number of normal patients.

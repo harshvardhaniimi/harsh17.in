@@ -10,6 +10,7 @@ tags:
 draft: true
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 [Opinion \| Elon Musk Got Twitter Because He Gets Twitter - The New York Times](https://www.nytimes.com/2022/04/27/opinion/elon-musk-twitter.html)

@@ -9,6 +9,7 @@ tags:
 - economics
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 [![](images/Screen%20Shot%202022-03-16%20at%2010.32.22%20AM.png)](http://www.blisslifesciences.com/)

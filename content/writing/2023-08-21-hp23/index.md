@@ -13,6 +13,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 (This is a formal write-up of my internship work. Read [this blog](hp-blog-2023/) for a chirpy review of my internship!)

@@ -13,6 +13,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 **TLDR:** Twitter is shutting down Revue, the newsletter platform that I use for [Next](http://harsh17.in/next). 

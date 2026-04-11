@@ -13,6 +13,7 @@ tags:
 - tools
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 ![](images/702587.jpg)

@@ -9,6 +9,7 @@ tags:
 - r
 cover:
   image: og.png
+  relative: true
   hidden: true
 ---
 Next is my short and sweet newsletter about a curated collection of R-related works. It is posted at 9:30 AM (Eastern Time) every Wednesday. The content is pretty straightforward.
