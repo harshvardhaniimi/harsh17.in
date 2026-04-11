@@ -11,7 +11,7 @@ slug: sainik-school-tilaiya
 tags:
 - personal
 - india
-draft: true
+draft: false
 cover:
   image: og.png
   relative: true
