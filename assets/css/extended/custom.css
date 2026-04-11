@@ -445,6 +445,26 @@ a:hover {
   }
 }
 
+/* ===== Image captions ===== */
+.post-content figure {
+  margin: 1.5rem 0;
+}
+
+.post-content figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.post-content figure figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--secondary);
+  font-style: italic;
+  text-align: center;
+}
+
 /* ===== KaTeX math support ===== */
 .katex-display {
   overflow-x: auto;

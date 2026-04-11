@@ -1,3 +1,37 @@
+<!-- Party popper on click -->
+<script>
+(function() {
+  var emojis = ['🎉','🎊','✨','🥳','🎈','⭐'];
+  document.addEventListener('click', function(e) {
+    // skip clicks on links/buttons/inputs
+    if (e.target.closest('a, button, input, textarea, select, [role="button"]')) return;
+    for (var i = 0; i < 6; i++) {
+      var span = document.createElement('span');
+      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      span.style.cssText = 'position:fixed;pointer-events:none;font-size:' +
+        (14 + Math.random() * 10) + 'px;z-index:9999;transition:none;';
+      span.style.left = e.clientX + 'px';
+      span.style.top = e.clientY + 'px';
+      document.body.appendChild(span);
+      var angle = (Math.random() * Math.PI * 2);
+      var dist = 30 + Math.random() * 50;
+      var dx = Math.cos(angle) * dist;
+      var dy = Math.sin(angle) * dist - 20;
+      requestAnimationFrame(function(s, dx, dy) {
+        return function() {
+          s.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          s.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(0.3)';
+          s.style.opacity = '0';
+        };
+      }(span, dx, dy));
+      setTimeout(function(s) {
+        return function() { s.remove(); };
+      }(span), 700);
+    }
+  });
+})();
+</script>
+
 <!-- KaTeX for math rendering -->
 {{- if .IsPage -}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
