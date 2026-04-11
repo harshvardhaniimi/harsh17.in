@@ -6,7 +6,6 @@ date: '2018-11-24'
 slug: presentation-on-latex
 tags:
 - academia
-- statistics
 cover:
   image: og.png
   hidden: true

@@ -1,6 +1,7 @@
 baseURL: /
 title: Harshvardhan
 theme: PaperMod
+googleAnalytics: G-N5CSPZ9H5M
 paginate: 1000
 enableRobotsTXT: true
 
@@ -81,10 +82,10 @@ params:
 
   homeInfoParams:
     Title: "Dr. Harshvardhan"
-    Content: >
-      Researching machine learning, forecasting, and decision-making.
+    Content: |
+      [Researching](/research/) machine learning, forecasting, and decision-making.
 
-      Assistant Professor at American University of Sharjah.
+      Assistant Professor at [American University of Sharjah, UAE](https://www.aus.edu/).
 
   socialIcons:
     - name: googlescholar

@@ -8,7 +8,6 @@ tags:
 - academia
 - data-science
 - r
-- statistics
 cover:
   image: og.png
   hidden: true

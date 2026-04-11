@@ -78,6 +78,11 @@ code, pre, .highlight {
   font-size: 0.88em;
 }
 
+/* ===== Consistent background on list pages ===== */
+.list {
+  background: var(--theme);
+}
+
 /* ===== Layout ===== */
 .main {
   max-width: 750px;
@@ -85,6 +90,14 @@ code, pre, .highlight {
 
 .post-content {
   max-width: 750px;
+}
+
+/* ===== Nav active state ===== */
+#menu .active {
+  border-bottom: none;
+  background: var(--tertiary);
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 /* ===== Links ===== */
@@ -124,11 +137,11 @@ a:hover {
   font-family: 'Libre Baskerville', Georgia, serif;
 }
 .quick-links a {
-  color: var(--primary);
+  color: var(--link-color);
   text-decoration: none;
 }
 .quick-links a:hover {
-  color: var(--link-color);
+  text-decoration: underline;
 }
 .quick-links .sep {
   margin: 0 0.4rem;
@@ -405,6 +418,9 @@ a:hover {
 /* ===== Comments ===== */
 .comments {
   margin-top: 2rem;
+  max-width: var(--main-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===== Footer ===== */

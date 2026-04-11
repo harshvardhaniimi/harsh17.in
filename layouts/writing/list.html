@@ -9,19 +9,25 @@
   Never miss a post — <a href="/new-website/#staying-updated">subscribe via RSS</a>.
 </p>
 
-{{- /* Tag filter pills */ -}}
-{{- $allTags := slice -}}
+{{- /* Tag filter pills — only tags with 2+ posts */ -}}
+{{- $tagCounts := dict -}}
 {{- range .Pages -}}
   {{- range .Params.tags -}}
-    {{- $allTags = $allTags | append . -}}
+    {{- $tagCounts = merge $tagCounts (dict . (add (index $tagCounts . | default 0) 1)) -}}
   {{- end -}}
 {{- end -}}
-{{- $uniqueTags := $allTags | uniq | sort -}}
+{{- $filteredTags := slice -}}
+{{- range $tag, $count := $tagCounts -}}
+  {{- if ge $count 2 -}}
+    {{- $filteredTags = $filteredTags | append $tag -}}
+  {{- end -}}
+{{- end -}}
+{{- $filteredTags = $filteredTags | sort -}}
 
-{{- if $uniqueTags }}
+{{- if $filteredTags }}
 <div class="tag-filter" id="tagFilter">
   <a href="#" class="active" data-tag="all">all</a>
-  {{- range $uniqueTags }}
+  {{- range $filteredTags }}
   <a href="#" data-tag="{{ . | urlize }}">{{ . }}</a>
   {{- end }}
 </div>
