@@ -33,7 +33,7 @@ It used to be two separate Hugo sites — a blog and a personal page — merged 
 
 **The `--minify` flag breaks things.** Specifically JSON-LD in some project pages. Netlify builds with `hugo --gc`, not `hugo --gc --minify`.
 
-**`baseURL` is `/`**, not `https://harsh17.in`. Netlify resolves it. This way `hugo server` works locally without rewriting URLs.
+**`baseURL` is `https://harsh17.in/`.** Earlier it was `/` to keep `hugo server` and Netlify preview URLs working without rewrites, but Hugo's dev server auto-overrides baseURL to `localhost` and `netlify.toml` already overrides it to `$DEPLOY_PRIME_URL` for preview/branch deploys, so the bare-slash setup was unnecessary and caused an unparsable JSON-LD bug (PaperMod's breadcrumb partial uses global `replace` on permalinks, which collapses when the home permalink is `/`). Leave baseURL as the absolute URL.
 
 **PaperMod dark mode** uses `data-theme="dark"` on `:root`, not a `.dark` class. All dark mode CSS must target `:root[data-theme="dark"]`.
 
