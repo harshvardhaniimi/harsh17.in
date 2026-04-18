@@ -35,7 +35,7 @@ Our mind (not brain *per se*) has four parts:
 
 > Four parts of mind according to Buddha.
 
-### Sangya
+## Sangya
 
 The first one is *Sangya*.
 Sangya is the initial perception or recognition of an object.
@@ -50,7 +50,7 @@ It functions on direct inputs from our sight, smell, sound, taste and touch.[^1]
 Imagine Sangya as the lens of a camera, capturing the world in snapshots.
 Just as a camera instantly recognizes and frames a scene, Sangya identifies and labels our sensory experiences, delineating a 'tree' from a 'car'.
 
-### Smriti
+## Smriti
 
 The second one is *Smriti*.
 Smriti is based on the memory of our past experiences.
@@ -61,7 +61,7 @@ Consider Smriti as an extensive, meticulously organized library.
 Each book on the shelf represents a memory, a past experience.
 When a new sensory input arrives, Smriti swiftly flips through these volumes, retrieving relevant past associations and knowledge.
 
-### Vedna
+## Vedna
 
 The third one is *Vedna*.
 Vedna is the feeling or sensation that arises in response to the perception and the memory.
@@ -84,7 +84,7 @@ Recall how your mouth waters when hearing about a delicious food.[^3]
     Those sensations are sweaty palms or hastened breath.
     Observing such sensations objectively can help avoid blind emotional reaction and help our mind take the right decision.
 
-### Sanskar
+## Sanskar
 
 The final one is *Sanskar*.
 These are mental formations developed in response to Vedna.
@@ -101,7 +101,7 @@ These cravings and aversions leave our mind wanting all the time.
 We remain full of desires and never satisfied.
 A true seeker would train his mind to remain equanimous to pleasant and unpleasant sensations, avoiding creating new habit patterns of the mind.
 
-### How the four parts work together?
+## How the four parts work together?
 
 Sangya, our mind's lens, captures the world in vivid detail, paving the way for Smriti to sift through the archives of our past, bringing forward memories and learned reactions.
 This recognition and recollection stirs Vedna, our inner compass, evoking a spectrum of positive, negative or neutral sensations that color our moment-to-moment experience.
@@ -111,7 +111,7 @@ Together, these four parts choreograph the dance of our thoughts and behaviors, 
 
 [^4]: Law of Karma: Each step is influenced by the previous, shaping the next.
 
-### Parallels with Modern Psychology
+## Parallels with Modern Psychology
 
 The conceptual framework of Sangya, Smriti, Vedna, and Sanskar remarkably mirrors modern psychological constructs.
 
@@ -120,7 +120,7 @@ The conceptual framework of Sangya, Smriti, Vedna, and Sanskar remarkably mirror
 3.  Vedna reflects the 'affective neuroscience' perspective, emphasizing the integral role of emotions in our cognitive processes.
 4.  Finally, Sanskar echoes the principles of 'behavioral conditioning' and 'habit formation,' highlighting how repeated experiences shape our tendencies and actions.
 
-### Being mindful as the way to command our mind
+## Being mindful as the way to command our mind
 
 Observing the mind is indeed the easiest way to control it.
 One can achieve that state through a variety of methods, but being mindful of your sensations (what you're feeling exactly now) at various times a day is possibly the simplest way to start.

@@ -17,7 +17,7 @@ This year, I am participating in [useR 2021](https://user2021.r-project.org), th
 
 Sadly, I didn't realise I had to register for tutorials separately — I thought one registration was all that's needed. I cannot attend the tutorials but it is likely that the authors would upload materials on their personal website, where I can pick up when needed. The complete session plan is [here](/docs/useR_2021_schedule.pdf).
 
-### Yihui Xie: Blogging and Writing Books
+## Yihui Xie: Blogging and Writing Books
 
 Yihui met John Kimmel who inspired him to write his first book. During his PhD, he wrote the `knitr` package. Writing the complete documentation would take a lot of time so he decided to write a book instead on the package. The same pattern follows till today. A package is written; alongside some limited documentation a detailed book is written.
 
@@ -45,7 +45,7 @@ I am definitely going to be more casual about my blogs from now on.
 
 [Slides](https://slides.yihui.org/2021-useR-journey.html)
 
-### Update: January 27, 2022
+## Update: January 27, 2022
 
 Of course I watched David Robinson's talk and studied career paths of Alison Hill and Yihui Xie (whose ideas I also borrowed for my talk). Another tweet noteworthy on this topic is the following.
 

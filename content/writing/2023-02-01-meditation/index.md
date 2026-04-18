@@ -27,7 +27,7 @@ It is a form of "mindfulness meditation".
 [^1]: Pali is an old Indian language that was derived from Sanskrit but used by commoners (Sanskrit was mostly used by priests for worship, etc.).
     Most of Buddha's teachings are in Pali or Prakrit, which is a sister language to Pali.
 
-### What is Vipassana?
+## What is Vipassana?
 
 It is an ancient Indian technique for calming your mind and was discovered as early as 2000 BC, when it was described in Rig Veda.
 Over time, people added to the method or removed parts from it, and it eventually disappeared into void.
@@ -46,7 +46,7 @@ Goenka in the 20th century.
     [Ashoka the Great - Rise of the Mauryan Empire Documentary](https://www.youtube.com/watch?v=Ed6UZtVTI64) is a good start.
     It also tells the story of King Ashoka the Great, who was ferocious general known for killing millions, but eventually converted to Buddhism and practised non-violence.
 
-### The Elephant
+## The Elephant
 
 ![](images/image-298538695.png)
 
@@ -59,7 +59,7 @@ Our mind is similar.
 It is very powerful.
 It can be used constructively when in control of us, or destructively when we let it control us.
 
-### The Art of Living
+## The Art of Living
 
 Buddha taught that the ultimate peace can be attained by being equanimous and realizing the temporary nature of reality.
 Attachments to material possessions, desires, and relationships causes suffering, and that true happiness and peace can only be achieved by letting go of these attachments and accepting the impermanent nature of all things.
@@ -72,7 +72,7 @@ This experience allowed me to realize the temporary nature of all sensations, in
 For example, I may feel happy in one moment and then feel sadness in the next, but both emotions come and go, just like physical sensations.
 By accepting this impermanence and not being attached to any specific outcome, I was able to cultivate a more peaceful and equanimous mindset.
 
-### S.N. Goenka's Story
+## S.N. Goenka's Story
 
 ![](images/image-1424813613.png)
 
@@ -93,7 +93,7 @@ This was the beginning of the modern Vipassana movement.
 As word of its effectiveness spread, more people started to seek out Goenka's teachings.
 Today, Vipassana is practiced by millions of people all over the world and is widely recognized as one of the most powerful mindfulness meditation techniques.
 
-### My Experience of Vipassana
+## My Experience of Vipassana
 
 Vipassana, as taught by Buddha, is a practice that is devoid of religious or spiritual overtones.
 During the first three days, I focused on being mindful of my own breath, paying attention to the sensations in the area above my upper lip and nose.
@@ -125,7 +125,7 @@ For me, those days were instrumental.
 On day 7-8, I kind of felt like I was gonna boil with all the heat I felt during the meditation.
 Their explanation is that it's your mind getting rid of known desires.
 
-### Day-by-day Summary
+## Day-by-day Summary
 
 This is for my own note.
 I would recommend you to visit [Dhamma's website](https://www.dhamma.org/en/index) and schedule a session with them.
@@ -239,7 +239,7 @@ Day 10
 
 -   Always end your meditations by telling yourself / chanting: *May all beings, living or non-living, visible or invisible, be at peace.*
 
-### Vipassana Reforms Lives of Prisoners in India
+## Vipassana Reforms Lives of Prisoners in India
 
 Tihar Jail in New Delhi is notorious for its living conditions.
 The jail is overcrowded with petty as well as ferocious criminals.
@@ -271,13 +271,13 @@ Thousands of police officers have also attended Vipassana courses, at the medita
 
 Here are some videos on the topic.
 
-#### TED Talk
+### TED Talk
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ixu4Kd5R1DI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 
 </iframe>
 
-#### Documentary of Tihar Jail where Vipassana was popularised by Kiran Bedi
+### Documentary of Tihar Jail where Vipassana was popularised by Kiran Bedi
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/WkxSyv5R1sg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 
@@ -285,4 +285,4 @@ Here are some videos on the topic.
 
 ------------------------------------------------------------------------
 
-#### *Every moment aware, every moment equanimous.*
+### *Every moment aware, every moment equanimous.*

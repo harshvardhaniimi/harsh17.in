@@ -26,7 +26,7 @@ Working with the SPaM team in supply chain modeling and machine learning, my res
 - Engaging in ML improvements like encoding categorical variables and feature engineering, which significantly boosted the model's accuracy.
 - Building an ETL pipeline to include channel partner inventory, sell-in, and sell-through volume, facilitating smoother data processing.
 
-### Tools Used
+## Tools Used
 My work involved a multitude of tools and frameworks, vital to the execution of tasks, including:
 - **Python and Pandas**: Primary language for modeling with LightGBM.
 - **SQL**: Used in pipelines for data extraction and loading.
@@ -35,7 +35,7 @@ My work involved a multitude of tools and frameworks, vital to the execution of 
 * **LightGBM**: A tree-based model used for forecasting.
 * **MLFlow**: To track all our experiments, proving indispensable in managing numerous trials.
 
-### Impacts
+## Impacts
 My contributions led to notable impacts within the organization:
 - The development of the first-ever SKU-level forecast with ML for Print at HP.
 - Improved accuracy and efficiency of the forecasting model by introducing innovative changes.

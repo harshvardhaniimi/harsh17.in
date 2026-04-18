@@ -13,7 +13,7 @@ cover:
   relative: true
   hidden: true
 ---
-### TL;DR
+## TL;DR
 
 My name is Harshvardhan. Since I do not have a last name, I have to force my name to suit the general convention of first and last name. Thus, I also go as Harshvardhan Harshvardhan (European convention), FNU Harshvardhan (American convention), or M Harshvardhan (my [academic pen-name](https://orcid.org/0000-0001-8086-544X "ORCID")).
 

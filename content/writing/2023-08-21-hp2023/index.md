@@ -58,7 +58,7 @@ Thanks for the XP, the lessons, and the code commits. Here's to the next git bra
 
 > Me with Cara, my mentor, in front of the patent wall which celebrates the patent holders at HP's Vancouver office. Some had over 500 patents!
 
-### Some shots from office...
+## Some shots from office...
 
 ![](images/ss1.png)
 

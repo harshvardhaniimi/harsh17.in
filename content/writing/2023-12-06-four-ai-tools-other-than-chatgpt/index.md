@@ -17,7 +17,7 @@ Since its launch, ChatGPT has taken over the world by a storm.
 While many are afraid of losing their jobs (which likely [will happen](https://www.harsh17.in/ai2/)), many of us are thinking of using these tools to upgrade our existing work quality.
 In the last several months, I have discovered numerous tools like that; let's take a look at some interesting ones that I frequently visit.
 
-### Perplexity
+## Perplexity
 
 [Perplexity.ai](https://www.perplexity.ai/) is a search tool like Google but with added GPT's knowledge base.
 Things that I have found it best for:
@@ -37,7 +37,7 @@ Mistral-7b-instruct in particular was famous for having a very low safety check 
 [^1]: When it was launched, it gave explicit instructions on how to commit suicide for example.
     Now, it denies answering the question.
 
-### Phind
+## Phind
 
 I first heard about Phind from Paul Graham on Twitter/X who shared how [Phind beat GPT-4](https://www.phind.com/blog/phind-model-beats-gpt4-fast) at programming, and was 5x faster!
 Furthermore, it supported 16,000 tokens while GPT-4 only supported 4096 tokens.
@@ -65,7 +65,7 @@ It not only helps me learn the alternatives to achieve the objective, I know the
 
 The responses also have search results with them in case you're interested in learning more.
 
-### Claude
+## Claude
 
 When [Claude.ai](https://claude.ai/chats) (with Claude 2) was launched this summer, I immediately realised how prone to hallucinations it was.
 Like other LLMs, it made up stuff confidently.
@@ -88,7 +88,7 @@ Claude makes around 8.5% hallucinations.
 Google's Palm 2 has a 27% hallucination rate.
 See the [leaderboard](https://github.com/vectara/hallucination-leaderboard).
 
-### Typeset / Scispace
+## Typeset / Scispace
 
 ChatPDF and its cousins took over the internet around February.
 Many indie developers created their versions to chat with PDF files but the quality for all of them weren't as good as we had hoped.
@@ -116,7 +116,7 @@ Largely, no.
 
 ![](images/scispace-2.png)
 
-### Why not Bard?
+## Why not Bard?
 
 Because it simply doesn't make the cut.
 Bard (with Google's Palm 2 Chat) has the [highest hallucination rate](https://github.com/vectara/hallucination-leaderboard) (27%), cannot do math at all[^3], and even with access to all my data, keeps giving summaries of things not in my emails, details about events that don't exist, and travel advice to places in Knoxville, Iowa instead of Tennessee.
@@ -137,7 +137,7 @@ With Gemini released today morning, Google says it has been able to catch up to 
 Let's see.
 Haven't tested it yet.
 
-### ChatGPT is still the King
+## ChatGPT is still the King
 
 ChatGPT is still the best AI chatbot for general purpose use.
 I find myself using the Voice Chat functionality a lot --- to brainstorm ideas and listen to ideas.

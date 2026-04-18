@@ -77,7 +77,7 @@ It has got a lot to do with how the cities are designed.
 
 > Walk along this road, and you might begin to notice the danger. The speed limit is 45 to 55 miles per hour, but the cars are often going much faster. The crosswalks are so few and far between that a simple act — crossing the street to get to a business a few hundred feet away — might mean walking over half a mile to reach the nearest crosswalk. Even with sidewalks set back from the road, it’s clear that US-19 wasn’t built for pedestrians.
 
-### Why is it this bad?
+## Why is it this bad?
 
 Experts would tell you that speed is the first cause. When drivers ride at 15 miles per hour (25 km per hour), they have broad peripheral vision. They only need 25 feet of distance to respond and stop. The peripheral vision narrows at 50 miles per hour (80 km per hour). They require 118 feet of distance to react and stop—three times the speed results in almost five times the length needed to stop. The pedestrian fatality risk increases to 85% from 2% at 15 miles per hour.
 
@@ -95,7 +95,7 @@ You can learn more about it in this Vox video.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0-nthHT-J1k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### What can be done?
+## What can be done?
 
 We have to start reducing the number of lanes. Highways may have eight lanes, but residential areas should not have over a lane. Additionally, install street parking and sidewalks, with several additional crosswalks.[^7]
 
@@ -103,7 +103,7 @@ We have to start reducing the number of lanes. Highways may have eight lanes, bu
 
 The government of Florida is spending millions on getting this [fixed](https://www.tampabay.com/news/pasco/2022/09/26/deadliest-road-pasco-county-getting-millions-safety-upgrades/). The mayor is also envisioning to add pedestrian and cyclist bridges, avoiding the need to cross the road altogether.
 
-### Map of New Port Riche, Florida
+## Map of New Port Riche, Florida
 
 <iframe width="100%" height="450" frameborder="0" title="Felt Map" src="https://felt.com/embed/map/Untitled-Map-n8Z2x23BQMOVHwilWpTblB?lat=28.179733&lon=-82.750579&zoom=12.579"></iframe>
  

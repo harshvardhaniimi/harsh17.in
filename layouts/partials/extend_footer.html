@@ -32,6 +32,161 @@
 })();
 </script>
 
+<!-- Section rail + margin sidenotes (desktop only, on post pages) -->
+{{- if .IsPage -}}
+<script>
+(function() {
+  var wide = window.matchMedia('(min-width: 1280px)');
+  if (!wide.matches) return;
+  if (!(window.CSS && CSS.supports && CSS.supports('selector(:has(*))'))) return;
+
+  var article = document.querySelector('.post-single');
+  if (!article) return;
+  var content = article.querySelector('.post-content');
+  if (!content) return;
+
+  // ----- Build left rail from h2/h3 (minimap-positioned) -----
+  var headings = content.querySelectorAll('h2[id], h3[id]');
+  if (headings.length >= 2) {
+    var rail = document.createElement('nav');
+    rail.className = 'post-toc-rail';
+    rail.setAttribute('aria-label', 'Section navigation');
+    var list = document.createElement('ol');
+    var items = [];
+
+    headings.forEach(function(h) {
+      var clone = h.cloneNode(true);
+      clone.querySelectorAll('.anchor').forEach(function(a) { a.remove(); });
+      var text = (clone.textContent || '').replace(/¶$/, '').trim();
+      if (!text) return;
+
+      var li = document.createElement('li');
+      li.className = 'toc-item toc-level-' + h.tagName.toLowerCase();
+      li.dataset.target = h.id;
+
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      var line = document.createElement('span');
+      line.className = 'toc-line';
+      line.setAttribute('aria-hidden', 'true');
+      var label = document.createElement('span');
+      label.className = 'toc-label';
+      label.textContent = text;
+      a.appendChild(line);
+      a.appendChild(label);
+      li.appendChild(a);
+      list.appendChild(li);
+      items.push({ li: li, h: h });
+    });
+
+    if (items.length > 0) {
+      rail.appendChild(list);
+      article.insertBefore(rail, article.firstChild);
+
+      // Minimap layout: each li's top = (heading's offset within content) /
+      // (content height) * railHeight. Enforce a min gap so labels never overlap.
+      var layoutRail = function() {
+        if (!rail.isConnected) return;
+        var contentRect = content.getBoundingClientRect();
+        var contentHeight = contentRect.height;
+        if (contentHeight === 0) return;
+        var railHeight = rail.clientHeight;
+        if (railHeight === 0) return;
+        var minGap = 26;
+        var sorted = items.slice().sort(function(a, b) {
+          return a.h.getBoundingClientRect().top - b.h.getBoundingClientRect().top;
+        });
+        var prevTop = -Infinity;
+        sorted.forEach(function(it) {
+          var hRect = it.h.getBoundingClientRect();
+          var hRelY = hRect.top - contentRect.top;
+          var ratio = Math.max(0, Math.min(1, hRelY / contentHeight));
+          var top = ratio * (railHeight - minGap);
+          if (top < prevTop + minGap) top = prevTop + minGap;
+          it.li.style.top = top + 'px';
+          prevTop = top;
+        });
+      };
+      layoutRail();
+      window.addEventListener('resize', layoutRail);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(layoutRail);
+      }
+      content.querySelectorAll('img').forEach(function(img) {
+        if (!img.complete) img.addEventListener('load', layoutRail);
+      });
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          items.forEach(function(it) {
+            it.li.classList.toggle('active', it.h === entry.target);
+          });
+        });
+      }, { rootMargin: '-15% 0% -70% 0%', threshold: 0 });
+      items.forEach(function(it) { observer.observe(it.h); });
+    }
+  }
+
+  // ----- Relocate footnotes to right-margin sidenotes -----
+  var notesBlock = content.querySelector('.footnotes');
+  var refs = content.querySelectorAll('a.footnote-ref');
+  if (!notesBlock || refs.length === 0) return;
+
+  var created = [];
+  refs.forEach(function(ref) {
+    var href = ref.getAttribute('href') || '';
+    var id = href.replace(/^#/, '');
+    if (!id) return;
+    var fnItem = null;
+    try { fnItem = notesBlock.querySelector('#' + CSS.escape(id)); } catch (e) {}
+    if (!fnItem) return;
+
+    var clone = fnItem.cloneNode(true);
+    clone.querySelectorAll('a.footnote-backref').forEach(function(a) { a.remove(); });
+
+    var aside = document.createElement('aside');
+    aside.className = 'sidenote';
+    aside.innerHTML = '<span class="sidenote-number">' +
+      (ref.textContent || '').trim() + '</span>' + clone.innerHTML;
+
+    var anchor = ref.closest('sup') || ref;
+    anchor.parentNode.insertBefore(aside, anchor.nextSibling);
+    created.push({ aside: aside, anchor: anchor });
+  });
+
+  if (created.length === 0) return;
+  content.classList.add('has-sidenotes');
+
+  function relayout() {
+    var contentTop = content.getBoundingClientRect().top;
+    created.forEach(function(c) {
+      c.aside.style.top = (c.anchor.getBoundingClientRect().top - contentTop) + 'px';
+    });
+    var sorted = created.slice().sort(function(a, b) {
+      return parseFloat(a.aside.style.top) - parseFloat(b.aside.style.top);
+    });
+    var prevBottom = -Infinity;
+    sorted.forEach(function(c) {
+      var t = parseFloat(c.aside.style.top) || 0;
+      if (t < prevBottom + 10) t = prevBottom + 10;
+      c.aside.style.top = t + 'px';
+      prevBottom = t + c.aside.offsetHeight;
+    });
+  }
+
+  relayout();
+  window.addEventListener('resize', relayout);
+  content.querySelectorAll('img').forEach(function(img) {
+    if (!img.complete) img.addEventListener('load', relayout);
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(relayout);
+  }
+})();
+</script>
+{{- end -}}
+
 <!-- KaTeX for math rendering -->
 {{- if .IsPage -}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">

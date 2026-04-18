@@ -23,7 +23,7 @@ You might be in a habit of doing a yearly or a monthly review.
 Shouldn't we do a century-long review?
 Would we deem the values we take for granted today still relevant in a world where we are knees dip in [polycrisis](https://www.bsr.org/en/blog/2023-delivering-just-sustainable-business-polycrisis)?
 
-### Perils of GDP as KPI
+## Perils of GDP as KPI
 
 > It's a five-minute bike ride to the train station.
 > On brisk mornings like this, I wear gloves and pack a warm coffee for the commute.
@@ -74,7 +74,7 @@ In 1962, he further added:[^2]
 My problem is that we don't have a discussion on quantity and quality, short-run and long-run, and cost of "reversal" if at all possible.
 None of that is factored into the calculation of GDP.
 
-### What counts as "work"?
+## What counts as "work"?
 
 Take, for instance, the stark contrast in how Sweden and India approach unpaid labor.
 The following graph is from the beautiful [Atlas of The Invisible](https://www.atlasoftheinvisible.com/).
@@ -106,7 +106,7 @@ Such metrics dare to quantify the qualitative, challenging the traditional capit
 The documentary film "[Agent of Happiness](https://www.npr.org/sections/goatsandsoda/2024/02/04/1228505757/agent-of-happiness-bhutan-documentary-film-gross-national-happiness)" follows Bhutanese bureaucrats who survey citizens about their level of happiness.
 Specifically, it follows one bureaucrat named Amber Kumar Gurung as he asks people 148 questions to assign them a happiness score from 0 to 10.
 
-### Benefits of Slow Life: Peace
+## Benefits of Slow Life: Peace
 
 However, beyond the metrics lie the lived realities of individuals.
 [Michelle Huang](https://x.com/michellehuang42/status/1761963751505354804?s=20)'s reflections on her move to rural Japan offer a poignant narrative on value and values.
@@ -116,7 +116,7 @@ This echoes a sentiment that perhaps true value lies in our consciousness of our
 Huang's journey is a microcosm of a larger narrative that questions the hypnosis of societal competitiveness --- a crucial ingredient of capitalism.
 It's an existential vertigo that forces us to confront our priorities and desires, to distinguish between what is authentically sought after and what is imposed upon us by societal expectations.
 
-### Beyond Capitalism
+## Beyond Capitalism
 
 I'm definitely not the first person to think on these terms.
 I was motivated to write my thoughts down upon reading this simple piece by [Claire Elise Thompson](https://grist.org/looking-forward/the-growing-popularity-of-degrowth/) on Grist.

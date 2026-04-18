@@ -22,7 +22,7 @@ cover:
 ---
 Nestled in the arid desert landscape of Rajasthan, India, the quiet town of Pushkar is a colorful mosaic of culture, spirituality, and history. Known for its captivating charm and mythical allure, Pushkar is an exquisite destination that intertwines the old-world charm with vibrant hues of contemporary life.
 
-### The Divine Pushkar Lake
+## The Divine Pushkar Lake
 
 ![](images/lake-at-night-01.png)
 
@@ -32,7 +32,7 @@ At the heart of Pushkar lies its iconic Pushkar Lake. According to Hindu mytholo
 
 This enchanting water body is surrounded by 52 bathing ghats, where pilgrims take a dip to wash away their sins and seek blessings. The sight of evening aarti performed on the ghats, with chants echoing in the backdrop, is a spiritual spectacle that I cannot forget.
 
-### The Singular Brahma Temple
+## The Singular Brahma Temple
 
 Pushkar houses one of the few temples in the world dedicated to Lord Brahma. The Pushkar Brahma Temple, with its distinct red spire and the image of a swan (Brahma's *vehicle*), stands as a prominent symbol of the town.
 
@@ -42,13 +42,13 @@ Why are there so few Brahma temples, while so many Shiva or Vishu temples (other
 
 Good question. There are at least three stories.
 
-#### **Lord Brahma married his daughter Lord Saraswati**
+### **Lord Brahma married his daughter Lord Saraswati**
 
 > According to the Padma Purana, one of the eighteen Mahāpurāṇas, a significant genre of ancient Indian scriptures, Lord Brahma is said to have married Saraswati, the goddess of knowledge, who was also his daughter, created from his own body.
 >
 > This act was considered inappropriate, even though the laws of mortal relationships don't strictly apply to divine beings. This invoked the wrath of other gods and led to the decree that Brahma would not be worshipped in the earthly realm.
 
-#### Lord Brahma's wife Gayatri cursed him
+### Lord Brahma's wife Gayatri cursed him
 
 > Another story, also sourced from the Padma Purana, tells that when Lord Brahma was performing a fire sacrifice, his wife Saraswati was late to the event. In order to complete the yagna (ritual), Brahma married Gayatri, a milkmaid, and sat her in Saraswati's place.
 >
@@ -56,7 +56,7 @@ Good question. There are at least three stories.
 >
 > (This is the version I remember from reading Puranic stories. According to the temple placard in Pushkar, his wife was "Gayatri" and the milkmaid remains anonymous.)
 
-#### Lord Brahma lied to Shiva in trying to prove his superiority
+### Lord Brahma lied to Shiva in trying to prove his superiority
 
 > Another story goes that once Brahma and Vishnu were engaged in a fierce argument about who was superior. To settle the dispute, Shiva asked both of them to find the end of the universe. Whoever finds it first is superior.
 >
@@ -70,7 +70,7 @@ These three stories give us three important lessons: the wise don't fall prey to
 
 A side note: Brahma is very highly worshipped in Thailand. I don't know why.
 
-### **Flavors of Pushkar**
+## **Flavors of Pushkar**
 
 ![](images/malpua-01.png)
 
@@ -92,7 +92,7 @@ The town is particularly famous for its unique Israeli cuisine, brought in by th
 
 > It is an uncanny experience walking in the streets of Pushkar with dilapidated buildings and mooing cows, to suddenly enter a 4.7 star rated Pizzeria on Zomato. La Pizzeria is uniquely ethinic with delicious food.
 
-### **A Nook for the Art and Craft**
+## **A Nook for the Art and Craft**
 
 The bustling markets of Pushkar are a haven for art and craft enthusiasts. From traditional Rajasthani attire, intricate silver jewelry, colorful bangles, to beautifully crafted leather goods, the marketplace is brimming with local artifacts.
 
@@ -100,6 +100,6 @@ These vibrant markets also offer a glimpse into the local lifestyle and customs,
 
 Talking to a lady from Washington state, I learnt that she visits Pushkar every year to buy ethnic notebooks, earrings, dresses, etc. These things cost \$1-2 in India while they sell at \$20-30 in US, at the minimum. Further talks with shopkeepers there revealed the global network they're all connected to --- talking orders on Whatsapp, sending orders via FedEx, and receiving payment via Paypal. Fascinating!
 
-### It is a must visit!
+## It is a must visit!
 
 In essence, Pushkar is a fascinating montage of ancient lore, divine spirituality, bustling markets, and culinary delights. It's a town where tranquility and vibrancy coexist. Despite being steeped in tradition and religious significance, it also embraces modernity and diversity, making it a must-visit destination.

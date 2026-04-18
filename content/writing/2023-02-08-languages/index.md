@@ -34,7 +34,7 @@ Two years later, he finally had the option to drop Hindi as well. Now, all that 
 
 He slowly built up his vocabulary repertoire, learning new words every day. For a brief period, he made a habit to pick up a new word, making a sentence with it and writing it in his diary. He never read them ever, but the act of writing made it enough to remember.
 
-### Bit and Byte: Computer Languages
+## Bit and Byte: Computer Languages
 
 In high school, he met a language that forever shaped his career: C++. He had played with computer languages before: telling LOGO turtle to turn right, take three steps, make a 120-degree left turn, take three steps, make a 120-degree left turn and take another three steps to make an equilateral triangle. But back then, he played with the turtle, not "writing" in a language. At least he didn't think of it like that.
 
@@ -95,7 +95,7 @@ Nothing happened. They thought nothing had happened. At least, initially. The fr
 
 But their confusion was quickly gone. The Windows soon gave an error, and it couldn't boot up. Mission successfully failed!
 
-### Back to Human Languages
+## Back to Human Languages
 
 All was good in Newfoundland till he started college. Now, he had to learn German. Oh, how much he dreaded human languages. Wasn't English enough?
 
@@ -109,7 +109,7 @@ Around the same time, he encountered another language, masquerading as a statist
 
 Like here's a code to print the first ten Fibonacci numbers in C++. (He remembers writing codes differently in Turbo C++. But today, he doesn't use C++ at all, and that flavour of C++ is not compatible with modern operating systems like MacOS.)
 
-##### C++ code for generating Fibonacci sequence
+#### C++ code for generating Fibonacci sequence
 
 ``` cpp
 #include <iostream>
@@ -146,7 +146,7 @@ int main()
 Press ENTER to exit console.
 ```
 
-##### Here's how to do it in R.
+#### Here's how to do it in R.
 
 ``` r
 # function to print first "n" Fibonacci numbers

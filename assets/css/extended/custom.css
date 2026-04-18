@@ -418,7 +418,7 @@ a:hover {
 /* ===== Comments ===== */
 .comments {
   margin-top: 2rem;
-  max-width: var(--main-width);
+  max-width: 750px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -469,4 +469,134 @@ a:hover {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+/* ===== Section rail + sidenotes (desktop only) =====
+   Content stays in its normal centered 750px column. Only the rail is pinned
+   to the viewport's left edge, and sidenotes live in the right gutter of
+   .post-content. Item positions on the rail are set by JS so the gap between
+   lines mirrors the actual section length (minimap). */
+@supports selector(:has(*)) {
+  @media (min-width: 1280px) {
+    /* Left rail — fixed to viewport left, independent of the content layout.
+       Labels auto-size and flow right into the empty gutter. max-width on the
+       label uses 50vw - 500px so the label never kisses the centered content
+       column (which starts at 50vw - 375px). */
+    .post-toc-rail {
+      position: fixed;
+      left: 24px;
+      top: 120px;
+      width: 260px;
+      height: calc(100vh - 160px);
+      overflow: visible;
+      padding: 0;
+      z-index: 5;
+    }
+
+    .post-toc-rail ol {
+      position: relative;
+      height: 100%;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .post-toc-rail li {
+      position: absolute;
+      left: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .post-toc-rail a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.25rem 0;
+      color: var(--secondary);
+      text-decoration: none;
+      font-size: 0.78rem;
+      line-height: 1.2;
+      border: none;
+      box-shadow: none;
+    }
+
+    .post-toc-rail .toc-line {
+      display: inline-block;
+      flex-shrink: 0;
+      width: 66px;
+      height: 1px;
+      background: var(--secondary);
+      opacity: 0.55;
+      transition: width 0.18s ease, background 0.18s ease, opacity 0.18s ease;
+    }
+
+    .post-toc-rail .toc-label {
+      opacity: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(50vw - 500px);
+      min-width: 0;
+      transition: opacity 0.18s ease, color 0.18s ease;
+    }
+
+    .post-toc-rail .toc-level-h3 .toc-line {
+      width: 42px;
+      margin-left: 14px;
+    }
+
+    .post-toc-rail a:hover .toc-line,
+    .post-toc-rail li.active a .toc-line {
+      width: 100px;
+      background: var(--link-color);
+      opacity: 1;
+    }
+
+    .post-toc-rail a:hover .toc-label,
+    .post-toc-rail li.active a .toc-label {
+      opacity: 1;
+      color: var(--primary);
+    }
+
+    .post-toc-rail a:hover {
+      text-decoration: none;
+    }
+
+    /* Right-margin sidenotes */
+    .post-content {
+      position: relative;
+    }
+
+    .sidenote {
+      position: absolute;
+      left: calc(100% + 32px);
+      width: 220px;
+      margin: 0;
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--secondary);
+    }
+
+    .sidenote p {
+      margin: 0 0 0.4rem 0;
+    }
+
+    .sidenote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .sidenote .sidenote-number {
+      color: var(--link-color);
+      font-size: 0.7rem;
+      margin-right: 0.35rem;
+      vertical-align: super;
+      font-weight: 600;
+    }
+
+    .post-content.has-sidenotes > .footnotes {
+      display: none;
+    }
+  }
 }

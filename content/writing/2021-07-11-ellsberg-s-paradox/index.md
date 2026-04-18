@@ -30,7 +30,7 @@ I was reading the book "How Not to Be Wrong: The Power of Mathematical Thinking"
 >
 > [*How Not to Be Wrong: The Power of Mathematical Thinking*](https://www.goodreads.com/book/show/18693884-how-not-to-be-wrong)*, Jordan Ellenberg*
 
-### Simulation
+## Simulation
 
 I want to run a simulation study of this experiment. We know that some are black and some are yellow. I want to vary the number of black and yellow balls in the urn to check the most sensible bet at different combinations.
 
@@ -71,7 +71,7 @@ lines(p_yellow, type = "l", lwd = 3, col = "yellow")
 
 Depending on how many black balls are in the urn, you have different probabilities of winning --- nothing unexpected. It is apparent that one should choose **Yellow** when the number of black balls is less than thirty and **Black** when the number of black balls is more than thirty. The only case when one could choose **Red** is when all the balls are in equal number in the urn, and they should be indifferent between all three at that point.
 
-#### Catching Up
+### Catching Up
 
 However, our original experiment wasn't about choosing any of these individual colors, it was choosing between the four bets: **Red**, **Not-red**, **Black** and **Not-black**. Which of these is the better option? Let's find out!
 
@@ -92,7 +92,7 @@ abline(h = 2/3, lwd = 3, col = "Blue")
 
 Clearly, **Not-red** dominates **Red** and **Black**. **Not-black** dominates **Red**. So, if presented a choice, I would bet on **Not-black** if the number of black balls is less than 30 and **Not-red** if the number of black balls is more than 30. Since the number of black balls in not known, I will compare the expected value --- which is exactly the same for both cases. (A simple way to check this is compare the area under the curve for blue and gray lines. In this case, they're both 40.)
 
-### The Paradox
+## The Paradox
 
 However, Ellsberg found that almost everyone preferred the **Not-red** bet over **Not-black** even when game theory and statistics showed that the two choices should be equally-preferred. This phenomenon was termed **"uncertainty aversion"**.
 

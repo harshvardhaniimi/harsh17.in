@@ -50,10 +50,10 @@ So to answer the question, "how much can we know about ancestors?". Well, probab
 
 This pages are reproduced from James Cheshire and Oliver Uberti's [Atlas of The Invisible: Maps and Graphs That Will Change How You See The World](https://www.atlasoftheinvisible.com).
 
-### Partial Inheritance: DNA kits do not tell the full story of you.
+## Partial Inheritance: DNA kits do not tell the full story of you.
 
 ![](images/THIS-1.png)
 
-### Ancient DNA shows nationalism is only a state of mind.
+## Ancient DNA shows nationalism is only a state of mind.
 
 ![](images/THIS-2.png)

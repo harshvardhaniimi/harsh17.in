@@ -39,7 +39,7 @@ As handy as these features, the service is not yet fully available to all users,
 
 While launching a half-baked service is not a new phenomenon in the tech industry, it’s concerning for a utility service like Twitter, which has a global user base, not to have an Android version. Twitter’s largest market is India, which is predominantly an Android market. Moreover, the prices for Twitter Blue are quite steep - who would pay ₹9,400 per year for a social media platform?
 
-### Starting today, the original Twitter verification marks are gone.
+## Starting today, the original Twitter verification marks are gone.
 
 On April 1, Twitter is stripping away the legacy verification badges from the platform in favor of the paid badges associated with Twitter Blue subscriptions. Then starting April 15, the platform apparently will no longer promote non-paying Twitter users via its recommendation algorithm on the For You feed. (The inability to participate in the polls sucks.)
 
@@ -61,7 +61,7 @@ But not all are excited about it. In fact, most Twitter Blue subscribers are not
 
 So, any Tom, Dick and Harry will have the blue checkmark but not the government agencies, celebrities, and influential figures. We’re gonna see a return of “real” prefixes in profile names.
 
-### Who uses Twitter Blue?
+## Who uses Twitter Blue?
 
 [Travis Brown](https://github.com/travisbrown/blue/) has collected data on Twitter Blue users from its launch.
 
@@ -69,13 +69,13 @@ So, any Tom, Dick and Harry will have the blue checkmark but not the government 
 
 I thought it would be interesting to see who are they. Here’s the exploration! [You can download the R Markdown from my Github](https://github.com/harshvardhaniimi/personal-website/blob/main/content/blog/2023-04-01-twitter-blue/index.Rmd).
 
-### Reading in the data
+## Reading in the data
 
 Data source: <https://github.com/travisbrown/blue>.
 
 Since the doesn’t have column names, I will add it. Using `janitor`, I will clean the names. It’s [clean_names()](https://github.com/sfirke/janitor) function is an absolute blast. It converts `CAPITALS` and spaces to `small_letters_with_underscores`. Pretty standard. [See the code on my Github.](https://github.com/harshvardhaniimi/personal-website/blob/main/content/blog/2023-04-01-twitter-blue/index.Rmd)
 
-#### Data
+### Data
 
 Here are the first ten rows of the data frame. I am using `kable` for printing a good looking table. (Later on, I will use `DT` for an interactive table where you can sort, filter and search.)
 
@@ -402,7 +402,7 @@ Here’s a brief detail on columns.
 
 Let’s dive in to the analysis.
 
-### Popularity of Twitter Blue
+## Popularity of Twitter Blue
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
@@ -410,9 +410,9 @@ Twitter Blue added most number of users in the first two weeks of launch. The ne
 
 Tell me in comments, if you know.
 
-### Who are the subscribers?
+## Who are the subscribers?
 
-#### Blue Subscribers with Most Followers
+### Blue Subscribers with Most Followers
 
 The list of Blue subscribers is pretty interesting.
 
@@ -429,7 +429,7 @@ Of the top-10 most popular accounts on Twitter, only Elon musk is the subscriber
 
 > Twitter accounts with most followers worldwide as of January 2023. All numbers are reported in millions. Source: [Statista](https://www-statista-com.utk.idm.oclc.org/statistics/273172/twitter-accounts-with-the-most-followers-worldwide/).
 
-### How many followers do Blue subscribers have?
+## How many followers do Blue subscribers have?
 
 For this task, I am going to break down the follower count into smaller groups. Since most Blue subscribers do not have a huge fan following (Elon Musk, again, is an exception), it is a necessary step — else, histograms wouldn’t look relevant.
 
@@ -492,7 +492,7 @@ Number of Blue Subscribers
 
 Blue seems to be more popular among the less popular accounts on Twitter. That’s interesting.
 
-#### How many accounts have less than 10 followers?
+### How many accounts have less than 10 followers?
 
 25,550 accounts have fewer than 10 followers. Out of that, 3,480 have zero followers. Who are these people and what’s the value of using Twitter Blue for them? Is it just an act of curiosity — are they simply [early adopters of the service](https://www.harsh17.in/gartner-hype-cycle/)? Or are they in strong defiance of old Twitter, grabbing the opportunity of premium Twitter as soon as it shows up? Maybe they’re just very expensive bots.
 
@@ -504,25 +504,25 @@ This is especially interesting because the average number of followers for an ac
 
 On the other hand, 391 million Twitter accounts have no followers at all.
 
-### Types of Accounts: Business, Government and Society
+## Types of Accounts: Business, Government and Society
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 It feels like almost all the subscribers are Musk fanboys. There are almost no government accounts, very little business accounts and a few celebrities (who probably wanted to try the Blue service).
 
-### How many of the original Blue Subscribers are still using it?
+## How many of the original Blue Subscribers are still using it?
 
 The data has a column called `sub_status` which has this detail.
 
 <img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
-### Who left Twitter Blue?
+## Who left Twitter Blue?
 
 A vast majority of unsubscribers (122,823) are regular users. My guess is they were experimenting with the service as [early adopters](https://www.harsh17.in/gartner-hype-cycle/). 499 of them were verified accounts who later chose not to continue their verification. 21 of the unsubscribers are businesses, and eight of them are government agencies.
 
 Here’s the list of government agencies: TimWattsMP, UNDPEurasia, RepRaulGrijalva, DenverOEM, JoaquinCastrotx, TDEM, SteveScalise, EPAMichaelRegan .
 
-### Conclusion
+## Conclusion
 
 Twitter Blue, the premium subscription service offered by Twitter, saw a massive surge in subscriber numbers immediately following its announcement. However, this momentum was short-lived, and the rate of new subscriber additions declined significantly, with one exception. In January, something extraordinary happened, which resulted in a notable increase in new subscribers.
 

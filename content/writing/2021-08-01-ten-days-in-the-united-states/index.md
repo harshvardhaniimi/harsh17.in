@@ -61,11 +61,11 @@ It is very easy to spot unhealthy food. McDonalds and Burger King are affordable
 
 **Plastics:** In India, I was charged for every single plastic bag to deter me from using plastics and using my own bags. In US, I brought five items and the shopkeeper gave me six bags --- for free.
 
-### Employment
+## Employment
 
 Economic impact payment [may](https://www.barrons.com/articles/us-unemployment-labor-shortage-fed-51627664723) have some effect on it, but there are so many places looking for people to hire. McDonalds, Walmart, Aldi, or literally any place that requires humans for service is currently hiring. All this, while the unemployment is so high!
 
-### Identity
+## Identity
 
 In India, we had Aadhaar that is used for all identification. We can get it easily, it is linked to all biometric prints and its basically a QR code and a number. Even that number can be masked with temporary numbers!
 

@@ -28,7 +28,7 @@ These factors potentially contributed to the Arabs' significant advancements in 
 
 Fast forward to the 1650s when caffeine entered European culture. Prior to its introduction, alcohol was a preferred beverage due to its relative safety compared to microbe-laden water. However, the arrival of coffee and tea from Asia marked the beginning of Europe's Renaissance. With the health benefits of boiled water and the mental stimulation from caffeine, the age of enlightenment ensued, and coffee replaced alcoholic drinks as the popular beverage.
 
-### The Advent of Coffee Breaks
+## The Advent of Coffee Breaks
 
 At the height of World War 2, a Denver-based necktie manufacturer, [Wigwam Weavers](https://content.time.com/time/subscriber/article/0,33009,937264,00.html), faced a workforce crisis. With many skilled workers drafted for the war, they had to recruit older adults and women who lacked experience in knitting intricate tie patterns. The solution to increased productivity came in an unlikely form -- breaks for coffee, although the term 'coffee breaks' was not coined then. This seemingly simple change resulted in a significant surge in productivity and quality.
 

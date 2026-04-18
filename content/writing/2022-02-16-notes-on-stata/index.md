@@ -13,25 +13,25 @@ cover:
   relative: true
   hidden: true
 ---
-#### Conventions through this page
+### Conventions through this page
 
 `x` is the name of the variable.
 
 ------------------------------------------------------------------------
 
-### Set Working Directory
+## Set Working Directory
 
 ``` r
 cd "/directory/"
 ```
 
-### Use a Dataset
+## Use a Dataset
 
 ``` r
 use data.dta, clear
 ```
 
-### Clear all items from memory
+## Clear all items from memory
 
 ``` r
 clear all
@@ -39,19 +39,19 @@ clear all
 
 See [documentation](https://www.stata.com/manuals13/dclear.pdf) for details.
 
-### Display all items
+## Display all items
 
 ``` r
 list
 ```
 
-### Display first element only (useful for a scalar)
+## Display first element only (useful for a scalar)
 
 ``` r
 di x
 ```
 
-### Setting number of observations
+## Setting number of observations
 
 ``` r
 qui set obs 30
@@ -59,7 +59,7 @@ qui set obs 30
 
 `qui` says this command is executed quietly, i.e. with no output.
 
-### Summary of a variable
+## Summary of a variable
 
 ``` r
 summarize x
@@ -67,7 +67,7 @@ summarize x
 
 This will number of observations, mean, standard deviation, minimum and maximum.
 
-### Describe
+## Describe
 
 ``` r
 describe x
@@ -104,7 +104,7 @@ simulate xbar = r(mean), seed(0) reps(10000): onesample
 
 # Visualisation
 
-### Histogram
+## Histogram
 
 ``` r
 hist x, width(0.1) title("Histogram of x")

@@ -157,7 +157,7 @@ These are only the hikes in US. My hikes in India and Europe aren’t included.
 </tbody>
 </table>
 
-### 🪣 Bucket List
+## 🪣 Bucket List
 
 - [Big south fork](https://www.nps.gov/biso/index.htm)
 - [Bald falls](https://www.tnvacation.com/local/tellico-plains-bald-river-falls)
@@ -260,7 +260,7 @@ Since I got my VanMoof, I’ve been going on bike trips every so often.
 </tbody>
 </table>
 
-### 🪣 Bucket List
+## 🪣 Bucket List
 
 - Cliff Jumping
 

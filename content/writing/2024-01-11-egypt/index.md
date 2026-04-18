@@ -41,7 +41,7 @@ Soon after, Meenal and I went for week long trip neither of us was fully prepare
 
 ![](images/map.png)
 
-### Zamalek
+## Zamalek
 
 In Cairo, we stayed in the upscale Zamalek neighborhood, known for its elegant 19th-century apartments, lush streets, and an eclectic mix of cafes and boutiques.
 Zamalek, transformed significantly after the 1952 revolution, showcases a blend of Egyptian and foreign influences, making it a unique cultural hub.[^2]
@@ -56,7 +56,7 @@ Many foreigners who lived in Zamalek left during extended periods of political u
 These exodus provided an opportunity for more Egyptians to move into the area.
 Furthermore, Nasser's nationalisation policies during the 1950s and 1960s led to the confiscation of many estates, which were repurposed for state use, including being transformed into public schools.
 
-### Giza Pyramids
+## Giza Pyramids
 
 Egyptians believed that just like the sun rises in the east and sets in the west, life should exist on the right of river Nile and death (with afterlife) should exist on left of Nile.
 Thus, Giza and the pyramids are on the left of Nile.
@@ -92,7 +92,7 @@ Our stay in Giza was at a cozy Airbnb where we woke up with direct view of the P
 Giza is less developed than Cairo but our host, [Samer](https://www.airbnb.co.in/rooms/966112564589703300?source_impression_id=p3_1704971813_ypEzzz21HnI5BnpC), more than made up for it.
 If you're planning a trip, I highly recommend his assistance.
 
-### Museum in Cairo
+## Museum in Cairo
 
 The Egyptian Museum, with its vast collection of antiquities, holds treasures like King Tutankhamun's artifacts.
 His reign, though unremarkable, gained fame due to the discovery of his well-preserved tomb by Howard Carter in November 1922.
@@ -132,7 +132,7 @@ I don't have pictures for this as cameras weren't allowed to preserve the mummie
     Before this discovery, the oldest known deliberate mummy was a child, one of the Chinchorro mummies found in the Camarones Valley, Chile, which dates around 5050 BC.
     Currently, the oldest known naturally mummified human corpse is a severed head dated as 6,000 years old, found in 1936 AD at the site named Inca Cueva No. 4 in South America.
 
-### Luxor, the Capital of Ancient Egypt
+## Luxor, the Capital of Ancient Egypt
 
 Luxor, once the heart of Ancient Egypt, was our next destination.
 We started with the Karnak Temple 🏛️, dedicated to Amun Re, the sun god.
@@ -177,7 +177,7 @@ It was enthralling!
 
 ![](images/IMG_1776.png)
 
-### Back to Cairo
+## Back to Cairo
 
 As our Egyptian adventure neared its end in Cairo, we embarked on a street food tour, delving into a delightful array of local cuisines, beverages, and desserts.
 The culinary journey started with a traditional Egyptian breakfast, predominantly vegetarian and packed with nutrients.
@@ -208,7 +208,7 @@ These juice shops aren't just about quenching thirst; they serve as social hubs 
 > Our street food tour group outside a juice shop.
 > You can guess the popularity by looking at the number of people chilling in the background.
 
-### Last Day: Coptic Church and Al-Azhar Mosque
+## Last Day: Coptic Church and Al-Azhar Mosque
 
 On our last day in Egypt, we visited the Coptic Church and the Al-Azhar Mosque, two sites in Cairo's rich religious tapestry.
 Even as a Hindu, I felt peace visiting both the sites.
@@ -219,7 +219,7 @@ Just a short distance away, the Al-Azhar Mosque stood in all its grandeur.
 It is one of the oldest mosques in Cairo and a beacon of Islamic learning with its wide assembly areas.
 The mosque's elegant minarets and detailed Islamic calligraphy were pretty cool.
 
-### Egyptian Economy and Elections
+## Egyptian Economy and Elections
 
 Just ten days before we visited, Egypt had national elections.
 The current president, Abdel Fattah El-Sisi, got re-elected.
@@ -237,7 +237,7 @@ El-Sisi's personal project --- a Dubai-like city called New Administrative Capit
 NAC was designed to reduce congestion from Cairo, which is already one of the world's most crowded cities.
 However, because of high rents, uncertain future, and lack of local economic options, the project hasn't made significant progress.
 
-### Concluding Remarks
+## Concluding Remarks
 
 Reflecting on my trip to Egypt, I'm struck by the contrast between its ancient wonders and modern realities.
 From the streets of Cairo to the Giza Pyramids and Luxor's temples, the journey was a deep dive into a rich culture and history.
@@ -247,7 +247,7 @@ The political and economic landscape, glimpsed through discussions about electio
 
 Leaving Egypt, I felt enriched by the experience, having seen a country balancing its impressive heritage with the challenges of the present.
 
-### P.S. Meenal's Blog and Playlist of Egyptian Arabian Songs
+## P.S. Meenal's Blog and Playlist of Egyptian Arabian Songs
 
 1.  Meenal also wrote her experience in [her newsletter](https://meenalsingh.substack.com/p/experiencing-egypt-history-streets). Her experience is less factual but more on our experience. Hope you enjoy it too!
 2.  During our stay in Egypt, we feel in love with the Egyptian songs. Here's a playlist of the ones we Shazamed!
