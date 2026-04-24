@@ -79,6 +79,7 @@ params:
   displayFullLangName: false
   ShowToc: false
   comments: true
+  ShowFullTextinRSS: true
 
   homeInfoParams:
     Title: "Dr. Harshvardhan"
