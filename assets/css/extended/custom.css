@@ -1,10 +1,18 @@
 /* ===== Self-hosted fonts ===== */
 @font-face {
-  font-family: 'Libre Baskerville';
+  font-family: 'Tiro Devanagari Hindi';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/libre-baskerville-v14-latin-regular.woff2') format('woff2');
+  src: url('/fonts/TiroDevanagariHindi-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Tiro Devanagari Hindi';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/TiroDevanagariHindi-Italic.woff2') format('woff2');
 }
 
 @font-face {
@@ -59,7 +67,7 @@ h1, h2, h3, h4, h5, h6,
 .nav,
 header nav a,
 .menu {
-  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  font-family: 'Tiro Devanagari Hindi', Georgia, 'Times New Roman', serif;
 }
 
 body {
@@ -127,14 +135,14 @@ a:hover {
 }
 
 .profile .profile_inner .tagline {
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Tiro Devanagari Hindi', Georgia, serif;
 }
 
 /* Quick links row */
 .quick-links {
   margin-top: 1.5rem;
   font-size: 1.1rem;
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Tiro Devanagari Hindi', Georgia, serif;
 }
 .quick-links a {
   color: var(--link-color);
@@ -222,7 +230,7 @@ a:hover {
   display: inline-block;
   padding: 0.25rem 0.65rem;
   font-size: 0.78rem;
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Tiro Devanagari Hindi', Georgia, serif;
   border: 1px solid var(--tertiary);
   border-radius: 20px;
   color: var(--secondary);
@@ -254,7 +262,7 @@ a:hover {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.5rem 1.2rem;
-  font-family: 'Libre Baskerville', Georgia, serif;
+  font-family: 'Tiro Devanagari Hindi', Georgia, serif;
   font-size: 0.9rem;
   color: var(--link-color);
   border: 1.5px solid var(--link-color);
@@ -573,7 +581,7 @@ a:hover {
       left: calc(100% + 32px);
       width: 220px;
       margin: 0;
-      font-family: 'Libre Baskerville', Georgia, serif;
+      font-family: 'Tiro Devanagari Hindi', Georgia, serif;
       font-size: 0.78rem;
       line-height: 1.55;
       color: var(--secondary);
