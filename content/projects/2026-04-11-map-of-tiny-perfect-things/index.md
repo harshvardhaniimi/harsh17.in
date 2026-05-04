@@ -1,5 +1,6 @@
 ---
 title: The Map of Tiny Perfect Things
+subtitle: A crowd-sourced atlas of meaningful places, built with Dea Bardhoshi
 summary: A crowd-sourced map of meaningful places — cafes, parks, museums, and other tiny perfect things — built with Dea Bardhoshi.
 author: Harshvardhan
 date: '2026-04-11'

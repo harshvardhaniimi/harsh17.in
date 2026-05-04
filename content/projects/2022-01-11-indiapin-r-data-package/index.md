@@ -1,9 +1,7 @@
 ---
 title: 'IndiaPIN: R Data Package'
-subtitle: 'R Package for All India PIN Codes Directory with Latitude and Longitude
-  Details (Updated: December 2021)'
-summary: 'R Package for All India PIN Codes Directory with Latitude and Longitude
-  Details (Updated: December 2021)'
+subtitle: An R data package of every Indian PIN code with latitude and longitude
+summary: 'An R package wrapping the All India PIN Codes Directory with latitude and longitude details (Updated: December 2021).'
 author: Harshvardhan
 date: '2022-01-11'
 slug: IndiaPIN

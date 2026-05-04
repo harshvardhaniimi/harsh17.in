@@ -1,5 +1,6 @@
 ---
 title: 'Jailbreaking: Turning My Kindle to A Juggernaut E-Reader'
+subtitle: A jailbroken Kindle that runs Python, sketches, and skips the lockscreen ads
 summary: Jailbreaking my Kindle to run Python, draw, and block lockscreen ads.
 author: Harshvardhan
 date: '2024-07-30'

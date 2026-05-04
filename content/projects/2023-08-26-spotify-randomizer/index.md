@@ -1,9 +1,7 @@
 ---
 title: Spotify Randomizer
-subtitle: A new playlist of random songs that I haven't listened in a while generated
-  automatically every Monday
-summary: A new playlist of random songs that I haven't listened in a while generated
-  automatically every Monday
+subtitle: Weekly auto-generated playlists of songs I haven't heard in a while
+summary: Every Monday, a fresh playlist of random tracks from my library that I haven't listened to lately, generated automatically.
 author: Harshvardhan
 date: '2023-08-26'
 slug: spotify-randomizer

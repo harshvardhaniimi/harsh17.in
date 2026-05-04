@@ -1,5 +1,6 @@
 ---
 title: Talk to Harshvardhan
+subtitle: A digital avatar chatbot trained to answer as me
 summary: I created my digital avatar chatbot that you can talk to for free at https://harsh17.in/chat
 author: Harshvardhan
 date: '2024-07-08'
