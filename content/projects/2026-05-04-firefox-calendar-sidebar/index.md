@@ -12,6 +12,10 @@ tags:
 - google-calendar
 - javascript
 github: https://github.com/harshvardhaniimi/firefox-calendar-sidebar
+cover:
+  image: og.png
+  relative: true
+  hidden: true
 ---
 I keep `calendar.google.com` pinned somewhere --- a Cmd+Tab away, a bookmark in the toolbar, a tab I never close. None of those solves the actual problem, which is that I want my calendar *visible*. Not one click away. Not one keystroke away. Just there, on the side, while I work on something else.
 
@@ -23,7 +27,7 @@ Firefox has a real sidebar --- the kind that hosts extension panels alongside th
 
 The sidebar has two parts. The top is a plain mini-month calendar: month name, prev/next, today highlighted, click any date to open that day in a new tab. Deliberately no events drawn on the grid; it stays out of the way. The bottom is a compact agenda of my Google Calendar, embedded directly from Google. A reload button, a settings gear, and an "Open in tab" button sit in a thin toolbar on top.
 
-There's a small options page where you set a **Calendar ID** (your Google account email, in the simple case) and an **account index** (`0` for your first logged-in Google account, `1` for the second, etc.). Settings live in `browser.storage.sync`, so they follow the profile across machines. Mine just say `harshvardhan@aus.edu` and `1`, and I forget the page exists.
+There's a small options page where you set a **Calendar ID** (your Google account email, in the simple case) and an **account index** (`0` for your first logged-in Google account, `1` for the second, etc.). Settings live in `browser.storage.sync`, so they follow the profile across machines. Mine are set once and I forget the page exists.
 
 ## Building It
 
