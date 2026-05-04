@@ -6,7 +6,7 @@ slug: claude-code
 tags:
 - ai
 - tools
-draft: true
+draft: false
 cover:
   image: og.png
   relative: true
