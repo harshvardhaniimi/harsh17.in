@@ -2,12 +2,17 @@
 
 <div class="profile">
   <div class="profile_inner">
+    <img class="home-avatar" src="/img/avatar-home.jpg" alt="Harshvardhan"
+         width="110" height="110" fetchpriority="high" />
+
     {{- with site.Params.homeInfoParams }}
     <h1>{{ .Title }}</h1>
     <div>{{ .Content | markdownify }}</div>
     {{- end }}
 
     <div class="quick-links">
+      <a href="/about/">About</a>
+      <span class="sep">&middot;</span>
       <a href="/research/">Research</a>
       <span class="sep">&middot;</span>
       <a href="/writing/">Writing</a>

@@ -13,3 +13,20 @@ command = 'hugo -F -b $DEPLOY_PRIME_URL --gc '
 
 [context.branch-deploy]
 command = 'hugo -F -b $DEPLOY_PRIME_URL --gc '
+
+# Long-lived caching: CSS/JS under /assets/ are content-fingerprinted, and the
+# font files are versioned by filename, so both are safe to cache immutably.
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/fonts/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/img/*"
+[headers.values]
+Cache-Control = "public, max-age=604800"

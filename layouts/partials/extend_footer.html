@@ -1,6 +1,7 @@
 <!-- Party popper on click -->
 <script>
 (function() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var emojis = ['🎉','🎊','✨','🥳','🎈','⭐'];
   document.addEventListener('click', function(e) {
     // skip clicks on links/buttons/inputs
@@ -187,15 +188,7 @@
 </script>
 {{- end -}}
 
-<!-- KaTeX for math rendering -->
-{{- if .IsPage -}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
-  onload="renderMathInElement(document.body, {
-    delimiters: [
-      {left: '$$', right: '$$', display: true},
-      {left: '\\(', right: '\\)', display: false}
-    ]
-  });"></script>
-{{- end -}}
+{{- /* KaTeX lives in extend_head.html, NOT here: PaperMod renders the footer
+       via partialCached keyed on Layout/Kind, so per-page content detection
+       inside this partial silently breaks (one page's footer is reused for
+       every other page of the same kind). */ -}}

@@ -1,0 +1,32 @@
+<!-- Preload the body font (latin subset only; other subsets load on demand) -->
+<link rel="preload" href="/fonts/Tiro-Regular-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+{{- /* KaTeX, loaded only when the page actually contains math — no front
+       matter needed. Detects $$…$$ (markdown posts) and \(…\) / \[…\]
+       (legacy blogdown HTML pages). Must stay in extend_head: the footer is
+       partialCached per Kind, so per-page detection there breaks. */ -}}
+{{- if and .IsPage (or .Params.math (findRE `\$\$|\\\(|\\\[` .RawContent 1)) }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script>
+  // Legacy blogdown posts protect inline math as `\(x\)` — unwrap those code
+  // spans so auto-render (which skips <code>) can typeset them.
+  function siteRenderMath() {
+    document.querySelectorAll('.post-content code').forEach(function (el) {
+      var t = el.textContent.trim();
+      if (/^\\\(.*\\\)$/.test(t) || /^\\\[[\s\S]*\\\]$/.test(t)) {
+        el.replaceWith(document.createTextNode(t));
+      }
+    });
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '\\[', right: '\\]', display: true },
+        { left: '\\(', right: '\\)', display: false }
+      ]
+    });
+  }
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+  onload="siteRenderMath();"></script>
+{{- end }}

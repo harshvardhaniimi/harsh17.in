@@ -9,6 +9,10 @@ summary: Invento Robotics by Balaji Viswanathan is probably one of the most famo
 author: Harshvardhan
 date: '2021-06-30'
 slug: invento-robotics-launching-humanoid-robots
+authors: "Harshvardhan, M., Kumar, B."
+venue: "Case study and teaching note, Ivey Publishing (2021)"
+link: https://www.thecasecentre.org/products/view?id=178314
+linkText: "The Case Centre"
 tags:
 - academia
 - economics

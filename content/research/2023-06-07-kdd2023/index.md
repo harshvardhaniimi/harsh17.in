@@ -10,6 +10,9 @@ summary: We proposed a novel end-to-end approach, the Neural Lagrangian Selling 
 author: Harshvardhan
 date: '2023-06-07'
 slug: kdd2023
+authors: "Mao, W., Liu, C., Huang, Y., Zu, Z., Harshvardhan, M., Wang, L., Zheng, B."
+venue: "Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '23)"
+pdf: https://www.harsh17.in/docs/kdd2023/E2E_Paper.pdf
 tags:
 - academia
 - machine-learning

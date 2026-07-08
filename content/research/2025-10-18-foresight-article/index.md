@@ -6,6 +6,9 @@ summary: 'Our HP Inc. forecasting framework was featured in *Foresight: The Inte
   Journal of Applied Forecasting* (Issue 79, 2025) and recognized as a finalist at
   the International Institute of Forecasting’s Foresight Conference. [🔗 PDF](https://www.harsh17.in/docs/papers/HP_Foresight_Paper.pdf)'
 slug: foresight-paper
+authors: "Harshvardhan, M., Curtland, C., Ghozeil, A., Liu, C."
+venue: "Foresight: The International Journal of Applied Forecasting, Issue 79 (2025)"
+pdf: https://www.harsh17.in/docs/papers/HP_Foresight_Paper.pdf
 tags:
 - academia
 - forecasting

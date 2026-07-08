@@ -1,4 +1,36 @@
+{{- /* Serve page-bundle images as capped-width WebP with srcset + intrinsic
+       dimensions. GIF/SVG/external images pass through untouched. */ -}}
+{{- $dest := .Destination -}}
+{{- $res := .Page.Resources.GetMatch $dest -}}
+{{- if not $res -}}
+  {{- $res = .Page.Resources.GetMatch (replace $dest "%20" " ") -}}
+{{- end -}}
 <figure>
-  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title }} title="{{ . }}" {{ end }}loading="lazy" />
+  {{- if and $res (ne .Page.Params.processImages false) (not (in (slice "gif" "svg" "svg+xml") $res.MediaType.SubType)) }}
+  {{- $full := $res -}}
+  {{- if gt $res.Width 1500 -}}
+    {{- $full = $res.Resize "1500x webp" -}}
+  {{- else -}}
+    {{- $full = $res.Process "webp" -}}
+  {{- end -}}
+  {{- $srcset := printf "%s %dw" $full.RelPermalink $full.Width -}}
+  {{- if gt $res.Width 800 -}}
+    {{- $small := $res.Resize "750x webp" -}}
+    {{- $srcset = printf "%s 750w, %s %dw" $small.RelPermalink $full.RelPermalink $full.Width -}}
+  {{- end }}
+  <img src="{{ $full.RelPermalink }}"
+       srcset="{{ $srcset }}"
+       sizes="(max-width: 800px) 100vw, 750px"
+       width="{{ $full.Width }}" height="{{ $full.Height }}"
+       alt="{{ .Text }}" {{ with .Title }}title="{{ . }}" {{ end }}loading="lazy" decoding="async" />
+  {{- else if and $res (eq $res.MediaType.SubType "gif") }}
+  <img src="{{ $res.RelPermalink }}" width="{{ $res.Width }}" height="{{ $res.Height }}"
+       alt="{{ .Text }}" {{ with .Title }}title="{{ . }}" {{ end }}loading="lazy" decoding="async" />
+  {{- else if $res }}
+  <img src="{{ $res.RelPermalink }}"
+       alt="{{ .Text }}" {{ with .Title }}title="{{ . }}" {{ end }}loading="lazy" decoding="async" />
+  {{- else }}
+  <img src="{{ $dest | safeURL }}" alt="{{ .Text }}" {{ with .Title }}title="{{ . }}" {{ end }}loading="lazy" decoding="async" />
+  {{- end }}
   {{- with .Text }}<figcaption>{{ . }}</figcaption>{{- end }}
 </figure>

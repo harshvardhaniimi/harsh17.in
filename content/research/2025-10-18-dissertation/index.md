@@ -6,6 +6,10 @@ summary: My Ph.D. dissertation (University of Tennessee, 2025) develops a machin
   demand forecasting framework implemented at HP Inc., improving forecast accuracy
   by 34% and reducing inventory by 28%. [🔗 PDF](https://www.harsh17.in/docs/2025_04_10_Doctoral_Dissertation.pdf)
 slug: dissertation
+venue: "Ph.D. dissertation, Haslam College of Business, University of Tennessee, Knoxville (2025)"
+pdf: https://www.harsh17.in/docs/2025_04_10_Doctoral_Dissertation.pdf
+link: https://trace.tennessee.edu/utk_graddiss/12366/
+linkText: "UT TRACE"
 tags:
 - academia
 - forecasting

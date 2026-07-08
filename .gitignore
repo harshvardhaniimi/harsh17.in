@@ -1,4 +1,8 @@
 public/
-resources/
+# resources/_gen is committed on purpose: it holds Hugo's processed images
+# (WebP variants), so Netlify deploys don't re-encode ~560MB of originals.
 .hugo_build.lock
 .DS_Store
+
+# Local Netlify folder
+.netlify

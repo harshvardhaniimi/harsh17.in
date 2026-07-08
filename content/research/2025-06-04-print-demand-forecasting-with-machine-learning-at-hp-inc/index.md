@@ -7,6 +7,10 @@ summary: HP Inc. replaced manual and statistical forecasting with a machine lear
   (LightGBM) model to improve demand prediction accuracy across 18,000+ print products.
   The model has been deployed enterprise-wide, with demonstrated business value and
   principles for scaling ML in large organizations. [🔗 PDF](https://www.harsh17.in/docs/papers/HP_Paper_IJAA_Preprint.pdf)
+authors: "Harshvardhan, M., Curtland, C., Hwang, J., VanDam, C., Ghozeil, A., Neto, P. A., Marie, F., Liu, C."
+venue: "INFORMS Journal of Applied Analytics (2025)"
+pdf: https://www.harsh17.in/docs/papers/HP_Paper_IJAA_Preprint.pdf
+doi: 10.1287/inte.2024.0126
 tags:
 - academia
 - economics

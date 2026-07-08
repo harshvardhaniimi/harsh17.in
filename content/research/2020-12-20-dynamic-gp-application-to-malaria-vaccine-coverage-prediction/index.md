@@ -9,6 +9,11 @@ summary: We applied a dynamic Gaussian process model to predict coverage for nov
 author: Harshvardhan
 date: '2020-12-20'
 slug: dynamic-gp-application-to-malaria-vaccine-coverage-prediction
+authors: "Ranjan, P., Harshvardhan, M."
+venue: "Applied Statistical Methods: ISGES 2020, Springer Singapore (2022)"
+pdf: https://www.harsh17.in/docs/malaria_paper.pdf
+link: https://arxiv.org/abs/2012.11124
+linkText: "arXiv"
 tags:
 - academia
 - economics

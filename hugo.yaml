@@ -1,13 +1,19 @@
 baseURL: https://harsh17.in/
 title: Harshvardhan
 theme: PaperMod
-googleAnalytics: G-N5CSPZ9H5M
-paginate: 1000
+pagination:
+  pagerSize: 1000
 enableRobotsTXT: true
 
 services:
+  googleAnalytics:
+    ID: G-N5CSPZ9H5M
   rss:
     limit: 10
+
+imaging:
+  quality: 82
+  resampleFilter: Lanczos
 
 taxonomies:
   tag: tags
@@ -35,6 +41,7 @@ markup:
 outputs:
   home:
     - HTML
+    - RSS
     - JSON
   section:
     - HTML
@@ -66,6 +73,9 @@ menu:
 
 params:
   env: production
+  description: "Machine learning researcher and Assistant Professor at the American University of Sharjah. Research, essays, talks, and projects on data science and life."
+  schema:
+    publisherType: Person
   defaultTheme: auto
   ShowReadingTime: true
   ShowShareButtons: false
@@ -109,10 +119,6 @@ params:
     categoryId: "DIC_kwDOR_EfYs4C6iFn"
     mapping: "pathname"
     theme: "preferred_color_scheme"
-
-  mailerlite:
-    accountId: ""
-    formId: ""
 
   label:
     text: "Harshvardhan"

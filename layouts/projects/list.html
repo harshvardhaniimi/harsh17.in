@@ -6,27 +6,32 @@
 </header>
 
 {{- range .Pages.ByDate.Reverse -}}
+{{- $page := . -}}
 <div class="project-entry">
   <div class="project-image">
-    {{- $featured := "" -}}
-    {{- range (slice "featured.png" "featured.jpg" "featured.jpeg") -}}
-      {{- with $.Page.Resources.GetMatch . -}}
-        {{- $featured = . -}}
-      {{- end -}}
-    {{- end -}}
-    {{- with .Resources.GetMatch "featured*" -}}
-    <a href="{{ $.RelPermalink }}">
-      <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" loading="lazy" />
+    {{- with $page.Resources.GetMatch "featured*" -}}
+    {{- if or (eq .MediaType.SubType "gif") (eq .MediaType.SubType "svg") -}}
+    <a href="{{ $page.RelPermalink }}">
+      <img src="{{ .RelPermalink }}" alt="{{ $page.Title }}" width="120" height="90" loading="lazy" />
     </a>
+    {{- else -}}
+    {{- $thumb := .Fill "240x180 webp" -}}
+    {{- $thumb2x := .Fill "480x360 webp" -}}
+    <a href="{{ $page.RelPermalink }}">
+      <img src="{{ $thumb.RelPermalink }}"
+           srcset="{{ $thumb.RelPermalink }} 1x, {{ $thumb2x.RelPermalink }} 2x"
+           alt="{{ $page.Title }}" width="120" height="90" loading="lazy" />
+    </a>
+    {{- end -}}
     {{- end -}}
   </div>
   <div class="project-info">
-    <div class="project-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
-    {{- with .Params.subtitle }}<div class="project-subtitle">{{ . }}</div>{{ end -}}
-    {{- with .Params.summary }}<div class="project-summary">{{ . }}</div>{{ end -}}
+    <div class="project-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></div>
+    {{- with $page.Params.subtitle }}<div class="project-subtitle">{{ . }}</div>{{ end -}}
+    {{- with $page.Params.summary }}<div class="project-summary">{{ . }}</div>{{ end -}}
     <div class="project-links">
-      {{- with .Params.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end -}}
-      {{- with .Params.website }}<a href="{{ . }}" target="_blank" rel="noopener">Website</a>{{ end -}}
+      {{- with $page.Params.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end -}}
+      {{- with $page.Params.website }}<a href="{{ . }}" target="_blank" rel="noopener">Website</a>{{ end -}}
     </div>
   </div>
 </div>

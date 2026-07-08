@@ -6,6 +6,7 @@
 </header>
 
 {{- range .Pages.ByDate.Reverse -}}
+{{- $p := . -}}
 <div class="pub-entry">
   <div class="pub-title">{{ .Date.Format "2006" }} &mdash; <a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
   {{- with .Params.authors }}<div class="pub-meta">{{ . }}</div>{{ end -}}
@@ -13,6 +14,7 @@
   <div class="pub-links">
     {{- with .Params.pdf }}<a href="{{ . }}">PDF</a>{{ end -}}
     {{- with .Params.doi }}<a href="https://doi.org/{{ . }}">DOI</a>{{ end -}}
+    {{- with .Params.link }}<a href="{{ . }}">{{ $p.Params.linkText | default "Link" }}</a>{{ end -}}
     {{- with .Params.github }}<a href="{{ . }}">Code</a>{{ end -}}
   </div>
 </div>

@@ -13,8 +13,11 @@ TEXT_COLOR = (45, 45, 45)    # matches --primary: #2d2d2d
 ACCENT_COLOR = (122, 69, 34) # matches --link-color: #7a4522
 WIDTH, HEIGHT = 1200, 630
 
-# Try to find a good font, fall back to default
+# Site font first (matches the website's Tiro Devanagari Hindi), Georgia fallback.
+# NOTE: PIL has no complex-script shaping — for Devanagari titles, render the
+# OG image in a browser instead (see AGENTS.md).
 FONT_PATHS = [
+    os.path.expanduser("~/Dropbox/Personal/harsh17/.fonts/TiroDevanagariHindi-Regular.ttf"),
     "/System/Library/Fonts/Supplemental/Georgia.ttf",
     "/System/Library/Fonts/Georgia.ttf",
     "/System/Library/Fonts/Supplemental/Times New Roman.ttf",

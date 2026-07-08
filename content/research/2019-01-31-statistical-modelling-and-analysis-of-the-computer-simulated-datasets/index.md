@@ -8,6 +8,10 @@ summary: 'My first academic publication: a peer-reviewed book chapter on statist
 author: Harshvardhan
 date: '2019-01-31'
 slug: statistical-modelling-and-analysis-of-the-computer-simulated-datasets
+authors: "Harshvardhan, M., Ranjan, P."
+venue: "Handbook of Research on Cloud Computing and Big Data Applications in IoT, IGI Global (2019), pp. 202-228"
+pdf: https://www.harsh17.in/docs/simulation_2019.pdf
+doi: 10.4018/978-1-5225-8407-0.ch011
 tags:
 - academia
 - data-science
