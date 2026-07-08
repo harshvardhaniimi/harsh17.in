@@ -33,6 +33,10 @@ English pages download only the latin subset; Devanagari glyphs pull the devanag
 ## OG images
 
 - `generate-og-images.py` renders `og.png` (1200×630) for any bundle missing one, using the Tiro TTF from `.fonts/`.
+- **The post title is baked into the image pixels, and the script skips any bundle that already has an `og.png`.**
+Changing a post's `title:` therefore leaves a stale card that goes on advertising the old title to every link preview on LinkedIn, Slack, and Twitter, with nothing in the build to flag it.
+After any title change, move the old `og.png` to `~/Desktop/deleted by clwd/` (never delete it) and re-run `python generate-og-images.py`.
+Unlike `generate-embeddings.py`, this script does not self-invalidate — it only ever fills in what is missing.
 - PIL cannot shape Devanagari conjuncts.
 For Hindi titles, render the same design via headless Chrome instead:
 build an HTML page with the OG layout (cream `#faf8f5`, maroon `#7a4522` bar, Tiro @font-face), then

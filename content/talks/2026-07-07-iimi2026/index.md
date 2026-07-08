@@ -1,11 +1,11 @@
 ---
-title: Forecasting Print Demand at HP, and Research as a Career
-subtitle: Forecasting print demand at HP with machine learning, and a session with IPM students on research careers
+title: Print Demand Forecasting with Machine Learning at HP Inc.
+subtitle: An invited seminar on the machine-learning system behind demand planning at HP Inc.
 summary: My invited research seminar in the IIM Indore Seminar Series on HP's enterprise machine-learning system for print demand forecasting, plus a talk to IPM students on why pursuing research as a career is a good idea.
 author: Harshvardhan
 date: '2026-07-07T00:00:00+05:30'
 event: IIM Indore Seminar Series
-location: Indore, India
+location: IIM Indore
 slug: iimi2026
 tags:
 - academia

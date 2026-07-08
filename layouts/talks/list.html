@@ -5,15 +5,17 @@
   {{ with .Content }}<div class="post-content">{{ . }}</div>{{ end }}
 </header>
 
-{{- range .Pages.ByDate.Reverse -}}
-<div class="writing-list-item">
-  <a href="{{ .RelPermalink }}">
-    {{- .Title -}}
-    {{- with .Params.event }}<span style="color:var(--secondary);font-weight:normal;"> &middot; {{ . }}</span>{{ end -}}
-    {{- with .Params.location }}<span style="color:var(--secondary);font-weight:normal;">, {{ . }}</span>{{ end -}}
+<div class="talks-table">
+  {{- range .Pages.ByDate.Reverse }}
+  <a class="talk-row" href="{{ .RelPermalink }}">
+    <span class="talk-date">{{ .Date.Format "Jan 2006" }}</span>
+    <span class="talk-venue">
+      {{- with .Params.event }}<span class="talk-event">{{ . }}</span>{{ end -}}
+      {{- with .Params.location }}<span class="talk-location">{{ . }}</span>{{ end -}}
+    </span>
+    <span class="talk-title">{{ .Title }}</span>
   </a>
-  <span class="date">{{ .Date.Format "Jan 2006" }}</span>
+  {{- end }}
 </div>
-{{- end -}}
 
 {{- end }}{{/* define "main" */}}
