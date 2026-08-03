@@ -7,6 +7,7 @@
 
     {{- with site.Params.homeInfoParams }}
     <h1>{{ .Title }}</h1>
+    <p class="name-note"><a href="/my-name/">About my name</a></p>
     <div>{{ .Content | markdownify }}</div>
     {{- end }}
 
