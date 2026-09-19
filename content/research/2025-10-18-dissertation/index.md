@@ -10,6 +10,7 @@ venue: "Ph.D. dissertation, Haslam College of Business, University of Tennessee,
 pdf: https://www.harsh17.in/docs/2025_04_10_Doctoral_Dissertation.pdf
 link: https://trace.tennessee.edu/utk_graddiss/12366/
 linkText: "UT TRACE"
+contribution: "Connects forecasting models, deployment, human judgement, and decision optimisation within an enterprise forecasting framework."
 tags:
 - academia
 - forecasting

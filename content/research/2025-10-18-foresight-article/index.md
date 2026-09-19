@@ -9,6 +9,7 @@ slug: foresight-paper
 authors: "Harshvardhan, M., Curtland, C., Ghozeil, A., Liu, C."
 venue: "Foresight: The International Journal of Applied Forecasting, Issue 79 (2025)"
 pdf: https://www.harsh17.in/docs/papers/HP_Foresight_Paper.pdf
+contribution: "Presents the HP forecasting project for practitioners, focusing on lessons from applying machine learning at enterprise scale."
 tags:
 - academia
 - forecasting

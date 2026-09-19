@@ -13,6 +13,7 @@ authors: "Harshvardhan, M., Kumar, B."
 venue: "Case study and teaching note, Ivey Publishing (2021)"
 link: https://www.thecasecentre.org/products/view?id=178314
 linkText: "The Case Centre"
+contribution: "A teaching case examining how a robotics startup chooses its customers, positioning, pricing, and marketing strategy."
 tags:
 - academia
 - economics

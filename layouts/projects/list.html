@@ -27,11 +27,10 @@
   </div>
   <div class="project-info">
     <div class="project-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></div>
-    {{- with $page.Params.subtitle }}<div class="project-subtitle">{{ . }}</div>{{ end -}}
-    {{- with $page.Params.summary }}<div class="project-summary">{{ . }}</div>{{ end -}}
+    {{- with ($page.Params.summary | default $page.Params.subtitle) }}<div class="project-summary">{{ . }}</div>{{ end -}}
     <div class="project-links">
       {{- with $page.Params.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end -}}
-      {{- with $page.Params.website }}<a href="{{ . }}" target="_blank" rel="noopener">Website</a>{{ end -}}
+      {{- with $page.Params.website }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $page.Params.websiteLabel | default "Visit project" }}</a>{{ end -}}
     </div>
   </div>
 </div>

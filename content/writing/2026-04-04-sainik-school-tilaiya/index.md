@@ -2,7 +2,7 @@
 title: Sainik School Tilaiya
 subtitle: ''
 summary: I joined Sainik School Tilaiya in 2009 as a Class 6 kid who said he preferred
-  playing sports over watching IPL. Six years later, I left as School Captain. In
+  playing sports over watching IPL. Seven years later, I left as School Captain. In
   between, there were rabbits, overfed fish, hockey politics, and a diary obsession
   that never quite went away.
 author: Harshvardhan
@@ -149,5 +149,4 @@ There came several more opportunities for SSB through technical entries, but I n
 [^4]: Known for films like *Gangaajal*, *Raajneeti*, and *Satyagraha*. His movies explore themes of social justice, political corruption, and human rights. He is also a recipient of the Padma Shri, one of India's highest civilian awards, for his contributions to the arts.
 [^5]: PABT is essentially a hand-eye coordination test. You attend classes on how to read an altimeter, a heading indicator, and other basic instruments, and then you're put in a simple simulator. That's it — a video game that decides whether you can ever be a military pilot. I failed it.
 [^6]: This is also the Chetwode Motto, from the Indian Military Academy in Dehradun. It is inscribed on the entrance of the academy and recited across military institutions in India.
-
 

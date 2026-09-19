@@ -12,6 +12,7 @@ authors: "Harshvardhan, M., Ranjan, P."
 venue: "Handbook of Research on Cloud Computing and Big Data Applications in IoT, IGI Global (2019), pp. 202-228"
 pdf: https://www.harsh17.in/docs/simulation_2019.pdf
 doi: 10.4018/978-1-5225-8407-0.ch011
+contribution: "Reviews Gaussian-process surrogate modelling, numerical stability, and methods for handling large simulation datasets."
 tags:
 - academia
 - data-science

@@ -148,6 +148,74 @@ code, pre, .highlight {
   border-radius: 4px;
 }
 
+.search-label {
+  display: none;
+}
+
+/* Every destination stays visible on phones, in the existing reading order. */
+@media (max-width: 640px) {
+  #menu {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    width: calc(100% - var(--gap) * 2);
+    overflow: visible;
+    white-space: normal;
+    line-height: 1.4;
+    gap: 2px 4px;
+    margin-bottom: 0.5rem;
+  }
+
+  #menu li {
+    grid-column: span 3;
+    min-width: 0;
+  }
+
+  #menu li:nth-child(n + 5) {
+    grid-column: span 4;
+  }
+
+  #menu li + li {
+    margin-inline-start: 0;
+  }
+
+  #menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 4px 0;
+  }
+
+  #menu .active {
+    padding: 4px;
+  }
+
+  .search-icon {
+    display: none;
+  }
+
+  .search-label {
+    display: inline;
+  }
+}
+
+/* The portrait floats only where the opening paragraph has room beside it. */
+.post-content .about-portrait {
+  float: right;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  margin: 0 0 1.5rem 2rem;
+  border-radius: 50%;
+}
+
+@media (max-width: 640px) {
+  .post-content .about-portrait {
+    float: none;
+    margin: 0 auto 1.5rem;
+  }
+}
+
 /* ===== Links ===== */
 a {
   color: var(--link-color);
@@ -243,6 +311,38 @@ a:hover {
 }
 
 /* ===== Writing list — clean, minimal rows ===== */
+.writing-intro {
+  margin-bottom: 2.5rem;
+}
+
+.writing-intro h2,
+.writing-archive-title {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+}
+
+.writing-picks {
+  list-style: none;
+  padding: 0;
+}
+
+.writing-picks li + li {
+  margin-top: 1.1rem;
+}
+
+.writing-picks h3 {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.writing-picks p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--secondary);
+  margin-top: 0.2rem;
+}
+
 .writing-list-item {
   display: flex;
   justify-content: space-between;
@@ -361,6 +461,13 @@ a:hover {
   font-size: 0.88rem;
   color: var(--secondary);
   margin-top: 0.15rem;
+}
+
+.pub-contribution {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--content);
+  margin: 0.45rem 0 0.2rem;
 }
 
 .pub-entry .pub-links a {
@@ -527,6 +634,19 @@ a:hover {
 
 #searchResults li.search-result {
   padding: 0.5rem 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+#searchResults a:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 3px;
+}
+
+#searchResults .focus {
+  transform: none;
+  border: 0;
 }
 
 /* ===== Image captions ===== */

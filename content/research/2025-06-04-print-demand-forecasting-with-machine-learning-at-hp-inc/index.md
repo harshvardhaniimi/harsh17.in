@@ -11,6 +11,7 @@ authors: "Harshvardhan, M., Curtland, C., Hwang, J., VanDam, C., Ghozeil, A., Ne
 venue: "INFORMS Journal of Applied Analytics (2025)"
 pdf: https://www.harsh17.in/docs/papers/HP_Paper_IJAA_Preprint.pdf
 doi: 10.1287/inte.2024.0126
+contribution: "Shows how a global forecasting system combines machine learning with expert judgement and becomes part of enterprise planning."
 tags:
 - academia
 - economics

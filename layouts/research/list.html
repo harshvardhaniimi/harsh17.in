@@ -11,6 +11,7 @@
   <div class="pub-title">{{ .Date.Format "2006" }} &mdash; <a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
   {{- with .Params.authors }}<div class="pub-meta">{{ . }}</div>{{ end -}}
   {{- with .Params.venue }}<div class="pub-meta"><em>{{ . }}</em></div>{{ end -}}
+  {{- with .Params.contribution }}<p class="pub-contribution">{{ . }}</p>{{ end -}}
   <div class="pub-links">
     {{- with .Params.pdf }}<a href="{{ . }}">PDF</a>{{ end -}}
     {{- with .Params.doi }}<a href="https://doi.org/{{ . }}">DOI</a>{{ end -}}

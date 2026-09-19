@@ -13,6 +13,7 @@ slug: kdd2023
 authors: "Mao, W., Liu, C., Huang, Y., Zu, Z., Harshvardhan, M., Wang, L., Zheng, B."
 venue: "Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '23)"
 pdf: https://www.harsh17.in/docs/kdd2023/E2E_Paper.pdf
+contribution: "Jointly learns impression forecasts and advertising-contract allocations, training predictions around the decisions they support."
 tags:
 - academia
 - machine-learning
@@ -56,4 +57,4 @@ To the best of our knowledge, this is the first study to apply the end-to-end pr
 
 Wuyang Mao, Chuanren Liu, Yundu Huang, Zhonglin Zu, M Harshvardhan, Liang Wang, and Bo Zheng. 2023. End-to-End Inventory Prediction and Contract Allocation for Guaranteed Delivery Advertising. In *Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '23)*, August 6--10, 2023, Long Beach, CA, USA.
 
-I sincerely thank [Prof ChuanRen Liu](https://datamining.utk.edu/) for his guidance on this project and the opportunity to contribute meaningfully.
+I sincerely thank [Prof ChuanRen Liu](https://haslam.utk.edu/people/profile/chuanren-liu/) for his guidance on this project and the opportunity to contribute meaningfully.

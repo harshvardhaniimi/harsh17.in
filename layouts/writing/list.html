@@ -5,6 +5,26 @@
   {{ with .Description }}<p style="color:var(--secondary);font-style:italic;">{{ . }}</p>{{ end }}
 </header>
 
+{{- with .Params.featured }}
+<section class="writing-intro" aria-labelledby="writing-intro-title">
+  <h2 id="writing-intro-title">A few places to begin</h2>
+  <ul class="writing-picks">
+    {{- range . }}
+    {{- $pick := . }}
+    {{- with site.GetPage .page }}
+    <li>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ $pick.description }}</p>
+    </li>
+    {{- else }}
+    {{- errorf "Featured writing page not found: %s" $pick.page }}
+    {{- end }}
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+
+<h2 class="writing-archive-title" id="all-writing">All writing</h2>
 <p style="font-size:0.88rem;color:var(--secondary);margin-bottom:1.5rem;">
   Never miss a post — <a href="/new-website/#staying-updated">subscribe via RSS</a>.
 </p>

@@ -14,6 +14,7 @@ venue: "Applied Statistical Methods: ISGES 2020, Springer Singapore (2022)"
 pdf: https://www.harsh17.in/docs/malaria_paper.pdf
 link: https://arxiv.org/abs/2012.11124
 linkText: "arXiv"
+contribution: "Applies dynamic Gaussian-process models to forecast vaccine coverage across 78 malaria-prone countries using existing vaccination data."
 tags:
 - academia
 - economics
