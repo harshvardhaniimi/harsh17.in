@@ -24,4 +24,4 @@ You might enjoy my curation of [Classical Hindi Music](https://open.spotify.com/
 
 ---
 
-[Curriculum Vitae](/docs/cv.pdf) &middot; [Resume](/docs/resume.pdf) &middot; [Google Scholar](https://scholar.google.com/citations?user=Q-dbCggAAAAJ) &middot; [hello@harsh17.in](mailto:hello@harsh17.in)
+[Curriculum Vitae](/docs/cv.pdf) &middot; [Google Scholar](https://scholar.google.com/citations?user=Q-dbCggAAAAJ) &middot; [hello@harsh17.in](mailto:hello@harsh17.in)

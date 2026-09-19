@@ -10,8 +10,8 @@ https://www.harsh17.in/*           https://harsh17.in/:splat 301!
 # Short URLs
 /cv                 /docs/cv.pdf
 /cv/                /docs/cv.pdf
-/resume             /docs/resume.pdf
-/resume/            /docs/resume.pdf
+/resume             /docs/cv.pdf
+/resume/            /docs/cv.pdf
 /old                https://sites.google.com/view/harsh17/
 /twitter            https://twitter.com/harshbutjust
 /linkedin           https://www.linkedin.com/in/harshvardhaniimi/
