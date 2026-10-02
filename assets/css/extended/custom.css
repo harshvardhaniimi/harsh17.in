@@ -63,6 +63,42 @@
   src: url('/fonts/fira-code-v21-latin-regular.woff2') format('woff2');
 }
 
+/* Areal's variable font covers regular, medium, bold, and slanted styles.
+   The licensed webfont is supplied separately from this public repository. */
+@font-face {
+  font-family: 'ABC Areal';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/ABCAreal-v1.524.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'ABC Areal';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  font-variation-settings: 'slnt' -12;
+  src: url('/fonts/ABCAreal-v1.524.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'ABC Areal Extended';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/ABCAreal-ext-v1.524.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'ABC Areal Extended';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  font-variation-settings: 'slnt' -12;
+  src: url('/fonts/ABCAreal-ext-v1.524.woff2') format('woff2');
+}
+
 /* ===== Light mode palette ===== */
 :root {
   --theme: #faf8f5;
@@ -138,6 +174,7 @@ code, pre, .highlight {
 
 .post-content {
   max-width: 750px;
+  font-family: var(--article-body-font, 'Tiro Devanagari Hindi'), 'Tiro Devanagari Hindi', Georgia, serif;
 }
 
 /* ===== Nav active state ===== */

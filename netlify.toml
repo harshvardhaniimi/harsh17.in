@@ -1,5 +1,5 @@
 [build]
-command = 'hugo --gc '
+command = 'node scripts/prepare-fonts.mjs && hugo --gc'
 publish = 'public'
 
 [build.environment]
@@ -9,10 +9,10 @@ HUGO_VERSION = '0.160.1'
 HUGO_ENV = 'production'
 
 [context.deploy-preview]
-command = 'hugo -F -b $DEPLOY_PRIME_URL --gc '
+command = 'node scripts/prepare-fonts.mjs && hugo -F -b $DEPLOY_PRIME_URL --gc'
 
 [context.branch-deploy]
-command = 'hugo -F -b $DEPLOY_PRIME_URL --gc '
+command = 'node scripts/prepare-fonts.mjs && hugo -F -b $DEPLOY_PRIME_URL --gc'
 
 # Long-lived caching: CSS/JS under /assets/ are content-fingerprinted, and the
 # font files are versioned by filename, so both are safe to cache immutably.

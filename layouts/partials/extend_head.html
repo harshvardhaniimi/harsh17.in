@@ -1,6 +1,25 @@
 <!-- Preload the body font (latin subset only; other subsets load on demand) -->
 <link rel="preload" href="/fonts/Tiro-Regular-latin.woff2" as="font" type="font/woff2" crossorigin>
 
+{{- if and .IsPage (eq .Section "writing") }}
+<link rel="preload" href="/fonts/ABCAreal-v1.524.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  :root { --article-body-font: 'ABC Areal', 'ABC Areal Extended'; --areal-darkness: 0; }
+  :root[data-theme="dark"] { --areal-darkness: 1; }
+  .post-content {
+    font-size: 18px;
+    line-height: 1.75;
+    font-variation-settings: 'MONO' 0, 'DRKM' var(--areal-darkness);
+  }
+  .post-content em, .post-content i {
+    font-variation-settings: 'MONO' 0, 'DRKM' var(--areal-darkness), 'slnt' -12;
+  }
+  @media (max-width: 640px) {
+    .post-content { line-height: 1.65; }
+  }
+</style>
+{{- end }}
+
 {{- /* KaTeX, loaded only when the page actually contains math — no front
        matter needed. Detects $$…$$ (markdown posts) and \(…\) / \[…\]
        (legacy blogdown HTML pages). Must stay in extend_head: the footer is
