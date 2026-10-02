@@ -135,20 +135,29 @@ a, button, [role="button"] {
   cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>👆</text></svg>") 10 4, pointer;
 }
 
-/* ===== Typography — ALL serif ===== */
+/* ===== Typography — Areal with Devanagari fallback ===== */
 body,
 h1, h2, h3, h4, h5, h6,
 .post-title,
 .profile .profile_inner h1,
 .nav,
 header nav a,
-.menu {
-  font-family: 'Tiro Devanagari Hindi', Georgia, 'Times New Roman', serif;
+.menu,
+button, input, select, textarea {
+  font-family: 'ABC Areal', 'ABC Areal Extended', 'Tiro Devanagari Hindi', Arial, sans-serif;
 }
 
+:root { --areal-darkness: 0; }
+:root[data-theme="dark"] { --areal-darkness: 1; }
+
 body {
+  font-variation-settings: 'MONO' 0, 'DRKM' var(--areal-darkness);
   font-size: 17px;
   line-height: 1.75;
+}
+
+em, i {
+  font-variation-settings: 'MONO' 0, 'DRKM' var(--areal-darkness), 'slnt' -12;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -174,7 +183,7 @@ code, pre, .highlight {
 
 .post-content {
   max-width: 750px;
-  font-family: var(--article-body-font, 'Tiro Devanagari Hindi'), 'Tiro Devanagari Hindi', Georgia, serif;
+  font-family: 'ABC Areal', 'ABC Areal Extended', 'Tiro Devanagari Hindi', Arial, sans-serif;
 }
 
 /* ===== Nav active state ===== */
@@ -301,14 +310,14 @@ a:hover {
 }
 
 .profile .profile_inner .tagline {
-  font-family: 'Tiro Devanagari Hindi', Georgia, serif;
+  font-family: 'ABC Areal', 'ABC Areal Extended', 'Tiro Devanagari Hindi', Arial, sans-serif;
 }
 
 /* Quick links row */
 .quick-links {
   margin-top: 1.5rem;
   font-size: 1.1rem;
-  font-family: 'Tiro Devanagari Hindi', Georgia, serif;
+  font-family: 'ABC Areal', 'ABC Areal Extended', 'Tiro Devanagari Hindi', Arial, sans-serif;
 }
 .quick-links a {
   color: var(--link-color);
@@ -428,7 +437,7 @@ a:hover {
   display: inline-block;
   padding: 0.25rem 0.65rem;
   font-size: 0.78rem;
-  font-family: 'Tiro Devanagari Hindi', Georgia, serif;
+  font-family: 'ABC Areal', 'ABC Areal Extended', 'Tiro Devanagari Hindi', Arial, sans-serif;
   border: 1px solid var(--tertiary);
   border-radius: 20px;
   color: var(--secondary);
@@ -460,7 +469,7 @@ a:hover {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.5rem 1.2rem;
-  font-family: 'Tiro Devanagari Hindi', Georgia, serif;
+  font-family: 'ABC Areal', 'ABC Areal Extended', 'Tiro Devanagari Hindi', Arial, sans-serif;
   font-size: 0.9rem;
   color: var(--link-color);
   border: 1.5px solid var(--link-color);
@@ -814,7 +823,7 @@ input:focus-visible,
       left: calc(100% + 32px);
       width: 220px;
       margin: 0;
-      font-family: 'Tiro Devanagari Hindi', Georgia, serif;
+      font-family: 'ABC Areal', 'ABC Areal Extended', 'Tiro Devanagari Hindi', Arial, sans-serif;
       font-size: 0.78rem;
       line-height: 1.55;
       color: var(--secondary);

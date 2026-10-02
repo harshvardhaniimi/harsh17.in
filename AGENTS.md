@@ -24,11 +24,11 @@ Check suspicious files with `file <img>`.
 
 ## Fonts
 
-- Article bodies in the `writing` section use ABC Areal (18px); headings, navigation, and other pages retain Tiro Devanagari Hindi. Tiro remains the fallback for Devanagari and other glyphs missing from Areal.
+- All site text uses ABC Areal, including headings, navigation, and form controls. Writing article bodies remain 18px. Tiro remains the fallback for Devanagari and other glyphs missing from Areal; code keeps Fira Code.
 - Areal is retrieved unmodified from Dinamo's CDN by `scripts/prepare-fonts.mjs`, with a pinned SHA-256. The owner accepted the free-font license on October 3, 2026. Do not commit the font binary to the public repository; run the preparation script before a local Hugo build. If the vendor updates the file, verify it and rename the versioned filename before changing the pinned hash and CSS.
 - Tiro is self-hosted in `static/fonts/` as Google's own unicode-range subsets (latin ≈20KB, latin-ext, devanagari ≈64KB; regular + italic). Devanagari glyphs pull the devanagari file automatically.
 - To update: fetch `https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap` with a Chrome UA, download the woff2 URLs, replace the files, and keep the `unicode-range` values in `assets/css/extended/custom.css` in sync.
-- The latin regular subset is preloaded in `layouts/partials/extend_head.html`.
+- Areal is preloaded site-wide in `layouts/partials/extend_head.html`; Tiro subsets load only when needed.
 - `.fonts/TiroDevanagariHindi-Regular.ttf` (repo root, not deployed) exists for OG-image generation.
 
 ## OG images

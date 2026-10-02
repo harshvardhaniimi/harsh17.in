@@ -1,11 +1,8 @@
-<!-- Preload the body font (latin subset only; other subsets load on demand) -->
-<link rel="preload" href="/fonts/Tiro-Regular-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Preload Areal across the site; Hindi subsets load on demand. -->
+<link rel="preload" href="/fonts/ABCAreal-v1.524.woff2" as="font" type="font/woff2" crossorigin>
 
 {{- if and .IsPage (eq .Section "writing") }}
-<link rel="preload" href="/fonts/ABCAreal-v1.524.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  :root { --article-body-font: 'ABC Areal', 'ABC Areal Extended'; --areal-darkness: 0; }
-  :root[data-theme="dark"] { --areal-darkness: 1; }
   .post-content {
     font-size: 18px;
     line-height: 1.75;
