@@ -557,7 +557,8 @@ a:hover {
 .project-image img {
   width: 120px;
   height: 90px;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--entry);
   border-radius: 4px;
   border: 1px solid var(--tertiary);
 }

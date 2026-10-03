@@ -24,8 +24,8 @@
       <img src="{{ .RelPermalink }}" alt="{{ $page.Title }}" width="120" height="90" loading="lazy" />
     </a>
     {{- else -}}
-    {{- $thumb := .Fill "240x180 webp" -}}
-    {{- $thumb2x := .Fill "480x360 webp" -}}
+    {{- $thumb := .Fit "240x180 webp" -}}
+    {{- $thumb2x := .Fit "480x360 webp" -}}
     <a href="{{ $page.RelPermalink }}">
       <img src="{{ $thumb.RelPermalink }}"
            srcset="{{ $thumb.RelPermalink }} 1x, {{ $thumb2x.RelPermalink }} 2x"
