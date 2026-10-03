@@ -5,11 +5,15 @@
   {{ with .Content }}<div class="post-content">{{ . }}</div>{{ end }}
 </header>
 
-{{/* Keep the two featured projects first; sort the remaining projects by date. */}}
-{{- $map := where .Pages "Params.slug" "mtpt" -}}
-{{- $kalam := where .Pages "Params.slug" "kalam" -}}
-{{- $remaining := where .Pages "Params.slug" "not in" (slice "mtpt" "kalam") -}}
-{{- $ordered := union (union $map $kalam) $remaining.ByDate.Reverse -}}
+{{/* Feature selected projects, then show the rest by date, with garlic last. */}}
+{{- $featuredSlugs := slice "mtpt" "kalam" "journal-suggestor" "smartcor" -}}
+{{- $ordered := slice -}}
+{{- range $featuredSlugs -}}
+  {{- $ordered = union $ordered (where $.Pages "Params.slug" .) -}}
+{{- end -}}
+{{- $remaining := where .Pages "Params.slug" "not in" (slice "mtpt" "kalam" "journal-suggestor" "smartcor" "garlic") -}}
+{{- $ordered = union $ordered $remaining.ByDate.Reverse -}}
+{{- $ordered = union $ordered (where .Pages "Params.slug" "garlic") -}}
 {{- range $ordered -}}
 {{- $page := . -}}
 <div class="project-entry">
@@ -36,6 +40,7 @@
     <div class="project-links">
       {{- with $page.Params.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end -}}
       {{- with $page.Params.website }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $page.Params.websiteLabel | default "Visit project" }}</a>{{ end -}}
+      {{- range $page.Params.projectLinks }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a>{{ end -}}
     </div>
   </div>
 </div>
