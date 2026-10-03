@@ -5,7 +5,12 @@
   {{ with .Content }}<div class="post-content">{{ . }}</div>{{ end }}
 </header>
 
-{{- range .Pages.ByDate.Reverse -}}
+{{/* Keep the two featured projects first; sort the remaining projects by date. */}}
+{{- $map := where .Pages "Params.slug" "mtpt" -}}
+{{- $kalam := where .Pages "Params.slug" "kalam" -}}
+{{- $remaining := where .Pages "Params.slug" "not in" (slice "mtpt" "kalam") -}}
+{{- $ordered := union (union $map $kalam) $remaining.ByDate.Reverse -}}
+{{- range $ordered -}}
 {{- $page := . -}}
 <div class="project-entry">
   <div class="project-image">
