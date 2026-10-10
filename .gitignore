@@ -11,4 +11,6 @@ public/
 # The build retrieves the original webfont before Hugo copies it to the site.
 static/fonts/ABCAreal-v1.524.woff2
 static/fonts/ABCAreal-ext-v1.524.woff2
+static/fonts/ABCAreal-v1.009.woff2
+static/fonts/ABCAreal-ext-v1.009.woff2
 static/fonts/ABCAreal-*.woff2.download

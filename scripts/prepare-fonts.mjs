@@ -6,8 +6,9 @@ import { mkdirSync, readFileSync, renameSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const fonts = [
-  ['core', 'ABCAreal-v1.524.woff2', '9d0cb0fb0ceb17b84275eedbb0ec5e81e4af485609ec8512ed24efeb051683db'],
-  ['ext', 'ABCAreal-ext-v1.524.woff2', '345d97af478c494c2b4b68243b5802af49b923a9a7f87ca50887412acf763e7d'],
+  // Verified Dinamo UI subsets: name-table version 1.009, 2026-10-10.
+  ['core', 'ABCAreal-v1.009.woff2', '2abd9f147f19a6f0d56058c168bc1ff052a9ad268514e99c9af0dae84497f70e'],
+  ['ext', 'ABCAreal-ext-v1.009.woff2', 'd5708835300aeb293f191325b43e1dd2d9df718a9540fe46cc8ba5e793d7e38d'],
 ];
 const digest = (path) => createHash('sha256').update(readFileSync(path)).digest('hex');
 

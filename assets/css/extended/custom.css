@@ -70,7 +70,7 @@
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('/fonts/ABCAreal-v1.524.woff2') format('woff2');
+  src: url('/fonts/ABCAreal-v1.009.woff2') format('woff2');
 }
 
 @font-face {
@@ -79,7 +79,7 @@
   font-weight: 400 700;
   font-display: swap;
   font-variation-settings: 'slnt' -12;
-  src: url('/fonts/ABCAreal-v1.524.woff2') format('woff2');
+  src: url('/fonts/ABCAreal-v1.009.woff2') format('woff2');
 }
 
 @font-face {
@@ -87,7 +87,7 @@
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('/fonts/ABCAreal-ext-v1.524.woff2') format('woff2');
+  src: url('/fonts/ABCAreal-ext-v1.009.woff2') format('woff2');
 }
 
 @font-face {
@@ -96,7 +96,7 @@
   font-weight: 400 700;
   font-display: swap;
   font-variation-settings: 'slnt' -12;
-  src: url('/fonts/ABCAreal-ext-v1.524.woff2') format('woff2');
+  src: url('/fonts/ABCAreal-ext-v1.009.woff2') format('woff2');
 }
 
 /* ===== Light mode palette ===== */
