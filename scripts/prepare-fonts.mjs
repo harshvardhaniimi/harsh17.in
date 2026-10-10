@@ -1,5 +1,5 @@
-// Retrieve Dinamo's unmodified webfont at build time, keeping licensed binaries
-// out of the public source repository. The site owner holds Areal's free license.
+// Use verified local copies, or recover them from the site's own versioned assets.
+// Keep licensed binaries out of the public source repository. Dinamo is a fallback.
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, renameSync, existsSync } from 'node:fs';
@@ -17,17 +17,32 @@ for (const [subset, filename, expected] of fonts) {
   if (existsSync(target) && digest(target) === expected) continue;
   mkdirSync(fileURLToPath(new URL('../static/fonts/', import.meta.url)), { recursive: true });
   const temporary = `${target}.download`;
-  execFileSync('curl', [
-    '--fail', '--silent', '--show-error', '--location',
-    '--retry', '2', '--max-time', '45',
-    '--referer', 'https://abcdinamo.com/',
-    '--user-agent', 'Mozilla/5.0',
+  const sources = [
+    `https://harsh17.in/fonts/${filename}`,
     `https://cdn.abcdinamo.com/webfonts/${subset}/ABCArealSuperfamilyVariable.woff2`,
-    '--output', temporary,
-  ], { stdio: 'inherit' });
-  if (digest(temporary) !== expected) {
-    throw new Error('Areal webfont changed. Verify the vendor file and version before updating the pinned hash.');
+  ];
+  let recovered = false;
+  for (const source of sources) {
+    try {
+      execFileSync('curl', [
+        '--fail', '--silent', '--show-error', '--location',
+        '--retry', '1', '--connect-timeout', '10', '--max-time', '45',
+        '--referer', 'https://abcdinamo.com/',
+        '--user-agent', 'Mozilla/5.0', source,
+        '--output', temporary,
+      ], { stdio: 'inherit' });
+      if (digest(temporary) !== expected) {
+        throw new Error('Downloaded font does not match the pinned SHA-256.');
+      }
+      renameSync(temporary, target);
+      recovered = true;
+      break;
+    } catch (error) {
+      console.warn(`Could not recover ${filename} from ${source}: ${error.message}`);
+    }
   }
-  renameSync(temporary, target);
+  if (!recovered) {
+    throw new Error(`Unable to recover ${filename}. Restore the verified file from the owner's private font backup into static/fonts/.`);
+  }
 }
 console.log('Areal webfont verified.');
