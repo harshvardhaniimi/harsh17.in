@@ -1,6 +1,26 @@
 <!-- Preload Areal across the site; Hindi subsets load on demand. -->
 <link rel="preload" href="/fonts/ABCAreal-v1.009.woff2" as="font" type="font/woff2" crossorigin>
 
+{{- /* playhtml presence features for this page. Decided here, not in the
+       footer, because the footer is partialCached per Kind. The script in
+       partials/playhtml.html reads this tag. Opt a page out with
+       `playhtml: false` in its front matter. */ -}}
+{{- with site.Params.playhtml }}
+{{- if and .enabled (ne $.Params.playhtml false) }}
+{{- $features := slice }}
+{{- if .cursors }}{{ $features = $features | append "cursors" }}{{ end }}
+{{- if and $.IsPage (in (.readerSections | default (slice "writing" "research" "talks" "projects")) $.Section) }}
+{{- $features = $features | append "readers" }}
+{{- end }}
+{{- if and $.IsPage (in (.chaiSections | default (slice "writing")) $.Section) }}
+{{- $features = $features | append "chai" }}
+{{- end }}
+{{- with $features }}
+<meta name="playhtml" content="{{ delimit . "," }}">
+{{- end }}
+{{- end }}
+{{- end }}
+
 {{- if and .IsPage (eq .Section "writing") }}
 <style>
   .post-content {
