@@ -12,8 +12,8 @@
 {{- if and $.IsPage (in (.readerSections | default (slice "writing" "research" "talks" "projects")) $.Section) }}
 {{- $features = $features | append "readers" }}
 {{- end }}
-{{- if and $.IsPage (in (.chaiSections | default (slice "writing")) $.Section) }}
-{{- $features = $features | append "chai" }}
+{{- if and $.IsPage (in (.coffeeSections | default (slice "writing")) $.Section) }}
+{{- $features = $features | append "coffee" }}
 {{- end }}
 {{- with $features }}
 <meta name="playhtml" content="{{ delimit . "," }}">

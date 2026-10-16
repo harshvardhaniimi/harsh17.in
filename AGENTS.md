@@ -64,8 +64,8 @@ If a font file must change, rename it.
 
 ## Live presence (playhtml)
 
-- `layouts/partials/playhtml.html` adds three features from [playhtml](https://playhtml.fun): other readers' cursors shown as rickshaws (desktop, fine pointer, ≥900px, not under reduced motion), an "N other readers here now" note in the post meta, and a persistent "leave a chai" counter after the content of writing posts.
+- `layouts/partials/playhtml.html` adds three features from [playhtml](https://playhtml.fun): other readers' cursors shown as rickshaws (desktop, fine pointer, ≥900px, not under reduced motion), an "N other readers here now" note in the post meta, and a persistent "leave a ☕" counter after the content of writing posts.
 - Which features a page gets is decided in `extend_head.html` and passed through `<meta name="playhtml">`, because the footer is partialCached per Kind. Configure under `params.playhtml` in `hugo.yaml`; opt one page out with `playhtml: false` in front matter.
 - The library loads from jsDelivr at a pinned version (`params.playhtml.version`), after `window.load` in idle time, and never on Save-Data. If the CDN or PartyKit is unreachable, nothing renders.
-- State lives on the library author's public PartyKit server, unencrypted, keyed by hostname + pathname. Keep it to anonymous, non-sensitive signals. The chai count is best-effort (one per browser via localStorage) and can be inflated by anyone who tries.
+- State lives on the library author's public PartyKit server, unencrypted, keyed by hostname + pathname. Keep it to anonymous, non-sensitive signals. The ☕ count is best-effort (one per browser via localStorage) and can be inflated by anyone who tries.
 - Cursors are anchored to `main.main`, so a rickshaw sits on the same paragraph for every reader regardless of window width.

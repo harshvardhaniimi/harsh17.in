@@ -3,7 +3,7 @@
    Three small features, all driven by <meta name="playhtml"> in the head:
      cursors  other readers on the same page appear as autorickshaws
      readers  "N other readers here now" next to the reading time
-     chai     a persistent "leave a chai" counter at the end of a post
+     coffee   a persistent "leave a ☕" counter at the end of a post
 
    The head partial decides which features a page gets, because this file is
    rendered from the footer, which PaperMod caches per Kind (see AGENTS.md).
@@ -64,34 +64,32 @@
     playhtml.users.onChange(render);
   }
 
-  function chaiJar(playhtml) {
+  function coffeeJar(playhtml) {
     var content = document.querySelector('.post-single .post-content');
     if (!content) return;
-    var key = 'chai:' + location.pathname;
+    var key = 'coffee:' + location.pathname;
     var given = false;
     try { given = localStorage.getItem(key) === '1'; } catch (e) {}
 
     var jar = document.createElement('div');
-    jar.className = 'chai-jar';
+    jar.className = 'coffee-jar';
     jar.innerHTML =
-      '<button type="button" class="chai-jar__btn">' +
-        '<span class="chai-jar__cup" aria-hidden="true">☕</span>' +
-        '<span class="chai-jar__label"></span>' +
-      '</button>' +
-      '<span class="chai-jar__count" aria-live="polite"></span>';
+      '<button type="button" class="coffee-jar__btn"></button>' +
+      '<span class="coffee-jar__count" aria-live="polite"></span>';
     content.insertAdjacentElement('afterend', jar);
 
-    var btn = jar.querySelector('.chai-jar__btn');
-    var label = jar.querySelector('.chai-jar__label');
-    var count = jar.querySelector('.chai-jar__count');
-    var channel = playhtml.createPageData('chai', 0);
+    var btn = jar.querySelector('.coffee-jar__btn');
+    var count = jar.querySelector('.coffee-jar__count');
+    var channel = playhtml.createPageData('coffee', 0);
+    var CUP = '<span class="coffee-jar__cup" aria-hidden="true">☕</span>';
 
     function render() {
       var n = Number(channel.getData()) || 0;
-      label.textContent = given ? 'Thank you for the chai' : 'Found this useful? Leave a chai';
+      btn.innerHTML = (given ? 'Thanks for the ' : 'Found this useful? Leave a ') + CUP;
+      btn.setAttribute('aria-label', given ? 'Thanks for the coffee' : 'Found this useful? Leave a coffee');
       btn.disabled = given;
       btn.setAttribute('aria-pressed', given ? 'true' : 'false');
-      count.textContent = n === 0 ? '' : (n === 1 ? '1 cup so far' : n.toLocaleString() + ' cups so far');
+      count.textContent = n === 0 ? '' : n.toLocaleString() + ' ☕ so far';
     }
 
     btn.addEventListener('click', function () {
@@ -99,7 +97,7 @@
       given = true;
       try { localStorage.setItem(key, '1'); } catch (e) {}
       channel.setData(function (v) { return (Number(v) || 0) + 1; });
-      jar.classList.add('chai-jar--steam');
+      jar.classList.add('coffee-jar--steam');
       render();
     });
 
@@ -126,7 +124,7 @@
       }
       return Promise.resolve(playhtml.init(options)).then(function () {
         if (features.has('readers')) readersPill(playhtml);
-        if (features.has('chai')) chaiJar(playhtml);
+        if (features.has('coffee')) coffeeJar(playhtml);
       });
     }).catch(function (err) {
       if (window.console) console.debug('[playhtml] disabled:', err);
