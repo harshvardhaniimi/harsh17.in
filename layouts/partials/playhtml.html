@@ -1,0 +1,139 @@
+{{- /* Shared presence layer built on playhtml (https://playhtml.fun).
+
+   Three small features, all driven by <meta name="playhtml"> in the head:
+     cursors  other readers on the same page appear as autorickshaws
+     readers  "N other readers here now" next to the reading time
+     coffee   a persistent "leave a ☕" counter at the end of a post
+
+   The head partial decides which features a page gets, because this file is
+   rendered from the footer, which PaperMod caches per Kind (see AGENTS.md).
+   Nothing here may depend on the current page; it only reads site params.
+
+   The library (~110KB gzipped) loads after window.load, in idle time, and
+   never on Save-Data connections. If PartyKit is unreachable, nothing is
+   shown: no counter, no pill, no cursors. */ -}}
+{{- with site.Params.playhtml }}
+{{- if .enabled }}
+<script type="module">
+(function () {
+  var tag = document.querySelector('meta[name="playhtml"]');
+  if (!tag) return;
+  var features = new Set(tag.content.split(',').filter(Boolean));
+  if (features.size === 0) return;
+  if (navigator.connection && navigator.connection.saveData) return;
+
+  var SRC = 'https://cdn.jsdelivr.net/npm/playhtml@{{ .version | default "2.15.0" }}/dist/playhtml.es.js';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Cursors only make sense with a mouse and enough width for the column.
+  var cursorsOn = features.has('cursors') && !reduceMotion &&
+    window.matchMedia('(pointer: fine) and (min-width: 900px)').matches;
+
+  function idle(fn) {
+    if ('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 4000 });
+    else setTimeout(fn, 1500);
+  }
+
+  // Stable per-connection hue, so each visiting rickshaw keeps its colour.
+  function hueFor(id) {
+    var h = 0;
+    for (var i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 360;
+    return h;
+  }
+
+  function rickshaw(connectionId, el) {
+    el.classList.add('peer-rickshaw');
+    el.style.setProperty('--peer-hue', hueFor(String(connectionId)));
+    el.innerHTML = '<span class="peer-rickshaw__icon" aria-hidden="true">🛺</span>';
+    return el;
+  }
+
+  function readersPill(playhtml) {
+    var meta = document.querySelector('.post-single .post-meta');
+    if (!meta) return;
+    var pill = document.createElement('span');
+    pill.className = 'readers-now';
+    pill.hidden = true;
+    meta.appendChild(pill);
+    function render(users) {
+      var others = (users || []).filter(function (u) { return !u.isMe; }).length;
+      pill.hidden = others === 0;
+      pill.textContent = others === 1 ? '1 other reader here now'
+                                      : others + ' other readers here now';
+    }
+    render(playhtml.users.getAll());
+    playhtml.users.onChange(render);
+  }
+
+  function coffeeJar(playhtml) {
+    var content = document.querySelector('.post-single .post-content');
+    if (!content) return;
+    var key = 'coffee:' + location.pathname;
+    var given = false;
+    try { given = localStorage.getItem(key) === '1'; } catch (e) {}
+
+    var jar = document.createElement('div');
+    jar.className = 'coffee-jar';
+    jar.innerHTML =
+      '<button type="button" class="coffee-jar__btn"></button>' +
+      '<span class="coffee-jar__count" aria-live="polite"></span>';
+    content.insertAdjacentElement('afterend', jar);
+
+    var btn = jar.querySelector('.coffee-jar__btn');
+    var count = jar.querySelector('.coffee-jar__count');
+    var channel = playhtml.createPageData('coffee', 0);
+    var CUP = '<span class="coffee-jar__cup" aria-hidden="true">☕</span>';
+
+    function render() {
+      var n = Number(channel.getData()) || 0;
+      btn.innerHTML = (given ? 'Thanks for the ' : 'Found this useful? Leave a ') + CUP;
+      btn.setAttribute('aria-label', given ? 'Thanks for the coffee' : 'Found this useful? Leave a coffee');
+      btn.disabled = given;
+      btn.setAttribute('aria-pressed', given ? 'true' : 'false');
+      count.textContent = n === 0 ? '' : n.toLocaleString() + ' ☕ so far';
+    }
+
+    btn.addEventListener('click', function () {
+      if (given) return;
+      given = true;
+      try { localStorage.setItem(key, '1'); } catch (e) {}
+      channel.setData(function (v) { return (Number(v) || 0) + 1; });
+      jar.classList.add('coffee-jar--steam');
+      render();
+    });
+
+    channel.onUpdate(render);
+    render();
+  }
+
+  function start() {
+    import(SRC).then(function (mod) {
+      var playhtml = mod.playhtml;
+      var options = {
+        // Ignore ?utm_… and similar so every visitor to a post shares one room.
+        room: function () { return location.pathname; }
+      };
+      if (cursorsOn) {
+        var column = document.querySelector('main.main');
+        options.cursors = {
+          enabled: true,
+          // Anchor cursors to the text column instead of the viewport, so a
+          // rickshaw sits on the same paragraph for every reader.
+          container: column || undefined,
+          onCustomCursorRender: rickshaw
+        };
+      }
+      return Promise.resolve(playhtml.init(options)).then(function () {
+        if (features.has('readers')) readersPill(playhtml);
+        if (features.has('coffee')) coffeeJar(playhtml);
+      });
+    }).catch(function (err) {
+      if (window.console) console.debug('[playhtml] disabled:', err);
+    });
+  }
+
+  if (document.readyState === 'complete') idle(start);
+  else window.addEventListener('load', function () { idle(start); }, { once: true });
+})();
+</script>
+{{- end }}
+{{- end }}

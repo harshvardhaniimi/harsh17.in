@@ -112,6 +112,16 @@ params:
     - name: rss
       url: "/writing/index.xml"
 
+  # Live presence via playhtml (https://playhtml.fun). State is held on the
+  # library author's public PartyKit server, so keep it to non-sensitive,
+  # anonymous signals. Pin `version`; the library is still in beta.
+  playhtml:
+    enabled: true
+    version: "2.15.0"
+    cursors: true                      # other readers shown as autorickshaws (desktop only)
+    readerSections: [writing, research, talks, projects]   # "N other readers here now"
+    coffeeSections: [writing]          # persistent "leave a ☕" counter
+
   giscus:
     repo: "harshvardhaniimi/harsh17.in"
     repoId: "R_kgDOR_EfYg"
