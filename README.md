@@ -33,7 +33,8 @@ It used to be two separate Hugo sites — a blog and a personal page — merged 
 
 **Node.js is pinned to 24.22.1 LTS** in `.nvmrc` and `netlify.toml` for the October 21, 2026 security fixes.
 Use `nvm install && nvm use`, then `node scripts/prepare-fonts.mjs && hugo --gc` for a local build.
-The search function uses Netlify's managed Node 24 runtime; Netlify and AWS control its patch updates.
+Search runs entirely in the browser using full-text and fuzzy matching against Hugo's generated index.
+It requires no API key or serverless function.
 
 **The `--minify` flag breaks things.** Specifically JSON-LD in some project pages. Netlify builds with `hugo --gc`, not `hugo --gc --minify`.
 
