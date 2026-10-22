@@ -23,7 +23,10 @@ async function embedGemini(q, key) {
       }),
     }
   );
-  if (!res.ok) throw new Error(`gemini ${res.status}`);
+  if (!res.ok) {
+    console.error(`embed-query upstream status: ${res.status} (gemini)`);
+    throw new Error(`gemini ${res.status}`);
+  }
   const data = await res.json();
   return { model, vec: data.embedding.values };
 }
@@ -35,7 +38,10 @@ async function embedOpenAI(q, key) {
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
     body: JSON.stringify({ model, input: q, dimensions: DIMS }),
   });
-  if (!res.ok) throw new Error(`openai ${res.status}`);
+  if (!res.ok) {
+    console.error(`embed-query upstream status: ${res.status} (openai)`);
+    throw new Error(`openai ${res.status}`);
+  }
   const data = await res.json();
   return { model, vec: data.data[0].embedding };
 }
