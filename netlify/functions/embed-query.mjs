@@ -6,6 +6,9 @@
 
 const DIMS = 768;
 
+// Record the managed runtime once per cold start so security updates are verifiable.
+console.info(`embed-query runtime: ${process.version}`);
+
 async function embedGemini(q, key) {
   const model = "gemini-embedding-001";
   const res = await fetch(
