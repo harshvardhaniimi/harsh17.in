@@ -31,6 +31,11 @@ It used to be two separate Hugo sites — a blog and a personal page — merged 
 
 **No blogdown.** No `.Rmd` files. No R dependency. Plain Hugo, plain Markdown. This was a deliberate escape from blogdown breaking every other month.
 
+**Node.js is pinned to 24.22.1 LTS** in `.nvmrc` and `netlify.toml` for the October 21, 2026 security fixes.
+Use `nvm install && nvm use`, then `node scripts/prepare-fonts.mjs && hugo --gc` for a local build.
+Search runs entirely in the browser using full-text and fuzzy matching against Hugo's generated index.
+It requires no API key or serverless function.
+
 **The `--minify` flag breaks things.** Specifically JSON-LD in some project pages. Netlify builds with `hugo --gc`, not `hugo --gc --minify`.
 
 **`baseURL` is `https://harsh17.in/`.** Earlier it was `/` to keep `hugo server` and Netlify preview URLs working without rewrites, but Hugo's dev server auto-overrides baseURL to `localhost` and `netlify.toml` already overrides it to `$DEPLOY_PRIME_URL` for preview/branch deploys, so the bare-slash setup was unnecessary and caused an unparsable JSON-LD bug (PaperMod's breadcrumb partial uses global `replace` on permalinks, which collapses when the home permalink is `/`). Leave baseURL as the absolute URL.

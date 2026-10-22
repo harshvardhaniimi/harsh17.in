@@ -37,7 +37,7 @@ Check suspicious files with `file <img>`.
 - **The post title is baked into the image pixels, and the script skips any bundle that already has an `og.png`.**
 Changing a post's `title:` therefore leaves a stale card that goes on advertising the old title to every link preview on LinkedIn, Slack, and Twitter, with nothing in the build to flag it.
 After any title change, move the old `og.png` to `~/Desktop/deleted by clwd/` (never delete it) and re-run `python generate-og-images.py`.
-Unlike `generate-embeddings.py`, this script does not self-invalidate — it only ever fills in what is missing.
+This script does not self-invalidate — it only ever fills in what is missing.
 - PIL cannot shape Devanagari conjuncts.
 For Hindi titles, render the same design via headless Chrome instead:
 build an HTML page with the OG layout (cream `#faf8f5`, maroon `#7a4522` bar, Tiro @font-face), then
@@ -45,12 +45,10 @@ build an HTML page with the OG layout (cream `#faf8f5`, maroon `#7a4522` bar, Ti
 
 ## Search
 
-- `assets/js/fastsearch.js` (project-level, shadows PaperMod's) implements three-tier search: literal word/phrase matches with highlighted snippets, fuzzy Fuse.js results ("Related matches"), then embedding-based "Semantic matches".
+- `assets/js/fastsearch.js` (project-level, shadows PaperMod's) implements two-tier search: literal word/phrase matches with highlighted snippets, then fuzzy Fuse.js results ("Related matches").
 - The `index.json` search index intentionally contains full post content — do not trim it; the owner wants exact recall of half-remembered phrases.
-- **Semantic tier**: post vectors live in `static/embeddings.json` (Gemini `gemini-embedding-001`, 768-dim, int8+base64); queries are embedded at runtime by the Netlify function `netlify/functions/embed-query.mjs` (route `/api/embed-query`, key from `GEMINI_API_KEY` env var on Netlify).
-- **After adding or editing posts, run `python generate-embeddings.py` and commit the updated `static/embeddings.json`** — it is incremental (only changed posts are re-embedded; needs `GOOGLE_API_KEY`/`GEMINI_API_KEY` in the environment).
-- Corpus and query embeddings must come from the same model; the client checks this and silently hides the tier on mismatch. To switch providers, re-run the script and update Netlify env (`EMBED_PROVIDER`, key) together.
-- Local testing of the semantic tier needs `netlify dev` (functions don't run under plain `hugo server`; the tier degrades silently there).
+- Search runs entirely in the browser against Hugo's generated `index.json`.
+No API key, embeddings regeneration, or serverless function is required.
 
 ## Research section
 
