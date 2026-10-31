@@ -3,10 +3,10 @@ title: "Where Do Grocers Go Digital: Spatial Modeling of E-Commerce Configuratio
 author: Harshvardhan
 date: '2026-10-10'
 slug: grocers-go-digital
-summary: 'Which U.S. grocery stores offer pickup, delivery, both, or neither? Using 14,275 stores and a spatial multinomial GAM, we find that chain identity and store format dominate, while local market conditions keep a clear secondary role. Published in the *Journal of Theoretical and Applied Electronic Commerce Research*. [🔗 PDF](https://www.harsh17.in/docs/papers/JTAER_2026_Grocers_Go_Digital.pdf)'
+summary: 'Which U.S. grocery stores offer pickup, delivery, both, or neither? Using 14,275 stores and a spatial multinomial GAM, we find that chain identity and store format dominate, while local market conditions keep a clear secondary role. Published in the *Journal of Theoretical and Applied Electronic Commerce Research*. [🔗 PDF](https://www.mdpi.com/0718-1876/21/10/357/pdf)'
 authors: "Harshvardhan, M., Reed, C., Sallos, M. P."
 venue: "Journal of Theoretical and Applied Electronic Commerce Research, 21(10), 357 (2026)"
-pdf: https://www.harsh17.in/docs/papers/JTAER_2026_Grocers_Go_Digital.pdf
+pdf: https://www.mdpi.com/0718-1876/21/10/357/pdf
 doi: 10.3390/jtaer21100357
 link: https://www.mdpi.com/0718-1876/21/10/357
 linkText: MDPI
@@ -40,7 +40,7 @@ DOI: <https://doi.org/10.3390/jtaer21100357>
 
 Article page: [MDPI](https://www.mdpi.com/0718-1876/21/10/357)
 
-PDF: [Published version](https://www.harsh17.in/docs/papers/JTAER_2026_Grocers_Go_Digital.pdf)
+PDF: [Published version](https://www.mdpi.com/0718-1876/21/10/357/pdf)
 
 ## Citation
 
