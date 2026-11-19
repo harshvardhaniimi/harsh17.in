@@ -18,7 +18,7 @@ cover:
   relative: true
   hidden: true
 ---
-Our paper on how U.S. grocery chains decide which stores offer online pickup and delivery is now published in the *Journal of Theoretical and Applied Electronic Commerce Research* (open access, CC BY).
+Our paper on how U.S. grocery chains decide which stores offer online pickup and delivery is now published in the *Journal of Theoretical and Applied Electronic Commerce Research*.
 It is joint work with Connor Reed at Meijer and my colleague Mark Sallos at the American University of Sharjah, and it was funded by an AUS faculty research grant.
 
 ## Abstract

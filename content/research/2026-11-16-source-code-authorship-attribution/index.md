@@ -17,7 +17,7 @@ cover:
   relative: true
   hidden: true
 ---
-Our systematic review of source code authorship attribution is now published in *Computers* (MDPI, open access).
+Our systematic review of source code authorship attribution is now published in *Computers*.
 It is joint work with Bilal Al-Ahmad, Murad Magableh, Sahar Mahmoud, Doaa Altayeb, and Dana Dghaym.
 
 ## About the paper
