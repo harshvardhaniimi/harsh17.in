@@ -1,19 +1,18 @@
 ---
-title: 'Dynamic GP: Application to Malaria Vaccine Coverage Prediction'
+title: 'The Evolution of Dynamic Gaussian Process Model with Applications to Malaria Vaccine Coverage Prediction'
 summary: We applied a dynamic Gaussian process model to predict coverage for novel
   Malaria vaccines in 78 countries. Using publicly available WHO data on coverage
   of nine vaccines, we developed localised models for countries grouped using the
   human development index (HDI). We deployed convolutions of standard GP models with
   weights determined using singular value decomposition of time-series response matrix.
-  [🔗 PDF](https://www.harsh17.in/docs/malaria_paper.pdf)
+  [🔗 PDF](https://arxiv.org/pdf/2012.11124)
 author: Harshvardhan
 date: '2020-12-20'
 slug: dynamic-gp-application-to-malaria-vaccine-coverage-prediction
 authors: "Ranjan, P., Harshvardhan, M."
-venue: "Applied Statistical Methods: ISGES 2020, Springer Singapore (2022)"
-pdf: https://www.harsh17.in/docs/malaria_paper.pdf
-link: https://arxiv.org/abs/2012.11124
-linkText: "arXiv"
+venue: "Applied Statistical Methods: ISGES 2020, Springer Proceedings in Mathematics & Statistics, vol. 380, pp. 99–115 (2022)"
+pdf: https://arxiv.org/pdf/2012.11124
+doi: 10.1007/978-981-16-7932-2_7
 contribution: "Applies dynamic Gaussian-process models to forecast vaccine coverage across 78 malaria-prone countries using existing vaccination data."
 tags:
 - academia
@@ -32,15 +31,14 @@ Gaussian process (GP) based statistical surrogates are popular, inexpensive subs
 
 ### Citation
 
-Ranjan, P. and Harshvardhan, M. (2022). "The Evolution of Dynamic Gaussian Process Model with
-Applications to Malaria Vaccine Coverage Prediction". In D.D. Hanagal, R.V. Latpatel & G. Chandra
-(Eds.), Applied Statistical Methods: ISGES 2020. *Springer*. Singapore.
+Ranjan, P., & Harshvardhan, M. (2022). The Evolution of Dynamic Gaussian Process Model with Applications to Malaria Vaccine Coverage Prediction. In D. D. Hanagal, R. V. Latpate, & G. Chandra (Eds.), *Applied Statistical Methods: ISGES 2020* (Springer Proceedings in Mathematics & Statistics, Vol. 380, pp. 99–115). Springer, Singapore. <https://doi.org/10.1007/978-981-16-7932-2_7>
 
 ### Links
-- PDF: https://www.harsh17.in/docs/malaria_paper.pdf
+- DOI: https://doi.org/10.1007/978-981-16-7932-2_7
+- PDF (arXiv preprint): https://arxiv.org/pdf/2012.11124
 - arXiv: https://arxiv.org/abs/2012.11124
 - Google Books: https://www.google.co.in/books/edition/Applied_Statistical_Methods/h1-vzgEACAAJ?hl=en
 - Blog: https://www.harsh17.in/forecasting-malaria-vaccine-demand/
-- Springer: https://link.springer.com/book/9789811679322
+- Springer (book): https://link.springer.com/book/9789811679322
 
 
