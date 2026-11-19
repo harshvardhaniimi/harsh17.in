@@ -9,7 +9,7 @@ venue: "Computers, 15(11), 843 (2026)"
 pdf: https://www.mdpi.com/2073-431X/15/11/843/pdf
 doi: 10.3390/computers15110843
 link: https://www.mdpi.com/2073-431X/15/11/843
-linkText: MDPI
+linkText: Website
 contribution: "Organizes source code authorship attribution research into preprocessing, feature extraction, classification, and prediction stages, and compares reported results across programming languages, dataset sizes, and evaluation settings."
 tags:
 - academia
@@ -35,7 +35,7 @@ We close with open questions on cross-language and open-set attribution, robustn
 
 DOI: <https://doi.org/10.3390/computers15110843>
 
-Article page: [MDPI](https://www.mdpi.com/2073-431X/15/11/843)
+Article page: [Website](https://www.mdpi.com/2073-431X/15/11/843)
 
 PDF: [Published version](https://www.mdpi.com/2073-431X/15/11/843/pdf)
 

@@ -9,7 +9,7 @@ venue: "Journal of Theoretical and Applied Electronic Commerce Research, 21(10),
 pdf: https://www.mdpi.com/0718-1876/21/10/357/pdf
 doi: 10.3390/jtaer21100357
 link: https://www.mdpi.com/0718-1876/21/10/357
-linkText: MDPI
+linkText: Website
 contribution: "Models the store-level choice between pickup, delivery, both, or neither as a spatial problem, and separates chain-level policy from local market conditions."
 tags:
 - academia
@@ -38,7 +38,7 @@ This identifies stores whose predicted configurations change when banner informa
 
 DOI: <https://doi.org/10.3390/jtaer21100357>
 
-Article page: [MDPI](https://www.mdpi.com/0718-1876/21/10/357)
+Article page: [Website](https://www.mdpi.com/0718-1876/21/10/357)
 
 PDF: [Published version](https://www.mdpi.com/0718-1876/21/10/357/pdf)
 
